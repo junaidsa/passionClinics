@@ -43,8 +43,8 @@
 		</div>
 	</div>
 	<!-- Preloader End -->
-    @include('layouts.hero')
     @include('layouts.front-header')
+    @include('layouts.hero')
 @yield('main-front')
 
  <!-- Footer Main Start -->
