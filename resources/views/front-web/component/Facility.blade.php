@@ -12,7 +12,7 @@ $facilities = DB::table('facilities')->get();
             <div class="case-study-image">
                 <a href="case-study-single.html" data-cursor-text="View">
                     <figure class="image-anime">
-                        <img src="{{ url('imgAvatar/facility/' . (@$f->avatar ?? 'avatar.jpg')) }}" alt="">
+                        <img src="{{ url('file/facility/' . (@$f->avatar ?? 'avatar.jpg')) }}" alt="">
                     </figure>
                 </a>
             </div>

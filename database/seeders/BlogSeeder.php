@@ -12,23 +12,23 @@ class BlogSeeder extends Seeder
     {
         DB::table('blogs')->insert([
             [
-                'description' => '',
+                'description' => 'Top Tips for Preparing for Plastic Surgery',
                 'short_description' => 'Top Tips for Preparing for Plastic Surgery',
-                'image' => 'path/to/your/image1.jpg', // update the correct image path
+                'image' => 'service-image-5.jpg', // update the correct image path
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'description' => '',
+                'description' => 'Top Tips for Preparing for Plastic Surgery',
                 'short_description' => 'Myths and Facts About Plastic Surgery',
-                'image' => 'path/to/your/image2.jpg', // update the correct image path
+                'image' => 'service-image-5.jpg', // update the correct image path
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'description' => '',
+                'description' => 'Top Tips for Preparing for Plastic Surgery',
                 'short_description' => 'What to Expect During Your First Consultation',
-                'image' => 'path/to/your/image3.jpg', // update the correct image path
+                'image' => 'service-image-4.jpg', // update the correct image path
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],

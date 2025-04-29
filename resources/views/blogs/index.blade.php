@@ -27,7 +27,7 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ @$b->short_description }}</td>
                                     <td>{!! @$b->description !!}</td>
-                                    <td><img src="{{ url('avatar/blog/' . (@$b->image ?? 'avatar.jpg')) }}" alt="Blog Image" width="70" height="70" class="rounded-circle"></td>
+                                    <td><img src="{{ url('file/blog/' . (@$b->image ?? 'avatar.jpg')) }}" alt="Blog Image" width="70" height="70" class="rounded-circle"></td>
 
                                     <td>
                                         <a href="{{ route('blog.edit', $b->id) }}" class="edit-btn "><i
