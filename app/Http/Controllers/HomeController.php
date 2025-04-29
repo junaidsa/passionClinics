@@ -14,6 +14,13 @@ class HomeController extends Controller
 public function home(){
     return view('front-web.home');
 }
+public function about(){
+    return view('front-web.about');
+}
+public function our_services(){
+    return view('front-web.our_services');
+
+}
 public function dashboard(){
     return view('dashboard');
 }
@@ -94,5 +101,6 @@ public function aboutupdate(Request $request)
     $about->save();
     return redirect()->back()->with('success', 'About page updated successfully!');
 }
+
 
 }

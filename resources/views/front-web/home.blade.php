@@ -1,5 +1,6 @@
 @extends('layouts.front-app')
 @section('main-front')
+@include('layouts.hero')
 <main>
         <!-- About Us Section Start -->
         <div class="about-us">
