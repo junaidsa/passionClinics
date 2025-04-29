@@ -19,6 +19,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('admin/about',[HomeController::class,'aboutEdit'])->name('about.edit');
+    Route::post('about/update',[HomeController::class,'aboutupdate'])->name('about.update');
+    // a
     Route::get('admin/testimonials/create',[TestimonialController::class,'create'])->name('testimonial.create');
     Route::post('/admin/testimonials/store',[TestimonialController::class,'store'])->name('testimonials.store');
     Route::post('/admin/testimonials/update',[TestimonialController::class,'update'])->name('testimonials.update');
@@ -57,6 +60,7 @@ Route::prefix('/file')->group(function () {
     Route::get('/facility/{filename}', fn($filename) => serveFile('facilits', $filename));
     Route::get('/video/{filename}', fn($filename) => serveFile('service', $filename)); // service folder again
     Route::get('/features/{filename}', fn($filename) => serveFile('features', $filename));
+    Route::get('/about/{filename}', fn($filename) => serveFile('pages', $filename));
 });
 
 // Reusable file-serving function

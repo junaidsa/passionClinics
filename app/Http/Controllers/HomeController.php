@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
 use App\Models\Contact;
 use App\Models\Facility;
 use Illuminate\Http\Request;
@@ -55,6 +56,43 @@ public function createFacility()
 public function contact_list(){
     $contact =  Contact::get();
     return view('pages.contact_list',compact('contact'));
+}
+public function aboutEdit(){
+    $ab =  About::find(1);
+    return view('pages.about',compact('ab'));
+}
+
+
+public function aboutupdate(Request $request)
+{
+    $request->validate([
+        'about_title'         => 'required|string|max:255',
+        'about'               => 'required|string',
+        'about_attachment'    => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
+        'about_attachment2'   => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
+    ]);
+    $about = About::find(1);
+    if (!$about) {
+        abort(404, 'About page not found.');
+    }
+    $about->about_title = $request->about_title;
+    $about->about = $request->about;
+    if ($request->hasFile('about_attachment')) {
+        $mainImg = $request->file('about_attachment');
+        $fileName1 = time().'about_attachment.'.$mainImg->getClientOriginalExtension();
+        $destinationPath = base_path('../aluniquefurniture_uploads/pages/');
+        $mainImg->move($destinationPath, $fileName1);
+        $about->about_attachment = $fileName1;
+    }
+    if ($request->hasFile('about_attachment2')) {
+        $file2 = $request->file('about_attachment2');
+        $fileName2 = time().'about_attachment.'.$file2->getClientOriginalExtension();
+        $destinationPath = base_path('../aluniquefurniture_uploads/pages/');
+        $file2->move($destinationPath, $fileName2);
+        $about->about_attachment2 = $fileName2;
+    }
+    $about->save();
+    return redirect()->back()->with('success', 'About page updated successfully!');
 }
 
 }
