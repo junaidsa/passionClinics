@@ -49,6 +49,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('admin/faq/delete/{id}', [ServiceController::class, 'deletefaq'])->name('faq.destroy');
     Route::post('admin/service/faq/store',[ServiceController::class,'storeFaq'])->name('service.faq.store');
     Route::get('/admin/service/faq/{id}',[ServiceController::class,'faq'])->name('service.faq');
+        Route::post('/admin/testimonials/update',[TestimonialController::class,'testimonialupdate'])->name('testimonials.update');
+    Route::delete('admin/testimonial/delete/{id}', [TestimonialController::class, 'delete'])->name('testimonial.delete');
+ Route::get('/admin/service/edit/{id}',[ServiceController::class,'serviceEdit'])->name('service.edit');
+    Route::Post('/admin/service/update/{id}',[ServiceController::class,'serviceupdate'])->name('service.update');
+    Route::delete('/admin/service/delete/{id}',[ServiceController::class,'serviceDestroy'])->name('service.destroy');
+    Route::post('admin/service/featured/store',[ServiceController::class,'storeFeatured'])->name('service.featured.store');
+
 
 
 });

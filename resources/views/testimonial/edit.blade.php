@@ -12,7 +12,7 @@
                     <form action="{{ url('admin/testimonials/update') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
-                            <input type="hidden" value="{{$id}}" id="id" name="id">
+                            <input type="hidden" value="{{ $testimonial->id }}" name="id">
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="subject_name" class="form-label">Name</label>
@@ -49,7 +49,7 @@
                                 <div class="mb-3">
                                     <label for="avatar" class="form-label">Image</label>
                                     <input type="file" class="form-control @error('avatar') is-invalid @enderror"
-                                    id="avatar" name="avatar" />
+                                    id="avatar" name="avatar"/>
                                     @error('avatar')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -57,10 +57,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-4">
-                                    <img  src="{{ url('avatar/testimonial/' . ($testimonial->avatar ?? 'avatar.jpg')) }}" class="img-thumbnail"style="
-                                    width: 100px;
-                                    height: 100px;
-                                " >
+                                    <img  src="{{ url('file/testimonial/' . ($testimonial->avatar ?? 'noimage.jpeg')) }}" class="img-thumbnail rounded-circle" width="80" height="80">
                             </div>
                             </div>
 

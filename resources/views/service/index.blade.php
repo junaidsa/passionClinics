@@ -18,6 +18,7 @@
                                 <th>Title</th>
                                 <th>Sub Title</th>
                                 <th>Short Discripation</th>
+                                <th>Image</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -28,11 +29,12 @@
                                     <td>{{ @$s->title}}</td>
                                     <td>{{ @$s->sub_title }}</td>
                                     <td>{{ @$s->short_description }}</td>
+                                    <td><img src="{{ url('file/service/' . (@$s->main_image ?? 'noimage.jpeg')) }}" height="80" width="80" class="rounded-circle"></td>
                                     <td>
                                         <a href="{{url('admin/service/faq/'.$s->id)}}" class="faq-btn ">Faq</a> |
                                         <a href="{{url('admin/service/featured/'.$s->id)}}" class="edit-btn ">Featured</a>
                                         <br>
-                                        <a href="" class="edit-btn ">Edit</a> | <a href="javascript:void(0) " class="delete-btn" name="{{ $s->title }}"
+                                        <a href="{{url('admin/service/edit/'.$s->id)}}" class="edit-btn ">Edit</a> | <a href="javascript:void(0) " class="delete-btn" name="{{ $s->title }}"
                                             id="{{ $s->id }}">Delete</a>
                                     </td>
                                 </tr>
@@ -77,7 +79,7 @@
                 if (result.value) {
                     // Make DELETE request via AJAX
                     $.ajax({
-                        url: "{{ url('/products') }}/" + id,
+                        url: "{{ url('/admin/service/delete') }}/" + id,
                         type: 'DELETE',
                         data: {
                             "_token": "{{ csrf_token() }}", // Ensure you pass the CSRF token
@@ -86,7 +88,7 @@
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Deleted!',
-                                text: 'Product has been deleted.',
+                                text: 'Service has been deleted.',
                                 timer: 1500
                             }).then(function() {
                                 location.reload();
@@ -96,7 +98,7 @@
                             Swal.fire({
                                 icon: 'error',
                                 title: 'Error',
-                                text: 'An error occurred while deleting the product.',
+                                text: 'An error occurred while deleting the Service.',
                             });
                         }
                     });

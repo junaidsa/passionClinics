@@ -26,7 +26,7 @@
                 <div data-i18n="Dashboard">Dashboard</div>
             </a>
         </li>
-        <li class="menu-item {{ Request::is('projects') || Request::is('project/edit/*') || Request::is('project/create') ? 'open' : '' }}">
+        <li class="menu-item {{ Request::is('admin/services') || Request::is('admin/services/edit/*') || Request::is('admin/service/create') ? 'open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons ti ti-text-wrap-disabled"></i>
                 <div data-i18n="Services">Services</div>
