@@ -13,6 +13,9 @@ class HomeController extends Controller
 public function home(){
     return view('front-web.home');
 }
+public function dashboard(){
+    return view('dashboard');
+}
 
     public function uploadFacility(Request $request)
 {

@@ -12,6 +12,7 @@ use PHPUnit\Architecture\Services\ServiceContainer;
 //  Files Routeing
 
 Route::get('/',[Homecontroller::class,'home'])->name('home');
+Route::get('/admin/dashboard',[Homecontroller::class,'dashboard'])->name('dashboard');
 
 
 Route::middleware('auth')->group(function () {
