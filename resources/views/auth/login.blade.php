@@ -13,7 +13,7 @@
     <meta name="description" content="" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="{{ asset('public') }}/assets/svg/icons/Icon 512 x 512.png" />
+    <link rel="icon" type="image/x-icon" href="{{ asset('public') }}assets/img/branding/headerlogo.png" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -71,7 +71,7 @@
                         <!-- Logo -->
                         <div class="app-brand justify-content-center mb-4 mt-2">
                             <a href="index.html" class="app-brand-link gap-2">
-                                <img src="{{ asset('public') }}/assets/img/branding/logo.svg" style="height:auto; width: 200px;"
+                                <img src="{{ asset('public') }}/assets/img/branding/headerlogo.png" style="height:auto; width: 200px;"
                                     class="app-brand-logo">
                                 {{-- </span> --}}
                             </a>
