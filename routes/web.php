@@ -70,7 +70,6 @@ Route::get('/admin/dashboard',[Homecontroller::class,'dashboard'])->name('dashbo
 
 });
 require __DIR__.'/auth.php';
-
 Route::prefix('/file')->group(function () {
     Route::get('/testimonial/{filename}', fn($filename) => serveFile('testimonials', $filename));
     Route::get('/service/{filename}', fn($filename) => serveFile('service', $filename));
