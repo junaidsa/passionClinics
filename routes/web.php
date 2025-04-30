@@ -12,10 +12,17 @@ use PHPUnit\Architecture\Services\ServiceContainer;
 //  Files Routeing
 
 Route::get('/',[Homecontroller::class,'home'])->name('home');
+Route::get('/about',[Homecontroller::class,'about'])->name('front.about');
+Route::get('/contact',[Homecontroller::class,'contact_us'])->name('front.contact');
+Route::get('/contact_form/insert',[Homecontroller::class,'insertContact'])->name('contact.add');
+Route::get('/service/{id}',[Homecontroller::class,'service'])->name('front.service.single');
+Route::get('/services',[Homecontroller::class,'services'])->name('front.services');
+Route::get('/teams',[Homecontroller::class,'teams'])->name('front.teams');
+Route::get('/team/{id}',[Homecontroller::class,'team'])->name('front.teams');
 Route::get('/admin/dashboard',[Homecontroller::class,'dashboard'])->name('dashboard');
 
 
-Route::middleware('auth')->group(function () {
+    Route::middleware('auth')->group(function () {
     Route::get('/admin/dashboard',[Homecontroller::class,'dashboard'])->name('dashboard');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -66,7 +73,7 @@ Route::prefix('/file')->group(function () {
     Route::get('/service/{filename}', fn($filename) => serveFile('service', $filename));
     Route::get('/blog/{filename}', fn($filename) => serveFile('blogs', $filename));
     Route::get('/facility/{filename}', fn($filename) => serveFile('facilits', $filename));
-    Route::get('/video/{filename}', fn($filename) => serveFile('service', $filename)); // service folder again
+    Route::get('/video/{filename}', fn($filename) => serveFile('service', $filename));
     Route::get('/features/{filename}', fn($filename) => serveFile('features', $filename));
     Route::get('/about/{filename}', fn($filename) => serveFile('pages', $filename));
 });

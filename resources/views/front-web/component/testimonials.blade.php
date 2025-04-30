@@ -1,5 +1,5 @@
 @php
-$testimonial = DB::table('testimonials')->where('id',1)->first();
+$testimonial = DB::table('testimonials')->where('status',1)->first();
 $testimonials = DB::table('testimonials')->get();
 @endphp
 <div class="container">

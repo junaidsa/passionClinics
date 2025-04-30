@@ -65,7 +65,7 @@
                             @foreach ($featured as $f)
                                 <div class="col-md-3 mb-3 amenity-card" data-id="{{ $f->id }}">
                                     <div class="card">
-                                        <img src="{{ url('features/project/' . (@$f->icon ?? 'avatar.jpg')) }}"
+                                        <img src="{{ url('file/features/' . (@$f->icon ?? 'avatar.jpg')) }}"
                                             class="card-img-top img-thumbnail">
                                         <div class="card-body text-center">
                                             <h6>{{ $f->title}}</h6>

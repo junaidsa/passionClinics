@@ -1,16 +1,15 @@
-<!-- About Us Section Start -->
-
-
 @extends('layouts.front-app')
 @section('main-front')
+<main>
+<!-- Page Header Start -->
 <div class="page-header bg-section dark-section">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <!-- Page Header Box Start -->
                 <div class="page-header-box">
-                    <h1 class="text-anime-style-3" data-cursor="-opaque" style="perspective: 400px;"><div class="split-line" style="display: block; text-align: center; position: relative;"><div style="position:relative;display:inline-block;"><div style="position: relative; display: inline-block; transform: translate(0px, 0px); opacity: 1;">A</div><div style="position: relative; display: inline-block; transform: translate(0px, 0px); opacity: 1;">b</div><div style="position: relative; display: inline-block; transform: translate(0px, 0px); opacity: 1;">o</div><div style="position: relative; display: inline-block; transform: translate(0px, 0px); opacity: 1;">u</div><div style="position: relative; display: inline-block; transform: translate(0px, 0px); opacity: 1;">t</div></div> <div style="position:relative;display:inline-block;"><div style="position: relative; display: inline-block; transform: translate(0px, 0px); opacity: 1;">u</div><div style="position: relative; display: inline-block; transform: translate(0px, 0px); opacity: 1;">s</div></div></div></h1>
-                    <nav class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                    <h1 class="text-anime-style-3" data-cursor="-opaque">About us</h1>
+                    <nav class="wow fadeInUp">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="about.html">home</a></li>
                             <li class="breadcrumb-item active" aria-current="page">about us</li>
@@ -22,10 +21,12 @@
         </div>
     </div>
 </div>
-<main>
+<!-- Page Header End -->
+
+<!-- About Us Section Start -->
 <div class="about-us">
     <div class="container">
-       @include('front-web.component.comp_about')
+  @include('front-web.component.comp_about')
     </div>
 </div>
 <!-- About Us Section End -->
@@ -436,7 +437,132 @@
 
 <!-- Our Testimonials Section Start -->
 <div class="our-testimonials bg-section dark-section">
-@include('front-web.component.testimonials')
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="our-testimonial-image">
+                    <figure class="image-anime reveal">
+                        <img src="{{ asset('public') }}/images/testimonial-image.jpg" alt="">
+                    </figure>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <!-- Our Testimonial Content Start -->
+                <div class="our-testimonial-content">
+                    <!-- Section Title Start -->
+                    <div class="section-title">
+                        <h3 class="wow fadeInUp">testimonials</h3>
+                        <h2 class="text-anime-style-3" data-cursor="-opaque">Life-Changing results from our clients</h2>
+                        <p class="wow fadeInUp" data-wow-delay="0.2s">"The expertise and care I received here were outstanding. I couldn't be happier with my results Thanks to the team, I feel more confident than ever before. Highly recommend From consultation to aftercare, everything was perfect. My transformation exceeded my expectations.!"</p>
+                    </div>
+                    <!-- Section Title End -->
+
+                    <!-- Testimonial Content Button Start -->
+                    <div class="testimonial-author-details wow fadeInUp" data-wow-delay="0.4s">
+                        <h3>Kristin Watson</h3>
+                        <p>Co. founder</p>
+                    </div>
+                    <!-- Testimonial Content Button End -->
+                </div>
+                <!-- Our Testimonial Content End -->
+            </div>
+
+            <div class="col-lg-12">
+                <!-- Testimonial Slider Start -->
+                <div class="testimonial-slider">
+                    <div class="swiper">
+                        <div class="swiper-wrapper" data-cursor-text="Drag">
+                            <!-- Testimonial Slide Start -->
+                            <div class="swiper-slide">
+                                <div class="testimonial-item">
+                                    <div class="testimonial-item-content">
+                                        <p>"From start to finish, they made the process so easy and stress-free. The results themselves I've never felt better about my appearance. The clinic truly understands beauty!"</p>
+                                    </div>
+                                    <div class="testimonial-author">
+                                        <div class="author-image">
+                                            <figure class="image-anime">
+                                                <img src="{{ asset('public') }}/images/author-1.jpg" alt="">
+                                            </figure>
+                                        </div>
+                                        <div class="author-content">
+                                            <h3>Kristin Watson</h3>
+                                            <p>Co. founder</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Testimonial Slide End -->
+
+                            <!-- Testimonial Slide Start -->
+                            <div class="swiper-slide">
+                                <div class="testimonial-item">
+                                    <div class="testimonial-item-content">
+                                        <p>"From start to finish, they made the process so easy and stress-free. The results themselves I've never felt better about my appearance. The clinic truly understands beauty!"</p>
+                                    </div>
+                                    <div class="testimonial-author">
+                                        <div class="author-image">
+                                            <figure class="image-anime">
+                                                <img src="{{ asset('public') }}/images/author-2.jpg" alt="">
+                                            </figure>
+                                        </div>
+                                        <div class="author-content">
+                                            <h3>Brooklyn Simmons</h3>
+                                            <p>Skin Experts</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Testimonial Slide End -->
+
+                            <!-- Testimonial Slide Start -->
+                            <div class="swiper-slide">
+                                <div class="testimonial-item">
+                                    <div class="testimonial-item-content">
+                                        <p>"From start to finish, they made the process so easy and stress-free. The results themselves I've never felt better about my appearance. The clinic truly understands beauty!"</p>
+                                    </div>
+                                    <div class="testimonial-author">
+                                        <div class="author-image">
+                                            <figure class="image-anime">
+                                                <img src="{{ asset('public') }}/images/author-3.jpg" alt="">
+                                            </figure>
+                                        </div>
+                                        <div class="author-content">
+                                            <h3>Darlene Robertson</h3>
+                                            <p>Mohs Surgeon</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Testimonial Slide End -->
+
+                            <!-- Testimonial Slide Start -->
+                            <div class="swiper-slide">
+                                <div class="testimonial-item">
+                                    <div class="testimonial-item-content">
+                                        <p>"From start to finish, they made the process so easy and stress-free. The results themselves I've never felt better about my appearance. The clinic truly understands beauty!"</p>
+                                    </div>
+                                    <div class="testimonial-author">
+                                        <div class="author-image">
+                                            <figure class="image-anime">
+                                                <img src="{{ asset('public') }}/images/author-4.jpg" alt="">
+                                            </figure>
+                                        </div>
+                                        <div class="author-content">
+                                            <h3>Arlene McCoy</h3>
+                                            <p>Dermatopathologist</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Testimonial Slide End -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial Slider End -->
+            </div>
+        </div>
+    </div>
 </div>
 <!-- Our Testimonials Section End -->
 
@@ -537,7 +663,89 @@
     </div>
 </div>
 <!-- Our Result Section End -->
+
+<!-- Our Appointment Section Start -->
+<div class="our-appointment bg-section">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 order-lg-1 order-2">
+                <!-- Our Appointment Image Start -->
+                <div class="our-appointment-image">
+                    <figure>
+                        <img src="{{ asset('public') }}/images/appointment-image.png" alt="">
+                    </figure>
+                </div>
+                <!-- Our Appointment Image End -->
+            </div>
+
+            <div class="col-lg-6 order-lg-2 order-1">
+                <!-- Appointment Form Start -->
+                <div class="appointment-form">
+                    <!-- Section Title Start -->
+                    <div class="section-title">
+                        <h3 class="wow fadeInUp">Say Hello to a Perfect shape</h3>
+                        <h2 class="text-anime-style-3" data-cursor="-opaque">If you're not sure what you'd like to do, click on the button and book a gernal appointment</h2>
+                    </div>
+                    <!-- Section Title End -->
+
+                    <!-- Contact Us Form Start -->
+                    <form id="appointmentForm" action="#" method="POST" data-toggle="validator" class="wow fadeInUp" data-wow-delay="0.2s">
+                        <div class="row">
+                            <div class="form-group col-md-6 mb-4">
+                                <input type="text" name="fname" class="form-control" id="fname" placeholder="First Name" required="">
+                                <div class="help-block with-errors"></div>
+                            </div>
+
+                            <div class="form-group col-md-6 mb-4">
+                                <input type="text" name="lname" class="form-control" id="lname" placeholder="Last Name" required="">
+                                <div class="help-block with-errors"></div>
+                            </div>
+
+                            <div class="form-group col-md-6 mb-4">
+                                <input type="email" name="email" class="form-control" id="email" placeholder="Email Address" required="">
+                                <div class="help-block with-errors"></div>
+                            </div>
+
+                            <div class="form-group col-md-6 mb-4">
+                                <input type="text" name="phone" class="form-control" id="phone" placeholder="Phone Number" required="">
+                                <div class="help-block with-errors"></div>
+                            </div>
+
+                            <div class="form-group col-md-6 mb-4">
+                                <input type="date" name="date" class="form-control" id="date" required="">
+                                <div class="help-block with-errors"></div>
+                            </div>
+
+                            <div class="form-group col-md-6 mb-4">
+                                <select name="doctor" class="form-control form-select" id="doctor" required="">
+                                    <option value="" disabled="" selected="">Choose Doctor</option>
+                                    <option value="beginner_yoga_classes">Dr. Neha Verma</option>
+                                    <option value="stress_relief_sessions">Cameron Williamson</option>
+                                    <option value="mindful_meditation">Dr. Ayesha Kapoor</option>
+                                    <option value="relaxation_techniques">Dr. Karan Gohel</option>
+                                    <option value="group_yoga_workshops">Dr. Aryan Malhotra</option>
+                                    <option value="restorative_yoga">Dr. Aisha Kapoor</option>
+                                    <option value="mental_clarity_meditation">Dr. Rahul Mehta</option>
+                                    <option value="personalized_yoga_sessions">Dr. Emily Verma</option>
+                                </select>
+                                <div class="help-block with-errors"></div>
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class="contact-form-btn">
+                                    <button type="submit" class="btn-default">get appointment</button>
+                                    <div id="msgSubmit" class="h3 hidden"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- Contact Us Form End -->
+                </div>
+                <!-- Appointment Form Start -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Our Appointment Section End -->
 </main>
 @endsection
-
-

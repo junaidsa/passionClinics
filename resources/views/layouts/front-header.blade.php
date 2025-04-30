@@ -13,15 +13,12 @@
                 <div class="collapse navbar-collapse main-menu">
                     <div class="nav-menu-wrapper">
                         <ul class="navbar-nav mr-auto" id="menu">
-                            <li class="nav-item"><a class="nav-link" href="index.html">Home</a>
+                            <li class="nav-item"><a class="nav-link" href="{{url('/')}}">Home</a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="about.html">About Us</a>
-                            <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-                            <li class="nav-item"><a class="nav-link" href="team.html">Our Team</a></li>
-                            <li class="nav-item"><a class="nav-link" href="#">E-Clinic</a>
-
-                            </li>
-                            <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{url('/about')}}">About Us</a>
+                            <li class="nav-item"><a class="nav-link" href="{{url('/services')}}">Services</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{url('/teams')}}">Our Team</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{url('/contact')}}">Contact Us</a></li>
                             <li class="nav-item highlighted-menu"><a class="nav-link" href="book-appointment.html">Make an Appointment</a></li>
                         </ul>
                     </div>

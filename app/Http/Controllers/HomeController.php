@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\About;
 use App\Models\Contact;
 use App\Models\Facility;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -17,8 +18,13 @@ public function home(){
 public function about(){
     return view('front-web.about');
 }
-public function our_services(){
-    return view('front-web.our_services');
+public function service($id){
+    $service =  Service::find($id);
+    return view('front-web.single_service',compact('id','service'));
+
+}
+public function services(){
+    return view('front-web.services');
 
 }
 public function dashboard(){
@@ -102,5 +108,16 @@ public function aboutupdate(Request $request)
     return redirect()->back()->with('success', 'About page updated successfully!');
 }
 
+public function contact_us(){
+return view('front-web.contact_us');
+}
 
+
+public function insertContact(){
+
+}
+
+public function teams(){
+    return view('front-web.teams');
+}
 }

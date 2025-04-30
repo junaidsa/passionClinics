@@ -9,7 +9,7 @@ $services =  DB::table('services')->get();
             <div class="service-content">
                 <div class="service-content-title">
                     <h2><a href="service-single.html">{{$s->title}}</a></h2>
-                    <a href="service-single.html" class="readmore-btn"><img src="{{ asset('public') }}/images/arrow-white.svg" alt=""></a>
+                    <a href="{{ route('front.service.single', $s->id) }}" class="readmore-btn"><img src="{{ asset('public') }}/images/arrow-white.svg" alt=""></a>
                 </div>
                 <p>{{$s->short_description}}</p>
             </div>
