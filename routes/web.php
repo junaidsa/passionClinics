@@ -6,12 +6,20 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TestimonialController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\File;
 use PHPUnit\Architecture\Services\ServiceContainer;
 
 //  Files Routeing
-
+Route::get('/fix-cache', function () {
+    Artisan::call('config:clear');
+    Artisan::call('cache:clear');
+    Artisan::call('route:clear');
+    Artisan::call('view:clear');
+    Artisan::call('config:cache');
+    return 'Cache cleared';
+});
 Route::get('/',[Homecontroller::class,'home'])->name('home');
 Route::get('/about',[Homecontroller::class,'about'])->name('front.about');
 Route::get('/contact',[Homecontroller::class,'contact_us'])->name('front.contact');
