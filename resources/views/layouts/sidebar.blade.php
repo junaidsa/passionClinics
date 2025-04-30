@@ -53,13 +53,13 @@
                 <div data-i18n="Teams">Teams</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item {{ Request::is('project/create') ? 'active' : '' }}">
-                    <a href="{{ url('project/create') }}" class="menu-link">
+                <li class="menu-item {{ Request::is('admin/teams/create') ? 'active' : '' }}">
+                    <a href="{{ url('admin/teams/create') }}" class="menu-link">
                         <div data-i18n="Create">Create</div>
                     </a>
                 </li>
-                <li class="menu-item {{ Request::is('admin/projects') ? 'active' : '' }}">
-                    <a href="{{ url('admin/projects') }}" class="menu-link">
+                <li class="menu-item {{ Request::is('admin/teams') ? 'active' : '' }}">
+                    <a href="{{ url('admin/teams') }}" class="menu-link">
                         <div data-i18n="Team List">Team List</div>
                     </a>
                 </li>

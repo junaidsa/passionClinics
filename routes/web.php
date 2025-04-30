@@ -4,6 +4,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TestimonialController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\File;
@@ -30,7 +31,8 @@ Route::get('/admin/dashboard',[Homecontroller::class,'dashboard'])->name('dashbo
     Route::get('admin/about',[HomeController::class,'aboutEdit'])->name('about.edit');
     Route::post('about/update',[HomeController::class,'aboutupdate'])->name('about.update');
     // a
-    Route::get('admin/testimonials/create',[TestimonialController::class,'create'])->name('testimonial.create');
+    Route::get('admin/team/create',[TestimonialController::class,'create'])->name('testimonial.create');
+    Route::get('admin/teams/create',[TeamController::class,'create'])->name('teams.create');
     Route::post('/admin/testimonials/store',[TestimonialController::class,'store'])->name('testimonials.store');
     Route::post('/admin/testimonials/update',[TestimonialController::class,'update'])->name('testimonials.update');
     Route::get('admin/testimonials',[TestimonialController::class,'index'])->name('testimonial.index');
