@@ -1,7 +1,7 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
         <a href="{{ url('/admin/dashboard') }}" class="app-brand-link">
-            <img src="{{ asset('public') }}/assets/img/branding/logo.svg" style="height: auto; width: 120px;" class="app-brand-logo ms-3">
+            <img src="{{ asset('public') }}/assets/img/branding/headerlogo.png" style="height: auto; width: 120px;" class="app-brand-logo ms-3">
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
