@@ -11,7 +11,7 @@
                 <div class="card mb-4">
                     <h5 class="card-header">Create Team</h5>
                     <div class="card-body">
-                        <form action="{{ url('/staff/store') }}" method="POST" id="adminForum">
+                        <form action="{{ url('/admin/teams/store') }}" method="POST" id="adminForum" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">
@@ -60,7 +60,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="exampleFormControlSelect1" class="form-label">Service Assignment <span class="text-danger">*</span></label>
-                                        <select class="form-select  @error('branch') is-invalid @enderror" id="service_id" name="service_id">
+                                        <select class="form-select  @error('service_id') is-invalid @enderror" id="service_id" name="service_id">
                                             <option value="">Select Service</option>
                                             @foreach ($service as $s)
                                             <option value="{{ $s->id }}" {{ old('service_id') == $s->id ? 'selected' : '' }}>
@@ -75,20 +75,9 @@
                                 </div>
                                 <div class="col-md-6 col-sm-6 col-6 mb-2">
                                     <label class="form-label">Image/Avatar</label>
-                                    <input type="file" name="avatar" class="form-control" />
+                                    <input type="file" name="image" class="form-control" />
                                 </div>
 
-                                <div class="col-md-12">
-                                    <div class="mb-3 form-password-toggle">
-                                        <label class="form-label" for="basic-default-password">About <span class="text-danger">*</span></label>
-                                        <div class="input-group input-group-merge">
-                                            <textarea class="form-control @error('about') is-invalid @enderror" name="about" id="about" ></textarea>
-                                          @error('about')
-                                          <div class=" invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                      </div>
-                                  </div>
                                 <div class="col-md-12">
                                     <div class="mb-3 form-password-toggle">
                                         <label class="form-label" for="basic-default-password">About <span class="text-danger">*</span></label>

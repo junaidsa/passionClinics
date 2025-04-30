@@ -19,7 +19,7 @@ Route::get('/contact_form/insert',[Homecontroller::class,'insertContact'])->name
 Route::get('/service/{id}',[Homecontroller::class,'service'])->name('front.service.single');
 Route::get('/services',[Homecontroller::class,'services'])->name('front.services');
 Route::get('/teams',[Homecontroller::class,'teams'])->name('front.teams');
-Route::get('/team/{id}',[Homecontroller::class,'team'])->name('front.teams');
+Route::get('/team/{id}',[TeamController::class,'team_profile'])->name('front.team');
 Route::get('/admin/dashboard',[Homecontroller::class,'dashboard'])->name('dashboard');
 
 
@@ -32,7 +32,8 @@ Route::get('/admin/dashboard',[Homecontroller::class,'dashboard'])->name('dashbo
     Route::post('about/update',[HomeController::class,'aboutupdate'])->name('about.update');
     // a
     Route::get('admin/team/create',[TestimonialController::class,'create'])->name('testimonial.create');
-    Route::get('admin/teams/create',[TeamController::class,'create'])->name('teams.create');
+    Route::get('admin/teams',[TeamController::class,'index'])->name('teams.index');
+    Route::post('admin/teams/store',[TeamController::class,'store'])->name('teams.store');
     Route::post('/admin/testimonials/store',[TestimonialController::class,'store'])->name('testimonials.store');
     Route::post('/admin/testimonials/update',[TestimonialController::class,'update'])->name('testimonials.update');
     Route::get('admin/testimonials',[TestimonialController::class,'index'])->name('testimonial.index');
@@ -78,6 +79,7 @@ Route::prefix('/file')->group(function () {
     Route::get('/video/{filename}', fn($filename) => serveFile('service', $filename));
     Route::get('/features/{filename}', fn($filename) => serveFile('features', $filename));
     Route::get('/about/{filename}', fn($filename) => serveFile('pages', $filename));
+    Route::get('/dr/{filename}', fn($filename) => serveFile('profile', $filename));
 });
 
 // Reusable file-serving function
