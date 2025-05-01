@@ -33,7 +33,7 @@
                                     <td>{{ $u->about }}</td>
                                     <td><img src="{{ url('file/dr/' . (@$u->image ?? 'noimage.jpeg')) }}"
                                             height="80" width="80" class="rounded-circle"></td>
-                                    <td> <a href="{{ url('admin/testimonial/edit/' . $u->id) }}" class="edit-btn"><i
+                                    <td> <a href="{{ url('admin/teams/edit/' . $u->id) }}" class="edit-btn"><i
                                                 class="ti ti-pencil me-1"></i></a>
                                         <a href="javascript:;" class="delete-btn" name="{{ $u->name }}"
                                             id="{{ $u->id }}"><i class="ti ti-trash me-2"></i></a>

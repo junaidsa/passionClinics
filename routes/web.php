@@ -42,6 +42,7 @@ Route::get('/admin/dashboard',[Homecontroller::class,'dashboard'])->name('dashbo
     Route::get('admin/team/create',[TestimonialController::class,'create'])->name('testimonial.create');
     Route::get('admin/teams',[TeamController::class,'index'])->name('teams.index');
     Route::post('admin/teams/store',[TeamController::class,'store'])->name('teams.store');
+    Route::get('admin/teams/edit/{id}',[TeamController::class,'edit'])->name('teams.edit');
     Route::post('/admin/testimonials/store',[TestimonialController::class,'store'])->name('testimonials.store');
     Route::post('/admin/testimonials/update',[TestimonialController::class,'update'])->name('testimonials.update');
     Route::get('admin/testimonials',[TestimonialController::class,'index'])->name('testimonial.index');

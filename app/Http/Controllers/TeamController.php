@@ -59,6 +59,14 @@ class TeamController extends Controller
 
 
     }
+    public function edit($id) {
+        $user = User::findOrFail($id);
+
+        $service = Service::all();
+
+        return view('teams.edit', compact('user', 'service'));
+    }
+
     public function team_profile($id){
       $profile =   User::with('service')->find($id);
       return view('front-web.profile_team',compact('profile'));
