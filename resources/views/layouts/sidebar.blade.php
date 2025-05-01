@@ -26,9 +26,15 @@
                 <div data-i18n="Dashboard">Dashboard</div>
             </a>
         </li>
+        <li class="menu-item {{ Request::is('/admin/dashboard') ? 'active' : '' }}">
+            <a href="{{ url('/admin/dashboard') }}" class="menu-link">
+                <i class="menu-icon tf-icons ti ti-calendar"></i>
+                <div data-i18n="Calendar">Calendar</div>
+            </a>
+        </li>
         <li class="menu-item {{ Request::is('admin/services') || Request::is('admin/services/edit/*') || Request::is('admin/service/create') ? 'open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons ti ti-text-wrap-disabled"></i>
+                <i class="menu-icon tf-icons ti ti-layout-kanban"></i>
                 <div data-i18n="Services">Services</div>
             </a>
             <ul class="menu-sub">
@@ -45,12 +51,52 @@
 
             </ul>
         </li>
+        <li class="menu-item {{ Request::is('admin/services') || Request::is('admin/services/edit/*') || Request::is('admin/service/create') ? 'open' : '' }}">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-checkbox"></i>
+                <div data-i18n="Appointments">
+                    Appointments
+                </div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ Request::is('admin/service/create') ? 'active' : '' }}">
+                    <a href="{{ url('admin/service/create') }}" class="menu-link">
+                        <div data-i18n="Create">Create</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ Request::is('admin/services') ? 'active' : '' }}">
+                    <a href="{{ url('admin/services') }}" class="menu-link">
+                        <div data-i18n="Appointments List">Appointments List</div>
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+        <li class="menu-item {{ Request::is('admin/services') || Request::is('admin/services/edit/*') || Request::is('admin/service/create') ? 'open' : '' }}">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-users"></i>
+                <div data-i18n="Customers">Customers</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ Request::is('admin/service/create') ? 'active' : '' }}">
+                    <a href="{{ url('admin/service/create') }}" class="menu-link">
+                        <div data-i18n="Create">Create</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ Request::is('admin/services') ? 'active' : '' }}">
+                    <a href="{{ url('admin/services') }}" class="menu-link">
+                        <div data-i18n="Customer List">Customer List</div>
+                    </a>
+                </li>
+
+            </ul>
+        </li>
 
 
         <li class="menu-item {{ Request::is('admin/service/') ||  Request::is('admin/service/edit/*') || Request::is('admin/facility/create') || Request::is('admin/service/create') ? 'open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons ti ti-users"></i>
-                <div data-i18n="Teams">Teams</div>
+                <i class="menu-icon tf-icons ti ti-components"></i>
+                <div data-i18n="Staff">Staff</div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item {{ Request::is('admin/teams/create') ? 'active' : '' }}">
@@ -60,21 +106,15 @@
                 </li>
                 <li class="menu-item {{ Request::is('admin/teams') ? 'active' : '' }}">
                     <a href="{{ url('admin/teams') }}" class="menu-link">
-                        <div data-i18n="Team List">Team List</div>
+                        <div data-i18n="Staff">Staff List</div>
                     </a>
                 </li>
-                <li class="menu-item {{ Request::is('admin/facility/create') ? 'active' : '' }}">
-                    <a href="{{ url('admin/facility/create') }}" class="menu-link">
-                        <div data-i18n="Facilits">Facilits</div>
-                    </a>
-                </li>
-
             </ul>
         </li>
         <li
             class="menu-item {{ Request::is('admin/testimonials') || Request::is('admin/testimonials/edit/*') || Request::is('admin/testimonials/create') ? 'open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons ti ti-text-wrap-disabled"></i>
+                <i class="menu-icon tf-icons ti ti-color-swatch"></i>
                 <div data-i18n="Testimonials">Testimonials</div>
             </a>
             <ul class="menu-sub">
@@ -93,7 +133,7 @@
         </li>
         <li class="menu-item {{ Request::is('blog') || Request::is('blog/edit/*') || Request::is('blog/create') ? 'open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons ti ti-text-wrap-disabled"></i>
+                <i class="menu-icon ti ti-brand-slack"></i>
                 <div data-i18n="Blog">Blog</div>
             </a>
             <ul class="menu-sub">
@@ -110,11 +150,17 @@
 
             </ul>
         </li>
+        <li class="menu-item {{ Request::is('/admin/dashboard') ? 'active' : '' }}">
+            <a href="{{ url('/admin/dashboard') }}" class="menu-link">
+                <i class="menu-icon ti ti-send ti-xs"></i>
+                <div data-i18n="Locations">Locations</div>
+            </a>
+        </li>
         <li
             class="menu-item {{ Request::is('admin/contact/list') || Request::is('admin/contacts') ? 'open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons ti ti-settings"></i>
-                <div data-i18n="Main Pages">Main Pages</div>
+                <div data-i18n="Setting">Setting</div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item {{ Request::is('admin/about') ? 'active' : '' }}">
@@ -125,6 +171,11 @@
                 <li class="menu-item {{ Request::is('admin/contact/list') ? 'active' : '' }}">
                     <a href="{{ url('admin/contact/list') }}" class="menu-link">
                         <div data-i18n="Contact Messages">Contact Messages</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ Request::is('admin/facility/create') ? 'active' : '' }}">
+                    <a href="{{ url('admin/facility/create') }}" class="menu-link">
+                        <div data-i18n="Facilits">Facilits</div>
                     </a>
                 </li>
                 <li class="menu-item {{ Request::is('supports') ? 'active' : '' }}">

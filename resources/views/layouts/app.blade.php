@@ -60,8 +60,8 @@
     <link rel="stylesheet" href="{{ asset('public') }}/assets/vendor/fonts/flag-icons.css" />
     <link rel="stylesheet" href="{{ asset('public') }}/assets/vendor/libs/select2/select2.css" />
     <!-- Helpers -->
+    <link rel="stylesheet" href="{{ asset('public') }}/assets/vendor/css/pages/app-calendar.css" />
     <script src="{{ asset('public') }}/assets/vendor/js/helpers.js"></script>
-
 
     <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
     <!--? Template customizer: To hide customizer set displayCustomizer value false in config.js.  -->
@@ -148,12 +148,18 @@
     @yield('link-js')
 
     <!-- Vendors JS -->
+        <!-- Vendors JS -->
+
+        <script src="{{ asset('public') }}/assets/vendor/libs/fullcalendar/fullcalendar.js"></script>
     <script src="{{ asset('public') }}/assets/vendor/libs/select2/select2.js"></script>
     <script src="{{ asset('public') }}/assets/vendor/libs/flatpickr/flatpickr.js"></script>
     <script src="{{ asset('public') }}/assets/js/main.js"></script>
     <script src="{{ asset('public') }}/assets/js/dashboards-crm.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
     <script src="{{ asset('public') }}/assets/vendor/libs/bootstrap-maxlength/bootstrap-maxlength.js"></script>
+        <!-- Page JS -->
+        <script src="{{ asset('public') }}/assets/js/app-calendar-events.js"></script>
+        <script src="{{ asset('public') }}/assets/js/app-calendar.js"></script>
     @yield('javascript')
     @if (Session::get('success'))
         <script>
