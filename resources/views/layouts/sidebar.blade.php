@@ -26,8 +26,8 @@
                 <div data-i18n="Dashboard">Dashboard</div>
             </a>
         </li>
-        <li class="menu-item {{ Request::is('/admin/dashboard') ? 'active' : '' }}">
-            <a href="{{ url('/admin/dashboard') }}" class="menu-link">
+        <li class="menu-item {{ Request::is('/admin/calendar') ? 'active' : '' }}">
+            <a href="{{ url('/admin/calendar') }}" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-calendar"></i>
                 <div data-i18n="Calendar">Calendar</div>
             </a>
@@ -72,19 +72,19 @@
 
             </ul>
         </li>
-        <li class="menu-item {{ Request::is('admin/services') || Request::is('admin/services/edit/*') || Request::is('admin/service/create') ? 'open' : '' }}">
+        <li class="menu-item {{ Request::is('admin/customers') || Request::is('admin/customer/edit/*') || Request::is('admin/customer/create') ? 'open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons ti ti-users"></i>
                 <div data-i18n="Customers">Customers</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item {{ Request::is('admin/service/create') ? 'active' : '' }}">
-                    <a href="{{ url('admin/service/create') }}" class="menu-link">
+                <li class="menu-item {{ Request::is('admin/customer/create') ? 'active' : '' }}">
+                    <a href="{{ url('admin/customer/create') }}" class="menu-link">
                         <div data-i18n="Create">Create</div>
                     </a>
                 </li>
-                <li class="menu-item {{ Request::is('admin/services') ? 'active' : '' }}">
-                    <a href="{{ url('admin/services') }}" class="menu-link">
+                <li class="menu-item {{ Request::is('admin/customers') ? 'active' : '' }}">
+                    <a href="{{ url('admin/customers') }}" class="menu-link">
                         <div data-i18n="Customer List">Customer List</div>
                     </a>
                 </li>
@@ -106,7 +106,7 @@
                 </li>
                 <li class="menu-item {{ Request::is('admin/teams') ? 'active' : '' }}">
                     <a href="{{ url('admin/teams') }}" class="menu-link">
-                        <div data-i18n="Staff">Staff List</div>
+                        <div data-i18n="Staff List">Staff List</div>
                     </a>
                 </li>
             </ul>
@@ -150,12 +150,32 @@
 
             </ul>
         </li>
-        <li class="menu-item {{ Request::is('/admin/dashboard') ? 'active' : '' }}">
+        {{-- <li class="menu-item {{ Request::is('/admin/dashboard') ? 'active' : '' }}">
             <a href="{{ url('/admin/dashboard') }}" class="menu-link">
                 <i class="menu-icon ti ti-send ti-xs"></i>
                 <div data-i18n="Locations">Locations</div>
             </a>
-        </li>
+        </li> --}}
+        <li
+        class="menu-item {{ Request::is('admin/locations') || Request::is('admin/location/edit/*') || Request::is('admin/location/create') ? 'open' : '' }}">
+        <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <i class="menu-icon ti ti-send ti-xs"></i>
+            <div data-i18n="Locations">Locations</div>
+        </a>
+        <ul class="menu-sub">
+            <li class="menu-item {{ Request::is('admin/location/create') ? 'active' : '' }}">
+                <a href="{{ url('admin/location/create') }}" class="menu-link">
+                    <div data-i18n="Create">Create</div>
+                </a>
+            </li>
+            <li class="menu-item {{ Request::is('admin/locations') ? 'active' : '' }}">
+                <a href="{{ url('admin/locations') }}" class="menu-link">
+                    <div data-i18n="Locations List">Locations List</div>
+                </a>
+            </li>
+
+        </ul>
+    </li>
         <li
             class="menu-item {{ Request::is('admin/contact/list') || Request::is('admin/contacts') ? 'open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">

@@ -120,4 +120,7 @@ public function insertContact(){
 public function teams(){
     return view('front-web.teams');
 }
+public function calendar(){
+    return view('pages.calendar');
+}
 }
