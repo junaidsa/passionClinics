@@ -198,8 +198,8 @@
                         <div data-i18n="Facilits">Facilits</div>
                     </a>
                 </li>
-                <li class="menu-item {{ Request::is('supports') ? 'active' : '' }}">
-                    <a href="{{ url('supports') }}" class="menu-link">
+                <li class="menu-item {{ Request::is('admin/setting') ? 'active' : '' }}">
+                    <a href="{{ url('admin/setting') }}" class="menu-link">
                         <div data-i18n="Site Setting">Site Settings</div>
                     </a>
                 </li>

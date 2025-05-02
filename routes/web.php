@@ -88,6 +88,7 @@ Route::get('/admin/dashboard',[Homecontroller::class,'dashboard'])->name('dashbo
     Route::get('admin/locations',[SettingController::class,'viewLocation'])->name('location.index');
     Route::get('admin/location/create',[SettingController::class,'createLocation'])->name('location.create');
     Route::post('admin/location/store',[SettingController::class,'storeLocation'])->name('location.store');
+    Route::get('admin/setting',[SettingController::class,'index'])->name('setting.index');
 
 
 
@@ -95,16 +96,16 @@ Route::get('/admin/dashboard',[Homecontroller::class,'dashboard'])->name('dashbo
 });
 require __DIR__.'/auth.php';
 Route::prefix('/file')->group(function () {
-    Route::get('/testimonial/{filename}', fn($filename) => serveFile('testimonials', $filename));
-    Route::get('/service/{filename}', fn($filename) => serveFile('service', $filename));
-    Route::get('/blog/{filename}', fn($filename) => serveFile('blogs', $filename));
-    Route::get('/facility/{filename}', fn($filename) => serveFile('facilits', $filename));
-    Route::get('/video/{filename}', fn($filename) => serveFile('service', $filename));
-    Route::get('/features/{filename}', fn($filename) => serveFile('features', $filename));
-    Route::get('/about/{filename}', fn($filename) => serveFile('pages', $filename));
-    Route::get('/dr/{filename}', fn($filename) => serveFile('profile', $filename));
-    Route::get('/customer/{filename}', fn($filename) => serveFile('customers', $filename));
-    Route::get('/location/{filename}', fn($filename) => serveFile('locations', $filename));
+Route::get('/testimonial/{filename}', fn($filename) => serveFile('testimonials', $filename));
+Route::get('/service/{filename}', fn($filename) => serveFile('service', $filename));
+Route::get('/blog/{filename}', fn($filename) => serveFile('blogs', $filename));
+Route::get('/facility/{filename}', fn($filename) => serveFile('facilits', $filename));
+Route::get('/video/{filename}', fn($filename) => serveFile('service', $filename));
+Route::get('/features/{filename}', fn($filename) => serveFile('features', $filename));
+Route::get('/about/{filename}', fn($filename) => serveFile('pages', $filename));
+Route::get('/dr/{filename}', fn($filename) => serveFile('profile', $filename));
+Route::get('/customer/{filename}', fn($filename) => serveFile('customers', $filename));
+Route::get('/location/{filename}', fn($filename) => serveFile('locations', $filename));
 });
 
 // Reusable file-serving function
