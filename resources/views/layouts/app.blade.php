@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
 
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <title>NLDINFRA</title>
+    <title>Medical Clinic</title>
 
     <meta name="description" content="" />
 
@@ -103,7 +103,7 @@
                                         document.write(new Date().getFullYear());
                                     </script>
                                     , made with by <img src="{{ asset('public') }}/assets/svg/icons/Icon 512 x 512.png"
-                                        height="18" width="20" alt=""><b>MART EDUCATION</b>
+                                        height="18" width="20" alt=""><b>Medical Clinic Center</b>
                                 </div>
                             </div>
                         </div>

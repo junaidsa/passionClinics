@@ -149,60 +149,83 @@
                     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                   </div>
                   <div class="offcanvas-body pt-0">
-                    <form class="event-form pt-0 fv-plugins-bootstrap5 fv-plugins-framework" id="eventForm" onsubmit="return false" novalidate="novalidate">
-                      <div class="mb-3 fv-plugins-icon-container">
-                        <label class="form-label" for="eventTitle">Title</label>
-                        <input type="text" class="form-control" id="eventTitle" name="eventTitle" placeholder="Event Title">
-                      <div class="fv-plugins-message-container invalid-feedback"></div></div>
+                    <form class="event-form pt-0 fv-plugins-bootstrap5 fv-plugins-framework" id="eventForm">
+                        @php
+                        $location = DB::table('locations')->get();
+                        $services = DB::table('services')->get();
+                        $customer = DB::table('customers')->get();
+                            @endphp
+                            <div class="mb-3">
+                                <label class="form-label" for="formValidationDob">Location </label>
+                              <select name="location" id="location" class="form-control">
+                                @foreach ($location as $loc)
+                                <option value="{{$loc->id}}">{{$loc->name}}</option>
+                                @endforeach
+                              </select>
+                              <div class="fv-plugins-message-container invalid-feedback"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="formValidationDob">Services </label>
+                              <select name="service" id="service" class="form-control">
+                                <option value="">Select Service</option>
+                                @foreach ($services as $ser)
+                                <option value="{{$ser->id}}">{{$ser->title}}</option>
+                                @endforeach
+                              </select>
+                              <div class="fv-plugins-message-container invalid-feedback"></div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="formValidationDob">Staff </label>
+                              <select name="staff" id="staff" class="form-control">
+                              </select>
+                              <div class="fv-plugins-message-container invalid-feedback"></div>
+                            </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="formValidationDob">Appointment Date</label>
+                            <input type="text" class="form-control flatpickr-validation flatpickr-input" name="appointment_date" id="appointment_date" required="" readonly="readonly">
+                          <div class="fv-plugins-message-container invalid-feedback"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="formValidationDob">Available Slots</label>
+                            <select name="slots" id="slots" class="form-control">
+                            </select>
+                          <div class="fv-plugins-message-container invalid-feedback"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="formValidationDob">Customer </label>
+                          <select name="service" id="service" class="form-control">
+                            <option value="">Select Customer</option>
+                            @foreach ($customer as $cus)
+                            <option value="{{ $cus->id }}">{{ $cus->first_name }} {{ $cus->last_name }}</option>
+                        @endforeach
+
+                          </select>
+                          <div class="fv-plugins-message-container invalid-feedback"></div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="formValidationDob">Appointment status </label>
+                          <select name="appointment_status" id="appointment_status" class="form-control">
+                        <option value="">Select</option>
+                        <option value="approved">Approved</option>
+                        <option value="pending">
+                            Pending
+                        </option>
+                        <option value="rescheduled">
+                            Rescheduled
+                        </option>
+
+                        <option value="completed">
+                            Completed
+                        </option>
+                        <option value="cancel">
+                            Cancel
+                        </option>
+                          </select>
+                          <div class="fv-plugins-message-container invalid-feedback"></div>
+                        </div>
+
                       <div class="mb-3">
-                        <label class="form-label" for="eventLabel">Label</label>
-                        <div class="position-relative"><select class="select2 select-event-label form-select select2-hidden-accessible" id="eventLabel" name="eventLabel" data-select2-id="eventLabel" tabindex="-1" aria-hidden="true">
-                          <option data-label="primary" value="Business" selected="" data-select2-id="2">Business</option>
-                          <option data-label="danger" value="Personal">Personal</option>
-                          <option data-label="warning" value="Family">Family</option>
-                          <option data-label="success" value="Holiday">Holiday</option>
-                          <option data-label="info" value="ETC">ETC</option>
-                        </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="1" style="width: 352px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-disabled="false" aria-labelledby="select2-eventLabel-container"><span class="select2-selection__rendered" id="select2-eventLabel-container" role="textbox" aria-readonly="true" title="Business"><span class="badge badge-dot bg-primary me-2"> </span>Business</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div>
-                      </div>
-                      <div class="mb-3 fv-plugins-icon-container">
-                        <label class="form-label" for="eventStartDate">Start Date</label>
-                        <input type="hidden" class="form-control flatpickr-input" id="eventStartDate" name="eventStartDate" placeholder="Start Date" readonly="readonly"><input class="form-control flatpickr-input flatpickr-mobile" tabindex="1" type="datetime-local" placeholder="Start Date" step="null">
-                      <div class="fv-plugins-message-container invalid-feedback"></div></div>
-                      <div class="mb-3 fv-plugins-icon-container">
-                        <label class="form-label" for="eventEndDate">End Date</label>
-                        <input type="hidden" class="form-control flatpickr-input" id="eventEndDate" name="eventEndDate" placeholder="End Date" readonly="readonly"><input class="form-control flatpickr-input flatpickr-mobile" tabindex="1" type="datetime-local" placeholder="End Date" step="null">
-                      <div class="fv-plugins-message-container invalid-feedback"></div></div>
-                      <div class="mb-3">
-                        <label class="switch">
-                          <input type="checkbox" class="switch-input allDay-switch">
-                          <span class="switch-toggle-slider">
-                            <span class="switch-on"></span>
-                            <span class="switch-off"></span>
-                          </span>
-                          <span class="switch-label">All Day</span>
-                        </label>
-                      </div>
-                      <div class="mb-3">
-                        <label class="form-label" for="eventURL">Event URL</label>
-                        <input type="url" class="form-control" id="eventURL" name="eventURL" placeholder="https://www.google.com">
-                      </div>
-                      <div class="mb-3 select2-primary">
-                        <label class="form-label" for="eventGuests">Add Guests</label>
-                        <div class="position-relative"><select class="select2 select-event-guests form-select select2-hidden-accessible" id="eventGuests" name="eventGuests" multiple="" data-select2-id="eventGuests" tabindex="-1" aria-hidden="true">
-                          <option data-avatar="1.png" value="Jane Foster">Jane Foster</option>
-                          <option data-avatar="3.png" value="Donna Frank">Donna Frank</option>
-                          <option data-avatar="5.png" value="Gabrielle Robertson">Gabrielle Robertson</option>
-                          <option data-avatar="7.png" value="Lori Spears">Lori Spears</option>
-                          <option data-avatar="9.png" value="Sandy Vega">Sandy Vega</option>
-                          <option data-avatar="11.png" value="Cheryl May">Cheryl May</option>
-                        </select><span class="select2 select2-container select2-container--default" dir="ltr" data-select2-id="3" style="width: 352px;"><span class="selection"><span class="select2-selection select2-selection--multiple" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="-1" aria-disabled="false"><ul class="select2-selection__rendered"><li class="select2-search select2-search--inline"><input class="select2-search__field" type="search" tabindex="0" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" role="searchbox" aria-autocomplete="list" placeholder="Select value" style="width: 338px;"></li></ul></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span></div>
-                      </div>
-                      <div class="mb-3">
-                        <label class="form-label" for="eventLocation">Location</label>
-                        <input type="text" class="form-control" id="eventLocation" name="eventLocation" placeholder="Enter Location">
-                      </div>
-                      <div class="mb-3">
-                        <label class="form-label" for="eventDescription">Description</label>
+                        <label class="form-label" for="eventDescription">Note</label>
                         <textarea class="form-control" name="eventDescription" id="eventDescription"></textarea>
                       </div>
                       <div class="mb-3 d-flex justify-content-sm-between justify-content-start my-4">
@@ -227,5 +250,60 @@
 @section('link-js')
     @endsection
     @section('javascript')
+<script>
+    flatpickr("#appointment_date", {
+    enableTime: false,
+    dateFormat: "Y-m-d", // Example: 2025-05-02
+});
+
+$('#service').on('change', function () {
+    var serviceId = $(this).val();
+
+    if (serviceId) {
+        $.ajax({
+            url: "{{ url('/get-staff-by-service/') }}/" + serviceId,
+            type: 'GET',
+            success: function (data) {
+                $('#staff').empty().append('<option value="">Select Staff</option>');
+                $.each(data, function (key, value) {
+                    $('#staff').append('<option value="' + value.id + '">' + value.name + '</option>');
+                });
+            },
+            error: function () {
+                alert('Failed to fetch staff.');
+            }
+        });
+    } else {
+        $('#staff').empty().append('<option value="">Select Staff</option>');
+    }
+});
+$('#appointment_date').on('change', function () {
+    var staffId = $('#staff').val();
+    var date = $('#appointment_date').val();
+
+    if (staffId) {
+        $.ajax({
+            url: "{{ url('/get-slots-by-available') }}",
+            type: 'GET',
+            data: {
+               staff_id: staffId,
+               date: date
+           },
+            success: function (data) {
+                // console.log(data);
+                $('#slots').empty().append('<option value="">Select Slot</option>');
+                $.each(data, function (index, slot) {
+                 $('#slots').append('<option value="' + slot + '">' + slot + '</option>');
+    });
+            },
+            error: function () {
+                alert('Failed to fetch slots.');
+            }
+        });
+    } else {
+        $('#slots').empty().append('<option value="">Select Slot</option>');
+    }
+});
+</script>
 
 @endsection

@@ -39,13 +39,17 @@
                                         </div>
                                       </div>
                                       <div class="row">
-                                          <div class="col-md-6 mb-4">
-                                            <label class="form-label" for="phone_number">Timeing</label>
-                                            <input type="text" value="{{ @$s->timing }}" name="timing" id="timing" class="form-control" />
+                                          <div class="col-md-4 mb-4">
+                                            <label class="form-label" for="phone_number">Opening Timeing</label>
+                                            <input type="text" value="{{ @$s->opening_time }}" name="opening_time" id="opening_time" class="form-control" />
                                         </div>
-                                          <div class="col-md-6 mb-4">
-                                            <label class="form-label" for="durations">Durations</label>
-                                            <input type="text" value="{{ @$s->durations }}" name="durations" id="youtube_url" class="form-control" />
+                                          <div class="col-md-4 mb-4">
+                                            <label class="form-label" for="phone_number">Closing Timeing</label>
+                                            <input type="text" value="{{ @$s->closing_time }}" name="closing_time" id="closing_time" class="form-control" />
+                                        </div>
+                                          <div class="col-md-4 mb-4">
+                                            <label class="form-label" for="durations">Slot Durations</label>
+                                            <input type="text" value="{{ @$s->slot_duration }}" name="slot_duration" id="slot_duration" class="form-control" />
                                         </div>
                                       </div>
                                     <div class="row">

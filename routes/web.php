@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
@@ -89,9 +90,8 @@ Route::get('/admin/dashboard',[Homecontroller::class,'dashboard'])->name('dashbo
     Route::get('admin/location/create',[SettingController::class,'createLocation'])->name('location.create');
     Route::post('admin/location/store',[SettingController::class,'storeLocation'])->name('location.store');
     Route::get('admin/setting',[SettingController::class,'index'])->name('setting.index');
-
-
-
+    Route::get('/get-staff-by-service/{id}', [AppointmentController::class, 'getStaffByService']);
+    Route::get('/get-slots-by-available', [AppointmentController::class, 'availableSlots']);
 
 });
 require __DIR__.'/auth.php';
