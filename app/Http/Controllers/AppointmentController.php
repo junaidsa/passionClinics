@@ -7,7 +7,9 @@ use App\Models\Setting;
 use App\Models\StaffBreak;
 use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class AppointmentController extends Controller
 {
@@ -89,5 +91,35 @@ class AppointmentController extends Controller
         return response()->json($slots);
     }
 
+    public function store(Request $request){
+        try{
+            $rules = [
+                'location'            => 'required|exists:locations,id',
+                'service'             => 'required|exists:services,id',
+                'staff'               => 'required|exists:users,id', // Assuming you have a staff table
+                'appointment_date'    => 'required|date',
+                'slots'               => 'required|string',
+                'customer'            => 'required|exists:customers,id',
+                'appointment_status'  => 'required|in:approved,pending,rescheduled,completed,cancel',
+                'eventDescription'    => 'nullable|string|max:1000',
+            ];
+
+            $validator = Validator::make($request->all(), $rules);
+
+            if ($validator->fails()) {
+                return response()->json([
+                    'status' => false,
+                    'errors' => $validator->errors(),
+                ]);
+            }
+
+            // Proceed to save the appointment
+            // ...
+
+
+        }catch (\Exception $e) {
+    return response()->json(['error' =>  $e->getMessage(),'line'=> $e->getLine(),'File'=> $e->getFile()], 500);
+    }
+    }
 
 }

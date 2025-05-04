@@ -149,7 +149,7 @@
                     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                   </div>
                   <div class="offcanvas-body pt-0">
-                    <form class="event-form pt-0 fv-plugins-bootstrap5 fv-plugins-framework" id="eventForm">
+                    <form class="event-form pt-0 fv-plugins-bootstrap5 fv-plugins-framework" id="appointmentsForm">
                         @php
                         $location = DB::table('locations')->get();
                         $services = DB::table('services')->get();
@@ -162,7 +162,7 @@
                                 <option value="{{$loc->id}}">{{$loc->name}}</option>
                                 @endforeach
                               </select>
-                              <div class="fv-plugins-message-container invalid-feedback"></div>
+                              <p></p>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="formValidationDob">Services </label>
@@ -172,24 +172,24 @@
                                 <option value="{{$ser->id}}">{{$ser->title}}</option>
                                 @endforeach
                               </select>
-                              <div class="fv-plugins-message-container invalid-feedback"></div>
+                              <p></p>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label" for="formValidationDob">Staff </label>
                               <select name="staff" id="staff" class="form-control">
                               </select>
-                              <div class="fv-plugins-message-container invalid-feedback"></div>
+                              <div></div>
                             </div>
                         <div class="mb-3">
                             <label class="form-label" for="formValidationDob">Appointment Date</label>
-                            <input type="text" class="form-control flatpickr-validation flatpickr-input" name="appointment_date" id="appointment_date" required="" readonly="readonly">
-                          <div class="fv-plugins-message-container invalid-feedback"></div>
+                            <input type="text" class="form-control flatpickr-validation flatpickr-input" name="appointment_date" id="appointment_date"  readonly="readonly">
+                            <p></p>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="formValidationDob">Available Slots</label>
                             <select name="slots" id="slots" class="form-control">
                             </select>
-                          <div class="fv-plugins-message-container invalid-feedback"></div>
+                            <p></p>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="formValidationDob">Customer </label>
@@ -200,7 +200,7 @@
                         @endforeach
 
                           </select>
-                          <div class="fv-plugins-message-container invalid-feedback"></div>
+                          <p></p>
                         </div>
                         <div class="mb-3">
                             <label class="form-label" for="formValidationDob">Appointment status </label>
@@ -221,23 +221,23 @@
                             Cancel
                         </option>
                           </select>
-                          <div class="fv-plugins-message-container invalid-feedback"></div>
+                          <p></p>
                         </div>
 
                       <div class="mb-3">
                         <label class="form-label" for="eventDescription">Note</label>
-                        <textarea class="form-control" name="eventDescription" id="eventDescription"></textarea>
+                        <textarea class="form-control" name="node" id="node"></textarea>
                       </div>
                       <div class="mb-3 d-flex justify-content-sm-between justify-content-start my-4">
                         <div>
-                          <button type="submit" class="btn btn-primary btn-add-event me-sm-3 me-1 waves-effect waves-light">Add</button>
+                          <button type="submit" class="btn btn-primary  me-sm-3 me-1 waves-effect waves-light">Add</button>
                           <button type="reset" class="btn btn-label-secondary btn-cancel me-sm-0 me-1 waves-effect" data-bs-dismiss="offcanvas">
                             Cancel
                           </button>
+                        </form>
                         </div>
-                        <div><button class="btn btn-label-danger btn-delete-event d-none waves-effect">Delete</button></div>
+
                       </div>
-                    <input type="hidden"></form>
                   </div>
                 </div>
               </div>
@@ -251,6 +251,83 @@
     @endsection
     @section('javascript')
 <script>
+    $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+$("#appointmentsForm").submit(function (e) {
+    e.preventDefault();
+
+    $.ajax({
+        url: '{{ route('appointment.store') }}', // Your Laravel route
+        method: 'POST',
+        dataType: 'json',
+        data: $("#appointmentsForm").serialize(),
+        success: function (response) {
+            if (response.status === true) {
+                // window.location.href = "/appointments"; // Change if needed
+                $("#location").removeClass('is-invalid').siblings('p').removeClass(
+                                'invalid-feedback').html('');
+                            $("#service").removeClass('is-invalid').siblings('p').removeClass(
+                                'invalid-feedback').html('');
+                            $("#staff").removeClass('is-invalid').siblings('p').removeClass(
+                                'invalid-feedback').html('');
+                            $("#appointment_date").removeClass('is-invalid').siblings('p').removeClass(
+                                'invalid-feedback').html('');
+                            $("#slots").removeClass('is-invalid').siblings('p').removeClass(
+                                'invalid-feedback').html('');
+            } else {
+                var errors = response.errors;
+                if (errors.location) {
+                    $('#location').addClass('is-invalid').next('.invalid-feedback').text(errors.location);
+                } else {
+                    $('#location').removeClass('is-invalid').next('.invalid-feedback').text('');
+                }
+                if (errors.service) {
+                    $('#service').addClass('is-invalid').next('.invalid-feedback').text(errors.service);
+                } else {
+                    $('#service').removeClass('is-invalid').next('.invalid-feedback').text('');
+                }
+                if (errors.staff) {
+                    $('#staff').addClass('is-invalid').next('.invalid-feedback').text(errors.staff);
+                } else {
+                    $('#staff').removeClass('is-invalid').next('.invalid-feedback').text('');
+                }
+                if (errors.appointment_date) {
+                    $('#appointment_date').addClass('is-invalid').next('.invalid-feedback').text(errors.appointment_date);
+                } else {
+                    $('#appointment_date').removeClass('is-invalid').next('.invalid-feedback').text('');
+                }
+                if (errors.slots) {
+                    $('#slots').addClass('is-invalid').next('.invalid-feedback').text(errors.slots);
+                } else {
+                    $('#slots').removeClass('is-invalid').next('.invalid-feedback').text('');
+                }
+                if (errors.customer) {
+                    $('#customer').addClass('is-invalid').next('.invalid-feedback').text(errors.customer);
+                } else {
+                    $('#customer').removeClass('is-invalid').next('.invalid-feedback').text('');
+                }
+                if (errors.appointment_status) {
+                    $('#appointment_status').addClass('is-invalid').next('.invalid-feedback').text(errors.appointment_status);
+                } else {
+                    $('#appointment_status').removeClass('is-invalid').next('.invalid-feedback').text('');
+                }
+                if (errors.eventDescription) {
+                    $('#eventDescription').addClass('is-invalid').next('.invalid-feedback').text(errors.eventDescription);
+                } else {
+                    $('#eventDescription').removeClass('is-invalid').next('.invalid-feedback').text('');
+                }
+            }
+        },
+        error: function (xhr) {
+            console.error(xhr.responseText);
+        }
+    });
+});
+
     flatpickr("#appointment_date", {
     enableTime: false,
     dateFormat: "Y-m-d", // Example: 2025-05-02
