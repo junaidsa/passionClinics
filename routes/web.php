@@ -94,6 +94,7 @@ Route::post('admin/setting/update/{id}', [SettingController::class, 'update'])->
 Route::get('/get-staff-by-service/{id}', [AppointmentController::class, 'getStaffByService']);
 Route::get('/get-slots-by-available', [AppointmentController::class, 'availableSlots']);
 Route::post('/admin/service/store',[AppointmentController::class,'store'])->name('appointment.store');
+Route::get('/appointments/list', [AppointmentController::class, 'getappointments'])->name('appointment.get');
 
 });
 require __DIR__.'/auth.php';

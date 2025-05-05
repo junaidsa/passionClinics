@@ -8,4 +8,12 @@ class Appointment extends Model
 {
     //
     protected $guarded = [];
+
+    public function customer() {
+        return $this->belongsTo(Customer::class);
+    }
+
+    public function service() {
+        return $this->belongsTo(Service::class);
+    }
 }

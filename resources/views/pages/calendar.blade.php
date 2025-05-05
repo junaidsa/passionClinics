@@ -147,6 +147,8 @@
 @endsection
 
 @section('link-js')
+<script src="{{ asset('public') }}/assets/vendor/libs/fullcalendar/fullcalendar.js"></script>
+<script src="{{ asset('public') }}/assets/js/app-calendar.js"></script>
     @endsection
     @section('javascript')
 

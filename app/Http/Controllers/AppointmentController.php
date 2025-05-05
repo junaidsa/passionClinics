@@ -100,26 +100,58 @@ class AppointmentController extends Controller
                 'appointment_date'    => 'required|date',
                 'slots'               => 'required|string',
                 'customer'            => 'required|exists:customers,id',
-                'appointment_status'  => 'required|in:approved,pending,rescheduled,completed,cancel',
-                'eventDescription'    => 'nullable|string|max:1000',
+                'appointment_status'  => 'required',
+                'note'    => 'nullable|string|max:1000',
             ];
 
             $validator = Validator::make($request->all(), $rules);
-
+// dd( $validator);
             if ($validator->fails()) {
                 return response()->json([
                     'status' => false,
                     'errors' => $validator->errors(),
                 ]);
             }
-
-            // Proceed to save the appointment
-            // ...
+            $appointment = Appointment::create([
+                'location_id'         => $request->location,
+                'service_id'         => $request->service,
+                'user_id'            => $request->staff,
+                'customer_id'        => $request->customer,
+                'slot'              => $request->slots,
+                'appointment_status' => $request->appointment_status,
+                'date' => $request->appointment_date,
+                'payment_status' => 'paid',
+                'note'               => $request->note,
+            ]);
+            return response()->json([
+                'status' => true,
+                'message' => 'Appointment created successfully',
+                'appointment' => $appointment,
+            ]);
 
 
         }catch (\Exception $e) {
     return response()->json(['error' =>  $e->getMessage(),'line'=> $e->getLine(),'File'=> $e->getFile()], 500);
     }
     }
+
+    public function getappointments()
+{
+    $appointments = Appointment::with(['service', 'customer']) // eager load relationships
+        ->select('id', 'appointment_date', 'slots', 'appointment_status', 'customer_id', 'service_id')
+        ->get();
+
+    $events = $appointments->map(function ($appointment) {
+        return [
+            'id' => $appointment->id,
+            'title' => $appointment->customer->name . ' - ' . $appointment->service->name,
+            'start' => $appointment->appointment_date . 'T' . $appointment->slots, // assumes 'slots' is time
+            'status' => $appointment->appointment_status,
+        ];
+    });
+
+    return response()->json($events);
+}
+
 
 }
