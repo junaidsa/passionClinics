@@ -9,8 +9,9 @@
             <div class="card mb-4">
                 <h5 class="card-header">Create Testimonials</h5>
                 <div class="card-body">
-                    <form action="{{ url('admin/testimonials/update') }}" method="POST" enctype="multipart/form-data">
-                        @csrf
+                    <form action="{{ url('/admin/testimonial/update', $testimonial->id) }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
                         <div class="row">
                             <input type="hidden" value="{{ $testimonial->id }}" name="id">
                             <div class="col-md-6">

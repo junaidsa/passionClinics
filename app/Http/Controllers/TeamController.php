@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Hash;
 class TeamController extends Controller
 {
     public function index(){
-      $users =   User::where('role','doctor')->get();
+      $users =   User::orderBy('id','DESC')->where('role','doctor')->get();
         return view('teams.index',compact('users'));
     }
     //
@@ -70,5 +70,16 @@ class TeamController extends Controller
     public function team_profile($id){
       $profile =   User::with('service')->find($id);
       return view('front-web.profile_team',compact('profile'));
+    }
+
+    public function delete($id)
+    {
+        $user = User::find($id);
+        if ($user) {
+            $user->delete();
+            return response()->json(['success' => 'Teams deleted successfully.']);
+        } else {
+            return response()->json(['error' => 'teams not found.'], 404);
+        }
     }
 }

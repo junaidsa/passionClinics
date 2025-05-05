@@ -35,7 +35,7 @@
                                     <td>{{ $u->date_of_birth }}</td>
                                     <td><img src="{{ url('file/customer/' . (@$u->image ?? 'noimage.jpeg')) }}"
                                             height="80" width="80" class="rounded-circle"></td>
-                                    <td> <a href="{{ url('admin/teams/edit/' . $u->id) }}" class="edit-btn"><i
+                                    <td> <a href="{{ url('admin/customer/edit/' . $u->id) }}" class="edit-btn"><i
                                                 class="ti ti-pencil me-1"></i></a>
                                         <a href="javascript:;" class="delete-btn" name="{{ $u->name }}"
                                             id="{{ $u->id }}"><i class="ti ti-trash me-2"></i></a>
@@ -81,7 +81,7 @@
                 if (result.value) {
                     // Make DELETE request via AJAX
                     $.ajax({
-                        url: "{{ url('/admin/testimonial/delete/') }}/" + id,
+                        url: "{{ url('/admin/customer/delete/') }}/" + id,
                         type: 'DELETE',
                         data: {
                             "_token": "{{ csrf_token() }}", // Ensure you pass the CSRF token
@@ -90,7 +90,7 @@
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Deleted!',
-                                text: 'Testimonial has been deleted.',
+                                text: 'Customer has been deleted.',
                                 timer: 1500
                             }).then(function() {
                                 location.reload();

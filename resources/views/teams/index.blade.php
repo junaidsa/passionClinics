@@ -79,7 +79,7 @@
                 if (result.value) {
                     // Make DELETE request via AJAX
                     $.ajax({
-                        url: "{{ url('/admin/testimonial/delete/') }}/" + id,
+                        url: "{{ url('/admin/teams/delete/') }}/" + id,
                         type: 'DELETE',
                         data: {
                             "_token": "{{ csrf_token() }}", // Ensure you pass the CSRF token
@@ -88,7 +88,7 @@
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Deleted!',
-                                text: 'Testimonial has been deleted.',
+                                text: 'Teams has been deleted.',
                                 timer: 1500
                             }).then(function() {
                                 location.reload();
