@@ -3,8 +3,6 @@ $facilities = DB::table('facilities')->get();
 @endphp
 <div class="row">
     @foreach ($facilities as $f)
-
-    @endforeach
     <div class="col-md-6">
         <!-- Case Study Item Start -->
         <div class="case-study-item wow fadeInUp">
@@ -22,13 +20,13 @@ $facilities = DB::table('facilities')->get();
             <div class="case-study-body">
                 <!-- Case Study Content Start -->
                 <div class="case-study-item-content">
-                    <h3><a href="case-study-single.html">Restoring Youthful Radiance</a></h3>
+                    <h3><a href="#">{{$f->name}}</a></h3>
                 </div>
                 <!-- Case Study Content End -->
 
                 <!-- Case Study Button Start -->
                 <div class="case-study-readmore-btn">
-                    <a href="case-study-single.html" class="readmore-btn"><img src="{{ asset('public') }}/images/arrow-white.svg" alt=""></a>
+                    <a href="#" class="readmore-btn"><img src="{{ asset('public') }}/images/arrow-white.svg" alt=""></a>
                 </div>
                 <!-- Case Study Button End -->
             </div>
@@ -36,4 +34,5 @@ $facilities = DB::table('facilities')->get();
         </div>
         <!-- Case Study Item End -->
     </div>
+    @endforeach
 </div>

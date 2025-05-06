@@ -97,14 +97,14 @@ class SettingController extends Controller
         $setting = Setting::findOrFail($id);
 
         if ($request->hasFile('video')) {
-            $oldVideoPath = base_path('../aluniquefurniture_uploads/vedio/' . $setting->video);
+            $oldVideoPath = base_path('../aluniquefurniture_uploads/video/' . $setting->video);
             if ($setting->video && file_exists($oldVideoPath)) {
                 unlink($oldVideoPath);
             }
 
             $video = $request->file('video');
-            $videoName = time() . '_location_video.' . $video->getClientOriginalExtension();
-            $destinationPath = base_path('../aluniquefurniture_uploads/vedio/');
+            $videoName = time() . '_video.' . $video->getClientOriginalExtension();
+            $destinationPath = base_path('../aluniquefurniture_uploads/video/');
             $video->move($destinationPath, $videoName);
 
             $setting->video = $videoName;

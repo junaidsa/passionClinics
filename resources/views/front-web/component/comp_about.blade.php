@@ -33,6 +33,23 @@
         <!-- About Us Images End -->
     </div>
 
+    {{-- <div class="col-lg-6">
+        <!-- Hero Content Box Start -->
+        <div class="about-us-content">
+            <!-- Section Title Start -->
+            <div class="section-title">
+                <h3 class="wow fadeInUp">About us</h3>
+                <h2 class="text-anime-style-3" data-cursor="-opaque">{{@$about->about_title}}</h2>
+                {!! @$about->about!!}
+            </div>
+            <div class="about-experience-image">
+                <figure class="image-anime reveal">
+                    <img src="{{ asset('public') }}/images/IMG_1184 (1).jpg" alt="">
+                </figure>
+            </div>
+        </div>
+        <!-- Hero Content Box End -->
+    </div> --}}
     <div class="col-lg-6">
         <!-- Hero Content Box Start -->
         <div class="about-us-content">
@@ -42,6 +59,51 @@
                 <h2 class="text-anime-style-3" data-cursor="-opaque">{{@$about->about_title}}</h2>
                 {!! @$about->about!!}
             </div>
+            <!-- Section Title End -->
+
+            <!-- About Experience Box Start -->
+            <div class="about-experience-box">
+                <!-- About Experience List Start -->
+                <div class="about-experience-list wow fadeInUp" data-wow-delay="0.4s">
+                    <ul>
+                        <li>Your Beauty, Our Expertise</li>
+                        <li>Where Science Meets Beauty</li>
+                        <li>Cutting-Edge Techniques</li>
+                    </ul>
+                </div>
+                <!-- About Experience List End -->
+
+                <!-- About Experience Image Start -->
+                <div class="about-experience-image">
+                    <figure class="image-anime reveal">
+                        <img src="{{ url('file/about/' . (@$about->about_team ?? 'avatar.jpg')) }}" alt="">
+                    </figure>
+                </div>
+                <!-- About Experience Image End -->
+            </div>
+            <!-- About Experience Box End -->
+
+            <!-- About Us Body Start -->
+            <div class="about-us-body wow fadeInUp" data-wow-delay="0.6s">
+                <!-- About Contact Box Start -->
+                <div class="about-contact-box">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <div class="about-contact-box-content">
+                        <p>Need Help!</p>
+                        <h3><a href="tel:{{$sett->phone_number}}">{{$sett->phone_number}}</a></h3>
+                    </div>
+                </div>
+                <!-- About Contact Box End -->
+
+                <!-- About Contact Button Start -->
+                <div class="about-us-btn">
+                    <a href="{{url('/about')}}" class="btn-default">more about</a>
+                </div>
+                <!-- About Contact Button End -->
+            </div>
+            <!-- About Us Body End -->
         </div>
         <!-- Hero Content Box End -->
     </div>

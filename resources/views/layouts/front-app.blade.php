@@ -35,6 +35,9 @@
 </head>
 <body>
 
+    @php
+        $sett = DB::table('settings')->where('id',1)->first()
+    @endphp
     <!-- Preloader Start -->
 	<div class="preloader">
 		<div class="loading-container">

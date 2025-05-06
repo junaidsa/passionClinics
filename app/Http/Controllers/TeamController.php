@@ -27,6 +27,8 @@ class TeamController extends Controller
             'password' => 'required|min:5',
             'experience' => 'required',
             'about' => 'required',
+            'category' => 'required',
+            'service_id' => 'required',
             'personals_info' => 'required',
         ]);
         if (User::where('email', $request->email)->exists()) {
@@ -43,6 +45,8 @@ class TeamController extends Controller
 
         $staff = new User();
         $staff->name = $request->input('name');
+        $staff->service_id = $request->input('service_id');
+        $staff->category = $request->input('category');
         $staff->email = $request->input('email');
         $staff->experience = $request->input('experience');
         $staff->image = $image;
@@ -56,8 +60,6 @@ class TeamController extends Controller
         $staff->role = 'doctor';
         $staff->save();
             return redirect('admin/teams')->with('success', 'Account created successfully.');
-
-
     }
     public function edit($id) {
         $user = User::findOrFail($id);
@@ -82,4 +84,48 @@ class TeamController extends Controller
             return response()->json(['error' => 'teams not found.'], 404);
         }
     }
+
+    public function update(Request $request, $id)
+{
+    $validated = $request->validate([
+        'name' => 'required',
+        'email' => 'required|email|unique:users,email,' . $id,
+        'experience' => 'required',
+        'about' => 'required',
+        'category' => 'required',
+        'personals_info' => 'required',
+    ]);
+
+    $staff = User::findOrFail($id);
+
+    // Handle image upload
+    if ($request->hasFile('image')) {
+        $image_pro = $request->file('image');
+        $image = time() . '_profile.' . $image_pro->getClientOriginalExtension();
+        $destinationPath = base_path('../aluniquefurniture_uploads/profile/');
+        $image_pro->move($destinationPath, $image);
+
+        // Optionally delete old image here if needed
+        $staff->image = $image;
+    }
+
+    $staff->name = $request->input('name');
+    $staff->category = $request->input('category');
+    $staff->email = $request->input('email');
+    $staff->experience = $request->input('experience');
+    $staff->about = $request->input('about');
+    $staff->personals_info = $request->input('personals_info');
+    $staff->fb_url = $request->input('fb_url');
+    $staff->ins_url = $request->input('ins_url');
+    $staff->x_url = $request->input('x_url');
+
+    if ($request->filled('password')) {
+        $staff->password = Hash::make($request->password);
+    }
+
+    $staff->save();
+
+    return redirect('admin/teams')->with('success', 'Account updated successfully.');
+}
+
 }

@@ -35,7 +35,6 @@ public function dashboard(){
 {
     $request->validate([
         'name' => 'required|string|max:255',
-        'designation' => 'required|string|max:255',
         'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240'
     ]);
 
@@ -47,7 +46,6 @@ public function dashboard(){
 
     Facility::create([
         'name' => $request->name,
-        'designation' => $request->designation,
         'avatar' => $avatarName,
     ]);
 
@@ -104,6 +102,13 @@ public function aboutupdate(Request $request)
         $file2->move($destinationPath, $fileName2);
         $about->about_attachment2 = $fileName2;
     }
+    if ($request->hasFile('about_team')) {
+        $about_team = $request->file('about_team');
+        $fileName3 = time().'about_team.'.$about_team->getClientOriginalExtension();
+        $destinationPath = base_path('../aluniquefurniture_uploads/pages/');
+        $about_team->move($destinationPath, $fileName3);
+        $about->about_team = $fileName3;
+    }
     $about->save();
     return redirect()->back()->with('success', 'About page updated successfully!');
 }
@@ -122,5 +127,8 @@ public function teams(){
 }
 public function calendar(){
     return view('pages.calendar');
+}
+public function clinic(){
+    return view('front-web.e_clinic');
 }
 }

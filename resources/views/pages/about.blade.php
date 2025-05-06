@@ -50,6 +50,15 @@
                                     <img src="{{ url('file/about/' . (@$ab->about_attachment2 ?? 'avatar.jpg')) }}" alt="Blog Image" width="70" height="70" class="rounded-circle">
                                 </div>
                               </div>
+                              <div class="row">
+                                <div class="col-md-8 col-sm-6 col-6 mt-4 mb-4">
+                                    <label class="form-label">Image Team</label>
+                                    <input type="file" name="about_team" class="form-control" />
+                                </div>
+                                 <div class="col-md-4 col-sm-6 col-6 mt-4 mb-4">
+                                    <img src="{{ url('file/about/' . (@$ab->about_team ?? 'avatar.jpg')) }}" alt="Blog Image" width="70" height="70" class="rounded-circle">
+                                </div>
+                              </div>
                                      <div class="col-md-12 text-right float-right mt-2">
                                          <button type="submit" class="btn btn-primary mb-1 mb-sm-0 mr-0 mr-sm-1 waves-effect waves-float waves-light">Submit </button>
                                      </div>

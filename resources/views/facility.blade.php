@@ -16,12 +16,6 @@
                                             <label class="form-label" for="name">Name</label>
                                             <input type="text" name="name" id="name" class="form-control" />
                                         </div>
-                                        <div class="col-md-12">
-                                            <label class="form-label" for="title">Designation</label>
-                                            <input type="text" name="designation" id="designation"
-                                                class="form-control" />
-                                        </div>
-
                                         <div class="col-md-12 col-sm-6 col-6 mb-2">
                                             <label class="form-label">Image/Avatar</label>
                                             <input type="file" name="avatar" class="form-control" />
@@ -43,11 +37,10 @@
                             @foreach ($facility as $f)
                                 <div class="col-md-3 mb-3 amenity-card" data-id="{{ $f->id }}">
                                     <div class="card">
-                                        <img src="{{ url('imgAvatar/facility/' . (@$f->avatar ?? 'avatar.jpg')) }}"
+                                        <img src="{{ url('file/facility/' . (@$f->avatar ?? 'avatar.jpg')) }}"
                                             class="card-img-top img-thumbnail">
                                         <div class="card-body text-center">
                                             <h6>{{ $f->name }}</h6>
-                                            <p>{{ $f->designation }}</p>
                                             <button class="btn btn-danger btn-sm delete-amenity"
                                                 data-id="{{ $f->id }}">Delete</button>
                                         </div>

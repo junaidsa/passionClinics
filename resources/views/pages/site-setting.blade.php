@@ -97,7 +97,7 @@
                                         @if (!empty($s->video))
                                             <video width="320" height="240" controls>
                                                 <source
-                                                    src="{{ asset('../aluniquefurniture_uploads/vedio/' . $s->video) }}"
+                                                    src="{{ url('file/video/' . (@$s->video ?? 'avatar.jpg')) }}"
                                                     type="video/mp4">
                                             </video>
                                         @endif

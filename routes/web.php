@@ -32,6 +32,7 @@ Route::get('/services',[Homecontroller::class,'services'])->name('front.services
 Route::get('/teams',[Homecontroller::class,'teams'])->name('front.teams');
 Route::get('/team/{id}',[TeamController::class,'team_profile'])->name('front.team');
 Route::get('/admin/dashboard',[Homecontroller::class,'dashboard'])->name('dashboard');
+Route::get('/e-clinic',[Homecontroller::class,'clinic'])->name('front.clinic');
 Route::middleware('auth')->group(function () {
 Route::get('/admin/dashboard',[Homecontroller::class,'dashboard'])->name('dashboard');
 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -40,7 +41,8 @@ Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.
 Route::get('admin/about',[HomeController::class,'aboutEdit'])->name('about.edit');
 Route::post('about/update',[HomeController::class,'aboutupdate'])->name('about.update');
 Route::get('admin/calendar',[HomeController::class,'calendar'])->name('calendar.show');
-Route::get('admin/team/create',[TeamController::class,'create'])->name('testimonial.create');
+Route::get('admin/teams/create',[TeamController::class,'create'])->name('testimonial.create');
+Route::put('admin/teams/{id}', [TeamController::class, 'update'])->name('admin.teams.update');
 Route::get('admin/teams',[TeamController::class,'index'])->name('teams.index');
 Route::post('admin/teams/store',[TeamController::class,'store'])->name('teams.store');
 Route::get('admin/teams/edit/{id}',[TeamController::class,'edit'])->name('teams.edit');
@@ -93,7 +95,7 @@ Route::get('admin/setting',[SettingController::class,'index'])->name('setting.in
 Route::post('admin/setting/update/{id}', [SettingController::class, 'update'])->name('setting.update');
 Route::get('/get-staff-by-service/{id}', [AppointmentController::class, 'getStaffByService']);
 Route::get('/get-slots-by-available', [AppointmentController::class, 'availableSlots']);
-Route::post('/admin/service/store',[AppointmentController::class,'store'])->name('appointment.store');
+Route::post('/admin/appointment/store',[AppointmentController::class,'store'])->name('appointment.store');
 Route::get('/appointments/list', [AppointmentController::class, 'getappointments'])->name('appointment.get');
 Route::delete('/admin/appointments/delete/{id}', [AppointmentController::class, 'destroy'])->name('appointment.destroy');
 Route::get('admin/appointments', [AppointmentController::class, 'index'])->name('appointment.index');
@@ -107,7 +109,7 @@ Route::get('/testimonial/{filename}', fn($filename) => serveFile('testimonials',
 Route::get('/service/{filename}', fn($filename) => serveFile('service', $filename));
 Route::get('/blog/{filename}', fn($filename) => serveFile('blogs', $filename));
 Route::get('/facility/{filename}', fn($filename) => serveFile('facilits', $filename));
-Route::get('/video/{filename}', fn($filename) => serveFile('videos', $filename));
+Route::get('/video/{filename}', fn($filename) => serveFile('video', $filename));
 Route::get('/features/{filename}', fn($filename) => serveFile('features', $filename));
 Route::get('/about/{filename}', fn($filename) => serveFile('pages', $filename));
 Route::get('/dr/{filename}', fn($filename) => serveFile('profile', $filename));

@@ -36,29 +36,41 @@
                                         <div class="d-flex align-items-center">
                                             <img src="{{ url('file/customer/' . (@$app->customer->image ?? '../aluniquefurniture_uploads/customers/noimage.jpeg')) }}"
                                                 height="40" width="40" class="rounded-circle me-2">
-                                            <div>
-                                                <strong>{{ $app->customer->first_name }}
-                                                    {{ $app->customer->last_name }}</strong><br>
-                                                <small>{{ $app->user->email }}</small>
+                                            <div class="d-flex flex-column">
+                                                <div class="d-flex align-items-center">
+                                                    <strong>{{ $app->customer->first_name }} {{ $app->customer->last_name }}</strong>
+                                                    @if ($app->payment_status == 'paid' || $app->payment_status == 1)
+                                                        <span class="alert alert-success rounded-pill ms-2">
+                                                            <i class="ti ti-check me-1"></i>
+                                                        </span>
+                                                    @else
+                                                        <span class="alert alert-danger rounded-pill ms-2">
+                                                            <i class="ti ti-x me-1"></i>
+                                                        </span>
+                                                    @endif
+                                                </div>
+                                                <small>{{ $app->customer->email }}</small>
                                             </div>
                                         </div>
                                     </td>
+
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <img src="{{ url('file/dr/' . (@$app->user->image ?? '../aluniquefurniture_uploads/customers/noimage.jpeg')) }}"
                                                 height="40" width="40" class="rounded-circle me-2">
                                             <div>
-                                                {{-- {{ url('file/dr/' . (@$u->image ?? 'noimage.jpeg')) }} --}}
                                                 <strong>{{ $app->user->name }} </strong>
                                             </div>
                                         </div>
                                     </td>
                                     <td class="">{{ $app->service->title }}</td>
                                     <td class="text-center">{{ $durationSetting }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($app->created_at)->format('d/m/Y ') }} <br> {{ \Carbon\Carbon::parse($app->created_at)->format('h:i A') }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($app->created_at)->format('d/m/Y ') }} <br>
+                                        {{ \Carbon\Carbon::parse($app->created_at)->format('h:i A') }}</td>
                                     <td>
                                         <div class="dropdown">
-                                            <button class="btn " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <button class="btn " type="button" data-bs-toggle="dropdown"
+                                                aria-expanded="false">
                                                 <i class="ti ti-dots-vertical"></i>
                                             </button>
                                             <ul class="dropdown-menu">

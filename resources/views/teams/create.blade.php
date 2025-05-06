@@ -34,7 +34,7 @@
                                                     @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-5">
                                     <div class="mb-3 form-password-toggle">
                                         <label class="form-label" for="basic-default-password">Password <span class="text-danger">*</span></label>
                                         <div class="input-group input-group-merge">
@@ -46,12 +46,22 @@
                                         </div>
                                       </div>
                                   </div>
-                                <div class="col-md-6">
+                                <div class="col-md-3">
                                     <div class="mb-3">
                                       <label for="exampleFormControlReadOnlyInput1" class="form-label">Experience<span class="text-danger">*</span></label>
                                       <input class="form-control @error('experience') is-invalid @enderror" type="text" id="experience" name="experience"
                                         placeholder="Enter Experience" />
                                         @error('experience')
+                                        <div class=" invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                  </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                      <label for="exampleFormControlReadOnlyInput1" class="form-label">Catetory<span class="text-danger">*</span></label>
+                                      <input class="form-control @error('category') is-invalid @enderror" type="text" id="category" name="category"
+                                        placeholder="Enter Category" />
+                                        @error('category')
                                         <div class=" invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>

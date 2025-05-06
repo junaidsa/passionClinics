@@ -13,11 +13,10 @@
             <div class="card mb-4">
                 <h5 class="card-header">Create Team</h5>
                 <div class="card-body">
-                    <form action="{{ url('/admin/teams/store') }}" method="POST" id="adminForum"
-                        enctype="multipart/form-data">
+                    <form action="{{ url('/admin/teams/' . $user->id) }}" method="POST" id="adminForum" enctype="multipart/form-data">
                         @csrf
+                        @method('PUT')
                         <div class="row">
-                            <input type="hidden" name="id" value="{{ $user->id }}">
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Full Name <span
@@ -42,7 +41,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-5">
                                 <div class="mb-3 form-password-toggle">
                                     <label class="form-label" for="basic-default-password">Password <span
                                             class="text-danger">*</span></label>
@@ -50,7 +49,7 @@
                                         <input type="password" name="password" id="password"
                                             class="form-control @error('password') is-invalid @enderror"
                                             placeholder="············" aria-describedby="basic-default-password3"
-                                            autocomplete="new-password" required="">
+                                            autocomplete="new-password">
                                         <span class="input-group-text cursor-pointer" id="password"><i
                                                 class="ti ti-eye-off"></i></span>
                                         @error('password')
@@ -59,7 +58,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-3">
                                 <div class="mb-3">
                                     <label for="exampleFormControlReadOnlyInput1" class="form-label">Experience<span
                                             class="text-danger">*</span></label>
@@ -67,6 +66,18 @@
                                         id="experience" name="experience" placeholder="Enter Experience"
                                         value="{{ old('experience', $user->experience ?? '') }}" />
                                     @error('experience')
+                                        <div class=" invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlReadOnlyInput1" class="form-label">Category<span
+                                            class="text-danger">*</span></label>
+                                    <input class="form-control @error('category') is-invalid @enderror" type="text"
+                                        id="category" name="category" placeholder="Enter Category"
+                                        value="{{ old('category', $user->category ?? '') }}" />
+                                    @error('category')
                                         <div class=" invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>
@@ -80,14 +91,11 @@
                                         id="service_id" name="service_id">
                                         <option value="">Select Service</option>
                                         @foreach ($service as $s)
-                                        {{-- <option value="{{ $s->id }}" {{ old('service_id') == $s->id ? 'selected' : '' }}>
-                                            {{ $s->title }}
-                                        </option> --}}
                                         <option value="{{ $s->id }}"
                                             {{ old('service_id', $user->service_id) == $s->id ? 'selected' : '' }}>
                                             {{ $s->title }}
                                         </option>
-                                        @endforeach
+                                    @endforeach
                                     </select>
                                     @error('service_id')
                                         <div class=" invalid-feedback">{{ $message }}</div>

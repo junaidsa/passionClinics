@@ -103,8 +103,7 @@
                                     <script>
                                         document.write(new Date().getFullYear());
                                     </script>
-                                    , made with by <img src="{{ asset('public') }}/assets/svg/icons/Icon 512 x 512.png"
-                                        height="18" width="20" alt=""><b>Medical Clinic Center</b>
+                                     made with by <b>Medical Clinic Center</b>
                                 </div>
                             </div>
                         </div>

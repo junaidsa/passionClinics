@@ -18,6 +18,7 @@
                             <li class="nav-item"><a class="nav-link" href="{{url('/about')}}">About Us</a>
                             <li class="nav-item"><a class="nav-link" href="{{url('/services')}}">Services</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{url('/teams')}}">Our Team</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{url('/e-clinic')}}">E-Clinic</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{url('/contact')}}">Contact Us</a></li>
                             <li class="nav-item highlighted-menu"><a class="nav-link" href="book-appointment.html">Make an Appointment</a></li>
                         </ul>
@@ -25,7 +26,7 @@
 
                     <!-- Header Contact Btn Start -->
                     <div class="header-contact-btn">
-                        <a href="tel:123456789" class="header-contact-now"><i class="fa-solid fa-phone"></i>0112880840</a>
+                        <a href="tel:{{$sett->phone_number}}" class="header-contact-now"><i class="fa-solid fa-phone"></i>{{$sett->phone_number}}</a>
                         <a href="book-appointment.html" class="btn-default">Make an Appointment</a>
                     </div>
                     <!-- Header Contact Btn End -->

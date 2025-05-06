@@ -38,7 +38,6 @@ class ServiceController extends Controller
             'short_discripation' => 'required',
             'main_image' => 'required|file|image',
             'video_url' => 'required|url',
-            'video_thumbnail' => 'required|image|mimes:jpeg,png,jpg,gif',
         ]);
 
         if ($validator->fails()) {
@@ -91,7 +90,7 @@ class ServiceController extends Controller
             'short_discripation' => 'required',
             'main_image' => 'nullable|file|image',
             'video_url' => 'required|url',
-            'video_thumbnail' => 'nullable|image|mimes:jpeg,png,jpg,gif',
+            'video_thumbnail' => 'nullable',
         ]);
 
         if ($validator->fails()) {
