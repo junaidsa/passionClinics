@@ -156,10 +156,10 @@
         </ul>
     </li>
         <li
-            class="menu-item {{ Request::is('admin/contact/list') || Request::is('admin/contacts') ? 'open' : '' }}">
+            class="menu-item {{ Request::is('admin/contact/list') || Request::is('admin/contacts') || Request::is('admin/facility/create') || Request::is('admin/about') ? 'open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons ti ti-settings"></i>
-                <div data-i18n="Setting">Setting</div>
+                <i class="menu-icon tf-icons ti ti-file"></i>
+                <div data-i18n="pages">Pages</div>
             </a>
             <ul class="menu-sub">
                 <li class="menu-item {{ Request::is('admin/about') ? 'active' : '' }}">
@@ -177,12 +177,26 @@
                         <div data-i18n="Facilits">Facilits</div>
                     </a>
                 </li>
+
+            </ul>
+        </li>
+        <li
+            class="menu-item {{ Request::is('admin/setting') || Request::is('admin/contacts') ? 'open' : '' }}">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons ti ti-settings"></i>
+                <div data-i18n="Setting">Setting</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ Request::is('admin/permissions') ? 'active' : '' }}">
+                    <a href="{{ url('admin/permissions') }}" class="menu-link">
+                        <div data-i18n="Role & Permissions">Role & Permissions</div>
+                    </a>
+                </li>
                 <li class="menu-item {{ Request::is('admin/setting') ? 'active' : '' }}">
                     <a href="{{ url('admin/setting') }}" class="menu-link">
                         <div data-i18n="Site Setting">Site Settings</div>
                     </a>
                 </li>
-
             </ul>
         </li>
     </ul>

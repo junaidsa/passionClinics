@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Location;
 use App\Models\Setting;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class SettingController extends Controller
@@ -148,5 +149,9 @@ class SettingController extends Controller
         } else {
             return response()->json(['error' => 'Location not found.'], 404);
         }
+    }
+    public function permissions(){
+        $staff = User::where('role','doctor')->get();
+        return view('pages.permissions',compact('staff'));
     }
 }

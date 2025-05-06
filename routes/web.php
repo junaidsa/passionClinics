@@ -97,9 +97,7 @@ Route::post('/admin/service/store',[AppointmentController::class,'store'])->name
 Route::get('/appointments/list', [AppointmentController::class, 'getappointments'])->name('appointment.get');
 Route::delete('/admin/appointments/delete/{id}', [AppointmentController::class, 'destroy'])->name('appointment.destroy');
 Route::get('admin/appointments', [AppointmentController::class, 'index'])->name('appointment.index');
-
-
-//
+Route::get('admin/permissions', [SettingController::class, 'permissions'])->name('setting.permissions');
 Route::get('/appointments/list', [AppointmentController::class, 'getappointments'])->name('appointment.get');
 
 });
