@@ -5,7 +5,10 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between">
                 <h5>Appointment List</h5>
-                <div class="btn-container"><button class="dt-button add-new btn btn-primary" tabindex="0" aria-controls="DataTables_Table_0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasAddAppointment"><span><i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">Add New Appointment</span></span></button></div>
+                <div class="btn-container"><button class="dt-button add-new btn btn-primary" tabindex="0"
+                        aria-controls="DataTables_Table_0" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasAddAppointment"><span><i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span
+                                class="d-none d-sm-inline-block">Add New Appointment</span></span></button></div>
             </div>
 
             <div class="card-body">
@@ -14,7 +17,6 @@
                         <thead>
                             <tr>
                                 <th>Date</th>
-                                <th>Slot</th>
                                 <th>Customer Name</th>
                                 <th>Staff</th>
                                 <th>Service</th>
@@ -23,129 +25,155 @@
                                 <th>Action</th>
                             </tr>
                         </thead>
-<tbody>
-    @foreach ($appointment as $app)
-    <tr>
-<td>{{$app->date}}</td>
-<td>{{$app->slot}}</td>
-<td>{{$app->customer->first_name}} {{$app->customer->last_name}}</td>
-<td>{{$app->user->name}}</td>
-<td>{{$app->service->title}}</td>
-<td>{{$durationSetting}}</td>
-<td>{{$app->created_at}}</td>
-<td>
-    <a href="{{ route('blog.edit', $app->id) }}" class="edit-btn "><i
-            class="ti ti-pencil me-1"></i></a>
-    <a href="javascript:void(0) " class="delete-btn" name="{{ $app->name }}"
-        id="{{ $app->id }}"><i class="ti ti-trash me-2"></i></a>
-</td>
-    </tr>
-    @endforeach
-</tbody>
+                        <tbody>
+                            @foreach ($appointment as $app)
+                                <tr>
+                                    <td class="small text-black">
+                                        {{ \Carbon\Carbon::parse($app->date)->format('d/m/Y') }} <br>
+                                        {{ \Carbon\Carbon::parse($app->slot)->format('h:i A') }}
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="{{ url('file/customer/' . (@$app->customer->image ?? '../aluniquefurniture_uploads/customers/noimage.jpeg')) }}"
+                                                height="40" width="40" class="rounded-circle me-2">
+                                            <div>
+                                                <strong>{{ $app->customer->first_name }}
+                                                    {{ $app->customer->last_name }}</strong><br>
+                                                <small>{{ $app->user->email }}</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <img src="{{ url('file/dr/' . (@$app->user->image ?? '../aluniquefurniture_uploads/customers/noimage.jpeg')) }}"
+                                                height="40" width="40" class="rounded-circle me-2">
+                                            <div>
+                                                {{-- {{ url('file/dr/' . (@$u->image ?? 'noimage.jpeg')) }} --}}
+                                                <strong>{{ $app->user->name }} </strong>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="">{{ $app->service->title }}</td>
+                                    <td class="text-center">{{ $durationSetting }}</td>
+                                    <td>{{ \Carbon\Carbon::parse($app->created_at)->format('d/m/Y ') }} <br> {{ \Carbon\Carbon::parse($app->created_at)->format('h:i A') }}</td>
+                                    <td>
+                                        <div class="dropdown">
+                                            <button class="btn " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="ti ti-dots-vertical"></i>
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <a class="dropdown-item" href="{{ route('blog.edit', $app->id) }}">
+                                                        <i class="ti ti-pencil me-1"></i> Edit
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:void(0)" class="dropdown-item delete-btn"
+                                                        name="{{ $app->name }}" id="{{ $app->id }}">
+                                                        <i class="ti ti-trash me-1"></i> Delete
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
                     </table>
                 </div>
             </div>
         </div>
-        <div
-        class="offcanvas offcanvas-end"
-        tabindex="-1"
-        id="offcanvasAddAppointment"
-        aria-labelledby="offcanvasAddUserLabel"
-      >
-        <div class="offcanvas-header">
-          <h5 id="offcanvasAddUserLabel" class="offcanvas-title">Create Appointment</h5>
-          <button
-            type="button"
-            class="btn-close text-reset"
-            data-bs-dismiss="offcanvas"
-            aria-label="Close"
-          ></button>
-        </div>
-        <div class="offcanvas-body mx-0 flex-grow-0 pt-0 h-100">
-            @php
-            $location = DB::table('locations')->get();
-            $services = DB::table('services')->get();
-            $customer = DB::table('customers')->get();
-        @endphp
-          <form class="add-new-user pt-0" id="appointmentsForm">
-            <div class="mb-3">
-                <label class="form-label" for="formValidationDob">Location </label>
-                <select name="location" id="location" class="form-control">
-                    @foreach ($location as $loc)
-                        <option value="{{ $loc->id }}">{{ $loc->name }}</option>
-                    @endforeach
-                </select>
-                <div class="invalid-feedback"></div>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasAddAppointment"
+            aria-labelledby="offcanvasAddUserLabel">
+            <div class="offcanvas-header">
+                <h5 id="offcanvasAddUserLabel" class="offcanvas-title">Create Appointment</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             </div>
-            <div class="mb-3">
-                <label class="form-label" for="formValidationDob">Services </label>
-                <select name="service" id="service" class="form-control">
-                    <option value="">Select Service</option>
-                    @foreach ($services as $ser)
-                        <option value="{{ $ser->id }}">{{ $ser->title }}</option>
-                    @endforeach
-                </select>
-                <div class="invalid-feedback"></div>
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="formValidationDob">Staff </label>
-                <select name="staff" id="staff" class="form-control">
-                </select>
-                <div class="invalid-feedback"></div>
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="formValidationDob">Appointment Date</label>
-                <input type="text" class="form-control flatpickr-validation flatpickr-input"
-                    name="appointment_date" id="appointment_date" readonly="readonly">
-                <div class="invalid-feedback"></div>
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="formValidationDob">Available Slots</label>
-                <select name="slots" id="slots" class="form-control">
-                </select>
-                <div class="invalid-feedback"></div>
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="formValidationDob">Customer </label>
-                <select name="customer" id="customer" class="form-control">
-                    <option value="">Select Customer</option>
-                    @foreach ($customer as $cus)
-                        <option value="{{ $cus->id }}">{{ $cus->first_name }}
-                            {{ $cus->last_name }}</option>
-                    @endforeach
-                </select>
-                <div class="invalid-feedback"></div>
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="formValidationDob">Appointment status </label>
-                <select name="appointment_status" id="appointment_status" class="form-control">
-                    <option value="">Select</option>
-                    <option value="approved">Approved</option>
-                    <option value="pending">
-                        Pending
-                    </option>
-                    <option value="rescheduled">
-                        Rescheduled
-                    </option>
+            <div class="offcanvas-body mx-0 flex-grow-0 pt-0 h-100">
+                @php
+                    $location = DB::table('locations')->get();
+                    $services = DB::table('services')->get();
+                    $customer = DB::table('customers')->get();
+                @endphp
+                <form class="add-new-user pt-0" id="appointmentsForm">
+                    <div class="mb-3">
+                        <label class="form-label" for="formValidationDob">Location </label>
+                        <select name="location" id="location" class="form-control">
+                            @foreach ($location as $loc)
+                                <option value="{{ $loc->id }}">{{ $loc->name }}</option>
+                            @endforeach
+                        </select>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="formValidationDob">Services </label>
+                        <select name="service" id="service" class="form-control">
+                            <option value="">Select Service</option>
+                            @foreach ($services as $ser)
+                                <option value="{{ $ser->id }}">{{ $ser->title }}</option>
+                            @endforeach
+                        </select>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="formValidationDob">Staff </label>
+                        <select name="staff" id="staff" class="form-control">
+                        </select>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="formValidationDob">Appointment Date</label>
+                        <input type="text" class="form-control flatpickr-validation flatpickr-input"
+                            name="appointment_date" id="appointment_date" readonly="readonly">
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="formValidationDob">Available Slots</label>
+                        <select name="slots" id="slots" class="form-control">
+                        </select>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="formValidationDob">Customer </label>
+                        <select name="customer" id="customer" class="form-control">
+                            <option value="">Select Customer</option>
+                            @foreach ($customer as $cus)
+                                <option value="{{ $cus->id }}">{{ $cus->first_name }}
+                                    {{ $cus->last_name }}</option>
+                            @endforeach
+                        </select>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="formValidationDob">Appointment status </label>
+                        <select name="appointment_status" id="appointment_status" class="form-control">
+                            <option value="">Select</option>
+                            <option value="approved">Approved</option>
+                            <option value="pending">
+                                Pending
+                            </option>
+                            <option value="rescheduled">
+                                Rescheduled
+                            </option>
 
-                    <option value="completed">
-                        Completed
-                    </option>
-                    <option value="cancel">
-                        Cancel
-                    </option>
-                </select>
-                <div class="invalid-feedback"></div>
+                            <option value="completed">
+                                Completed
+                            </option>
+                            <option value="cancel">
+                                Cancel
+                            </option>
+                        </select>
+                        <div class="invalid-feedback"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" for="note">Note</label>
+                        <textarea class="form-control" name="note" id="note"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary me-sm-3 me-1 data-submit">Submit</button>
+                    <button type="reset" class="btn btn-label-secondary" data-bs-dismiss="offcanvas">Cancel</button>
+                </form>
             </div>
-            <div class="mb-3">
-                <label class="form-label" for="note">Note</label>
-                <textarea class="form-control" name="note" id="note"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary me-sm-3 me-1 data-submit">Submit</button>
-            <button type="reset" class="btn btn-label-secondary" data-bs-dismiss="offcanvas">Cancel</button>
-          </form>
         </div>
-      </div>
     </div>
 @endsection
 
@@ -159,11 +187,11 @@
 @endsection
 @section('javascript')
     <script>
-              flatpickr("#appointment_date", {
+        flatpickr("#appointment_date", {
             enableTime: false,
             dateFormat: "Y-m-d", // Example: 2025-05-02
         });
-           $.ajaxSetup({
+        $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
@@ -319,6 +347,7 @@
                 $('#slots').empty().append('<option value="">Select Slot</option>');
             }
         });
+
         let table = new DataTable('#myTable');
         $("body").on('click', '.delete-btn', function() {
             var id = $(this).attr('id');
@@ -339,7 +368,7 @@
                 if (result.value) {
                     // Make DELETE request via AJAX
                     $.ajax({
-                        url: "{{ url('/admin/customer/delete/') }}/" + id,
+                        url: "{{ url('/admin/appointments/delete/') }}/" + id,
                         type: 'DELETE',
                         data: {
                             "_token": "{{ csrf_token() }}", // Ensure you pass the CSRF token
@@ -348,7 +377,7 @@
                             Swal.fire({
                                 icon: 'success',
                                 title: 'Deleted!',
-                                text: 'Customer has been deleted.',
+                                text: 'Appointment has been deleted.',
                                 timer: 1500
                             }).then(function() {
                                 location.reload();

@@ -15,16 +15,18 @@ use Illuminate\Support\Facades\Validator;
 class AppointmentController extends Controller
 {
 
-    public function index(){
+    public function index()
+    {
         $appointment = Appointment::with('customer', 'service', 'localtion', 'user')
-        ->orderBy('id', 'desc') // or 'created_at' if you prefer
-        ->get();
+            ->orderBy('id', 'DESC') // or 'created_at' if you prefer
+            ->get();
         $durationSetting = DB::table('settings')->where('id', 1)->value('slot_duration');
-    return view('appointments.index',compact('appointment','durationSetting'));
+        return view('appointments.index', compact('appointment', 'durationSetting'));
     }
     //
-    public function getStaffByService($id){
-        $staff = User::where('service_id', $id)->where('role','doctor')->get(); // Adjust based on your relationship
+    public function getStaffByService($id)
+    {
+        $staff = User::where('service_id', $id)->where('role', 'doctor')->get(); // Adjust based on your relationship
         return response()->json($staff);
     }
 
@@ -100,8 +102,9 @@ class AppointmentController extends Controller
         return response()->json($slots);
     }
 
-    public function store(Request $request){
-        try{
+    public function store(Request $request)
+    {
+        try {
             $rules = [
                 'location'            => 'required|exists:locations,id',
                 'service'             => 'required|exists:services,id',
@@ -114,7 +117,7 @@ class AppointmentController extends Controller
             ];
 
             $validator = Validator::make($request->all(), $rules);
-// dd( $validator);
+            // dd( $validator);
             if ($validator->fails()) {
                 return response()->json([
                     'status' => false,
@@ -137,30 +140,36 @@ class AppointmentController extends Controller
                 'message' => 'Appointment created successfully',
                 'appointment' => $appointment,
             ]);
-
-
-        }catch (\Exception $e) {
-    return response()->json(['error' =>  $e->getMessage(),'line'=> $e->getLine(),'File'=> $e->getFile()], 500);
-    }
+        } catch (\Exception $e) {
+            return response()->json(['error' =>  $e->getMessage(), 'line' => $e->getLine(), 'File' => $e->getFile()], 500);
+        }
     }
 
     public function getappointments()
-{
-    $appointments = Appointment::with(['service', 'customer']) // eager load relationships
-        ->select('id', 'appointment_date', 'slots', 'appointment_status', 'customer_id', 'service_id')
-        ->get();
+    {
+        $appointments = Appointment::with(['service', 'customer']) // eager load relationships
+            ->select('id', 'appointment_date', 'slots', 'appointment_status', 'customer_id', 'service_id')
+            ->get();
 
-    $events = $appointments->map(function ($appointment) {
-        return [
-            'id' => $appointment->id,
-            'title' => $appointment->customer->name . ' - ' . $appointment->service->name,
-            'start' => $appointment->appointment_date . 'T' . $appointment->slots, // assumes 'slots' is time
-            'status' => $appointment->appointment_status,
-        ];
-    });
+        $events = $appointments->map(function ($appointment) {
+            return [
+                'id' => $appointment->id,
+                'title' => $appointment->customer->name . ' - ' . $appointment->service->name,
+                'start' => $appointment->appointment_date . 'T' . $appointment->slots, // assumes 'slots' is time
+                'status' => $appointment->appointment_status,
+            ];
+        });
 
-    return response()->json($events);
-}
-
-
+        return response()->json($events);
+    }
+    public function destroy($id)
+    {
+        $appointment = Appointment::find($id);
+        if ($appointment) {
+            $appointment->delete();
+            return response()->json(['success' => 'Appointment deleted successfully.']);
+        } else {
+            return response()->json(['error' => 'Appointment not found.'], 404);
+        }
+    }
 }

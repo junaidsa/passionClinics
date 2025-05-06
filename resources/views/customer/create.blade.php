@@ -16,6 +16,7 @@
                     <form action="{{ url('/admin/customer/store') }}" method="POST" id="adminForum"
                         enctype="multipart/form-data">
                         @csrf
+                        @method('POST')
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">

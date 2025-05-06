@@ -33,19 +33,19 @@ class CustomerController extends Controller
 
         if ($validated) {
             $avatar = $request->file('avatar');
-            $avatarName = time() . 'testimonial.' . $avatar->getClientOriginalExtension();
+            $avatarName = time() . 'customer.' . $avatar->getClientOriginalExtension();
             $destinationPath = base_path('../aluniquefurniture_uploads/customers/');
             $avatar->move($destinationPath, $avatarName);
-            $project = Customer::create([
-                'first_name' => $request->first_name,
-                'last_name' => $request->last_name,
-                'email' => $request->email,
-                'date_of_birth' => $request->date_of_birth,
-                'gender' => $request->gender,
-                'phone' => $request->phone,
-                'image' => $avatarName,
-                'note' => $request->note,
-            ]);
+            $customer = new Customer();
+            $customer->first_name = $request->first_name;
+            $customer->last_name = $request->last_name;
+            $customer->email = $request->email;
+            $customer->date_of_birth = $request->date_of_birth;
+            $customer->gender = $request->gender;
+            $customer->phone = $request->phone;
+            $customer->image = $avatarName;
+            $customer->note = $request->note;
+            $customer->save();
             return redirect()->route('customer.index')->with('success', 'Customer added successfully.');
         } else {
             return redirect()->back()->withErrors($validated)->withInput();
