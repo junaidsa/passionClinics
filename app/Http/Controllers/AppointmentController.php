@@ -9,10 +9,19 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class AppointmentController extends Controller
 {
+
+    public function index(){
+        $appointment = Appointment::with('customer', 'service', 'localtion', 'user')
+        ->orderBy('id', 'desc') // or 'created_at' if you prefer
+        ->get();
+        $durationSetting = DB::table('settings')->where('id', 1)->value('slot_duration');
+    return view('appointments.index',compact('appointment','durationSetting'));
+    }
     //
     public function getStaffByService($id){
         $staff = User::where('service_id', $id)->where('role','doctor')->get(); // Adjust based on your relationship

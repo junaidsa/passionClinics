@@ -1,0 +1,100 @@
+<div class="offcanvas offcanvas-end event-sidebar" tabindex="-1"
+id="addEventSidebar"aria-labelledby="addEventSidebarLabel">
+
+<div class="offcanvas-body pt-0">
+    <form class="event-form pt-0 fv-plugins-bootstrap5 fv-plugins-framework" id="appointmentsForm">
+        @php
+            $location = DB::table('locations')->get();
+            $services = DB::table('services')->get();
+            $customer = DB::table('customers')->get();
+        @endphp
+        <div class="mb-3">
+            <label class="form-label" for="formValidationDob">Location </label>
+            <select name="location" id="location" class="form-control">
+                @foreach ($location as $loc)
+                    <option value="{{ $loc->id }}">{{ $loc->name }}</option>
+                @endforeach
+            </select>
+            <div class="invalid-feedback"></div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="formValidationDob">Services </label>
+            <select name="service" id="service" class="form-control">
+                <option value="">Select Service</option>
+                @foreach ($services as $ser)
+                    <option value="{{ $ser->id }}">{{ $ser->title }}</option>
+                @endforeach
+            </select>
+            <div class="invalid-feedback"></div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="formValidationDob">Staff </label>
+            <select name="staff" id="staff" class="form-control">
+            </select>
+            <div class="invalid-feedback"></div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="formValidationDob">Appointment Date</label>
+            <input type="text" class="form-control flatpickr-validation flatpickr-input"
+                name="appointment_date" id="appointment_date" readonly="readonly">
+            <div class="invalid-feedback"></div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="formValidationDob">Available Slots</label>
+            <select name="slots" id="slots" class="form-control">
+            </select>
+            <div class="invalid-feedback"></div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="formValidationDob">Customer </label>
+            <select name="customer" id="customer" class="form-control">
+                <option value="">Select Customer</option>
+                @foreach ($customer as $cus)
+                    <option value="{{ $cus->id }}">{{ $cus->first_name }}
+                        {{ $cus->last_name }}</option>
+                @endforeach
+            </select>
+            <div class="invalid-feedback"></div>
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="formValidationDob">Appointment status </label>
+            <select name="appointment_status" id="appointment_status" class="form-control">
+                <option value="">Select</option>
+                <option value="approved">Approved</option>
+                <option value="pending">
+                    Pending
+                </option>
+                <option value="rescheduled">
+                    Rescheduled
+                </option>
+
+                <option value="completed">
+                    Completed
+                </option>
+                <option value="cancel">
+                    Cancel
+                </option>
+            </select>
+            <div class="invalid-feedback"></div>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label" for="note">Note</label>
+            <textarea class="form-control" name="note" id="note"></textarea>
+        </div>
+        <div class="mb-3 d-flex justify-content-sm-between justify-content-start my-4">
+            <div>
+                <button type="submit"
+                    class="btn btn-primary  me-sm-3 me-1 waves-effect waves-light">Add</button>
+                <button type="reset"
+                    class="btn btn-label-secondary btn-cancel me-sm-0 me-1 waves-effect"
+                    data-bs-dismiss="offcanvas">
+                    Cancel
+                </button>
+    </form>
+</div>
+
+</div>
+
+
+

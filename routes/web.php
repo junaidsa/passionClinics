@@ -95,6 +95,11 @@ Route::get('/get-staff-by-service/{id}', [AppointmentController::class, 'getStaf
 Route::get('/get-slots-by-available', [AppointmentController::class, 'availableSlots']);
 Route::post('/admin/service/store',[AppointmentController::class,'store'])->name('appointment.store');
 Route::get('/appointments/list', [AppointmentController::class, 'getappointments'])->name('appointment.get');
+Route::get('admin/appointments', [AppointmentController::class, 'index'])->name('appointment.index');
+
+
+//
+Route::get('/appointments/list', [AppointmentController::class, 'getappointments'])->name('appointment.get');
 
 });
 require __DIR__.'/auth.php';
@@ -103,7 +108,7 @@ Route::get('/testimonial/{filename}', fn($filename) => serveFile('testimonials',
 Route::get('/service/{filename}', fn($filename) => serveFile('service', $filename));
 Route::get('/blog/{filename}', fn($filename) => serveFile('blogs', $filename));
 Route::get('/facility/{filename}', fn($filename) => serveFile('facilits', $filename));
-Route::get('/video/{filename}', fn($filename) => serveFile('service', $filename));
+Route::get('/video/{filename}', fn($filename) => serveFile('videos', $filename));
 Route::get('/features/{filename}', fn($filename) => serveFile('features', $filename));
 Route::get('/about/{filename}', fn($filename) => serveFile('pages', $filename));
 Route::get('/dr/{filename}', fn($filename) => serveFile('profile', $filename));
