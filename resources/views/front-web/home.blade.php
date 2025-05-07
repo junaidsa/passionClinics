@@ -225,7 +225,7 @@
 
                         <!-- Case Study Button Start -->
                         <div class="case-study-btn wow fadeInUp" data-wow-delay="0.4s">
-                            <a href="case-study.html" class="btn-default">Book Now</a>
+                            <a href="{{url('/contact')}}" class="btn-default">Contact Us</a>
                         </div>
                         <!-- Case Study Button End -->
                     </div>

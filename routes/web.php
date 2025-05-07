@@ -26,7 +26,7 @@ Route::get('/fix-cache', function () {
 Route::get('/',[Homecontroller::class,'home'])->name('home');
 Route::get('/about',[Homecontroller::class,'about'])->name('front.about');
 Route::get('/contact',[Homecontroller::class,'contact_us'])->name('front.contact');
-Route::get('/contact_form/insert',[Homecontroller::class,'insertContact'])->name('contact.add');
+Route::post('/contact_form/insert', [HomeController::class, 'insertContact'])->name('contact.insert');
 Route::get('/service/{id}',[Homecontroller::class,'service'])->name('front.service.single');
 Route::get('/services',[Homecontroller::class,'services'])->name('front.services');
 Route::get('/teams',[Homecontroller::class,'teams'])->name('front.teams');

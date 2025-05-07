@@ -6,6 +6,7 @@ use App\Models\About;
 use App\Models\Contact;
 use App\Models\Facility;
 use App\Models\Service;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -118,9 +119,26 @@ return view('front-web.contact_us');
 }
 
 
-public function insertContact(){
+public function insertContact(Request $request)
+{
+    $validated = $request->validate([
+        'fname' => 'required|string|max:255',
+        'lname' => 'required|string|max:255',
+        'phone' => 'required',
+        'email' => 'required|email',
+        'message' => 'required'
+    ]);
 
+    $contact = new Contact();
+    $contact->name = $request->fname . ' ' . $request->lname;
+    $contact->email = $request->email;
+    $contact->mobile_number = $request->phone;
+    $contact->messages = $request->message;
+    $contact->save();
+
+    return redirect()->route('front.contact')->with('success', 'Message sent successfully.');
 }
+
 
 public function teams(){
     return view('front-web.teams');
@@ -129,6 +147,7 @@ public function calendar(){
     return view('pages.calendar');
 }
 public function clinic(){
-    return view('front-web.e_clinic');
+    $teams = User::with('service')->where('role','doctor')->get();
+    return view('front-web.e_clinic',compact('teams'));
 }
 }

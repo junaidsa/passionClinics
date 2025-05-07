@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
 
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <title>Medical Clinic</title>
+    <title>Passion Clinic</title>
 
     <meta name="description" content="" />
 
@@ -103,7 +103,7 @@
                                     <script>
                                         document.write(new Date().getFullYear());
                                     </script>
-                                     made with by <b>Medical Clinic Center</b>
+                                     made with by <b>Passion Clinics</b>
                                 </div>
                             </div>
                         </div>
