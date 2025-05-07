@@ -28,38 +28,27 @@
                     <div class="header-contact-btn">
                         <a href="tel:{{$sett->phone_number}}" class="header-contact-now"><i class="fa-solid fa-phone"></i>{{$sett->phone_number}}</a>
                         <a href="book-appointment.html" class="btn-default">Make an Appointment</a>
-                        <ul class="navbar-nav flex-row align-items-center ms-auto">
-                            <!-- Language -->
-                            <li class="nav-item dropdown-language dropdown me-2 me-xl-0">
-                              <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                                <i class="fi fi-us fis rounded-circle me-1 fs-3"></i>
-                              </a>
-                              <ul class="dropdown-menu dropdown-menu-end">
+                        <li class="nav-item dropdown me-2 me-xl-0">
+                            <a class="nav-link dropdown-toggle hide-arrow" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i id="selected-language-flag" class="fi fi-us fis rounded-circle me-1 fs-2 {{ app()->getLocale() == 'ar' ? 'fi-sa' : 'fi-us' }}"></i>
+                                <span id="selected-language-text"></span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end {{ app()->getLocale() == 'ar' ? 'lang-ar' : 'lang-en' }}" aria-labelledby="languageDropdown">
                                 <li>
-                                  <a class="dropdown-item" href="javascript:void(0);" data-language="en">
-                                    <i class="fi fi-us fis rounded-circle me-1 fs-3"></i>
-                                    <span class="align-middle">English</span>
-                                  </a>
+                                    <a class="dropdown-item" href="#" data-language="en" data-flag="fi-us" data-text="English">
+                                        <i class="fi fi-us fis rounded-circle me-1 fs-2"></i>
+                                        <span class="align-middle">English</span>
+                                    </a>
                                 </li>
                                 <li>
-                                  <a class="dropdown-item" href="javascript:void(0);" data-language="fr">
-                                    <i class="fi fi-fr fis rounded-circle me-1 fs-3"></i>
-                                    <span class="align-middle">French</span>
-                                  </a>
+                                    <a class="dropdown-item" href="#" data-language="ar" data-flag="fi-sa" data-text="Arabic">
+                                        <i class="fi fi-sa fis rounded-circle me-1 fs-2"></i>
+                                        <span class="align-middle">Arabic</span>
+                                    </a>
                                 </li>
-                                <li>
-                                  <a class="dropdown-item" href="javascript:void(0);" data-language="de">
-                                    <i class="fi fi-de fis rounded-circle me-1 fs-3"></i>
-                                    <span class="align-middle">German</span>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a class="dropdown-item" href="javascript:void(0);" data-language="pt">
-                                    <i class="fi fi-pt fis rounded-circle me-1 fs-3"></i>
-                                    <span class="align-middle">Portuguese</span>
-                                  </a>
-                                </li>
-                              </ul>
+                            </ul>
+                        </li>
+
                     </div>
                     <!-- Header Contact Btn End -->
                 </div>
@@ -71,3 +60,6 @@
     </div>
 </header>
 <!-- Header End -->
+@section('javascript')
+@endsection
+

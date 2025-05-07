@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\File;
 use PHPUnit\Architecture\Services\ServiceContainer;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
 
 //  Files Routeing
 Route::get('/fix-cache', function () {
@@ -23,6 +25,16 @@ Route::get('/fix-cache', function () {
     Artisan::call('config:cache');
     return 'Cache cleared';
 });
+Route::get('/lang/{locale}', function (string $locale) {
+    if (!in_array($locale, ['en', 'ar'])) {
+        abort(400);
+    }
+
+    Session::put('locale', $locale);
+    App::setLocale($locale);
+
+    return redirect()->back();
+})->name('lang.switch');
 Route::get('/',[Homecontroller::class,'home'])->name('home');
 Route::get('/about',[Homecontroller::class,'about'])->name('front.about');
 Route::get('/contact',[Homecontroller::class,'contact_us'])->name('front.contact');

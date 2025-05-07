@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="zxx">
+{{-- <html lang="zxx"> --}}
+{{-- <html lang="{{ app()->getLocale() }}" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}"> --}}
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ app()->getLocale() === 'ar' ? 'rtl' : 'ltr' }}">
+
 
 <head>
     <!-- Meta -->
@@ -18,7 +21,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
     <link href="../css2?family=Marcellus&family=Sora:wght@100..800&display=swap" rel="stylesheet">
     <!-- Bootstrap Css -->
-    <link href="{{ asset('public') }}/css/bootstrap.min.css" rel="stylesheet" media="screen">
+
+    @if (app()->getLocale() == 'ar')
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    @else
+        <link href="{{ asset('public') }}/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    @endif
     <!-- SlickNav Css -->
     <link href="{{ asset('public') }}/css/slicknav.min.css" rel="stylesheet">
     <!-- Swiper Css -->
@@ -33,7 +41,12 @@
     <link rel="stylesheet" href="{{ asset('public') }}/css/mousecursor.css">
     <!-- Main Custom Css -->
     <link href="{{ asset('public') }}/css/custom.css" rel="stylesheet" media="screen">
+    <link href="https://cdn.jsdelivr.net/npm/flag-icons/css/flag-icons.min.css" rel="stylesheet">
     <style>
+        li {
+            list-style: none !important;
+        }
+
         .alert-box {
             position: fixed;
             top: 50%;
@@ -48,6 +61,16 @@
             z-index: 9999;
             font-size: 18px;
             animation: fadeInOut 3s forwards;
+        }
+
+        [dir="rtl"] body {
+            direction: rtl;
+            text-align: right;
+        }
+
+        [dir="ltr"] body {
+            direction: ltr;
+            text-align: left;
         }
 
         @keyframes fadeInOut {
@@ -67,6 +90,26 @@
                 opacity: 0;
             }
         }
+
+        /* Default Bootstrap alignment */
+.dropdown-menu-end[data-bs-popper] {
+    right: 0;
+    left: auto;
+}
+
+/* When English is active */
+.dropdown-menu-end.lang-en[data-bs-popper] {
+    margin-top: 1rem;
+    right: -7rem; 
+}
+
+/* When Arabic is active */
+.dropdown-menu-end.lang-ar[data-bs-popper] {
+    margin-top: 1rem;
+    right: auto !important;
+    left: 0 !important;
+}
+
     </style>
 </head>
 
@@ -262,6 +305,43 @@
     <!-- Main Custom js file -->
     <script src="{{ asset('public') }}/js/function.js"></script>
     @yield('javascript')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // When a language is selected
+        document.querySelectorAll('.dropdown-item').forEach(function(item) {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                let flag = this.getAttribute('data-flag');
+                let text = this.getAttribute('data-text');
+
+                if (text === "English") {
+                    document.getElementById('selected-language-flag').className =
+                        "fi fi-us fis rounded-circle me-1 fs-2";
+                    // document.getElementById('selected-language-text').textContent = "English";
+                } else if (text === "Arabic") {
+                    document.getElementById('selected-language-flag').className =
+                        "fi fi-sa fis rounded-circle me-1 fs-2";
+                    // document.getElementById('selected-language-text').textContent = "Arabic";
+                }
+            });
+        });
+
+        document.querySelectorAll('.dropdown-item').forEach(function(item) {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const selectedLang = this.getAttribute('data-language');
+                localStorage.setItem('lang', selectedLang);
+                location.reload(); // Reload page to apply changes
+            });
+        });
+
+        // On load: set direction based on selected language
+        const savedLang = localStorage.getItem('lang') || 'en'; // default English
+        document.documentElement.lang = savedLang;
+        document.documentElement.dir = savedLang === 'ar' ? 'rtl' : 'ltr';
+    </script>
 </body>
 
 </html>
