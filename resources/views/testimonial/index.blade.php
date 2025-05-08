@@ -26,9 +26,23 @@
                             @foreach ($testimonial as $t)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $t->name }}</td>
-                                    <td>{{ $t->designation }}</td>
-                                    <td>{{ $t->message }}</td>
+                                    <td>{{ $t->name }}
+                                        <div dir="rtl">{{$t->name_ar}}</div>
+                                    </td>
+                                    <td>
+                                        {{ $t->designation }}
+                                        <div dir="rtl">
+                                            {{ $t->designation_ar }}
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        {{ $t->message }}
+<div dir="rtl">
+    {{ $t->message_ar }}
+</div>
+
+                                    </td>
                                     <td><img src="{{ url('file/testimonial/' . (@$t->avatar ?? 'noimage.jpeg')) }}"
                                             height="80" width="80" class="rounded-circle"></td>
                                     <td> <a href="{{ url('admin/testimonial/edit/' . $t->id) }}" class="edit-btn"><i

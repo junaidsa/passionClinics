@@ -6,18 +6,18 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 @endsection
 <div class="container-xxl flex-grow-1 container-p-y">
-    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Teams /</span>Create</h4>
+    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Teams /</span>Edit</h4>
     <div class="row">
         <!-- Form controls -->
         <div class="col-md-12">
             <div class="card mb-4">
-                <h5 class="card-header">Create Team</h5>
+                <h5 class="card-header">Edit Team</h5>
                 <div class="card-body">
                     <form action="{{ url('/admin/teams/' . $user->id) }}" method="POST" id="adminForum" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Full Name <span
                                             class="text-danger">*</span> </label>
@@ -29,7 +29,17 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">الاسم الكامل <span class="text-danger">*</span> (Arabic) </label>
+                                    <input type="text" class="form-control @error('name_ar') is-invalid @enderror" id="name_ar" name="name_ar"
+                                        placeholder="أدخل الاسم الكامل" value="{{ old('name', $user->name_ar ?? '') }}" dir="rtl" />
+                                        @error('name_ar')
+                                        <div class=" invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-4">
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email <span
                                             class="text-danger">*</span></label>
@@ -82,8 +92,20 @@
                                     @enderror
                                 </div>
                             </div>
+                            <div class="col-md-4">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlReadOnlyInput1" class="form-label">الفئة (Arabic)<span
+                                            class="text-danger">*</span></label>
+                                    <input class="form-control @error('category_ar') is-invalid @enderror" type="text"
+                                        id="category_ar" name="category_ar" placeholder="أدخل الفئة"
+                                        value="{{ old('category_ar', $user->category_ar ?? '') }}" />
+                                    @error('category_ar')
+                                        <div class=" invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
 
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="mb-3">
                                     <label for="exampleFormControlSelect1" class="form-label">Service Assignment <span
                                             class="text-danger">*</span></label>
@@ -93,7 +115,10 @@
                                         @foreach ($service as $s)
                                         <option value="{{ $s->id }}"
                                             {{ old('service_id', $user->service_id) == $s->id ? 'selected' : '' }}>
-                                            {{ $s->title }}
+                                            {{ $s->title_en }}
+                                            <small dir="rtl">
+                                                {{ $s->title_ar }}
+                                            </small>
                                         </option>
                                     @endforeach
                                     </select>
@@ -102,7 +127,7 @@
                                     @enderror
                                 </div>
                             </div>
-                            <div class="col-md-6 col-sm-6 col-6 mb-2">
+                            <div class="col-md-4 col-sm-6 col-6 mb-2">
                                 <label class="form-label">Image/Avatar</label>
                                 <input type="file" name="image" class="form-control" />
                             </div>
@@ -121,17 +146,39 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="mb-3 form-password-toggle">
+                                    <label class="form-label" for="basic-default-password">About <span
+                                            class="text-danger">*</span></label>
+                                    <div class="input-group input-group-merge">
+                                        <textarea class="form-control @error('about_ar') is-invalid @enderror" name="about_ar" id="about_ar">{{ $user->about_ar }}</textarea>
+                                        @error('about_ar')
+                                            <div class=" invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="mb-3 form-password-toggle">
                                     <label class="form-label" for="basic-default-password">Personals Info <span
                                             class="text-danger">*</span></label>
                                     <div class="input-group input-group-merge">
                                         <textarea class="form-control textarea @error('personals_info') is-invalid @enderror" name="personals_info"
-                                            id="personals_info">{!! $user->personals_info !!}</textarea>
+                                            id="personals_info">{{ $user->personals_info }}</textarea>
                                         @error('personals_info')
                                             <div class=" invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-md-12">
+                                <div class="mb-3 form-password-toggle">
+                                    <label class="form-label" for="basic-default-password">معلومات شخصية <span class="text-danger">*</span></label>
+                                    <div class="input-group input-group-merge">
+                                        <textarea class="form-control" name="personals_info_ar" id="personals_info_ar" dir="rtl" >{{ $user->personals_info_ar }}</textarea>
+                                    </div>
+                                  </div>
+                              </div>
+
 
                             <div class="col-md-4">
                                 <div class="mb-3 form-password-toggle">
@@ -171,14 +218,4 @@
         </div>
     </div>
 </div>
-@endsection
-@section('link-js')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.27.3/trumbowyg.min.js"
-    integrity="sha512-YJgZG+6o3xSc0k5wv774GS+W1gx0vuSI/kr0E0UylL/Qg/noNspPtYwHPN9q6n59CTR/uhgXfjDXLTRI+uIryg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-@endsection
-@section('javascript')
-<script>
-    $('.textarea').trumbowyg();
-</script>
 @endsection
