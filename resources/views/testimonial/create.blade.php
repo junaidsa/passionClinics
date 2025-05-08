@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('main')
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Categories/</span>Create</h4>
+        <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Categories / </span>Create</h4>
         <div class="row">
             <!-- Form controls -->
             <div class="col-md-12">
@@ -24,10 +24,30 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
+                                        <label for="subject_name" class="form-label float-end">اسم (Arabic)</label>
+                                        <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                            id="name_ar" name="name_ar" placeholder="أدخل الاسم" dir="rtl" />
+                                        @error('name_ar')
+                                            <div class=" invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
                                         <label for="designation" class="form-label">Designation</label>
                                         <input type="text" class="form-control @error('designation') is-invalid @enderror"
                                             id="designation" name="designation" placeholder="Enter  Designation" />
                                         @error('designation')
+                                            <div class=" invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="designation" class="form-label float-end">تعيين (Arabic)</label>
+                                        <input type="text" class="form-control @error('designation_ar') is-invalid @enderror"
+                                            id="designation_ar" name="designation_ar" placeholder="أدخل التعيين" dir="rtl" />
+                                        @error('designation_ar')
                                             <div class=" invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -39,6 +59,16 @@
                                             <textarea class="form-control @error('message') is-invalid @enderror" id="message"
                                             name="message" rows="5" placeholder="Message"></textarea>
                                         @error('message')
+                                            <div class=" invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="mb-3">
+                                        <label for="message" class="form-label float-end">رسالة (Arabic)</label>
+                                            <textarea class="form-control @error('message_ar') is-invalid @enderror" id="message"
+                                            name="message_ar" rows="5" placeholder="رسالة" dir="rtl"></textarea>
+                                        @error('message_ar')
                                             <div class=" invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>

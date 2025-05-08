@@ -122,7 +122,7 @@
                         <select name="service" id="service" class="form-control">
                             <option value="">Select Service</option>
                             @foreach ($services as $ser)
-                                <option value="{{ $ser->id }}">{{ $ser->title }}</option>
+                                <option value="{{ $ser->id }}">{{ $ser->title_en }}</option>
                             @endforeach
                         </select>
                         <div class="invalid-feedback"></div>

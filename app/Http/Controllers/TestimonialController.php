@@ -19,8 +19,11 @@ class TestimonialController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
+            'name_ar' => 'required|string|max:255',
             'designation' => 'required',
+            'designation_ar' => 'required',
             'message' => 'required',
+            'message_ar' => 'required',
             'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
@@ -31,9 +34,12 @@ class TestimonialController extends Controller
             $avatar->move($destinationPath, $avatarName);
             $project = Testimonials::create([
                 'name' => $request->name,
+                'name_ar' => $request->name_ar,
+                'designation_ar' => $request->designation_ar,
                 'designation' => $request->designation,
                 'avatar' => $avatarName,
                 'message' => $request->message,
+                'message_ar' => $request->message_ar,
             ]);
             return redirect()->route('testimonial.index')->with('success', 'Testimonials added successfully.');
         } else {
@@ -54,8 +60,11 @@ class TestimonialController extends Controller
 {
     $validated = $request->validate([
         'name' => 'required|string|max:255',
+        'name_ar' => 'required|string|max:255',
         'designation' => 'required',
+        'designation_ar' => 'required',
         'message' => 'required',
+        'message_ar' => 'required',
         'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
     ]);
 
@@ -76,10 +85,12 @@ class TestimonialController extends Controller
     }
 
     $testimonial->name = $request->name;
+    $testimonial->name_ar = $request->name_ar;
     $testimonial->designation = $request->designation;
+    $testimonial->designation_ar = $request->designation_ar;
     $testimonial->message = $request->message;
+    $testimonial->message_ar = $request->message_ar;
     $testimonial->save();
-
     return redirect()->route('testimonial.index')->with('success', 'Testimonial updated successfully.');
 }
 
