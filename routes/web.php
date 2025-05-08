@@ -4,6 +4,7 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SettingController;
@@ -15,6 +16,7 @@ use Illuminate\Support\Facades\File;
 use PHPUnit\Architecture\Services\ServiceContainer;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
+use App\Http\Middleware\SetLocale;
 
 //  Files Routeing
 Route::get('/fix-cache', function () {
@@ -25,16 +27,11 @@ Route::get('/fix-cache', function () {
     Artisan::call('config:cache');
     return 'Cache cleared';
 });
-Route::get('/lang/{locale}', function (string $locale) {
-    if (!in_array($locale, ['en', 'ar'])) {
-        abort(400);
-    }
+Route::middleware([
+    SetLocale::class,
+])->group(function () {
 
-    Session::put('locale', $locale);
-    App::setLocale($locale);
-
-    return redirect()->back();
-})->name('lang.switch');
+Route::post('/set-language', [LanguageController::class, 'setLanguage'])->name('language.set');
 Route::get('/',[Homecontroller::class,'home'])->name('home');
 Route::get('/about',[Homecontroller::class,'about'])->name('front.about');
 Route::get('/contact',[Homecontroller::class,'contact_us'])->name('front.contact');
@@ -45,6 +42,8 @@ Route::get('/teams',[Homecontroller::class,'teams'])->name('front.teams');
 Route::get('/team/{id}',[TeamController::class,'team_profile'])->name('front.team');
 Route::get('/admin/dashboard',[Homecontroller::class,'dashboard'])->name('dashboard');
 Route::get('/e-clinic',[Homecontroller::class,'clinic'])->name('front.clinic');
+});
+
 Route::middleware('auth')->group(function () {
 Route::get('/admin/dashboard',[Homecontroller::class,'dashboard'])->name('dashboard');
 Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

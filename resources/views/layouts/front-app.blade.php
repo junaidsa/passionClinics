@@ -12,6 +12,7 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="Awaiken">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!-- Page Title -->
     <title>Passion Clinics</title>
     <!-- Favicon Icon -->
@@ -91,25 +92,18 @@
             }
         }
 
-        /* Default Bootstrap alignment */
-.dropdown-menu-end[data-bs-popper] {
-    right: 0;
-    left: auto;
-}
+        .dropdown-menu-end[data-bs-popper] {
+            right: 0;
+            left: auto;
+        }
 
-/* When English is active */
-.dropdown-menu-end.lang-en[data-bs-popper] {
-    margin-top: 1rem;
-    right: -7rem; 
-}
 
-/* When Arabic is active */
-.dropdown-menu-end.lang-ar[data-bs-popper] {
-    margin-top: 1rem;
-    right: auto !important;
-    left: 0 !important;
-}
-
+        /* When Arabic is active */
+        .dropdown-menu-end.lang-ar[data-bs-popper] {
+            margin-top: 1rem;
+            right: auto !important;
+            left: 0 !important;
+        }
     </style>
 </head>
 
@@ -307,41 +301,57 @@
     @yield('javascript')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // When a language is selected
-        document.querySelectorAll('.dropdown-item').forEach(function(item) {
-            item.addEventListener('click', function(e) {
-                e.preventDefault();
-
-                let flag = this.getAttribute('data-flag');
-                let text = this.getAttribute('data-text');
-
-                if (text === "English") {
-                    document.getElementById('selected-language-flag').className =
-                        "fi fi-us fis rounded-circle me-1 fs-2";
-                    // document.getElementById('selected-language-text').textContent = "English";
-                } else if (text === "Arabic") {
-                    document.getElementById('selected-language-flag').className =
-                        "fi fi-sa fis rounded-circle me-1 fs-2";
-                    // document.getElementById('selected-language-text').textContent = "Arabic";
-                }
-            });
-        });
-
-        document.querySelectorAll('.dropdown-item').forEach(function(item) {
-            item.addEventListener('click', function(e) {
-                e.preventDefault();
-
-                const selectedLang = this.getAttribute('data-language');
-                localStorage.setItem('lang', selectedLang);
-                location.reload(); // Reload page to apply changes
-            });
-        });
-
-        // On load: set direction based on selected language
-        const savedLang = localStorage.getItem('lang') || 'en'; // default English
+        // Set the language and direction on page load
+        const savedLang = localStorage.getItem('lang') || 'en';
         document.documentElement.lang = savedLang;
         document.documentElement.dir = savedLang === 'ar' ? 'rtl' : 'ltr';
+
+        // Update flag icon
+        const flagElement = document.getElementById('selected-language-flag');
+        if (flagElement) {
+            if (savedLang === 'en') {
+                flagElement.className = "fi fi-us fis rounded-circle me-1 fs-2";
+            } else if (savedLang === 'ar') {
+                flagElement.className = "fi fi-sa fis rounded-circle me-1 fs-2";
+            }
+        }
+
+        // Update dropdown class based on language
+        const dropdownMenu = document.querySelector('.dropdown-menu-end');
+        if (dropdownMenu) {
+            dropdownMenu.classList.remove('lang-en', 'lang-ar');
+            dropdownMenu.classList.add(savedLang === 'ar' ? 'lang-ar' : 'lang-en');
+        }
+
+        // Language change handler
+        $(document).ready(function () {
+            $('.dropdown-item').on('click', function (e) {
+                e.preventDefault();
+
+                const selectedLang = $(this).data('language');
+                localStorage.setItem('lang', selectedLang);
+
+                const csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+                $.ajax({
+                    url: "{{ route('language.set') }}",
+                    type: "POST",
+                    data: {
+                        language: selectedLang,
+                        _token: csrfToken
+                    },
+                    success: function () {
+                        // alert('Language changed successfully');
+                        location.reload();
+                    },
+                    error: function (xhr, status, error) {
+                        console.error("There was an error changing the language:", error);
+                    }
+                });
+            });
+        });
     </script>
+
 </body>
 
 </html>

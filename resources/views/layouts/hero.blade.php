@@ -9,20 +9,17 @@
                     <div class="hero-content">
                         <!-- Section Title Start -->
                         <div class="section-title">
-                            {{-- <h3 class="wow fadeInUp">WELCOME TO PASSION CLINICS</h3> --}}
-                            <h3 class="wow fadeInUp">مرحباً بكم في عيادات باشن</h3>
+                            <h3 class="wow fadeInUp">@lang('app.welcome_to_passion_clinic')</h3>
                             <h1 class="text-anime-style-3" data-cursor="-opaque">{{$sett->title}}</h1>
-                            <p class="wow fadeInUp" data-wow-delay="0.2s">{{$sett->description}}</p>
+                            <p class="wow fadeInUp" data-wow-delay="0.2s" >{{$sett->description}}</p>
                         </div>
                         <div class="hero-body wow fadeInUp" data-wow-delay="0.4s">
                             <!-- Hero Button Start -->
                             <div class="hero-btn">
-                                {{-- <a href="#" class="btn-default btn-highlighted">Book an Appointment</a> --}}
-                                <a href="#" class="btn-default btn-highlighted">حجز موعد</a>
+                                <a href="#" class="btn-default btn-highlighted">@lang('app.book_an_appointment')</a>
                             </div>
                             <div class="video-play-button">
-                                {{-- <p>Watch Video</p> --}}
-                                <p>شاهد الفيديو</p>
+                                <p>@lang('app.watch_video')</p>
                                 <a href="{{$sett->youtube_url}}" class="popup-video" data-cursor-text="Play">
                                     <i class="fa-solid fa-play"></i>
                                 </a>

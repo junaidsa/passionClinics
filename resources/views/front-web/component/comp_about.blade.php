@@ -55,7 +55,7 @@
         <div class="about-us-content">
             <!-- Section Title Start -->
             <div class="section-title">
-                <h3 class="wow fadeInUp">About us</h3>
+                <h3 class="wow fadeInUp">@lang('app.about_us')</h3>
                 <h2 class="text-anime-style-3" data-cursor="-opaque">{{@$about->about_title}}</h2>
                 {!! @$about->about!!}
             </div>
@@ -66,9 +66,9 @@
                 <!-- About Experience List Start -->
                 <div class="about-experience-list wow fadeInUp" data-wow-delay="0.4s">
                     <ul>
-                        <li>Your Beauty, Our Expertise</li>
-                        <li>Where Science Meets Beauty</li>
-                        <li>Cutting-Edge Techniques</li>
+                        <li>@lang('app.your_beauty_our_expertise')</li>
+                        <li>@lang('app.where_science_meets_beauty')</li>
+                        <li>@lang('app.cutting_edge_techniques')</li>
                     </ul>
                 </div>
                 <!-- About Experience List End -->
@@ -91,7 +91,7 @@
                         <i class="fa-solid fa-phone"></i>
                     </div>
                     <div class="about-contact-box-content">
-                        <p>Need Help!</p>
+                        <p>@lang('app.need_help')</p>
                         <h3><a href="tel:{{$sett->phone_number}}">{{$sett->phone_number}}</a></h3>
                     </div>
                 </div>
@@ -99,7 +99,7 @@
 
                 <!-- About Contact Button Start -->
                 <div class="about-us-btn">
-                    <a href="{{url('/about')}}" class="btn-default">more about</a>
+                    <a href="{{url('/about')}}" class="btn-default">@lang('app.about_us')</a>
                 </div>
                 <!-- About Contact Button End -->
             </div>

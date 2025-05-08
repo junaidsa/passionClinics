@@ -100,11 +100,11 @@
                 <div class="col-lg-12">
                     <!-- Section Title Start -->
                     <div class="section-title section-title-center">
-                        <h3 class="wow fadeInUp">Services</h3>
+                        <h3 class="wow fadeInUp">@lang('app.services')</h3>
                         <p class="wow fadeInUp" data-wow-delay="0.2s">
-                            Feel beautiful, be beautiful</p>
-                        <h2 class="text-anime-style-3" data-cursor="-opaque">Again Discover yourself</h2>
-                        <p class="wow fadeInUp" data-wow-delay="0.2s">With over 18 years of experience in the field, Passion Clinics offer the Kingdom and the Middle East a unique luxury experience by adopting the latest and most advanced technologies in cosmetic surgery and non-cosmetic cosmetic procedures</p>
+                            @lang('app.feel_beautiful_be_beautiful')</p>
+                        <h2 class="text-anime-style-3" data-cursor="-opaque">@lang('app.again_discover_yourself')</h2>
+                        <p class="wow fadeInUp" data-wow-delay="0.2s">@lang('app.services_description')</p>
                     </div>
                     <!-- Section Title End -->
                 </div>
