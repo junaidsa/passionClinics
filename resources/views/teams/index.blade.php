@@ -27,10 +27,18 @@
                             @foreach ($users as $u)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $u->name }}</td>
+                                    <td>{{ $u->name }}
+                                        <div dir="rtl">
+                                            {{ $u->name_ar }}
+                                        </div>
+                                    </td>
                                     <td>{{ $u->email }}</td>
                                     <td>{{ $u->experience }}</td>
-                                    <td>{{ $u->about }}</td>
+                                    <td>{{ $u->about }}
+                                        <div dir="rtl">
+                                            {{ $u->about_ar }}
+                                        </div>
+                                    </td>
                                     <td><img src="{{ url('file/dr/' . (@$u->image ?? 'noimage.jpeg')) }}"
                                             height="80" width="80" class="rounded-circle"></td>
                                     <td> <a href="{{ url('admin/teams/edit/' . $u->id) }}" class="edit-btn"><i

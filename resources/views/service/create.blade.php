@@ -69,24 +69,22 @@
 <!-- English Description -->
 <div class="col-12">
     <label class="form-label" for="description_en">Description (English)</label>
-    <textarea class="form-control description_en @error('description_en') is-invalid @enderror" id="description_en"
-        name="description_en" rows="3" placeholder="Description in English"
+    <textarea class="form-control  @error('description_en') is-invalid @enderror" id="description_en"
+        name="description_en" rows="5" placeholder="Description in English"
         dir="ltr">{{ old('description_en') }}</textarea>
     @error('description_en')
         <div class="invalid-feedback">{{ $message }}</div>
     @enderror
 </div>
-
-<!-- Arabic Description -->
 <div class="col-12">
-    <label class="form-label" for="description_ar">الوصف (Arabic)</label>
-    <textarea class="form-control description_ar @error('description_ar') is-invalid @enderror" id="description_ar"
-        name="description_ar" rows="3" placeholder="اكتب الوصف بالعربية">{{ old('description_ar') }}</textarea>
+    <label class="form-label" for="description_ar">Description (Arabic)</label>
+    <textarea class="form-control textarea  @error('description_ar') is-invalid @enderror" id="description_ar"
+        name="description_ar" rows="5" placeholder="الوصف باللغة العربية"
+        dir="rtl">{{ old('description_ar') }}</textarea>
     @error('description_ar')
         <div class="invalid-feedback">{{ $message }}</div>
     @enderror
 </div>
-
 
                                     <div class="col-md-12">
                                         <label class="form-label" for="landmark">Main Image</label>
@@ -127,51 +125,4 @@
     <!-- /Sticky Actions -->
 </div>
 <!-- / Content -->
-@endsection
-@section('link-js')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.27.3/trumbowyg.min.js"
-    integrity="sha512-YJgZG+6o3xSc0k5wv774GS+W1gx0vuSI/kr0E0UylL/Qg/noNspPtYwHPN9q6n59CTR/uhgXfjDXLTRI+uIryg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-@endsection
-@section('javascript')
-<script>
-    // English Editor (LTR)
-    $('#description_en').trumbowyg({
-        btns: [
-            ['strong', 'em', 'underline'],
-            ['justifyLeft', 'justifyCenter', 'justifyRight'],
-            ['unorderedList', 'orderedList'],
-            ['link'],
-            ['removeformat']
-        ],
-        autogrow: true
-    }).on('tbwinit', function () {
-        // Target ONLY the English editor
-        $(this).siblings('.trumbowyg-box').find('.trumbowyg-editor').css({
-            'direction': 'ltr',
-            'text-align': 'left'
-        });
-    });
-
-    // Arabic Editor (RTL)
-    $('#description_ar').trumbowyg({
-        btns: [
-            ['strong', 'em', 'underline'],
-            ['justifyRight', 'justifyCenter', 'justifyLeft'],
-            ['unorderedList', 'orderedList'],
-            ['link'],
-            ['removeformat']
-        ],
-        autogrow: true,
-        lang: 'ar'
-    }).on('tbwinit', function () {
-        // Target ONLY the Arabic editor
-        $(this).siblings('.trumbowyg-box').find('.trumbowyg-editor').css({
-            'direction': 'rtl',
-            'text-align': 'right'
-        });
-    });
-</script>
-
-
 @endsection

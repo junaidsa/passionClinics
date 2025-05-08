@@ -15,8 +15,8 @@
                         <thead>
                             <tr>
                                 <th>Sr</th>
-                                <th>Title</th>
-                                <th>Sub Title</th>
+                                <th>Title (English)</th>
+                                <th>Title (Arabic)</th>
                                 <th>Short Discripation</th>
                                 <th>Image</th>
                                 <th>Action</th>
@@ -26,9 +26,13 @@
                             @foreach ($services as $s)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ @$s->title}}</td>
-                                    <td>{{ @$s->sub_title }}</td>
-                                    <td>{{ @$s->short_description }}</td>
+                                    <td>{{ @$s->title_en}}</td>
+                                    <td dir="rtl">{{ @$s->title_ar}}</td>
+                                    <td>{{ @$s->short_description_en }}
+                                       <div dir="rtl">
+                                        {{ @$s->short_description_ar }}
+                                       </div>
+                                    </td>
                                     <td><img src="{{ url('file/service/' . (@$s->main_image ?? 'noimage.jpeg')) }}" height="80" width="80" class="rounded-circle"></td>
                                     <td>
                                         <a href="{{url('admin/service/faq/'.$s->id)}}" class="faq-btn ">Faq</a> |

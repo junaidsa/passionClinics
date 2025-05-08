@@ -30,15 +30,18 @@ class ServiceController extends Controller
     }
     public function store(Request $request)
     {
-        // Basic validation first
         $validator = Validator::make($request->all(), [
-            'title' => 'required|string|max:255',
-            'sub_title' => 'required|string|max:255',
-            'discripation' => 'required',
-            'short_discripation' => 'required',
-            'main_image' => 'required|file|image',
-            'video_url' => 'required|url',
+            'title_en' => 'required|string|max:255',
+            'title_ar' => 'required|string|max:255',
+            'description_ar' => 'required',
+            'description_en' => 'required',
+            'short_description_en' => 'required',
+            'short_description_ar' => 'required',
+            'main_image' => 'required|image', // optionally check if it's an image
+            'video_thumbnail' => 'nullable|image', // if optional
+            'video_url' => 'nullable|url', // if optional
         ]);
+
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
@@ -57,13 +60,15 @@ class ServiceController extends Controller
 
         // Save to database
         $services = Service::create([
-            'title' => $request->title,
-            'sub_title' => $request->sub_title,
+            'title_en' => $request->title_en,
+            'title_ar' => $request->title_ar,
             'video_url' => $request->video_url,
             'main_image' => $avatarName,
             'video_thumbnail' => $videoThumbnailName,
-            'description' => $request->discripation,
-            'short_description' => $request->short_discripation,
+            'description_en' => $request->description_en,
+            'description_ar' => $request->description_ar,
+            'short_description_ar' => $request->short_description_ar,
+            'short_description_en' => $request->short_description_en,
         ]);
 
         return redirect()->route('service.index')->with('success', 'Service added successfully.');
@@ -84,13 +89,15 @@ class ServiceController extends Controller
         $service = Service::findOrFail($id);
 
         $validator = Validator::make($request->all(), [
-            'title' => 'required|string|max:255',
-            'sub_title' => 'required|string|max:255',
-            'discripation' => 'required',
-            'short_discripation' => 'required',
+            'title_en' => 'required|string|max:255',
+            'title_ar' => 'required|string|max:255',
+            'description_ar' => 'required',
+            'description_en' => 'required',
+            'short_description_en' => 'required',
+            'short_description_ar' => 'required',
             'main_image' => 'nullable|file|image',
-            'video_url' => 'required|url',
-            'video_thumbnail' => 'nullable',
+            'video_thumbnail' => 'nullable|image', // if optional
+            'video_url' => 'nullable|url', // if optional
         ]);
 
         if ($validator->fails()) {
@@ -121,125 +128,21 @@ class ServiceController extends Controller
         }
 
         $service->update([
-            'title' => $request->title,
-            'sub_title' => $request->sub_title,
+            'title_en' => $request->title_en,
+            'title_ar' => $request->title_ar,
             'video_url' => $request->video_url,
             'main_image' => $avatarName,
             'video_thumbnail' => $videoThumbnailName,
-            'description' => $request->discripation,
-            'short_description' => $request->short_discripation,
+            'description_ar' => $request->description_ar,
+            'description_en' => $request->description_en,
+            'short_description_ar' => $request->short_description_ar,
+            'short_description_en' => $request->short_description_en,
+
         ]);
 
         return redirect()->route('service.index')->with('success', 'Service updated successfully.');
     }
 
-
-    // public function serviceupdate(Request $request)
-    // {
-    //     $validated = $request->validate([
-    //         'id' => 'required|exists:projects,id',
-    //         'project_name' => 'required|string|max:255',
-    //         'title' => 'required|string|max:255',
-    //         'discripation' => 'required',
-    //         'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-    //     ]);
-
-    //     $project = Service::find($request->id);
-
-    //     if ($request->hasFile('image')) {
-    //         $document = $request->file('image');
-    //         $name = now()->format('Y-m-d_H-i-s') . '-image';
-    //         $file = $name . '.' . $document->getClientOriginalExtension();
-    //         $targetDir = public_path('./files');
-    //         $document->move($targetDir, $file);
-    //         // Optional: delete old image if needed
-    //         @unlink(public_path('./files/' . $project->image));
-    //         $project->image = $file;
-    //     }
-
-    //     $project->project_name = $request->project_name;
-    //     $project->title = $request->title;
-    //     $project->video_url = $request->video_url;
-    //     $project->discripation = $request->discripation;
-    //     $project->save();
-
-    //     return redirect()->route('service.index')->with('success', 'Service updated successfully.');
-    // }
-
-
-
-
-
-    // public function gallery($id){
-    //     $galleries = Galleries::where('project_id',$id)->get();
-
-    //     return view('projects.gallery',compact('galleries','id'));
-    // }
-    // public function deleteGallery($id)
-    // {
-    //     $gallery = Galleries::findOrFail($id);
-    //     if(file_exists(public_path($gallery->image))){
-    //         unlink(public_path($gallery->image));
-    //     }
-    //     $gallery->delete();
-
-    //     return response()->json(['success' => true]);
-    // }
-    // public function uploadGallery(Request $request)
-    // {
-    //     if($request->hasFile('attachment')) {
-    //         foreach($request->file('attachment') as $file) {
-    //             $filename = time().'_'.$file->getClientOriginalName();
-    //             $file->move(public_path('projects/galleries'), $filename);
-
-    //             Galleries::create([
-    //                 'project_id' => $request->project_id,
-    //                 'image' => 'public/projects/galleries/' . $filename,
-    //             ]);
-    //         }
-    //     }
-
-    //     return response()->json(['success' => true]);
-    // }
-    // public function amenitles($id){
-    //     $amenitles = Amenities::where('project_id',$id)->get();
-
-    //     return view('projects.amenitles',compact('amenitles','id'));
-    // }
-    // public function uploadAmenitles(Request $request)
-    // {
-    //     $request->validate([
-    //         'title' => 'required|string|max:255',
-    //         'attachment' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240'
-    //     ]);
-
-    //     $filename = null;
-    //     if ($request->hasFile('attachment')) {
-    //         $file = $request->file('attachment');
-    //         $filename = 'public/project/amenities/' . time() . '_' . $file->getClientOriginalName();
-    //         $file->move(public_path('project/amenities'), basename($filename));
-    //     }
-
-    //     Amenities::create([
-    //         'project_id' => $request->project_id,
-    //         'title' => $request->title,
-    //         'icon' => $filename,
-    //     ]);
-
-    //     return response()->json(['success' => true]);
-    //     return redirect()->back()->with('success', 'About Update Successfully');
-    // }
-
-    // public function deleteAmenitles($id)
-    // {
-    //     $item = Amenities::findOrFail($id);
-    //     if (file_exists(public_path($item->icon))) {
-    //         unlink(public_path($item->icon));
-    //     }
-    //     $item->delete();
-
-    //     return response()->json(['success' => true]);
-    // }
 
     public function featured($id)
     {

@@ -23,13 +23,14 @@ class TeamController extends Controller
     public function store(Request $request){
         $validated = $request->validate([
             'name' => 'required',
+            'name_ar' => 'required',
             'email' => 'required|email',
             'password' => 'required|min:5',
             'experience' => 'required',
             'about' => 'required',
             'category' => 'required',
+            'category_ar' => 'required',
             'service_id' => 'required',
-            'personals_info' => 'required',
         ]);
         if (User::where('email', $request->email)->exists()) {
             return redirect()->back()->withErrors(['email' => 'The email has already been taken.'])->withInput();
@@ -45,13 +46,17 @@ class TeamController extends Controller
 
         $staff = new User();
         $staff->name = $request->input('name');
+        $staff->name_ar = $request->input('name_ar');
         $staff->service_id = $request->input('service_id');
         $staff->category = $request->input('category');
+        $staff->category_ar = $request->input('category_ar');
         $staff->email = $request->input('email');
         $staff->experience = $request->input('experience');
         $staff->image = $image;
         $staff->about = $request->input('about');
+        $staff->about_ar = $request->input('about_ar');
         $staff->personals_info = $request->input('personals_info');
+        $staff->personals_info_ar = $request->input('personals_info_ar');
         $staff->fb_url = $request->input('fb_url');
         $staff->ins_url = $request->input('ins_url');
         $staff->x_url = $request->input('x_url');
@@ -89,32 +94,33 @@ class TeamController extends Controller
 {
     $validated = $request->validate([
         'name' => 'required',
+        'name_ar' => 'required',
         'email' => 'required|email|unique:users,email,' . $id,
         'experience' => 'required',
         'about' => 'required',
         'category' => 'required',
-        'personals_info' => 'required',
+        'category_ar' => 'required',
     ]);
 
     $staff = User::findOrFail($id);
-
-    // Handle image upload
     if ($request->hasFile('image')) {
         $image_pro = $request->file('image');
         $image = time() . '_profile.' . $image_pro->getClientOriginalExtension();
         $destinationPath = base_path('../aluniquefurniture_uploads/profile/');
         $image_pro->move($destinationPath, $image);
-
-        // Optionally delete old image here if needed
         $staff->image = $image;
     }
 
     $staff->name = $request->input('name');
+    $staff->name_ar = $request->input('name_ar');
     $staff->category = $request->input('category');
+    $staff->category_ar = $request->input('category_ar');
     $staff->email = $request->input('email');
     $staff->experience = $request->input('experience');
     $staff->about = $request->input('about');
+    $staff->about_ar = $request->input('about_ar');
     $staff->personals_info = $request->input('personals_info');
+    $staff->personals_info_ar = $request->input('personals_info_ar');
     $staff->fb_url = $request->input('fb_url');
     $staff->ins_url = $request->input('ins_url');
     $staff->x_url = $request->input('x_url');
