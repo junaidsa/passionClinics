@@ -12,9 +12,13 @@
                                 <div class="row g-3">
                                     <form id="amenityForm" enctype="multipart/form-data">
                                         @csrf
-                                        <div class="col-md-12">
+                                        <div class="col-md-12 mb-2">
                                             <label class="form-label" for="name">Name</label>
                                             <input type="text" name="name" id="name" class="form-control" />
+                                        </div>
+                                        <div class="col-md-12 mb-2">
+                                            <label class="form-label" for="name_ar">اسم (Arabic)</label>
+                                            <input type="text" name="name_ar" id="name_ar" dir="rtl" class="form-control" placeholder="اسم" />
                                         </div>
                                         <div class="col-md-12 col-sm-6 col-6 mb-2">
                                             <label class="form-label">Image/Avatar</label>
@@ -40,7 +44,11 @@
                                         <img src="{{ url('file/facility/' . (@$f->avatar ?? 'avatar.jpg')) }}"
                                             class="card-img-top img-thumbnail">
                                         <div class="card-body text-center">
-                                            <h6>{{ $f->name }}</h6>
+                                            <h6>
+                                                {{ $f->name }}
+                                                <div dir="rtl">{{$f->name_ar}}</div>
+
+                                            </h6>
                                             <button class="btn btn-danger btn-sm delete-amenity"
                                                 data-id="{{ $f->id }}">Delete</button>
                                         </div>

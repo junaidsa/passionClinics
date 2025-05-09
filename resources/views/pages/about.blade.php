@@ -22,12 +22,25 @@
                                         <label class="form-label" for="title">Title</label>
                                         <input type="text" value="{{ $ab->about_title }}" name="about_title" id="about_title" class="form-control" />
                                     </div>
-
-                                     <textarea class="textarea" name="about" id="about-update" cols="5" rows="5"
-                                     placeholder="Write About">{{$ab->about ?? ''}}</textarea>
-                                     @error('about')
-                                     <div class="text text-danger">{{ $message }}</div>
-                                     @enderror
+                                     <div class="col-md-12 mb-4">
+                                         <label class="form-label" for="title">عنوان</label>
+                                         <input type="text" value="{{ @$ab->about_title_ar }}" name="about_title_ar" id="about_title" class="form-control" dir="rtl" />
+                                        </div>
+                                        <div class="col-md-12 mb-4">
+                                            <textarea class="form-control" name="about" id="about-update"  rows="5"
+                                            placeholder="Write About">{{@$ab->about}}</textarea>
+                                            @error('about')
+                                            <div class="text text-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-12 mb-4">
+                                            <label class="form-label" for="title">عن</label>
+                                            <textarea class="form-control" name="about_ar" dir="rtl" rows="5"
+                                            placeholder="اكتب عنها">{{@$ab->about_ar}}</textarea>
+                                            @error('about')
+                                            <div class="text text-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
 
 
 
@@ -56,7 +69,7 @@
                                     <input type="file" name="about_team" class="form-control" />
                                 </div>
                                  <div class="col-md-4 col-sm-6 col-6 mt-4 mb-4">
-                                    <img src="{{ url('file/about/' . (@$ab->about_team ?? 'avatar.jpg')) }}" alt="Blog Image" width="70" height="70" class="rounded-circle">
+                                    <img src="{{ url('file/about/'.(@$ab->about_team ?? 'avatar.jpg')) }}" alt="Blog Image" width="70" height="70" class="rounded-circle">
                                 </div>
                               </div>
                                      <div class="col-md-12 text-right float-right mt-2">
@@ -70,14 +83,4 @@
             </div>
         </div>
     </div>
-@endsection
-@section('link-js')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.27.3/trumbowyg.min.js" integrity="sha512-YJgZG+6o3xSc0k5wv774GS+W1gx0vuSI/kr0E0UylL/Qg/noNspPtYwHPN9q6n59CTR/uhgXfjDXLTRI+uIryg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-@endsection
-@section('javascript')
-
-<script>
-    $('.textarea').trumbowyg();
-</script>
-
 @endsection

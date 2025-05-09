@@ -30,8 +30,8 @@ class BlogController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'short_description' => 'required|string|max:255',
-            'bolg_description' => 'required',
+            'title_en' => 'required|string|max:255',
+            'title_ar' => 'required|string|max:255',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
         ]);
 
@@ -41,9 +41,11 @@ class BlogController extends Controller
             $destinationPath = base_path('../aluniquefurniture_uploads/blogs/');
             $document->move($destinationPath, $avatarName);
             $blog = Blog::create([
+                'title_en' => $request->title_en,
+                'title_ar' => $request->title_ar,
+                'description' => $request->description,
+                'description_ar' => $request->description_ar,
                 'image' => $avatarName,
-                'short_description' => $request->short_description,
-                'description' => $request->bolg_description,
             ]);
 
             return redirect()->route('blog.index')->with('success', 'Blogs added successfully.');
@@ -61,8 +63,8 @@ class BlogController extends Controller
     public function blogUpdate(Request $request, $id)
     {
         $validated = $request->validate([
-            'short_description' => 'required|string|max:255',
-            'bolg_description' => 'required',
+            'title_en' => 'required|string|max:255',
+            'title_ar' => 'required|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
         ]);
 
@@ -83,8 +85,10 @@ class BlogController extends Controller
             $blog->image = $avatarName;
         }
 
-        $blog->short_description = $request->short_description;
-        $blog->description = $request->bolg_description;
+        $blog->title_en = $request->title_en;
+        $blog->title_ar = $request->title_ar;
+        $blog->description = $request->description;
+        $blog->description_ar = $request->description_ar;
         $blog->save();
 
         return redirect()->route('blog.index')->with('success', 'Blog updated successfully.');

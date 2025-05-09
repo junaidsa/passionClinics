@@ -16,7 +16,6 @@
                             <tr>
                                 <th>Sr</th>
                                 <th>Title</th>
-                                <th>Description</th>
                                 <th>image</th>
                                 <th>Action</th>
                             </tr>
@@ -25,8 +24,9 @@
                             @foreach ($blog as $b)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ @$b->short_description }}</td>
-                                    <td>{!! @$b->description !!}</td>
+                                    <td>{{ @$b->title_en }}
+                                        <div dir="rtl">{{ @$b->title_ar }}</div>
+                                    </td>
                                     <td><img src="{{ url('file/blog/' . (@$b->image ?? 'avatar.jpg')) }}" alt="Blog Image" width="70" height="70" class="rounded-circle"></td>
 
                                     <td>

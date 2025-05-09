@@ -36,6 +36,7 @@ public function dashboard(){
 {
     $request->validate([
         'name' => 'required|string|max:255',
+        'name_ar' => 'required|string|max:255',
         'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240'
     ]);
 
@@ -47,6 +48,7 @@ public function dashboard(){
 
     Facility::create([
         'name' => $request->name,
+        'name_ar' => $request->name_ar,
         'avatar' => $avatarName,
     ]);
 
@@ -79,7 +81,9 @@ public function aboutupdate(Request $request)
 {
     $request->validate([
         'about_title'         => 'required|string|max:255',
+        'about_title_ar'         => 'required|string|max:255',
         'about'               => 'required|string',
+        'about_ar'               => 'required|string',
         'about_attachment'    => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
         'about_attachment2'   => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048',
     ]);
@@ -88,7 +92,9 @@ public function aboutupdate(Request $request)
         abort(404, 'About page not found.');
     }
     $about->about_title = $request->about_title;
+    $about->about_title_ar = $request->about_title_ar;
     $about->about = $request->about;
+    $about->about_ar = $request->about_ar;
     if ($request->hasFile('about_attachment')) {
         $mainImg = $request->file('about_attachment');
         $fileName1 = time().'about_attachment.'.$mainImg->getClientOriginalExtension();

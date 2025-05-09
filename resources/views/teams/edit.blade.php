@@ -146,10 +146,10 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="mb-3 form-password-toggle">
-                                    <label class="form-label" for="basic-default-password">About <span
+                                    <label class="form-label" for="basic-default-password">عن<span
                                             class="text-danger">*</span></label>
                                     <div class="input-group input-group-merge">
-                                        <textarea class="form-control @error('about_ar') is-invalid @enderror" name="about_ar" id="about_ar">{{ $user->about_ar }}</textarea>
+                                        <textarea dir="rtl" class="form-control @error('about_ar') is-invalid @enderror" name="about_ar" id="about_ar">{{ $user->about_ar }}</textarea>
                                         @error('about_ar')
                                             <div class=" invalid-feedback">{{ $message }}</div>
                                         @enderror

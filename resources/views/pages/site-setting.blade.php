@@ -24,12 +24,25 @@
                                     <input type="text" value="{{ @$s->title }}" name="title" id="title"
                                         class="form-control" />
                                 </div>
+                            <div class="col-md-12">
+                                <!-- Title -->
+                                <div class="mb-4">
+                                    <label class="form-label" for="عنوان">عنوان</label>
+                                    <input type="text" value="{{ @$s->title_ar }}" name="title_ar" id="title_ar"
+                                        class="form-control" dir="rtl" />
+                                </div>
 
                                 <!-- Description -->
                                 <div class="mb-4">
                                     <label class="form-label" for="description">Description <span
                                             class="text-danger">*</span></label>
                                     <textarea class="form-control" name="description" id="description">{{ @$s->description }}</textarea>
+                                </div>
+                                <!-- Description -->
+                                <div class="mb-4">
+                                    <label class="form-label" for="description_ar">وصف <span
+                                            class="text-danger">*</span></label>
+                                    <textarea class="form-control" name="description_ar" dir="rtl" id="description_ar">{{ @$s->description_ar }}</textarea>
                                 </div>
 
                                 <!-- Phone and YouTube URL -->

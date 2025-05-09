@@ -33,7 +33,7 @@ $blogs = DB::table('blogs')->get();
                     <div class="post-item-body">
                         <!-- Post Item Content Start -->
                         <div class="post-item-content">
-                            <h2><a href="blog-single.html">{{$b->short_description}}</a></h2>
+                            <h2><a href="blog-single.html">{{$b->title_en}}</a></h2>
                         </div>
                         <!-- Post Item Content End -->
 

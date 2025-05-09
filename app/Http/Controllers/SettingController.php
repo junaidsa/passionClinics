@@ -82,7 +82,9 @@ class SettingController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required|string|max:255',
+            'title_ar' => 'required|string|max:255',
             'description' => 'required',
+            'description_ar' => 'required',
             'phone_number' => 'required',
             'youtube_url' => 'required',
             'opening_time' => 'required',
@@ -111,7 +113,8 @@ class SettingController extends Controller
         }
 
         $setting->title = $request->title;
-        $setting->description = $request->description;
+        $setting->title_ar = $request->title_ar;
+        $setting->description_ar = $request->description_ar;
         $setting->phone_number = $request->phone_number;
         $setting->youtube_url = $request->youtube_url;
         $setting->opening_time = $request->opening_time;
