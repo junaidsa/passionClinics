@@ -9,11 +9,11 @@
                 <div class="col-lg-12">
 					<!-- Page Header Box Start -->
 					<div class="page-header-box">
-						<h1 class="text-anime-style-3" data-cursor="-opaque">Our team</h1>
+						<h1   data-cursor="-opaque">@lang('app.our-team')</h1>
 						<nav class="wow fadeInUp">
 							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="team.html">home</a></li>
-								<li class="breadcrumb-item active" aria-current="page">team</li>
+								<li class="breadcrumb-item"><a href="{{url('/')}}">@lang('app.home')</a></li>
+								<li class="breadcrumb-item active" aria-current="page">@lang('app.team')</li>
 							</ol>
 						</nav>
 					</div>

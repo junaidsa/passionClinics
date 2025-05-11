@@ -12,27 +12,34 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="Awaiken">
+    <meta charset="UTF-8">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!-- Page Title -->
     <title>Passion Clinics</title>
     <!-- Favicon Icon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('public') }}/images/logo11.png">
-    <!-- Google Fonts Css-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="../css2?family=Marcellus&family=Sora:wght@100..800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&display=swap" rel="stylesheet">
+
+<h2   style="font-family: 'Noto Naskh Arabic', sans-serif;" data-cursor="-opaque">
+    {{ App::isLocale('ar') ? @$about->about_title_ar : @$about->about_title }}
+</h2>
+
+
+
     <!-- Bootstrap Css -->
 
     @if (app()->getLocale() == 'ar')
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
     @else
-        <link href="{{ asset('public') }}/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="{{ asset('public') }}/css/bootstrap.min.css" rel="stylesheet" media="screen">
     @endif
     <!-- SlickNav Css -->
     <link href="{{ asset('public') }}/css/slicknav.min.css" rel="stylesheet">
-    <!-- Swiper Css -->
     <link rel="stylesheet" href="{{ asset('public') }}/css/swiper-bundle.min.css">
     <!-- Font Awesome Icon Css-->
+    <!-- Swiper Css -->
     <link href="{{ asset('public') }}/css/all.min.css" rel="stylesheet" media="screen">
     <!-- Animated Css -->
     <link href="{{ asset('public') }}/css/animate.css" rel="stylesheet">
@@ -43,6 +50,8 @@
     <!-- Main Custom Css -->
     <link href="{{ asset('public') }}/css/custom.css" rel="stylesheet" media="screen">
     <link href="https://cdn.jsdelivr.net/npm/flag-icons/css/flag-icons.min.css" rel="stylesheet">
+    <!-- In your layout <head> -->
+
     <style>
         li {
             list-style: none !important;
@@ -62,16 +71,6 @@
             z-index: 9999;
             font-size: 18px;
             animation: fadeInOut 3s forwards;
-        }
-
-        [dir="rtl"] body {
-            direction: rtl;
-            text-align: right;
-        }
-
-        [dir="ltr"] body {
-            direction: ltr;
-            text-align: left;
         }
 
         @keyframes fadeInOut {
@@ -104,6 +103,15 @@
             right: auto !important;
             left: 0 !important;
         }
+        html[dir="rtl"] .footer-contact-item li {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+html[dir="rtl"] .footer-contact-item li i {
+    margin-left: 0.5rem;
+    margin-right: 0;
+}
     </style>
 </head>
 
@@ -132,8 +140,7 @@
                     <div class="footer-header">
                         <!-- Section Title Start -->
                         <div class="section-title footer-newsletter-title">
-                            <h2 class="text-anime-style-3" data-cursor="-opaque">Our latest insights on plastic surgery
-                                & skincare</h2>
+                            <h2   data-cursor="-opaque">@lang('app.footer-dis')</h2>
                         </div>
                         <!-- Section Title End -->
 
@@ -164,8 +171,7 @@
 
                         <!-- About Footer Content Start -->
                         <div class="about-footer-content">
-                            <p>Passion Clinics was founded in 2022 with a vision to create a leading cosmetic center
-                                offering plastic surgery and other specialized cosmetic procedures.</p>
+                            <p>@lang('app.footer-dis')</p>
                         </div>
                         <!-- About Footer Content End -->
 
@@ -189,20 +195,22 @@
                         <div class="footer-links quick-links">
                             <h3>quick link</h3>
                             <ul>
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="about.html">About us</a></li>
-                                <li><a href="services.html">services</a></li>
-                                <li><a href="contact.html">Contact us</a></li>
+                                <li><a href="{{ url('/') }}">>@lang('app.home')</a></li>
+                                <li><a href="{{ url('/about') }}">@lang('app.about_us')</a></li>
+                                <li><a href="{{ url('/services') }}">@lang('app.services')</a></li>
+                                <li><a href="{{ url('/app.e_clinic') }}">@lang('app.e_clinic')</a></li>
+                                <li><a href="{{ url('/teams') }}">@lang('app.our_team')</a></li>
+                                <li><a href="{{ url('/contact') }}">@lang('app.contact_us')</a></li>
                             </ul>
                         </div>
                         <!-- Footer Links End -->
 
                         <!-- Footer Links Start -->
                         <div class="footer-links">
-                            <h3>Working hours:</h3>
+                            <h3>@lang('app.working-hours'):</h3>
                             <ul>
                                 <li>SAT - THU 09:00 AM - 07:00 PM</li>
-                                <li>Fri Closed</li>
+                                <li>@lang('app.fri-closed')</li>
                             </ul>
                         </div>
                         <!-- Footer Links End -->
@@ -212,7 +220,7 @@
                     <div class="footer-contact-box">
                         <!-- Footer Contact Item Start -->
                         <div class="footer-links footer-contact-item">
-                            <h3>Contact:</h3>
+                            <h3>@lang('app.Contact'):</h3>
                             <ul>
                                 <li><i class="fa-solid fa-phone"></i><a href="tel:123456789">0112880840</a></li>
                             </ul>
@@ -221,7 +229,7 @@
 
                         <!-- Footer Contact Item Start -->
                         <div class="footer-links footer-contact-item">
-                            <h3>E-mail:</h3>
+                            <h3>@lang('app.e-mail'):</h3>
                             <ul>
                                 <li><i class="fa-solid fa-envelope"></i><a
                                         href="mailto:domainname@gmail.com">info@passionclinics.com</a></li>
@@ -231,7 +239,7 @@
 
                         <!-- Footer Contact Item Start -->
                         <div class="footer-links footer-contact-item">
-                            <h3>Address:</h3>
+                            <h3>@lang('app.address'):</h3>
                             <ul>
                                 <li><i class="fa-solid fa-location-dot"></i>Al Olaya, Riyadh 12214, Saudi Arabia</li>
                             </ul>

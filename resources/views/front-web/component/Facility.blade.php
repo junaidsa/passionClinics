@@ -20,7 +20,7 @@ $facilities = DB::table('facilities')->get();
             <div class="case-study-body">
                 <!-- Case Study Content Start -->
                 <div class="case-study-item-content">
-                    <h3><a href="#">{{$f->name}}</a></h3>
+                    <h3><a href="#">{{ App::isLocale('ar') ? @$f->name_ar : @$s->name}}</a></h3>
                 </div>
                 <!-- Case Study Content End -->
 

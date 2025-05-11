@@ -9,7 +9,7 @@
                 <div class="col-lg-12">
                     <!-- Page Header Box Start -->
                     <div class="page-header-box">
-                        <h1 class="text-anime-style-3" data-cursor="-opaque">E-Clinic</h1>
+                        <h1   data-cursor="-opaque">E-Clinic</h1>
                         <nav class="wow fadeInUp">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -32,7 +32,7 @@
                 <br><br><br>
                 <div class="section-title">
                     <h3 class="wow fadeInUp">E-Clinic</h3>
-                    <h2 class="text-anime-style-3" data-cursor="-opaque">Meet Our Expert Doctors</h2>
+                    <h2   data-cursor="-opaque">Meet Our Expert Doctors</h2>
                 </div>
              </center>
 

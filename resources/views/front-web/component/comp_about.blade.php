@@ -23,41 +23,28 @@
             <!-- About Image 1 End -->
 
             <!-- About Image 2 Start -->
-            <div class="about-img-2">
+            {{-- <div class="about-img-2">
                 <figure class="image-anime reveal">
                     <img src="{{ url('file/about/' . (@$about->about_attachment2 ?? 'avatar.jpg')) }}" alt="">
                 </figure>
-            </div>
+            </div> --}}
             <!-- About Image 2 End -->
         </div>
         <!-- About Us Images End -->
     </div>
-
-    {{-- <div class="col-lg-6">
-        <!-- Hero Content Box Start -->
-        <div class="about-us-content">
-            <!-- Section Title Start -->
-            <div class="section-title">
-                <h3 class="wow fadeInUp">About us</h3>
-                <h2 class="text-anime-style-3" data-cursor="-opaque">{{@$about->about_title}}</h2>
-                {!! @$about->about!!}
-            </div>
-            <div class="about-experience-image">
-                <figure class="image-anime reveal">
-                    <img src="{{ asset('public') }}/images/IMG_1184 (1).jpg" alt="">
-                </figure>
-            </div>
-        </div>
-        <!-- Hero Content Box End -->
-    </div> --}}
     <div class="col-lg-6">
         <!-- Hero Content Box Start -->
         <div class="about-us-content">
             <!-- Section Title Start -->
             <div class="section-title">
                 <h3 class="wow fadeInUp">@lang('app.about_us')</h3>
-                <h2 class="text-anime-style-3" data-cursor="-opaque">{{@$about->about_title}}</h2>
-                {!! @$about->about!!}
+          <h2>
+          {{ App::isLocale('ar') ? @$about->about_title_ar : @$about->about_title }}
+</h2>
+                {{-- {!! @$about->about!!} --}}
+                <p>
+                    {{ App::isLocale('ar') ? @$about->about_ar : @$about->about }}
+                </p>
             </div>
             <!-- Section Title End -->
 

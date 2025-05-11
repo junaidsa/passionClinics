@@ -7,8 +7,8 @@ $blogs = DB::table('blogs')->get();
             <div class="col-lg-12">
                 <!-- Section Title Start -->
                 <div class="section-title section-title-center">
-                    <h3 class="wow fadeInUp">Latest blog</h3>
-                    <h2 class="text-anime-style-3" data-cursor="-opaque">Our latest insights on plastic surgery & skincare</h2>
+                    <h3 class="wow fadeInUp">@lang('app.latest-blog')</h3>
+                    <h2   data-cursor="-opaque">@lang('app.blog-dis')</h2>
                 </div>
                 <!-- Section Title End -->
             </div>
@@ -33,13 +33,13 @@ $blogs = DB::table('blogs')->get();
                     <div class="post-item-body">
                         <!-- Post Item Content Start -->
                         <div class="post-item-content">
-                            <h2><a href="blog-single.html">{{$b->title_en}}</a></h2>
+                            <h2><a href="#">{{ App::isLocale('ar') ? @$b->title_ar : @$b->title_en}}</a></h2>
                         </div>
                         <!-- Post Item Content End -->
 
                         <!-- Post Item Readmore Button Start-->
                         <div class="post-item-btn">
-                            <a href="blog-single.html" class="readmore-btn"><img src="{{ asset('public') }}/images/arrow-white.svg" alt=""></a>
+                            <a href="#" class="readmore-btn"><img src="{{ asset('public') }}/images/arrow-white.svg" alt=""></a>
                         </div>
                         <!-- Post Item Readmore Button End-->
                     </div>

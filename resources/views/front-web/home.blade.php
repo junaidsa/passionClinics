@@ -2,7 +2,13 @@
 @section('main-front')
 @include('layouts.hero')
 <main>
+<style>
+    .ar{
+           /* --arabic-font: 'Cairo', sans-serif; */
+           font-family: 'Cairo', sans-serif;
+    }
 
+</style>
     <!-- About Us Section Start -->
     <div class="about-us">
         <div class="container">
@@ -37,7 +43,7 @@
                         <!-- Section Title Start -->
                         <div class="section-title">
                             <h3 class="wow fadeInUp">About us</h3>
-                            <h2 class="text-anime-style-3" data-cursor="-opaque">Your journey to radiant confidence</h2>
+                            <h2   data-cursor="-opaque">Your journey to radiant confidence</h2>
                             <p class="wow fadeInUp" data-wow-delay="0.2s">Discover personalized care & expertise at our clinic, where we blend artistry and precision to enhance your natural beauty and boost your confidence.</p>
                         </div>
                         <!-- Section Title End -->
@@ -103,7 +109,7 @@
                         <h3 class="wow fadeInUp">@lang('app.services')</h3>
                         <p class="wow fadeInUp" data-wow-delay="0.2s">
                             @lang('app.feel_beautiful_be_beautiful')</p>
-                        <h2 class="text-anime-style-3" data-cursor="-opaque">@lang('app.again_discover_yourself')</h2>
+                        <h2  data-cursor="-opaque">@lang('app.again_discover_yourself')</h2>
                         <p class="wow fadeInUp" data-wow-delay="0.2s">@lang('app.services_description')</p>
                     </div>
                     <!-- Section Title End -->
@@ -137,25 +143,25 @@
                     <div class="what-we-content">
                         <!-- Section Title Start -->
                         <div class="section-title">
-                            <h3 class="wow fadeInUp">what we do</h3>
-                            <h2 class="text-anime-style-3" data-cursor="-opaque">Experience the transformation</h2>
-                            <p class="wow fadeInUp" data-wow-delay="0.2s">Our services are there in order to create a more attractive figure and help you feel more attractive and proud of your body</p>
+                            <h3 class="wow fadeInUp">@lang('app.what_we_do')</h3>
+                            <h2   data-cursor="-opaque">@lang('app.experience_the_transformation')</h2>
+                            <p class="wow fadeInUp" data-wow-delay="0.2s">@lang('app.our_services_are_there')</p>
                         </div>
                         <!-- Section Title End -->
 
                         <!-- About Experience List Start -->
                         <div class="about-experience-list wow fadeInUp" data-wow-delay="0.4s">
                             <ul>
-                                <li>Restore Firmness and Shape</li>
-                                <li>Minimize and Improve Scars</li>
-                                <li>Incredible possibilities</li>
+                                <li>@lang('app.restore_firmness_and_shape')</li>
+                                <li>@lang('app.minimize_and_improve_scars')</li>
+                                <li>@lang('app.incredible_possibilities')</li>
                             </ul>
                         </div>
                         <!-- About Experience List End -->
 
                         <!-- What We Button Start -->
                         <div class="what-we-btn wow fadeInUp" data-wow-delay="0.6s">
-                            <a href="contact.html" class="btn-default">learn more</a>
+                            <a href="{{url('/contact')}}" class="btn-default">@lang('app.learn_more')</a>
                         </div>
                         <!-- What We Button End -->
                     </div>
@@ -171,7 +177,7 @@
                         <!-- Experirnce Box Start -->
                         <div class="experirnce-box">
                             <h2><span class="counter">18</span>+</h2>
-                            <p>Years of Experirnce</p>
+                            <p>@lang('app.years_of_experirnce')</p>
                         </div>
                         <!-- Experirnce Box End -->
                     </div>
@@ -197,7 +203,7 @@
 
                         <!-- Video Play Button Start -->
                         <div class="video-play-button">
-                            <a href="{{$sett->youtube_url}}" class="popup-video" data-cursor-text="Play">Play</a>
+                            <a href="{{$sett->youtube_url}}" class="popup-video" data-cursor-text="@lang('play')">@lang('play')</a>
                         </div>
                         <!-- Video Play Button End -->
                     </div>
@@ -217,15 +223,15 @@
                     <div class="case-study-content">
                         <!-- Section Title Start -->
                         <div class="section-title">
-                            <h3 class="wow fadeInUp">Our Facility</h3>
-                            <h2 class="text-anime-style-3" data-cursor="-opaque">Results now & forever</h2>
-                            <p class="wow fadeInUp" data-wow-delay="0.2s">The state of-the-art facility Boasts a luxurious 7 star visitor experience with our 15 dedicated high and clinical procedure rooms, 4 cutting-edge smart operating theaters 6 lavish suits and dedicated ample spaces and amenities to address the patient's needs and requirements. Passion Clinics also created a dedicated studio room for digitally produced before and after imagery with high tech medical 3D simulation mirroring the end result of your procedure with accuracy rate 90%.</p>
+                            <h3 class="wow fadeInUp">@lang('app.our_facility')</h3>
+                            <h2   data-cursor="-opaque">@lang('app.rn_sf')</h2>
+                            <p class="wow fadeInUp" data-wow-delay="0.2s">@lang('app.facility_dis')</p>
                         </div>
                         <!-- Section Title End -->
 
                         <!-- Case Study Button Start -->
                         <div class="case-study-btn wow fadeInUp" data-wow-delay="0.4s">
-                            <a href="{{url('/contact')}}" class="btn-default">Contact Us</a>
+                            <a href="{{url('/contact')}}" class="btn-default">@lang('app.contact_us')</a>
                         </div>
                         <!-- Case Study Button End -->
                     </div>
@@ -390,7 +396,7 @@
 
                         <!-- Years Experience Text Start -->
                         <div class="years-experience-text">
-                            <p>18 years experience</p>
+                            <p>18 @lang('app.years_of_experirnce')</p>
                         </div>
                         <!-- Years Experience Text End -->
                     </div>
@@ -402,24 +408,15 @@
                     <div class="why-choose-content">
                         <!-- Section Title Start -->
                         <div class="section-title">
-                            <h3 class="wow fadeInUp">why choose us</h3>
-                            <h2 class="text-anime-style-3" data-cursor="-opaque">Experience the art of beauty with expert hands</h2>
-                            <p class="wow fadeInUp" data-wow-delay="0.2s">Experience personalized care and transformative results with our expert team, dedicated to enhancing your techniques and exceptional service.</p>
+                            <h3 class="wow fadeInUp">@lang('app.why_choose_us')</h3>
+                            <h2   data-cursor="-opaque">@lang('app.experience_the_art_of_beauty_with_expert_hands')</h2>
+                            <p class="wow fadeInUp" data-wow-delay="0.2s">@lang('app.experience_personalized_care')</p>
                         </div>
                         <!-- Section Title End -->
 
                         <!-- Why Choose Contact Box Start -->
                         <div class="why-choose-contact-box">
-                            <h3 class="wow fadeInUp" data-wow-delay="0.4s">"Delivering Exceptional Care Expert Treatments, Solutions Your Beauty, Boost Confidence, and Ensure Outstanding Results with Support Every Step of Your Journey."</h3>
-                            <div class="why-choose-contact-item wow fadeInUp" data-wow-delay="0.6s">
-                                <div class="icon-box">
-                                    <img src="{{ asset('public') }}/images/author-2.jpg" alt="">
-                                    <i class="fa-solid fa-phone"></i>
-                                </div>
-                                <div class="why-choose-contact-item-content">
-                                    <p>Contact Us: <a href="tel:{{$sett->phone_number}}">{{$sett->phone_number}}</a></p>
-                                </div>
-                            </div>
+                            <h3 class="wow fadeInUp" data-wow-delay="0.4s">@lang('app.delivering_exceptional_care')</h3>
                         </div>
                         <!-- Why Choose Contact Box End -->
                     </div>
@@ -439,15 +436,15 @@
                     <div class="how-work-content">
                         <!-- Section Title Start -->
                         <div class="section-title">
-                            <h3 class="wow fadeInUp">how it work</h3>
-                            <h2 class="text-anime-style-3" data-cursor="-opaque">Simple steps to stunning transformations</h2>
-                            <p class="wow fadeInUp" data-wow-delay="0.2s">Discover a seamless process designed to enhance your beauty personalized consultations to expert procedures and dedicated aftercare, we guide you every step of the way toward achieving stunning.</p>
+                            <h3 class="wow fadeInUp">@lang('app.how_it_work')</h3>
+                            <h2   data-cursor="-opaque">@lang('app.simple_steps_to')</h2>
+                            <p class="wow fadeInUp" data-wow-delay="0.2s">@lang('app.discover_a_seamless')</p>
                         </div>
                         <!-- Section Title End -->
 
                         <!-- How Work Button Start -->
                         <div class="how-work-btn wow fadeInUp" data-wow-delay="0.4s">
-                            <a href="contact.html" class="btn-default">contact us</a>
+                            <a href="{{url('/contact')}}" class="btn-default">@lang('app.contact_us')</a>
                         </div>
                         <!-- How Work Button End -->
                     </div>
@@ -463,8 +460,8 @@
                                 <img src="{{ asset('public') }}/images/icon-how-work-step-1.svg" alt="">
                             </div>
                             <div class="how-work-step-content">
-                                <h3>01. Comprehensive Consultation</h3>
-                                <p>Our Comprehensive Consultation is a thorough meeting with one of our specialists to understand your goals.</p>
+                                <h3>@lang('app.01_comprehensive')</h3>
+                                <p>@lang('app.01_comprehensive_goals')</p>
                             </div>
                         </div>
                         <!-- How Work Step Item End -->
@@ -475,8 +472,8 @@
                                 <img src="{{ asset('public') }}/images/icon-how-work-step-2.svg" alt="">
                             </div>
                             <div class="how-work-step-content">
-                                <h3>02. Personalized Treatment Plan</h3>
-                                <p>Our Comprehensive Consultation is a thorough meeting with one of our specialists to understand your goals.</p>
+                                <h3>@lang('app.02_personalized')</h3>
+                                <p>@lang('app.01_comprehensive_goals')</p>
                             </div>
                         </div>
                         <!-- How Work Step Item End -->
@@ -487,8 +484,8 @@
                                 <img src="{{ asset('public') }}/images/icon-how-work-step-3.svg" alt="">
                             </div>
                             <div class="how-work-step-content">
-                                <h3>03. Expert Procedures</h3>
-                                <p>Our Comprehensive Consultation is a thorough meeting with one of our specialists to understand your goals.</p>
+                                <h3>@lang('app.03_expert')</h3>
+                                <p>@lang('app.01_comprehensive_goals')</p>
                             </div>
                         </div>
                         <!-- How Work Step Item End -->
@@ -499,8 +496,8 @@
                                 <img src="{{ asset('public') }}/images/icon-how-work-step-4.svg" alt="">
                             </div>
                             <div class="how-work-step-content">
-                                <h3>04. Ongoing Support & Follow-Up</h3>
-                                <p>Our Comprehensive Consultation is a thorough meeting with one of our specialists to understand your goals.</p>
+                                <h3>@lang('app.04_ongoing')</h3>
+                                <p>@lang('app.01_comprehensive_goals')</p>
                             </div>
                         </div>
                         <!-- How Work Step Item End -->
@@ -525,8 +522,8 @@
                 <div class="col-lg-12">
                     <!-- Section Title Start -->
                     <div class="section-title section-title-center">
-                        <h3 class="wow fadeInUp">See the Difference</h3>
-                        <h2 class="text-anime-style-3" data-cursor="-opaque">Our real patient transformation & stunning results</h2>
+                        <h3 class="wow fadeInUp">@lang('app.see-the-difference')</h3>
+                        <h2   data-cursor="-opaque">@lang('app.our-real-patient-transformation')</h2>
                     </div>
                     <!-- Section Title End -->
                 </div>
@@ -569,7 +566,7 @@
                             </div>
                             <div class="facts-counter-content">
                                 <h3><span class="counter">{{$sett->year_experience}}</span>+</h3>
-                                <p>Years Of Experience</p>
+                                <p>@lang('app.years-Of-experience')</p>
                             </div>
                         </div>
                         <!-- Facts Counter Item End -->
@@ -581,7 +578,7 @@
                             </div>
                             <div class="facts-counter-content">
                                 <h3><span class="counter">30</span></h3>
-                                <p>Staff members</p>
+                                <p>@lang('app.staff-members')</p>
                             </div>
                         </div>
                         <!-- Facts Counter Item End -->
@@ -593,7 +590,7 @@
                             </div>
                             <div class="facts-counter-content">
                                 <h3><span class="counter">{{$sett->awards}}</span></h3>
-                                <p>Awards</p>
+                                <p>@lang('app.awards')</p>
                             </div>
                         </div>
                         <!-- Facts Counter Item End -->
@@ -605,7 +602,7 @@
                             </div>
                             <div class="facts-counter-content">
                                 <h3><span class="counter">{{$sett->happy_clients}}</span>+</h3>
-                                <p>Happy clients</p>
+                                <p>@lang('Happy-clients')</p>
                             </div>
                         </div>
                         <!-- Facts Counter Item End -->
@@ -618,7 +615,7 @@
     <!-- Our Result Section End -->
 
     <!-- Our Appointment Section Start -->
-    <div class="our-appointment bg-section">
+    {{-- <div class="our-appointment bg-section">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 order-lg-1 order-2">
@@ -637,7 +634,7 @@
                         <!-- Section Title Start -->
                         <div class="section-title">
                             <h3 class="wow fadeInUp">Say Hello to a Perfect shape</h3>
-                            <h2 class="text-anime-style-3" data-cursor="-opaque">If you're not sure what you'd like to do, click on the button and book a gernal appointment</h2>
+                            <h2   data-cursor="-opaque">If you're not sure what you'd like to do, click on the button and book a gernal appointment</h2>
                         </div>
                         <!-- Section Title End -->
 
@@ -698,7 +695,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- Our Appointment Section End -->
 
     <!-- Our Blog Section Start -->

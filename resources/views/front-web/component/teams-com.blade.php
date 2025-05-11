@@ -22,7 +22,7 @@ $dr =  DB::table('users')->where('role','doctor')->get();
             <div class="team-body">
                 <!-- Team Content Start -->
                 <div class="team-content">
-                    <h3><a href="{{ url('team/' . $d->id) }}">{{$d->name}}</a></h3>
+                    <h3><a href="{{ url('team/' . $d->id) }}">{{ App::isLocale('ar') ? $d->name_ar : $d->name }}</a></h3>
                 </div>
                 <!-- Team Content End -->
 

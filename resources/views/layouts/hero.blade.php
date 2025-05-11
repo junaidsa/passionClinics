@@ -10,8 +10,8 @@
                         <!-- Section Title Start -->
                         <div class="section-title">
                             <h3 class="wow fadeInUp">@lang('app.welcome_to_passion_clinic')</h3>
-                            <h1 class="text-anime-style-3" data-cursor="-opaque">{{$sett->title}}</h1>
-                            <p class="wow fadeInUp" data-wow-delay="0.2s" >{{$sett->description}}</p>
+                            <h1 data-cursor="-opaque">{{ App::isLocale('ar') ? $sett->title_ar : $sett->title }}</h1>
+                            <p class="wow fadeInUp" data-wow-delay="0.2s" >{{ App::isLocale('ar') ? $sett->description_ar : $sett->description }}</p>
                         </div>
                         <div class="hero-body wow fadeInUp" data-wow-delay="0.4s">
                             <!-- Hero Button Start -->

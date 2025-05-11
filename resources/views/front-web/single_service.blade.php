@@ -8,7 +8,7 @@
 				<div class="col-lg-12">
 					<!-- Page Header Box Start -->
 					<div class="page-header-box">
-						<h1 class="text-anime-style-3" data-cursor="-opaque">{{$service->title}}</h1>
+						<h1  >{{$service->title}}</h1>
 						<nav class="wow fadeInUp">
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item"><a href="{{url('/')}}">home</a></li>
@@ -48,7 +48,7 @@
                         <!-- Service Entry Start -->
                         <div class="service-entry">
 
-                            <p class="wow fadeInUp" data-wow-delay="0.2s">    {{$service->short_description}}.</p>
+                            <p class="wow fadeInUp" data-wow-delay="0.2s">{{$service->short_description}}.</p>
 
                             <!-- Service Expert Box Start -->
                                     @php
@@ -108,7 +108,7 @@
                         <div class="page-single-faqs">
                             <!-- Section Title Start -->
                             <div class="section-title">
-                                <h2 class="text-anime-style-3" data-cursor="-opaque">Got questions? we've got answers!</h2>
+                                <h2  >Got questions? we've got answers!</h2>
                             </div>
                             <!-- Section Title End -->
 

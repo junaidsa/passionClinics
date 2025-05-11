@@ -44,7 +44,9 @@
 /************************************/
 /*** 	 01. Global Variables	  ***/
 /************************************/
-
+* {
+    font-family: inherit; /* Prevent local override */
+}
 :root{
 	--primary-color				: #481E0B;
 	--secondary-color			: #FCF4F1;
@@ -56,15 +58,27 @@
 	--error-color				: rgb(230, 87, 87);
 	--default-font				: "Sora", sans-serif;
 	--accent-font				: "Marcellus", serif;
+
 }
 
 /************************************/
 /*** 	   02. General css		  ***/
 /************************************/
-
-body{
-	position: relative;
-	font-family: var(--default-font);
+/* When HTML lang is Arabic, override it */
+html[lang="en"] body{
+    position: relative;
+	font-family: var(--default-);
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 1em;
+	color: var(--text-color);
+	background: var(--black-color);
+}
+html[lang="ar"] body{
+    position: relative;
+    font-family: 'Noto Naskh Arabic', sans-serif;
+     direction: rtl;
+    text-align: right;
 	font-size: 16px;
 	font-weight: 400;
 	line-height: 1em;
@@ -263,7 +277,7 @@ body{
 	transition: all 0.4s ease-in-out;
 	z-index: -1;
 }
-  
+
 .btn-default:hover::after{
 	left: 0;
   	right: 0;
@@ -1196,7 +1210,7 @@ header.main-header .header-sticky.active{
 	background-image: url(../images/service-bg-shape.svg);
     background-repeat: no-repeat;
     background-position: top center;
-    background-size: 100% auto; 
+    background-size: 100% auto;
 	padding: 100px 0;
 }
 
@@ -2105,7 +2119,7 @@ header.main-header .header-sticky.active{
 }
 
 .post-featured-image a{
-    cursor: none;	
+    cursor: none;
     display: block;
 	border-radius: 30px;
     overflow: hidden;
@@ -2957,7 +2971,7 @@ header.main-header .header-sticky.active{
 }
 
 .faqs-img-2 img{
-	aspect-ratio: 1 / 1.155;	
+	aspect-ratio: 1 / 1.155;
 }
 
 .faqs-circle{
@@ -3004,13 +3018,13 @@ header.main-header .header-sticky.active{
     padding-bottom: 10px;
 }
 
-.faq-accordion .accordion-item .accordion-button::after, 
+.faq-accordion .accordion-item .accordion-button::after,
 .faq-accordion .accordion-item .accordion-button.collapsed::after{
     content: '\f107';
     font-family: 'FontAwesome';
     position: absolute;
     right: 0;
-    top: 0;    
+    top: 0;
     font-size: 18px;
     color: var(--primary-color);
     transition: all 0.3s ease-in-out;
@@ -3411,7 +3425,7 @@ header.main-header .header-sticky.active{
 }
 
 .post-image figure{
-	display: block;	
+	display: block;
 	border-radius: 30px;
 	overflow: hidden;
 }
@@ -4010,7 +4024,7 @@ header.main-header .header-sticky.active{
 
 .member-social-list ul li a:hover{
     color: var(--accent-color);
-	border-color: var(--accent-color);    
+	border-color: var(--accent-color);
 }
 
 .member-social-list ul li a i{
@@ -5275,7 +5289,7 @@ header.main-header .header-sticky.active{
 		border-radius: 20px;
 		padding: 16px;
 	}
-	
+
 	.service-enhance-item .icon-box{
 		width: 50px;
 		height: 50px;
@@ -5310,7 +5324,7 @@ header.main-header .header-sticky.active{
 	.page-blog{
         padding: 50px 0;
     }
-    
+
     .page-pagination{
         margin-top: 10px;
     }
@@ -5318,11 +5332,11 @@ header.main-header .header-sticky.active{
 	.page-single-post{
         padding: 50px 0;
     }
-    
+
     .post-image{
         margin-bottom: 20px;
     }
-    
+
     .post-entry h1,
     .post-entry h2,
     .post-entry h3,
@@ -5331,32 +5345,32 @@ header.main-header .header-sticky.active{
     .post-entry h6{
         margin: 0 0 0.442em;
     }
-    
+
     .post-entry h2{
         font-size: 34px;
     }
-    
+
     .post-entry p{
         margin-bottom: 15px;
     }
-    
+
     .post-entry ol li,
     .post-entry ul li{
         font-size: 16px;
         margin-bottom: 10px;
     }
-    
+
     .post-entry blockquote{
         background-position: 20px 20px;
         background-size: 35px;
         padding: 20px 20px 20px 70px;
         margin-bottom: 20px;
     }
-    
+
     .post-entry blockquote p{
         font-size: 20px;
     }
-    
+
     .post-tags{
         margin-bottom: 20px;
     }
@@ -5364,11 +5378,11 @@ header.main-header .header-sticky.active{
 	.tag-links{
 		font-size: 20px;
 	}
-    
+
     .post-tags .tag-links a{
         padding: 12px 15px;
     }
-    
+
     .post-social-sharing ul{
         text-align: left;
     }
@@ -5409,7 +5423,7 @@ header.main-header .header-sticky.active{
 		margin-bottom: 10px;
 		padding-left: 25px;
 	}
-	
+
 	.case-study-entry ul li::before{
 		font-size: 18px;
 	}
@@ -5534,7 +5548,7 @@ header.main-header .header-sticky.active{
 	.page-testimonials{
 		padding: 50px 0 20px;
 	}
-	
+
 	.page-testimonials .testimonial-item{
 		border-radius: 20px;
 		padding: 20px;
@@ -5602,11 +5616,11 @@ header.main-header .header-sticky.active{
 	.page-book-appointment{
 		padding: 50px 0;
 	}
-	
+
 	.our-appointment-content{
 		margin-bottom: 30px;
 	}
-	
+
 	.appointment-item{
 		margin-bottom: 30px;
 		padding-bottom: 30px;
@@ -5616,7 +5630,7 @@ header.main-header .header-sticky.active{
 		font-size: 20px;
 		margin-bottom: 5px;
 	}
-	
+
 	.page-book-appointment .appointment-form{
 		padding: 30px;
 		border-radius: 20px;
@@ -6128,24 +6142,24 @@ header.main-header .header-sticky.active{
 	.post-single-meta ol li{
         font-size: 16px;
     }
-    
+
     .post-single-meta ol li i{
         font-size: 16px;
     }
-    
+
     .post-image img{
         aspect-ratio: 1 / 0.7;
     }
-    
+
     .post-entry blockquote{
         background-position: 15px 15px;
         padding: 60px 15px 15px 15px;
     }
-    
+
     .post-entry blockquote p{
         font-size: 18px;
     }
-    
+
     .post-entry h2{
         font-size: 24px;
     }
@@ -6167,7 +6181,7 @@ header.main-header .header-sticky.active{
 	.case-study-detail-item h3{
 		font-size: 18px;
 	}
-	
+
 	.case-study-entry h2{
         font-size: 28px;
     }
@@ -6259,7 +6273,7 @@ header.main-header .header-sticky.active{
         margin-bottom: 20px;
         padding-bottom: 20px;
     }
-	
+
 	.appointment-item-content h3{
         font-size: 18px;
     }

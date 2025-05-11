@@ -17,16 +17,16 @@ $testimonials = DB::table('testimonials')->get();
             <div class="our-testimonial-content">
                 <!-- Section Title Start -->
                 <div class="section-title">
-                    <h3 class="wow fadeInUp">testimonials</h3>
-                    <h2 class="text-anime-style-3" data-cursor="-opaque">Life-Changing results from our clients</h2>
-                    <p class="wow fadeInUp" data-wow-delay="0.2s">{{$testimonial->message}}</p>
+                    <h3 class="wow fadeInUp">@lang('app.testimonials')</h3>
+                    <h2   data-cursor="-opaque">@lang('app.life-changing')</h2>
+                    <p class="wow fadeInUp" data-wow-delay="0.2s">{{ App::isLocale('ar') ? @$testimonial->message_ar : @$testimonial->message}}</p>
                 </div>
                 <!-- Section Title End -->
 
                 <!-- Testimonial Content Button Start -->
                 <div class="testimonial-author-details wow fadeInUp" data-wow-delay="0.4s">
-                    <h3>{{$testimonial->name}}</h3>
-                    <p>{{$testimonial->designation}}</p>
+                    <h3>{{ App::isLocale('ar') ? @$testimonial->name_ar : @$testimonial->name}}</h3>
+                    <p>{{ App::isLocale('ar') ? @$testimonial->designation_ar : @$testimonial->designation}}</p>
                 </div>
                 <!-- Testimonial Content Button End -->
             </div>
@@ -43,7 +43,7 @@ $testimonials = DB::table('testimonials')->get();
                         <div class="swiper-slide">
                             <div class="testimonial-item">
                                 <div class="testimonial-item-content">
-                                    <p>{{$t->message}}</p>
+                                    <p>{{ App::isLocale('ar') ? @$t->message_ar : @$t->message}}</p>
                                 </div>
                                 <div class="testimonial-author">
                                     <div class="author-image">
@@ -52,8 +52,8 @@ $testimonials = DB::table('testimonials')->get();
                                         </figure>
                                     </div>
                                     <div class="author-content">
-                                        <h3>{{$t->name}}</h3>
-                                        <p>{{$t->designation}}</p>
+                                        <h3>{{ App::isLocale('ar') ? @$t->name_ar : @$t->name}}</h3>
+                                        <p>{{ App::isLocale('ar') ? @$t->designation_ar : @$t->designation}}</p>
                                     </div>
                                 </div>
                             </div>
