@@ -117,6 +117,27 @@
 
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <!-- Video Upload -->
+                                    <div class="col-md-8 mb-4">
+                                        <label class="form-label" for="video">Upload Video</label>
+                                        <input type="file" name="video" id="video" class="form-control" />
+                                        {{-- @if (!empty($s->video))
+                                            <small class="d-block mt-2">Current: {{ $s->video }}</small>
+                                        @endif --}}
+                                    </div>
+
+                                    <div class="col-md-4 ">
+                                        @if (!empty($s->video))
+                                            <video width="320" height="240" controls>
+                                                <source
+                                                    src="{{ url('file/video/' . (@$s->video ?? 'avatar.jpg')) }}"
+                                                    type="video/mp4">
+                                            </video>
+                                        @endif
+
+                                    </div>
+                                </div>
 
 
                                 <!-- Submit -->

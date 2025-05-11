@@ -198,7 +198,7 @@ html[dir="rtl"] .footer-contact-item li i {
                                 <li><a href="{{ url('/') }}">>@lang('app.home')</a></li>
                                 <li><a href="{{ url('/about') }}">@lang('app.about_us')</a></li>
                                 <li><a href="{{ url('/services') }}">@lang('app.services')</a></li>
-                                <li><a href="{{ url('/app.e_clinic') }}">@lang('app.e_clinic')</a></li>
+                                <li><a href="{{ url('/e_clinic') }}">@lang('app.e_clinic')</a></li>
                                 <li><a href="{{ url('/teams') }}">@lang('app.our_team')</a></li>
                                 <li><a href="{{ url('/contact') }}">@lang('app.contact_us')</a></li>
                             </ul>

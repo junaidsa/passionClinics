@@ -18,12 +18,6 @@
                             <div class="hero-btn">
                                 <a href="#" class="btn-default btn-highlighted">@lang('app.book_an_appointment')</a>
                             </div>
-                            <div class="video-play-button">
-                                <p>@lang('app.watch_video')</p>
-                                <a href="{{$sett->youtube_url}}" class="popup-video" data-cursor-text="Play">
-                                    <i class="fa-solid fa-play"></i>
-                                </a>
-                            </div>
                             <!-- Video Play Button End -->
                         </div>
                         <!-- Hero Content Body End -->
