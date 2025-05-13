@@ -16,7 +16,7 @@
                             <tr>
                                 <th>Sr</th>
                                 <th>Title (English)</th>
-                                <th>Title (Arabic)</th>
+                                <th>Price  Discount %</th>
                                 <th>Short Discripation</th>
                                 <th>Image</th>
                                 <th>Action</th>
@@ -26,8 +26,12 @@
                             @foreach ($services as $s)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ @$s->title_en}}</td>
-                                    <td dir="rtl">{{ @$s->title_ar}}</td>
+                                    <td>{{ @$s->title_en}}
+                                        <div dir="dir">
+                                            {{ @$s->title_ar}}
+                                        </div>
+                                    </td>
+                                    <td>{{ @$s->price}} - {{@$s->discount}} %</td>
                                     <td>{{ @$s->short_description_en }}
                                        <div dir="rtl">
                                         {{ @$s->short_description_ar }}

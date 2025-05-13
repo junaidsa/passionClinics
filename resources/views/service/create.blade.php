@@ -120,7 +120,7 @@
                                         <label class="form-label" for="price">Price</label>
                                         <input type="text" name="price" id="price" class="form-control"
                                             placeholder="Price">
-                                        @error('discount')
+                                        @error('price')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>

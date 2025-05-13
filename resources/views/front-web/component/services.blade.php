@@ -1,6 +1,16 @@
 
 @php
-$services =  DB::table('services')->get();
+    use Illuminate\Support\Facades\DB;
+    use Illuminate\Support\Facades\Request;
+
+    $query = DB::table('services');
+
+    if (Request::is('offer')) {
+        // Only include services where offer_type is NOT 0
+        $query->where('offer_type', '!=', 0);
+    }
+
+    $services = $query->get();
 @endphp
 <div class="row">
     @foreach ($services as $s)
