@@ -93,7 +93,8 @@ class SettingController extends Controller
             'awards' => 'required',
             'year_experience' => 'required',
             'happy_clients' => 'required',
-            'video' => 'nullable|mimes:mp4,avi,mov,wmv|max:51200'
+            'video' => 'nullable|mimes:mp4,avi,mov,wmv',
+            'video_hero' => 'nullable|mimes:mp4,avi,mov,wmv'
         ]);
 
         $setting = Setting::findOrFail($id);
@@ -110,6 +111,19 @@ class SettingController extends Controller
             $video->move($destinationPath, $videoName);
 
             $setting->video = $videoName;
+        }
+        if ($request->hasFile('video_hero')) {
+            $oldVideo_heroPath = base_path('../aluniquefurniture_uploads/video/' . $setting->video_hero);
+            if ($setting->video_hero && file_exists($oldVideo_heroPath)) {
+                unlink($oldVideo_heroPath);
+            }
+
+            $video_hero = $request->file('video_hero');
+            $videoName_hero = time() . 'hero_video.' . $video_hero->getClientOriginalExtension();
+            $destinationPath = base_path('../aluniquefurniture_uploads/video/');
+            $video_hero->move($destinationPath, $videoName_hero);
+
+            $setting->video_hero = $videoName_hero;
         }
 
         $setting->title = $request->title;

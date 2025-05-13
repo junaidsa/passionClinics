@@ -17,7 +17,7 @@
     <!-- Page Title -->
     <title>Passion Clinics</title>
     <!-- Favicon Icon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('public') }}/images/logo11.png">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('public') }}/images/fav.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&display=swap" rel="stylesheet">
@@ -124,7 +124,7 @@ html[dir="rtl"] .footer-contact-item li i {
     <div class="preloader">
         <div class="loading-container">
             <div class="loading"></div>
-            <div id="loading-icon"><img src="{{ asset('public') }}/images/loader.svg" alt=""></div>
+            <div id="loading-icon"><img src="{{ asset('public') }}/images/headerlogo.png" alt=""></div>
         </div>
     </div>
     <!-- Preloader End -->

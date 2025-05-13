@@ -432,7 +432,7 @@ body{
     top: 50%;
     left: 0;
     transform: translateY(-50%);
-    background: url('../images/icon-sub-heading.svg') no-repeat;
+    background: url('../images/fav.png') no-repeat;
 	background-position: left center;
 	background-size: cover;
     width: 24px;
@@ -1030,7 +1030,8 @@ header.main-header .header-sticky.active{
 }
 
 .about-us-images{
-	background: url('../images/about-us-image-bg-shape.svg') no-repeat;
+	/* background: url('../images/about-us-image-bg-shape.svg') no-repeat; */
+	background: url('../images/fav.png') no-repeat;
 	background-position: top 30px left 70px;
 	background-size: 76px auto;
 	display: flex;

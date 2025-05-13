@@ -5,7 +5,7 @@
                <div class="container-fluid">
                    <!-- Logo Start -->
                    <a class="navbar-brand" href="index-video.html">
-                       <img src="{{ asset('public') }}/images/headerlogo.png" alt="Logo">
+                       <img src="{{ asset('public') }}/images/headerlogo.png" style="width: 150px; height: auto;">
                    </a>
                    <!-- Logo End -->
 
