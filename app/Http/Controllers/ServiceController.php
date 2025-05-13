@@ -95,12 +95,13 @@ class ServiceController extends Controller
         $validator = Validator::make($request->all(), [
             'title_en' => 'required|string|max:255',
             'title_ar' => 'required|string|max:255',
+            'price' => 'required',
             'description_ar' => 'required',
             'description_en' => 'required',
             'short_description_en' => 'required',
             'short_description_ar' => 'required',
-            'main_image' => 'nullable|file|image',
-            'video_thumbnail' => 'nullable|image', // if optional
+            'main_image' => 'required|image', // optionally check if it's an image
+            'video_thumbnail' => 'nullable', // if optional
             'video_url' => 'nullable|url', // if optional
         ]);
 
@@ -135,10 +136,14 @@ class ServiceController extends Controller
             'title_en' => $request->title_en,
             'title_ar' => $request->title_ar,
             'video_url' => $request->video_url,
+            'price' => $request->price,
+            'persons_count' => $request->persons_count,
+            'discount' => $request->discount,
+            'offer_type' => $request->offer_type,
             'main_image' => $avatarName,
             'video_thumbnail' => $videoThumbnailName,
-            'description_ar' => $request->description_ar,
             'description_en' => $request->description_en,
+            'description_ar' => $request->description_ar,
             'short_description_ar' => $request->short_description_ar,
             'short_description_en' => $request->short_description_en,
 

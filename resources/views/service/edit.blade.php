@@ -76,6 +76,47 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
+                                    <div class="col-12">
+                                        <label class="form-label" for="offer">Offer</label>
+                                        <select name="offer_type" id="offer_type" class="form-select">
+                                            <option value="">Select Offer</option>
+                                            <option value="Lifetime" {{ $service->offer_type == 'Life Time' ? 'selected' : '' }}>Life Time</option>
+                                            <option value="Limited days" {{ $service->offer_type == 'Limited days' ? 'selected' : '' }}>Limited days</option>
+                                            <option value="Limited people" {{ $service->offer_type == 'Limited people' ? 'selected' : '' }}>Limited people</option>
+                                        </select>
+                                        @error('offer_type')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <!-- Show only if "persons" is selected -->
+                                    <div class="col-12 mt-3" id="days_input_wrapper" style="display: none;">
+                                        <label class="form-label" for="persons_count">Number</label>
+                                        <input type="number" name="persons_count" id="persons_count"
+                                            class="form-control" min="1" value="{{ $service->persons_count }}" placeholder="Enter number">
+                                        @error('persons_count')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <!-- Show if any offer is selected -->
+                                    <div class="col-12 mt-3" id="discount_input_wrapper" style="display: none;">
+                                        <label class="form-label" for="discount">Discount (%)</label>
+                                        <input type="text" name="discount" value="{{ $service->discount }}" id="discount" class="form-control"
+                                            placeholder="e.g., 50%">
+                                        @error('discount')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <!-- Show if any offer is selected -->
+                                    <div class="col-12 mt-3">
+                                        <label class="form-label" for="price">Price</label>
+                                        <input type="text" name="price" id="price" value="{{ $service->price }}" class="form-control"
+                                            placeholder="Price">
+                                        @error('price')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
                                     <div class="col-md-12">
                                         <label class="form-label" for="landmark">Main Image</label>
                                         <input type="file" id="main_image" name="main_image"
@@ -115,4 +156,29 @@ crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- /Sticky Actions -->
 </div>
 <!-- / Content -->
+@endsection
+@section('javascript')
+<script>
+    document.getElementById('offer_type').addEventListener('change', function () {
+        const selectedValue = this.value;
+        const daysInputWrapper = document.getElementById('days_input_wrapper');
+        const discountInputWrapper = document.getElementById('discount_input_wrapper');
+
+        // Show persons count only if "persons" is selected
+        if (selectedValue === 'Limited days') {
+            daysInputWrapper.style.display = 'block';
+        } else if (selectedValue === 'Limited people') {
+            daysInputWrapper.style.display = 'block';
+        }else {
+            daysInputWrapper.style.display = 'none';
+        }
+
+        // Show discount input for any offer except empty
+        if (selectedValue !== '') {
+            discountInputWrapper.style.display = 'block';
+        } else {
+            discountInputWrapper.style.display = 'none';
+        }
+    });
+</script>
 @endsection

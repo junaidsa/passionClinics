@@ -1,12 +1,5 @@
 @php
-    use Illuminate\Support\Facades\DB;
-    use Illuminate\Support\Facades\Request;
-
-    $services = DB::table('services')->where('offer_type', '0')->get();
-
-
-
-    // $services = $query->get();
+    $services = DB::table('services')->where('offer_type', '!=', '0')->get();
 @endphp
 <style>
     .price-badge {
@@ -89,9 +82,19 @@
                                 class="img-fluid w-100">
                         </figure>
                     </a>
-                    @if ($s->price)
+                    @if ($s->offer_type == 'Life Time')
                         <div class="price-badge">
-                            {{ App::isLocale('ar') ? number_format($s->price, 2) . ' ر.س' : '$' . number_format($s->price, 2) }}
+                            {{ $s->offer_type }}
+                        </div>
+                    @else
+                        <div class="price-badge">
+                            {{ $s->offer_type }} {{ $s->persons_count }}
+                        </div>
+                    @endif
+
+                    @if ($s->price)
+                        <div class="price-discount">
+                            {{ App::isLocale('ar') ? number_format($s->persons_count, '%') . ' ر.س' : '' . number_format($s->discount) . '%' }}
                         </div>
                     @endif
                 </div>
@@ -105,7 +108,36 @@
                     <p class="flex-grow-1 text-muted">
                         {{ App::isLocale('ar') ? $s->short_description_ar : $s->short_description_en }}
                     </p>
-                    <div>
+                    <div class="d-flex justify-content-between">
+                        @php
+                            $originalPrice = $s->price; // Original price
+                            $discountPercent = $s->discount ?? 0; // DB se discount %, default 0 agar null ho
+
+                            // Offer price calculate karna
+                            $offerPrice = $originalPrice - $originalPrice * ($discountPercent / 100);
+                        @endphp
+
+                        @if ($discountPercent > 0 && $originalPrice > $offerPrice)
+                            <div class="mt-3">
+                                <span class="text-decoration-line-through text-muted me-1" style="opacity: 0.8;">
+                                    {{ App::isLocale('ar') ? number_format($originalPrice, 2) . ' ر.س' : '$' . number_format($originalPrice, 2) }}
+                                </span>
+                                <span class="fw-bold text-dark">
+                                    {{ App::isLocale('ar') ? number_format($offerPrice, 2) . ' ر.س' : '$' . number_format($offerPrice, 2) }}
+                                </span>
+                                {{-- <span class="badge bg-success ms-2">
+                                    {{ $discountPercent }}% OFF
+                                </span> --}}
+                            </div>
+                        @else
+                            <div class="mt-3">
+                                <span class="fw-bold text-dark">
+                                    {{ App::isLocale('ar') ? number_format($originalPrice, 2) . ' ر.س' : '$' . number_format($originalPrice, 2) }}
+                                </span>
+                            </div>
+                        @endif
+
+
                         <a href="{{ route('front.service.single', $s->id) }}" class="readmore-btn float-end"><img
                                 src="{{ asset('public') }}/images/arrow-white.svg" alt=""></a>
                     </div>

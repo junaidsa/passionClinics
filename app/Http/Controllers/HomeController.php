@@ -28,6 +28,10 @@ public function services(){
     return view('front-web.services');
 
 }
+public function offers(){
+    return view('front-web.offers');
+
+}
 public function dashboard(){
     return view('dashboard');
 }

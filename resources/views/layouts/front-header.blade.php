@@ -4,7 +4,7 @@
            <nav class="navbar navbar-expand-lg">
                <div class="container-fluid">
                    <!-- Logo Start -->
-                   <a class="navbar-brand" href="index-video.html">
+                   <a class="navbar-brand" href="{{url('/')}}">
                        <img src="{{ asset('public') }}/images/headerlogo.png" style="width: 150px; height: auto;">
                    </a>
                    <!-- Logo End -->
@@ -18,6 +18,7 @@
                                <li class="nav-item"><a class="nav-link" href="{{ url('/about') }}">@lang('app.about_us')</a>
                                <li class="nav-item"><a class="nav-link" href="{{ url('/services') }}">@lang('app.services')</a></li>
                                <li class="nav-item"><a class="nav-link" href="{{ url('/teams') }}">@lang('app.our_team')</a></li>
+                               <li class="nav-item"><a class="nav-link" href="{{ url('/offers') }}">@lang('app.offers')</a></li>
                                <li class="nav-item"><a class="nav-link" href="{{ url('/e-clinic') }}">@lang('app.e_clinic')</a></li>
                                <li class="nav-item"><a class="nav-link" href="{{ url('/contact') }}">@lang('app.contact_us')</a></li>
                                <li class="nav-item highlighted-menu"><a class="nav-link" href="book-appointment.html">@lang('app.make_an_appointment')</a></li>

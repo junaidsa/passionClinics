@@ -88,8 +88,9 @@
                                         <label class="form-label" for="offer">Offer</label>
                                         <select name="offer_type" id="offer_type" class="form-select">
                                             <option value="">Select Offer</option>
-                                            <option value="lifetime">Life Time</option>
-                                            <option value="persons">Persons</option>
+                                            <option value="Lifetime">Life Time</option>
+                                            <option value="Limited days">Limited days</option>
+                                            <option value="Limited people">Limited people</option>
                                         </select>
                                         @error('offer_type')
                                             <div class="invalid-feedback">{{ $message }}</div>
@@ -98,9 +99,9 @@
 
                                     <!-- Show only if "persons" is selected -->
                                     <div class="col-12 mt-3" id="days_input_wrapper" style="display: none;">
-                                        <label class="form-label" for="persons_count">Number of Persons</label>
+                                        <label class="form-label" for="persons_count">Number</label>
                                         <input type="number" name="persons_count" id="persons_count"
-                                            class="form-control" min="1" placeholder="Enter number of persons">
+                                            class="form-control" min="1" placeholder="Enter number">
                                         @error('persons_count')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
@@ -173,9 +174,11 @@
         const discountInputWrapper = document.getElementById('discount_input_wrapper');
 
         // Show persons count only if "persons" is selected
-        if (selectedValue === 'persons') {
+        if (selectedValue === 'Limited days') {
             daysInputWrapper.style.display = 'block';
-        } else {
+        } else if (selectedValue === 'Limited people') {
+            daysInputWrapper.style.display = 'block';
+        }else {
             daysInputWrapper.style.display = 'none';
         }
 

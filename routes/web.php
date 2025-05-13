@@ -38,6 +38,7 @@ Route::get('/contact',[Homecontroller::class,'contact_us'])->name('front.contact
 Route::post('/contact_form/insert', [HomeController::class, 'insertContact'])->name('contact.insert');
 Route::get('/service/{id}',[Homecontroller::class,'service'])->name('front.service.single');
 Route::get('/services',[Homecontroller::class,'services'])->name('front.services');
+Route::get('/offers',[Homecontroller::class,'offers'])->name('front.offers');
 Route::get('/teams',[Homecontroller::class,'teams'])->name('front.teams');
 Route::get('/team/{id}',[TeamController::class,'team_profile'])->name('front.team');
 Route::get('/admin/dashboard',[Homecontroller::class,'dashboard'])->name('dashboard');
