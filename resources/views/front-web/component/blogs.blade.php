@@ -34,13 +34,16 @@ $blogs = DB::table('blogs')->get();
                         <!-- Post Item Content Start -->
                         <div class="post-item-content">
                             <h2><a href="#">{{ App::isLocale('ar') ? @$b->title_ar : @$b->title_en}}</a></h2>
+                            <p>{{ App::isLocale('ar') ? @$b->description_ar : @$b->description}}</p>
                         </div>
                         <!-- Post Item Content End -->
 
                         <!-- Post Item Readmore Button Start-->
-                        <div class="post-item-btn">
-                            <a href="#" class="readmore-btn"><img src="{{ asset('public') }}/images/arrow-white.svg" alt=""></a>
-                        </div>
+                            <div class="mt-auto text-center">
+                    <a href="#" class="btn btn-primary w-100 py-2">
+                        {{ __('More info') }}
+                    </a>
+                </div>
                         <!-- Post Item Readmore Button End-->
                     </div>
                     <!-- Post Item Body End -->

@@ -32,118 +32,74 @@
         z-index: 2;
     }
 </style>
+<div class="row g-4">
+@foreach ($services as $s)
+    @php
+        $originalPrice = $s->price ?? 0;
+        $discountPercent = $s->discount ?? 0;
+        $offerPrice = $originalPrice - ($originalPrice * ($discountPercent / 100));
+        $hasDiscount = $discountPercent > 0 && $originalPrice > $offerPrice;
+        $image = $s->main_image ? url('file/service/' . $s->main_image) : url('file/service/avatar.jpg');
+        $title = App::isLocale('ar') ? $s->title_ar : $s->title_en;
+        $currency = App::isLocale('ar') ? ' ر.س' : '$';
+    @endphp
 
-{{-- <div class="row">
-    @foreach ($services as $s)
-        <div class="col-lg-4 col-md-6">
-            <div class="service-item wow fadeInUp position-relative">
-                @if ($s->price)
-                    <div class="price-badge">
-                        {{ App::isLocale('ar') ? number_format($s->price, 2) . ' ر.س' : '$' . number_format($s->price, 2) }}
+    <div class="col-12 col-md-6 col-lg-4 mb-4">
+        <div class="card h-100 shadow-sm border-0 overflow-hidden position-relative">
+            {{-- Discount badge --}}
+            @if ($hasDiscount)
+                <span class="badge bg-danger position-absolute top-0 start-0 z-1 m-2 fs-6 px-3 py-2 rounded-end">
+                    {{ __('-' . number_format($discountPercent) . '% OFF') }}
+                </span>
+            @endif
+
+            {{-- Offer Type badge --}}
+            @if ($s->offer_type)
+                <span class="badge bg-warning text-dark position-absolute top-0 end-0 z-1 m-2 fs-6 px-3 py-2 rounded-start">
+                    {{ $s->offer_type === 'Life Time' ? __('Lifetime Access') : __('Limited Offer:') . ' ' . $s->persons_count }}
+                </span>
+            @endif
+
+            {{-- Image --}}
+            <a href="{{ route('front.service.single', $s->id) }}">
+                <img src="{{ $image }}" class="card-img-top" alt="Service Image" style="height: 220px; object-fit: cover;">
+            </a>
+
+            {{-- Content --}}
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title mb-2">
+                    <a href="{{ route('front.service.single', $s->id) }}" class="text-dark text-decoration-none">
+                        {{ $title }}
+                    </a>
+                </h5>
+
+                {{-- Price Section --}}
+                @if ($originalPrice > 0)
+                    <div class="mb-3">
+                        @if ($hasDiscount)
+                            <span class="text-muted text-decoration-line-through me-2">
+                                {{ App::isLocale('ar') ? number_format($originalPrice, 2) . $currency : $currency . number_format($originalPrice, 2) }}
+                            </span>
+                            <span class="fw-bold text-success fs-5">
+                                {{ App::isLocale('ar') ? number_format($offerPrice, 2) . $currency : $currency . number_format($offerPrice, 2) }}
+                            </span>
+                        @else
+                            <span class="fw-bold text-dark fs-5">
+                                {{ App::isLocale('ar') ? number_format($originalPrice, 2) . $currency : $currency . number_format($originalPrice, 2) }}
+                            </span>
+                        @endif
                     </div>
                 @endif
-                <div class="service-content">
-                    <div class="service-content-title">
-                        <h2><a href="service-single.html">{{ App::isLocale('ar') ? @$s->title_ar : @$s->title_en }}</a>
-                        </h2>
-                        <a href="{{ route('front.service.single', $s->id) }}" class="readmore-btn"><img
-                                src="{{ asset('public') }}/images/arrow-white.svg" alt=""></a>
-                    </div> --}}
-{{-- @if ($s->price)
-                        <p class="service-price fw-bold text-primary mt-2">
-                            {{ App::isLocale('ar') ? number_format($s->price, 2) . ' ر.س' : '$' . number_format($s->price, 2) }}
-                        </p>
-                    @endif --}}
-{{-- <p>{{$s->short_description_en}}</p> --}}
-{{-- <p>{{ App::isLocale('ar') ? @$s->short_description_ar : @$s->short_description_en }}</p>
-                </div>
-                <div class="service-image">
-                    <a href="service-single.html" data-cursor-text="View">
-                        <figure class="image-anime">
-                            <img src="{{ url('file/service/' . (@$s->main_image ?? 'avatar.jpg')) }}" alt="">
-                        </figure>
+
+                {{-- Buy Now Button --}}
+                <div class="mt-auto text-center">
+                    <a href="{{ route('front.service.single', $s->id) }}" class="btn-default w-100 py-2">
+                        {{ __('Buy Now') }}
                     </a>
                 </div>
             </div>
         </div>
-    @endforeach
+    </div>
+@endforeach
 
-</div> --}}
-
-<div class="row g-4">
-    @foreach ($services as $s)
-        <div class="col-12 col-md-6 col-lg-4">
-            <div class="service-item position-relative shadow-sm rounded p-3 h-100 d-flex flex-column bg-white">
-
-                <div class="service-image position-relative">
-                    <a href="service-single.html" data-cursor-text="View">
-                        <figure class="image-anime">
-                            <img src="{{ url('file/service/' . (@$s->main_image ?? 'avatar.jpg')) }}" alt="Service Image"
-                                class="img-fluid w-100">
-                        </figure>
-                    </a>
-                    @if ($s->offer_type == 'Life Time')
-                        <div class="price-badge">
-                            {{ $s->offer_type }}
-                        </div>
-                    @else
-                        <div class="price-badge">
-                            {{ $s->offer_type }} {{ $s->persons_count }}
-                        </div>
-                    @endif
-
-                    @if ($s->price)
-                        <div class="price-discount">
-                            {{ App::isLocale('ar') ? number_format($s->persons_count, '%') . ' ر.س' : '' . number_format($s->discount) . '%' }}
-                        </div>
-                    @endif
-                </div>
-
-                <div class="service-content d-flex flex-column flex-grow-1 mt-3">
-                    <h5 class="fw-semibold mb-2">
-                        <a href="{{ route('front.service.single', $s->id) }}" class="text-decoration-none text-dark">
-                            {{ App::isLocale('ar') ? $s->title_ar : $s->title_en }}
-                        </a>
-                    </h5>
-                    <p class="flex-grow-1 text-muted">
-                        {{ App::isLocale('ar') ? $s->short_description_ar : $s->short_description_en }}
-                    </p>
-                    <div class="d-flex justify-content-between">
-                        @php
-                            $originalPrice = $s->price; // Original price
-                            $discountPercent = $s->discount ?? 0; // DB se discount %, default 0 agar null ho
-
-                            // Offer price calculate karna
-                            $offerPrice = $originalPrice - $originalPrice * ($discountPercent / 100);
-                        @endphp
-
-                        @if ($discountPercent > 0 && $originalPrice > $offerPrice)
-                            <div class="mt-3">
-                                <span class="text-decoration-line-through text-muted me-1" style="opacity: 0.8;">
-                                    {{ App::isLocale('ar') ? number_format($originalPrice, 2) . ' ر.س' : '$' . number_format($originalPrice, 2) }}
-                                </span>
-                                <span class="fw-bold text-dark">
-                                    {{ App::isLocale('ar') ? number_format($offerPrice, 2) . ' ر.س' : '$' . number_format($offerPrice, 2) }}
-                                </span>
-                                {{-- <span class="badge bg-success ms-2">
-                                    {{ $discountPercent }}% OFF
-                                </span> --}}
-                            </div>
-                        @else
-                            <div class="mt-3">
-                                <span class="fw-bold text-dark">
-                                    {{ App::isLocale('ar') ? number_format($originalPrice, 2) . ' ر.س' : '$' . number_format($originalPrice, 2) }}
-                                </span>
-                            </div>
-                        @endif
-
-
-                        <a href="{{ route('front.service.single', $s->id) }}" class="readmore-btn float-end"><img
-                                src="{{ asset('public') }}/images/arrow-white.svg" alt=""></a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    @endforeach
 </div>

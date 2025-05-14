@@ -8,12 +8,12 @@
 				<div class="col-lg-12">
 					<!-- Page Header Box Start -->
 					<div class="page-header-box">
-						<h1  >{{$service->title}}</h1>
+						<h1  >{{$service->title_en}}</h1>
 						<nav class="wow fadeInUp">
 							<ol class="breadcrumb">
 								<li class="breadcrumb-item"><a href="{{url('/')}}">home</a></li>
 								<li class="breadcrumb-item"><a href="{{url('services')}}">services</a></li>
-								<li class="breadcrumb-item active" aria-current="page">{{$service->title}}</li>
+								<li class="breadcrumb-item active" aria-current="page">{{$service->title_en}}</li>
 							</ol>
 						</nav>
 					</div>
@@ -48,7 +48,7 @@
                         <!-- Service Entry Start -->
                         <div class="service-entry">
 
-                            <p class="wow fadeInUp" data-wow-delay="0.2s">{{$service->short_description}}.</p>
+                            <p class="wow fadeInUp" data-wow-delay="0.2s">{{$service->short_description_en}}.</p>
 
                             <!-- Service Expert Box Start -->
                                     @php
@@ -96,7 +96,7 @@
                             <!-- Service Archive Box Start -->
                             <div class="service-achieve-box">
 
-                                {!!$service->description!!}
+                                {{$service->description_en}}
 
                                     {{-- {! $service->description !} --}}
 

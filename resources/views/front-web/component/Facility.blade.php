@@ -8,11 +8,11 @@ $facilities = DB::table('facilities')->get();
         <div class="case-study-item wow fadeInUp">
             <!-- Case Study Image Start -->
             <div class="case-study-image">
-                <a href="case-study-single.html" data-cursor-text="View">
+                {{-- <a href="case-study-single.html" data-cursor-text="View"> --}}
                     <figure class="image-anime">
                         <img src="{{ url('file/facility/' . (@$f->avatar ?? 'avatar.jpg')) }}" alt="">
                     </figure>
-                </a>
+                {{-- </a> --}}
             </div>
             <!-- Case Study Image End -->
 
@@ -23,11 +23,6 @@ $facilities = DB::table('facilities')->get();
                     <h3><a href="#">{{ App::isLocale('ar') ? @$f->name_ar : @$s->name}}</a></h3>
                 </div>
                 <!-- Case Study Content End -->
-
-                <!-- Case Study Button Start -->
-                <div class="case-study-readmore-btn">
-                    <a href="#" class="readmore-btn"><img src="{{ asset('public') }}/images/arrow-white.svg" alt=""></a>
-                </div>
                 <!-- Case Study Button End -->
             </div>
             <!-- Case Study Body End -->

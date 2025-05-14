@@ -1,5 +1,5 @@
 @php
-$services = DB::table('services')->select('id', 'title')->get();
+$services = DB::table('services')->select('id', 'title_en')->get();
 @endphp
 <div class="page-single-sidebar">
     <!-- Page Single Category List Start -->
@@ -8,7 +8,7 @@ $services = DB::table('services')->select('id', 'title')->get();
         <ul>
             @foreach ($services as $s)
 
-            <li><a href="{{url('service/'.$s->id)}}">{{$s->title}}</a></li>
+            <li><a href="{{url('service/'.$s->id)}}">{{$s->title_en}}</a></li>
             @endforeach
         </ul>
     </div>

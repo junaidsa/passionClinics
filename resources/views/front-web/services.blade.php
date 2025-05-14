@@ -43,13 +43,6 @@
             </div>
         </div>
         <!-- Page Services End -->
-
-        <!-- Our Testimonials Section Start -->
-        <div class="our-testimonials bg-section dark-section">
-            <div class="container">
-                @include('front-web.component.testimonials')
-            </div>
-        </div>
         <!-- Our Testimonials Section End -->
 
 

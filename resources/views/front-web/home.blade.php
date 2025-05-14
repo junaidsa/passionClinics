@@ -160,9 +160,7 @@
                         <!-- About Experience List End -->
 
                         <!-- What We Button Start -->
-                        <div class="what-we-btn wow fadeInUp" data-wow-delay="0.6s">
-                            <a href="{{url('/contact')}}" class="btn-default">@lang('app.learn_more')</a>
-                        </div>
+
                         <!-- What We Button End -->
                     </div>
                 </div>
@@ -230,7 +228,7 @@
                         <!-- Section Title End -->
 
                         <!-- Case Study Button Start -->
-                        <div class="case-study-btn wow fadeInUp" data-wow-delay="0.4s">
+                        <div class="case-study-btn">
                             <a href="{{url('/contact')}}" class="btn-default">@lang('app.contact_us')</a>
                         </div>
                         <!-- Case Study Button End -->
@@ -239,135 +237,6 @@
                 </div>
 
                 <div class="col-lg-8">
-                    {{-- <div class="row">
-                        <div class="col-md-6">
-                            <!-- Case Study Item Start -->
-                            <div class="case-study-item wow fadeInUp">
-                                <!-- Case Study Image Start -->
-                                <div class="case-study-image">
-                                    <a href="case-study-single.html" data-cursor-text="View">
-                                        <figure class="image-anime">
-                                            <img src="{{ asset('public') }}/images/case-study-image-1.jpg" alt="">
-                                        </figure>
-                                    </a>
-                                </div>
-                                <!-- Case Study Image End -->
-
-                                <!-- Case Study Body Start -->
-                                <div class="case-study-body">
-                                    <!-- Case Study Content Start -->
-                                    <div class="case-study-item-content">
-                                        <h3><a href="case-study-single.html">Restoring Youthful Radiance</a></h3>
-                                    </div>
-                                    <!-- Case Study Content End -->
-
-                                    <!-- Case Study Button Start -->
-                                    <div class="case-study-readmore-btn">
-                                        <a href="case-study-single.html" class="readmore-btn"><img src="{{ asset('public') }}/images/arrow-white.svg" alt=""></a>
-                                    </div>
-                                    <!-- Case Study Button End -->
-                                </div>
-                                <!-- Case Study Body End -->
-                            </div>
-                            <!-- Case Study Item End -->
-                        </div>
-
-                        <div class="col-md-6">
-                            <!-- Case Study Item Start -->
-                            <div class="case-study-item wow fadeInUp" data-wow-delay="0.2s">
-                                <!-- Case Study Image Start -->
-                                <div class="case-study-image">
-                                    <a href="case-study-single.html" data-cursor-text="View">
-                                        <figure class="image-anime">
-                                            <img src="{{ asset('public') }}/images/case-study-image-2.jpg" alt="">
-                                        </figure>
-                                    </a>
-                                </div>
-                                <!-- Case Study Image End -->
-
-                                <!-- Case Study Body Start -->
-                                <div class="case-study-body">
-                                    <!-- Case Study Content Start -->
-                                    <div class="case-study-item-content">
-                                        <h3><a href="case-study-single.html">Natural & Beautiful Results</a></h3>
-                                    </div>
-                                    <!-- Case Study Content End -->
-
-                                    <!-- Case Study Button Start -->
-                                    <div class="case-study-readmore-btn">
-                                        <a href="case-study-single.html" class="readmore-btn"><img src="{{ asset('public') }}/images/arrow-white.svg" alt=""></a>
-                                    </div>
-                                    <!-- Case Study Button End -->
-                                </div>
-                                <!-- Case Study Body End -->
-                            </div>
-                            <!-- Case Study Item End -->
-                        </div>
-
-                        <div class="col-md-6">
-                            <!-- Case Study Item Start -->
-                            <div class="case-study-item wow fadeInUp" data-wow-delay="0.4s">
-                                <!-- Case Study Image Start -->
-                                <div class="case-study-image">
-                                    <a href="case-study-single.html" data-cursor-text="View">
-                                        <figure class="image-anime">
-                                            <img src="{{ asset('public') }}/images/case-study-image-3.jpg" alt="">
-                                        </figure>
-                                    </a>
-                                </div>
-                                <!-- Case Study Image End -->
-
-                                <!-- Case Study Body Start -->
-                                <div class="case-study-body">
-                                    <!-- Case Study Content Start -->
-                                    <div class="case-study-item-content">
-                                        <h3><a href="case-study-single.html">Restoring Post-Pregnancy Beauty</a></h3>
-                                    </div>
-                                    <!-- Case Study Content End -->
-
-                                    <!-- Case Study Button Start -->
-                                    <div class="case-study-readmore-btn">
-                                        <a href="case-study-single.html" class="readmore-btn"><img src="{{ asset('public') }}/images/arrow-white.svg" alt=""></a>
-                                    </div>
-                                    <!-- Case Study Button End -->
-                                </div>
-                                <!-- Case Study Body End -->
-                            </div>
-                            <!-- Case Study Item End -->
-                        </div>
-
-                        <div class="col-md-6">
-                            <!-- Case Study Item Start -->
-                            <div class="case-study-item wow fadeInUp" data-wow-delay="0.6s">
-                                <!-- Case Study Image Start -->
-                                <div class="case-study-image">
-                                    <a href="case-study-single.html" data-cursor-text="View">
-                                        <figure class="image-anime">
-                                            <img src="{{ asset('public') }}/images/case-study-image-4.jpg" alt="">
-                                        </figure>
-                                    </a>
-                                </div>
-                                <!-- Case Study Image End -->
-
-                                <!-- Case Study Body Start -->
-                                <div class="case-study-body">
-                                    <!-- Case Study Content Start -->
-                                    <div class="case-study-item-content">
-                                        <h3><a href="case-study-single.html">A Smoother, Glowing Complexion</a></h3>
-                                    </div>
-                                    <!-- Case Study Content End -->
-
-                                    <!-- Case Study Button Start -->
-                                    <div class="case-study-readmore-btn">
-                                        <a href="case-study-single.html" class="readmore-btn"><img src="{{ asset('public') }}/images/arrow-white.svg" alt=""></a>
-                                    </div>
-                                    <!-- Case Study Button End -->
-                                </div>
-                                <!-- Case Study Body End -->
-                            </div>
-                            <!-- Case Study Item End -->
-                        </div>
-                    </div> --}}
                     @include('front-web.component.Facility')
                 </div>
             </div>
@@ -443,10 +312,6 @@
                         <!-- Section Title End -->
 
                         <!-- How Work Button Start -->
-                        <div class="how-work-btn wow fadeInUp" data-wow-delay="0.4s">
-                            <a href="{{url('/contact')}}" class="btn-default">@lang('app.contact_us')</a>
-                        </div>
-                        <!-- How Work Button End -->
                     </div>
                     <!-- How Work Content End -->
                 </div>
@@ -612,91 +477,6 @@
             </div>
         </div>
     </div>
-    <!-- Our Result Section End -->
-
-    <!-- Our Appointment Section Start -->
-    {{-- <div class="our-appointment bg-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 order-lg-1 order-2">
-                    <!-- Our Appointment Image Start -->
-                    <div class="our-appointment-image">
-                        <figure>
-                            <img src="{{ asset('public') }}/images/appointment-image.png" alt="">
-                        </figure>
-                    </div>
-                    <!-- Our Appointment Image End -->
-                </div>
-
-                <div class="col-lg-6 order-lg-2 order-1">
-                    <!-- Appointment Form Start -->
-                    <div class="appointment-form">
-                        <!-- Section Title Start -->
-                        <div class="section-title">
-                            <h3 class="wow fadeInUp">Say Hello to a Perfect shape</h3>
-                            <h2   data-cursor="-opaque">If you're not sure what you'd like to do, click on the button and book a gernal appointment</h2>
-                        </div>
-                        <!-- Section Title End -->
-
-                        <!-- Contact Us Form Start -->
-                        <form id="appointmentForm" action="#" method="POST" data-toggle="validator" class="wow fadeInUp" data-wow-delay="0.2s">
-                            <div class="row">
-                                <div class="form-group col-md-6 mb-4">
-                                    <input type="text" name="fname" class="form-control" id="fname" placeholder="First Name" required="">
-                                    <div class="help-block with-errors"></div>
-                                </div>
-
-                                <div class="form-group col-md-6 mb-4">
-                                    <input type="text" name="lname" class="form-control" id="lname" placeholder="Last Name" required="">
-                                    <div class="help-block with-errors"></div>
-                                </div>
-
-                                <div class="form-group col-md-6 mb-4">
-                                    <input type="email" name="email" class="form-control" id="email" placeholder="Email Address" required="">
-                                    <div class="help-block with-errors"></div>
-                                </div>
-
-                                <div class="form-group col-md-6 mb-4">
-                                    <input type="text" name="phone" class="form-control" id="phone" placeholder="Phone Number" required="">
-                                    <div class="help-block with-errors"></div>
-                                </div>
-
-                                <div class="form-group col-md-6 mb-4">
-                                    <input type="date" name="date" class="form-control" id="date" required="">
-                                    <div class="help-block with-errors"></div>
-                                </div>
-
-                                <div class="form-group col-md-6 mb-4">
-                                    <select name="doctor" class="form-control form-select" id="doctor" required="">
-                                        <option value="" disabled="" selected="">Choose Doctor</option>
-                                        <option value="beginner_yoga_classes">Dr. Neha Verma</option>
-                                        <option value="stress_relief_sessions">Cameron Williamson</option>
-                                        <option value="mindful_meditation">Dr. Ayesha Kapoor</option>
-                                        <option value="relaxation_techniques">Dr. Karan Gohel</option>
-                                        <option value="group_yoga_workshops">Dr. Aryan Malhotra</option>
-                                        <option value="restorative_yoga">Dr. Aisha Kapoor</option>
-                                        <option value="mental_clarity_meditation">Dr. Rahul Mehta</option>
-                                        <option value="personalized_yoga_sessions">Dr. Emily Verma</option>
-                                    </select>
-                                    <div class="help-block with-errors"></div>
-                                </div>
-
-                                <div class="col-lg-12">
-                                    <div class="contact-form-btn">
-                                        <button type="submit" class="btn-default">get appointment</button>
-                                        <div id="msgSubmit" class="h3 hidden"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                        <!-- Contact Us Form End -->
-                    </div>
-                    <!-- Appointment Form Start -->
-                </div>
-            </div>
-        </div>
-    </div> --}}
-    <!-- Our Appointment Section End -->
 
     <!-- Our Blog Section Start -->
  <!-- Our Blog Section Start -->

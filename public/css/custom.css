@@ -243,60 +243,8 @@ body{
 	z-index: 1;
 }
 
-.btn-default::before{
-	content: '';
-	position: absolute;
-	top: 50%;
-	right: -50px;
-	width: 50px;
-	height: 50px;
-	border-radius: 50%;
-	background-color: var(--primary-color);
-	background-image: url('../images/arrow-white.svg');
-	background-repeat: no-repeat;
-	background-position: center center;
-	background-size: 14px auto;
-	transform: translateY(-50%);
-	transition: all 0.3s ease-in-out;
-}
 
-.btn-default:hover::before{
-	transform: translateY(-50%) rotate(45deg);
-}
 
-.btn-default::after{
-	content: "";
-	position: absolute;
-	top: 0;
-	bottom: 0;
-  	left: 50%;
-  	right: 50%;
-  	opacity: 0;
-	background: var(--primary-color);
-	border-radius: 100px;
-	transition: all 0.4s ease-in-out;
-	z-index: -1;
-}
-
-.btn-default:hover::after{
-	left: 0;
-  	right: 0;
-	opacity: 1;
-}
-
-.btn-default.btn-highlighted:hover{
-	background: transparent;
-	color: var(--primary-color);
-}
-
-.btn-default.btn-highlighted::before{
-	background-color: var(--white-color);
-	background-image: url('../images/arrow-primary.svg');
-}
-
-.btn-default.btn-highlighted:hover::after{
-	background: var(--white-color);
-}
 
 .readmore-btn{
 	background: var(--accent-color);

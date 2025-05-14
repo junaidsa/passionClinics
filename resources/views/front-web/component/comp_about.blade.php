@@ -23,11 +23,11 @@
             <!-- About Image 1 End -->
 
             <!-- About Image 2 Start -->
-            {{-- <div class="about-img-2">
+            <div class="about-img-2">
                 <figure class="image-anime reveal">
                     <img src="{{ url('file/about/' . (@$about->about_attachment2 ?? 'avatar.jpg')) }}" alt="">
                 </figure>
-            </div> --}}
+            </div>
             <!-- About Image 2 End -->
         </div>
         <!-- About Us Images End -->

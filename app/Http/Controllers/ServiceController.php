@@ -100,7 +100,7 @@ class ServiceController extends Controller
             'description_en' => 'required',
             'short_description_en' => 'required',
             'short_description_ar' => 'required',
-            'main_image' => 'required|image', // optionally check if it's an image
+            'main_image' => 'nullable|image', // optionally check if it's an image
             'video_thumbnail' => 'nullable', // if optional
             'video_url' => 'nullable|url', // if optional
         ]);
