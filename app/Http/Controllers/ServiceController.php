@@ -38,6 +38,8 @@ class ServiceController extends Controller
             'description_en' => 'required',
             'short_description_en' => 'required',
             'short_description_ar' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
             'main_image' => 'required|image', // optionally check if it's an image
             'video_thumbnail' => 'nullable', // if optional
             'video_url' => 'nullable|url', // if optional
@@ -74,6 +76,8 @@ class ServiceController extends Controller
             'description_ar' => $request->description_ar,
             'short_description_ar' => $request->short_description_ar,
             'short_description_en' => $request->short_description_en,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
         ]);
         return redirect()->route('service.index')->with('success', 'Service added successfully.');
     }
@@ -146,7 +150,8 @@ class ServiceController extends Controller
             'description_ar' => $request->description_ar,
             'short_description_ar' => $request->short_description_ar,
             'short_description_en' => $request->short_description_en,
-
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
         ]);
 
         return redirect()->route('service.index')->with('success', 'Service updated successfully.');

@@ -195,7 +195,7 @@ html[dir="rtl"] .footer-contact-item li i {
                         <div class="footer-links quick-links">
                             <h3>quick link</h3>
                             <ul>
-                                <li><a href="{{ url('/') }}">>@lang('app.home')</a></li>
+                                <li><a href="{{ url('/') }}">@lang('app.home')</a></li>
                                 <li><a href="{{ url('/about') }}">@lang('app.about_us')</a></li>
                                 <li><a href="{{ url('/services') }}">@lang('app.services')</a></li>
                                 <li><a href="{{ url('/e_clinic') }}">@lang('app.e_clinic')</a></li>

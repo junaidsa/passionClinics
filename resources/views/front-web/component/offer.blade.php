@@ -1,37 +1,6 @@
 @php
     $services = DB::table('services')->where('offer_type', '!=', '0')->get();
 @endphp
-<style>
-    .price-badge {
-        position: absolute;
-        top: 0rem;
-        left: 0rem;
-        /* background-color: #0d6efd; */
-        background-color: #1EAAE8;
-        color: #fff;
-        padding: 6px 12px;
-        border-radius: 15px 0 0 0;
-        font-weight: 600;
-        font-size: 0.95rem;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        z-index: 2;
-    }
-
-    .price-discount {
-        position: absolute;
-        top: 0rem;
-        right: 0rem;
-        /* background-color: #0d6efd; */
-        background-color: #AEABEA;
-        color: #fff;
-        padding: 6px 12px;
-        border-radius: 0 15px 0 0;
-        font-weight: 600;
-        font-size: 0.95rem;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        z-index: 2;
-    }
-</style>
 <div class="row g-4">
 @foreach ($services as $s)
     @php
@@ -42,27 +11,39 @@
         $image = $s->main_image ? url('file/service/' . $s->main_image) : url('file/service/avatar.jpg');
         $title = App::isLocale('ar') ? $s->title_ar : $s->title_en;
         $currency = App::isLocale('ar') ? ' ر.س' : '$';
+        $start = $s->start_date;
     @endphp
 
     <div class="col-12 col-md-6 col-lg-4 mb-4">
         <div class="card h-100 shadow-sm border-0 overflow-hidden position-relative">
             {{-- Discount badge --}}
-            @if ($hasDiscount)
-                <span class="badge bg-danger position-absolute top-0 start-0 z-1 m-2 fs-6 px-3 py-2 rounded-end">
-                    {{ __('-' . number_format($discountPercent) . '% OFF') }}
-                </span>
-            @endif
+    @php
 
+    @$start = \Carbon\Carbon::parse($s->start_date);
+    @$end = \Carbon\Carbon::parse($s->end_date);
+
+    @endphp
+            @if ($start)
+            @endif
+            @if ($start->format('F') === $end->format('F'))
+            <span class="fw-bold bg-light position-absolute top-0 z-1 shadow-sm fs-6 px-3 py-2 rounded-0 float-start">
+                {{ @$start->format('M j') }} to {{ $end->format('j') }}
+            </span>
+            @else
+            <span class="fw-bold bg-light position-absolute top-0 z-1 shadow-sm fs-6 px-3 py-2 rounded-0 float-start">
+                {{ @$start->format('M j') }} to {{ $end->format('M j') }}
+            </span>
+            @endif
             {{-- Offer Type badge --}}
             @if ($s->offer_type)
-                <span class="badge bg-warning text-dark position-absolute top-0 end-0 z-1 m-2 fs-6 px-3 py-2 rounded-start">
+                <span class="badge bg-light text-dark position-absolute top-0 end-0 z-1 shadow-sm fs-6 px-3 py-2 rounded-0 float-end">
                     {{ $s->offer_type === 'Life Time' ? __('Lifetime Access') : __('Limited Offer:') . ' ' . $s->persons_count }}
                 </span>
             @endif
 
             {{-- Image --}}
             <a href="{{ route('front.service.single', $s->id) }}">
-                <img src="{{ $image }}" class="card-img-top" alt="Service Image" style="height: 220px; object-fit: cover;">
+                <img src="{{ $image }}" class="card-img-top p-2 mt-5 rounded-4" alt="Service Image" style="height: 220px; object-fit: cover;">
             </a>
 
             {{-- Content --}}

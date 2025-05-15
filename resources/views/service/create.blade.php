@@ -20,7 +20,7 @@
                                 <h5 class="mb-4 mt-4">Create Service</h5>
                                 <div class="row g-3">
                                     <!-- English Title -->
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <label class="form-label" for="title_en">Title (English)</label>
                                         <input type="text" id="title_en"
                                             class="form-control @error('title_en') is-invalid @enderror"
@@ -32,8 +32,8 @@
                                     </div>
 
                                     <!-- Arabic Title -->
-                                    <div class="col-md-12">
-                                        <label class="form-label" for="title_ar">العنوان (Arabic)</label>
+                                    <div class="col-md-6">
+                                        <label class="form-label float-end" for="title_ar">العنوان (Arabic)</label>
                                         <input type="text" id="title_ar"
                                             class="form-control @error('title_ar') is-invalid @enderror"
                                             placeholder="اكتب العنوان بالعربية" name="title_ar"
@@ -56,7 +56,7 @@
 
                                     <!-- Short Description (Arabic) -->
                                     <div class="col-12">
-                                        <label class="form-label" for="short_description_ar">الوصف المختصر
+                                        <label class="form-label float-end" for="short_description_ar">الوصف المختصر
                                             (Arabic)</label>
                                         <textarea name="short_description_ar" class="form-control @error('short_description_ar') is-invalid @enderror"
                                             id="short_description_ar" rows="2" placeholder="اكتب الوصف المختصر بالعربية" dir="rtl">{{ old('short_description_ar') }}</textarea>
@@ -76,7 +76,8 @@
                                         @enderror
                                     </div>
                                     <div class="col-12">
-                                        <label class="form-label" for="description_ar">Description (Arabic)</label>
+                                        <label class="form-label float-end" for="description_ar">Description
+                                            (Arabic)</label>
                                         <textarea class="form-control textarea  @error('description_ar') is-invalid @enderror" id="description_ar"
                                             name="description_ar" rows="5" placeholder="الوصف باللغة العربية" dir="rtl">{{ old('description_ar') }}</textarea>
                                         @error('description_ar')
@@ -84,7 +85,7 @@
                                         @enderror
                                     </div>
 
-                                    <div class="col-12">
+                                    <div class="col-md-6">
                                         <label class="form-label" for="offer">Offer</label>
                                         <select name="offer_type" id="offer_type" class="form-select">
                                             <option value="">Select Offer</option>
@@ -93,6 +94,16 @@
                                             <option value="Limited people">Limited people</option>
                                         </select>
                                         @error('offer_type')
+                                            <div class="invalid-feedback">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <!-- Show if any offer is selected -->
+                                    <div class="col-md-6 mt-3">
+                                        <label class="form-label" for="price">Price</label>
+                                        <input type="text" name="price" id="price" class="form-control"
+                                            placeholder="Price">
+                                        @error('price')
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -106,6 +117,24 @@
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
+                                    {{-- <div class="row"> --}}
+                                        <div class="col-md-6 mt-3">
+                                            <label class="form-label" for="start_date">Start Date</label>
+                                            <input type="date" name="start_date" id="start_date"
+                                                class="form-control" min="1" placeholder="Enter number">
+                                            @error('start_date')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-md-6 mt-3">
+                                            <label class="form-label" for="end_date">End Date</label>
+                                            <input type="date" name="end_date" id="end_date"
+                                                class="form-control" min="1" placeholder="Enter number">
+                                            @error('end_date')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    {{-- </div> --}}
 
                                     <!-- Show if any offer is selected -->
                                     <div class="col-12 mt-3" id="discount_input_wrapper" style="display: none;">
@@ -116,15 +145,7 @@
                                             <div class="invalid-feedback">{{ $message }}</div>
                                         @enderror
                                     </div>
-                                    <!-- Show if any offer is selected -->
-                                    <div class="col-12 mt-3">
-                                        <label class="form-label" for="price">Price</label>
-                                        <input type="text" name="price" id="price" class="form-control"
-                                            placeholder="Price">
-                                        @error('price')
-                                            <div class="invalid-feedback">{{ $message }}</div>
-                                        @enderror
-                                    </div>
+
 
                                     <div class="col-md-12">
                                         <label class="form-label" for="landmark">Main Image</label>
@@ -168,17 +189,18 @@
 @endsection
 @section('javascript')
 <script>
-    document.getElementById('offer_type').addEventListener('change', function () {
+    document.getElementById('offer_type').addEventListener('change', function() {
         const selectedValue = this.value;
-        const daysInputWrapper = document.getElementById('days_input_wrapper');
+        const daysWrapper = document.getElementById('days_input_wrapper');
+        const daysInputWrapper = document.getElementById('days_wrapper');
         const discountInputWrapper = document.getElementById('discount_input_wrapper');
 
         // Show persons count only if "persons" is selected
         if (selectedValue === 'Limited days') {
-            daysInputWrapper.style.display = 'block';
+            daysWrapper.style.display = 'block';
         } else if (selectedValue === 'Limited people') {
             daysInputWrapper.style.display = 'block';
-        }else {
+        } else {
             daysInputWrapper.style.display = 'none';
         }
 
