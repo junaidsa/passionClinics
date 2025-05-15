@@ -124,7 +124,7 @@ html[dir="rtl"] .footer-contact-item li i {
     <div class="preloader">
         <div class="loading-container">
             <div class="loading"></div>
-            <div id="loading-icon"><img src="{{ asset('public') }}/images/headerlogo.png" alt=""></div>
+            <div id="loading-icon"><img src="{{ asset('public') }}/images/fav.png" alt=""></div>
         </div>
     </div>
     <!-- Preloader End -->
@@ -178,7 +178,6 @@ html[dir="rtl"] .footer-contact-item li i {
                         <!-- Footer Social Link Start -->
                         <div class="footer-social-links">
                             <ul>
-                                <li><a href="#"><i class="fa-brands fa-pinterest-p"></i></a></li>
                                 <li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
                                 <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
                                 <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
@@ -198,7 +197,7 @@ html[dir="rtl"] .footer-contact-item li i {
                                 <li><a href="{{ url('/') }}">@lang('app.home')</a></li>
                                 <li><a href="{{ url('/about') }}">@lang('app.about_us')</a></li>
                                 <li><a href="{{ url('/services') }}">@lang('app.services')</a></li>
-                                <li><a href="{{ url('/e_clinic') }}">@lang('app.e_clinic')</a></li>
+                                <li><a href="{{ url('/e-clinic') }}">@lang('app.e_clinic')</a></li>
                                 <li><a href="{{ url('/teams') }}">@lang('app.our_team')</a></li>
                                 <li><a href="{{ url('/contact') }}">@lang('app.contact_us')</a></li>
                             </ul>
@@ -259,13 +258,7 @@ html[dir="rtl"] .footer-contact-item li i {
                         <!-- Footer Copyright Text End -->
 
                         <!-- Footer Privacy Policy Start -->
-                        <div class="footer-privacy-policy">
-                            <ul>
-                                <li><a href="#">Privacy policy</a></li>
-                                <li><a href="#">Term's & condition</a></li>
-                                <li><a href="#">help</a></li>
-                            </ul>
-                        </div>
+         
                         <!-- Footer Privacy Policy End -->
                     </div>
                     <!-- Footer Copyright Section End -->

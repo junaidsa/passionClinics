@@ -32,7 +32,7 @@ class BlogController extends Controller
         $validated = $request->validate([
             'title_en' => 'required|string|max:255',
             'title_ar' => 'required|string|max:255',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'image' => 'required|image|max:10|mimes:jpeg,png,jpg,gif,svg',
         ]);
 
         if ($validated) {

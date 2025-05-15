@@ -103,55 +103,6 @@
                             <!-- Service Archive Box End -->
                         </div>
                         <!-- Service Entry End -->
-
-                        <!-- Page Single FAQs start -->
-                        <div class="page-single-faqs">
-                            <!-- Section Title Start -->
-                            <div class="section-title">
-                                <h2  >Got questions? we've got answers!</h2>
-                            </div>
-                            <!-- Section Title End -->
-
-                            <!-- FAQ Accordion Start -->
-                            @php
-                            $faq = DB::table('faqs')->where('service_id', $service->id)->get();
-                        @endphp
-
-                        @if ($faq->count() > 0)
-                            <div class="faq-accordion" id="accordion-{{ $service->id }}">
-                                @foreach ($faq as $fq)
-                                    @php
-                                        $headingId = 'heading' . $loop->iteration . '-' . $service->id;
-                                        $collapseId = 'collapse' . $loop->iteration . '-' . $service->id;
-                                    @endphp
-                                    <!-- FAQ Item Start -->
-                                    <div class="accordion-item wow fadeInUp" data-wow-delay="0.2s">
-                                        <h2 class="accordion-header" id="{{ $headingId }}">
-                                            <button class="accordion-button collapsed" type="button"
-                                                data-bs-toggle="collapse"
-                                                data-bs-target="#{{ $collapseId }}"
-                                                aria-expanded="false"
-                                                aria-controls="{{ $collapseId }}">
-                                                {{ $loop->iteration }}. {{ $fq->question }}
-                                            </button>
-                                        </h2>
-                                        <div id="{{ $collapseId }}" class="accordion-collapse collapse"
-                                            aria-labelledby="{{ $headingId }}"
-                                            data-bs-parent="#accordion-{{ $service->id }}">
-                                            <div class="accordion-body">
-                                                <p>{{ $fq->answer }}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- FAQ Item End -->
-                                @endforeach
-                            </div>
-                        @endif
-
-                        </div>
-                        <!-- Page Single FAQs End -->
-                    </div>
-                    <!-- Service Single Content End -->
                 </div>
             </div>
         </div>

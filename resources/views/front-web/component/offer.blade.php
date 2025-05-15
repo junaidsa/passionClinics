@@ -10,7 +10,7 @@
         $hasDiscount = $discountPercent > 0 && $originalPrice > $offerPrice;
         $image = $s->main_image ? url('file/service/' . $s->main_image) : url('file/service/avatar.jpg');
         $title = App::isLocale('ar') ? $s->title_ar : $s->title_en;
-        $currency = App::isLocale('ar') ? ' ر.س' : '$';
+   $currency = App::isLocale('ar') ? 'SAR' : 'SAR';
         $start = $s->start_date;
     @endphp
 
@@ -23,8 +23,6 @@
     @$end = \Carbon\Carbon::parse($s->end_date);
 
     @endphp
-            @if ($start)
-            @endif
             @if ($start->format('F') === $end->format('F'))
             <span class="fw-bold bg-light position-absolute top-0 z-1 shadow-sm fs-6 px-3 py-2 rounded-0 float-start">
                 {{ @$start->format('M j') }} to {{ $end->format('j') }}
@@ -34,12 +32,12 @@
                 {{ @$start->format('M j') }} to {{ $end->format('M j') }}
             </span>
             @endif
-            {{-- Offer Type badge --}}
-            @if ($s->offer_type)
+         
+            @if(!$s->offer_type == 'Limited days')
                 <span class="badge bg-light text-dark position-absolute top-0 end-0 z-1 shadow-sm fs-6 px-3 py-2 rounded-0 float-end">
-                    {{ $s->offer_type === 'Life Time' ? __('Lifetime Access') : __('Limited Offer:') . ' ' . $s->persons_count }}
+                    {{ $s->offer_type === 'Life Time' ? __('Lifetime Access') : __('Limited people') . ' ' . $s->persons_count }}
                 </span>
-            @endif
+                @endif
 
             {{-- Image --}}
             <a href="{{ route('front.service.single', $s->id) }}">

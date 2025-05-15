@@ -42,7 +42,7 @@ Route::get('/offers',[Homecontroller::class,'offers'])->name('front.offers');
 Route::get('/teams',[Homecontroller::class,'teams'])->name('front.teams');
 Route::get('/team/{id}',[TeamController::class,'team_profile'])->name('front.team');
 Route::get('/admin/dashboard',[Homecontroller::class,'dashboard'])->name('dashboard');
-Route::get('/e-clinic',[Homecontroller::class,'clinic'])->name('front.clinic');
+Route::get('/   ',[Homecontroller::class,'clinic'])->name('front.clinic');
 });
 
 Route::middleware('auth')->group(function () {

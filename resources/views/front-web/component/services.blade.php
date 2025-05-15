@@ -2,10 +2,19 @@
     use Illuminate\Support\Facades\DB;
     use Illuminate\Support\Facades\Request;
 
-    $services = DB::table('services')->where('offer_type', '0')->get();
+    $services = [];
 
-    // $services = $query->get();
-
+    if (Request::is('/')) {
+        $services = DB::table('services')
+            ->where('offer_type', '0')
+            ->take(6)
+            ->get();
+        
+    }else{
+        $services = DB::table('services')
+            ->where('offer_type', '0')->get();
+    
+    }
 @endphp
 <style>
     .price-badge {
@@ -45,7 +54,7 @@
             <div class="service-item wow fadeInUp position-relative">
                 <div class="service-content">
                     <div class="service-content-title">
-                        <h2><a href="service-single.html">{{ App::isLocale('ar') ? @$s->title_ar : @$s->title_en }}</a>
+                        <h2><a href="{{ url('service/' . $s->id) }}">{{ App::isLocale('ar') ? @$s->title_ar : @$s->title_en }}</a>
                         </h2>
                         {{-- <a href="{{ route('front.service.single', $s->id) }}" class="readmore-btn"><img
                                 src="{{ asset('public') }}/images/arrow-white.svg" alt=""></a> --}}

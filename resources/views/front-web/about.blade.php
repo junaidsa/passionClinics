@@ -11,7 +11,7 @@
                     <h1   data-cursor="-opaque">@lang('app.about_us')</h1>
                     <nav class="wow fadeInUp">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="about.html">@lang('app.home')</a></li>
+                            <li class="breadcrumb-item"><a href="{{url('/')}}">@lang('app.home')</a></li>
                             <li class="breadcrumb-item active" aria-current="page">@lang('app.about_us')</li>
                         </ol>
                     </nav>

@@ -24,7 +24,7 @@ class TestimonialController extends Controller
             'designation_ar' => 'required',
             'message' => 'required',
             'message_ar' => 'required',
-            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:10'
         ]);
 
         if ($validated) {

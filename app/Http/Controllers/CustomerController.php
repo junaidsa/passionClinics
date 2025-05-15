@@ -28,7 +28,7 @@ class CustomerController extends Controller
             'email' => 'required',
             'phone' => 'required',
             'date_of_birth' => 'required',
-            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'avatar' => 'required|image|max:10|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
         if ($validated) {

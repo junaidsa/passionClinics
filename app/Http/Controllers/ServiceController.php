@@ -40,8 +40,8 @@ class ServiceController extends Controller
             'short_description_ar' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
-            'main_image' => 'required|image', // optionally check if it's an image
-            'video_thumbnail' => 'nullable', // if optional
+            'main_image' => 'required|image|max:10', // optionally check if it's an image
+            'video_thumbnail' => 'nullable|max:10', // if optional
             'video_url' => 'nullable|url', // if optional
         ]);
 
@@ -172,7 +172,7 @@ class ServiceController extends Controller
         $validator = Validator::make($request->all(), [
             'title' => 'required|string|max:255',
             'description' => 'required|string|max:255',
-            'icon' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240'
+            'icon' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10'
         ]);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();

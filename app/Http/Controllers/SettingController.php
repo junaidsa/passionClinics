@@ -86,15 +86,15 @@ class SettingController extends Controller
             'description' => 'required',
             'description_ar' => 'required',
             'phone_number' => 'required',
-            'youtube_url' => 'required',
+            'youtube_url' => 'nullable',
             'opening_time' => 'required',
             'closing_time' => 'required',
             'slot_duration' => 'required',
             'awards' => 'required',
             'year_experience' => 'required',
             'happy_clients' => 'required',
-            'video' => 'nullable|mimes:mp4,avi,mov,wmv',
-            'video_hero' => 'nullable|mimes:mp4,avi,mov,wmv'
+'video' => 'nullable|mimes:mp4,avi,mov,wmv|max:5120',
+'video_hero' => 'nullable|mimes:mp4,avi,mov,wmv|max:5120',
         ]);
 
         $setting = Setting::findOrFail($id);
