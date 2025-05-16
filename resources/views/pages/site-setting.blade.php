@@ -48,6 +48,18 @@
                                 <!-- Phone and YouTube URL -->
                                 <div class="row">
                                     <div class="col-md-6 mb-4">
+                                        <label class="form-label" for="phone_number">Email</label>
+                                        <input type="text" value="{{ @$s->email }}" name="email"
+                                            id="email" class="form-control" />
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <label class="form-label" for="youtube_url">Address</label>
+                                        <input type="text" value="{{ @$s->email }}" name="address"
+                                            id="address" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                     <div class="col-md-6 mb-4">
                                         <label class="form-label" for="phone_number">Phone</label>
                                         <input type="text" value="{{ @$s->phone_number }}" name="phone_number"
                                             id="phone_number" class="form-control" />
@@ -101,9 +113,6 @@
                                     <div class="col-md-8 mb-4">
                                         <label class="form-label" for="video">Upload Video</label>
                                         <input type="file" name="video" id="video" class="form-control" />
-                                        {{-- @if (!empty($s->video))
-                                            <small class="d-block mt-2">Current: {{ $s->video }}</small>
-                                        @endif --}}
                                     </div>
 
                                     <div class="col-md-4 ">
@@ -117,29 +126,36 @@
 
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <!-- Video Upload -->
-                                    <div class="col-md-8 mb-4">
-                                        <label class="form-label" for="video">Hero Video</label>
-                                        <input type="file" name="video_hero" id="video" class="form-control" />
-                                        {{-- @if (!empty($s->video))
-                                            <small class="d-block mt-2">Current: {{ $s->video }}</small>
-                                        @endif --}}
-                                    </div>
+                                @php
+    $file = $s->hero_section ?? null;
+    $isVideo = $file && Str::endsWith($file, ['.mp4', '.webm', '.ogg']);
+    $isImage = $file && Str::endsWith($file, ['.jpg', '.jpeg', '.png', '.gif', '.webp']);
+@endphp
+<div class="row">
+    <div class="col-md-8 mb-4">
+        <label class="form-label" for="video_hero">Hero Section (Image or Video)</label>
+        <input type="file" name="video_hero" id="video_hero" class="form-control" accept="image/*,video/mp4,video/webm,video/ogg" />
+        @error('video_hero')
+            <div class="text-danger">{{ $message }}</div>
+        @enderror
+    </div>
 
-                                    <div class="col-md-4 ">
-                                        @if (!empty($s->video_hero))
-                                            <video width="320" height="240" controls>
-                                                <source
-                                                    src="{{ url('file/video/' . (@$s->video_hero ?? 'avatar.jpg')) }}"
-                                                    type="video/mp4">
-                                            </video>
-                                        @endif
-
-                                    </div>
-                                </div>
-
-
+    <!-- Display Uploaded File -->
+    <div class="col-md-4">
+        @if ($isVideo)
+            <label class="form-label d-block">Current Video:</label>
+            <video width="100%" height="auto" controls>
+                <source src="{{ url('file/video/' . $file) }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        @elseif ($isImage)
+            <label class="form-label d-block">Current Image:</label>
+            <img src="{{ url('file/video/' . $file) }}" class="img-fluid rounded" alt="Hero Image">
+        @else
+            <p class="text-muted">No image or video uploaded.</p>
+        @endif
+    </div>
+</div>
                                 <!-- Submit -->
                                 <div class="text-right mt-2">
                                     <button type="submit" class="btn btn-primary">Submit</button>

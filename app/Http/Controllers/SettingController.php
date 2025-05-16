@@ -83,6 +83,8 @@ class SettingController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'title_ar' => 'required|string|max:255',
+            'email' => 'required',
+            'address' => 'required',
             'description' => 'required',
             'description_ar' => 'required',
             'phone_number' => 'required',
@@ -93,8 +95,8 @@ class SettingController extends Controller
             'awards' => 'required',
             'year_experience' => 'required',
             'happy_clients' => 'required',
-'video' => 'nullable|mimes:mp4,avi,mov,wmv|max:5120',
-'video_hero' => 'nullable|mimes:mp4,avi,mov,wmv|max:5120',
+            'video' => 'nullable|mimes:mp4,avi,mov,wmv|max:5120',
+            'video_hero' => 'nullable|file|mimes:jpg,jpeg,png,gif,mp4,avi,mov,wmv|max:51200',
         ]);
 
         $setting = Setting::findOrFail($id);
@@ -123,7 +125,7 @@ class SettingController extends Controller
             $destinationPath = base_path('../aluniquefurniture_uploads/video/');
             $video_hero->move($destinationPath, $videoName_hero);
 
-            $setting->video_hero = $videoName_hero;
+            $setting->hero_section = $videoName_hero;
         }
 
         $setting->title = $request->title;

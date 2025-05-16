@@ -1,17 +1,22 @@
 
-    <div class="hero hero-bg-image hero-video bg-section dark-section">
+     @php
+         $sectionHero = @$sett->hero_section ?? '';
+         $isVideo = Str::endsWith($sectionHero, ['.mp4', '.webm', '.ogg']);
+     @endphp
+    <div class="hero {{ $isVideo ? 'hero-bg-image hero-video bg-section dark-section' : '' }}"      @if(!$isVideo && $sectionHero)
+        style="background: url('{{ url('file/video/' . $sectionHero) }}') no-repeat center center; background-size: cover;"
+     @endif>
         <!-- Video Start -->
-        <div class="hero-bg-video">
-            <!-- Selfhosted Video Start -->
-            <!-- <video autoplay muted loop id="myvideo"><source src="images/hero-bg-video.mp4" type="video/mp4"></video> -->
-            <video autoplay="" muted="" loop="" id="myvideo"><source src="{{ url('file/video/' . (@$sett->video ?? 'avatar.jpg')) }}" type="video/mp4"></video>
+  @if($isVideo)
+    <!-- Video Start -->
+    <div class="hero-bg-video">
+        <video autoplay muted loop id="myvideo">
+            <source src="{{ url('file/video/' . $sectionHero) }}" type="video/mp4">
+        </video>
+    </div>
+    <!-- Video End -->
+    @endif
 
-            <!-- Selfhosted Video End -->
-
-            <!-- Youtube Video Start -->
-            <!-- <div id="herovideo" class="player" data-property="{videoURL:'74DWwSxsVSs',containment:'.hero-video', showControls:false, autoPlay:true, loop:true, vol:0, mute:false, startAt:0,  stopAt:296, opacity:1, addRaster:true, quality:'large', optimizeDisplay:true}"></div> -->
-            <!-- Youtube Video End -->
-        </div>
         <!-- Video End -->
         <div class="container">
             <div class="row">
@@ -37,7 +42,7 @@
                             <!-- Video Play Button Start -->
                             <div class="video-play-button">
                                 <p>Watch Video</p>
-                                <a href="https://www.youtube.com/watch?v=Y-x0efG1seA" class="popup-video" data-cursor-text="Play">
+                                <a href="{{$sett->youtube_url}}}}" class="popup-video" data-cursor-text="Play">
                                     <i class="fa-solid fa-play"></i>
                                 </a>
                             </div>
