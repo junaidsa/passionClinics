@@ -7,7 +7,7 @@ $testimonials = DB::table('testimonials')->get();
         <div class="col-lg-6">
             <div class="our-testimonial-image">
                 <figure class="image-anime reveal">
-                    <img src="{{ url('file/testimonial/' . (@$testimonial->avatar ?? '')) }}" alt="">
+                    <img src="{{ url('file/testimonial/' . (@$testimonial->avatar ?? 'avatar.jpg')) }}" alt="">
                 </figure>
             </div>
         </div>
@@ -48,7 +48,7 @@ $testimonials = DB::table('testimonials')->get();
                                 <div class="testimonial-author">
                                     <div class="author-image">
                                         <figure class="image-anime">
-                                            <img src="{{ url('file/testimonial/' . (@$t->avatar ?? '')) }}" alt="">
+                                            <img src="{{ url('file/testimonial/' . (@$t->avatar ?? 'avatar.jpg')) }}" alt="">
                                         </figure>
                                     </div>
                                     <div class="author-content">

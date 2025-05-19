@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
 use App\Models\Location;
 use App\Models\Setting;
 use App\Models\User;
@@ -177,5 +178,15 @@ class SettingController extends Controller
     public function permissions(){
         $staff = User::where('role','doctor')->get();
         return view('pages.permissions',compact('staff'));
+    }
+    public function contactDestroy($id)
+    {
+        $location = Contact::find($id);
+        if ($location) {
+            $location->delete();
+                return redirect()->back()->with('success', 'Contact deleted successfully.');
+        } else {
+               return redirect()->back()->with('error', 'Contact not found.');
+        }
     }
 }

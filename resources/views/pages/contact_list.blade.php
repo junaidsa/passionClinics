@@ -66,7 +66,7 @@
         }
     }).then(function (result) {
                 if (result.value) {
-                    window.location.href = "{{url('/category/delete/')}}/"+id
+                    window.location.href = "{{url('/admin/contact/delete/')}}/"+id
                 }
     });
      })

@@ -17,6 +17,7 @@ use PHPUnit\Architecture\Services\ServiceContainer;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
 use App\Http\Middleware\SetLocale;
+use App\Models\Setting;
 
 //  Files Routeing
 Route::get('/fix-cache', function () {
@@ -86,6 +87,7 @@ Route::get('/admin/service/featured/{id}',[ServiceController::class,'featured'])
 Route::post('admin/service/featured/store',[ServiceController::class,'storeFeatured'])->name('service.featured.store');
 Route::delete('admin/feature/delete/{id}', [ServiceController::class, 'deleteFeature'])->name('feature.destroy');
 Route::delete('admin/faq/delete/{id}', [ServiceController::class, 'deletefaq'])->name('faq.destroy');
+Route::get('admin/contact/delete/{id}', [SettingController::class, 'contactDestroy'])->name('contact.destroy');
 Route::post('admin/service/faq/store',[ServiceController::class,'storeFaq'])->name('service.faq.store');
 Route::get('/admin/service/faq/{id}',[ServiceController::class,'faq'])->name('service.faq');
 Route::get('/admin/service/edit/{id}',[ServiceController::class,'serviceEdit'])->name('service.edit');
