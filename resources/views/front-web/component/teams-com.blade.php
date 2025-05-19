@@ -12,7 +12,7 @@ $dr =  DB::table('users')->where('role','doctor')->get();
             <div class="team-image">
                 <a href="{{ url('team/' . $d->id) }}" data-cursor-text="View">
                     <figure class="image-anime">
-                        <img src="{{ url('file/dr/' . (@$d->image ?? 'noimage.jpeg')) }}" alt="">
+                        <img src="{{ url('file/dr/' . (@$d->image ?? 'avatar.jpg')) }}" alt="">
                     </figure>
                 </a>
             </div>

@@ -39,7 +39,7 @@
                                             {{ $u->about_ar }}
                                         </div>
                                     </td>
-                                    <td><img src="{{ url('file/dr/' . (@$u->image ?? 'noimage.jpeg')) }}"
+                                    <td><img src="{{ url('file/dr/' . (@$u->image ?? 'avatar.jpg')) }}"
                                             height="80" width="80" class="rounded-circle"></td>
                                     <td> <a href="{{ url('admin/teams/edit/' . $u->id) }}" class="edit-btn"><i
                                                 class="ti ti-pencil me-1"></i></a>

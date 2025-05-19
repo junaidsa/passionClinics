@@ -9,11 +9,11 @@
             ->where('offer_type', '0')
             ->take(6)
             ->get();
-        
+
     }else{
         $services = DB::table('services')
             ->where('offer_type', '0')->get();
-    
+
     }
 @endphp
 <style>
@@ -83,7 +83,7 @@
                 <div class="service-image position-relative">
                     <a href="service-single.html" data-cursor-text="View">
                         <figure class="image-anime">
-                            <img src="{{ url('file/service/' . (@$s->main_image ?? 'avatar.jpg')) }}" alt="Service Image"
+                            <img src="{{ url('file/service/' . (@$s->main_image ?? '')) }}" alt="Service Image"
                                 class="img-fluid w-100">
                         </figure>
                     </a>

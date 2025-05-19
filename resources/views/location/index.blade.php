@@ -29,7 +29,7 @@
                                     <td>{{ $t->name }}</td>
                                     <td>{{ $t->phone }}</td>
                                     <td>{{ $t->address }}</td>
-                                    <td><img src="{{ url('file/location/' . (@$t->image ?? 'noimage.jpeg')) }}"
+                                    <td><img src="{{ url('file/location/' . (@$t->image ?? 'avatar.jpg')) }}"
                                             height="80" width="80" class="rounded-circle"></td>
                                     <td> <a href="{{ url('admin/location/edit/' . $t->id) }}" class="edit-btn"><i
                                                 class="ti ti-pencil me-1"></i></a>

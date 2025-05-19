@@ -34,7 +34,7 @@
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <img src="{{ url('file/customer/' . (@$app->customer->image ?? '../aluniquefurniture_uploads/customers/noimage.jpeg')) }}"
+                                            <img src="{{ url('file/customer/' . (@$app->customer->image ?? '../aluniquefurniture_uploads/customers/avatar.jpg')) }}"
                                                 height="40" width="40" class="rounded-circle me-2">
                                             <div class="d-flex flex-column">
                                                 <div class="d-flex align-items-center">
@@ -56,7 +56,7 @@
 
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <img src="{{ url('file/dr/' . (@$app->user->image ?? '../aluniquefurniture_uploads/customers/noimage.jpeg')) }}"
+                                            <img src="{{ url('file/dr/' . (@$app->user->image ?? '../aluniquefurniture_uploads/customers/avatar.jpg')) }}"
                                                 height="40" width="40" class="rounded-circle me-2">
                                             <div>
                                                 <strong>{{ $app->user->name }} </strong>

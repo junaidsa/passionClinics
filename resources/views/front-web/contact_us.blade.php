@@ -63,7 +63,7 @@
                                     </div>
                                     <div class="contact-info-content">
                                         <h3>@lang('app.contact_us')</h3>
-                                        <p><a href="tel:+22123456789">0112880840</a></p>
+                                        <p><a href="tel:+22123456789">{{@$sett->phone_number}}</a></p>
                                     </div>
                                 </div>
                                 <!-- Contact Info Item End -->
@@ -75,7 +75,7 @@
                                     </div>
                                     <div class="contact-info-content">
                                         <h3>@lang('app.email')</h3>
-                                        <p><a href="mailto:info@domain.com">info@passionclinics.com</a></p>
+                                        <p><a href="mailto:{{@$sett->email}}">{{@$sett->email}}</a></p>
 
                                     </div>
                                 </div>

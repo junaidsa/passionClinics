@@ -54,7 +54,7 @@
                                     </div>
                                     <div class="col-md-6 mb-4">
                                         <label class="form-label" for="youtube_url">Address</label>
-                                        <input type="text" value="{{ @$s->email }}" name="address"
+                                        <input type="text" value="{{ @$s->address }}" name="address"
                                             id="address" class="form-control" />
                                     </div>
                                 </div>
@@ -109,6 +109,23 @@
                                     </div>
                                 </div>
                                 <div class="row">
+                                    <div class="col-md-4 mb-4">
+                                        <label class="form-label" for="awards">Facebook Url</label>
+                                        <input type="text" value="{{ @$s->fb_url }}" name="fb_url" id="fb_url"
+                                            class="form-control" />
+                                    </div>
+                                    <div class="col-md-4 mb-4">
+                                        <label class="form-label" for="x_url">X Url</label>
+                                        <input type="text" value="{{ @$s->x_url }}" name="x_url"
+                                            id="x_url" class="form-control" />
+                                    </div>
+                                    <div class="col-md-4 mb-4">
+                                        <label class="form-label" for="ins_url">instgram Url</label>
+                                        <input type="text" value="{{ @$s->ins_url }}" name="ins_url"
+                                            id="ins_url" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="row">
                                     <!-- Video Upload -->
                                     <div class="col-md-8 mb-4">
                                         <label class="form-label" for="video">Upload Video</label>
@@ -119,7 +136,7 @@
                                         @if (!empty($s->video))
                                             <video width="320" height="240" controls>
                                                 <source
-                                                    src="{{ url('file/video/' . (@$s->video ?? 'avatar.jpg')) }}"
+                                                    src="{{ url('file/video/' . (@$s->video ?? '')) }}"
                                                     type="video/mp4">
                                             </video>
                                         @endif
@@ -156,6 +173,7 @@
         @endif
     </div>
 </div>
+
                                 <!-- Submit -->
                                 <div class="text-right mt-2">
                                     <button type="submit" class="btn btn-primary">Submit</button>

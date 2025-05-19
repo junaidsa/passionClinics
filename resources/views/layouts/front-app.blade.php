@@ -178,9 +178,9 @@ html[dir="rtl"] .footer-contact-item li i {
                         <!-- Footer Social Link Start -->
                         <div class="footer-social-links">
                             <ul>
-                                <li><a href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                                <li><a href="{{$sett->x_url}}"><i class="fa-brands fa-x-twitter"></i></a></li>
+                                <li><a href="{{$sett->fb_url}}"><i class="fa-brands fa-facebook-f"></i></a></li>
+                                <li><a href="{{$sett->ins_url}}"><i class="fa-brands fa-instagram"></i></a></li>
                             </ul>
                         </div>
                         <!-- Footer Social Link End -->
@@ -221,7 +221,7 @@ html[dir="rtl"] .footer-contact-item li i {
                         <div class="footer-links footer-contact-item">
                             <h3>@lang('app.Contact'):</h3>
                             <ul>
-                                <li><i class="fa-solid fa-phone"></i><a href="tel:123456789">0112880840</a></li>
+                                <li><i class="fa-solid fa-phone"></i><a href="tel:123456789">{{@$sett->phone_number}}</a></li>
                             </ul>
                         </div>
                         <!-- Footer Contact Item End -->
@@ -231,7 +231,7 @@ html[dir="rtl"] .footer-contact-item li i {
                             <h3>@lang('app.e-mail'):</h3>
                             <ul>
                                 <li><i class="fa-solid fa-envelope"></i><a
-                                        href="mailto:domainname@gmail.com">info@passionclinics.com</a></li>
+                                        href="mailto:{{@$sett->email}}">{{@$sett->email}}</a></li>
                             </ul>
                         </div>
                         <!-- Footer Contact Item End -->
@@ -240,7 +240,7 @@ html[dir="rtl"] .footer-contact-item li i {
                         <div class="footer-links footer-contact-item">
                             <h3>@lang('app.address'):</h3>
                             <ul>
-                                <li><i class="fa-solid fa-location-dot"></i>Al Olaya, Riyadh 12214, Saudi Arabia</li>
+                                <li><i class="fa-solid fa-location-dot"></i>{{@$sett->address}}</li>
                             </ul>
                         </div>
                         <!-- Footer Contact Item End -->
@@ -258,7 +258,7 @@ html[dir="rtl"] .footer-contact-item li i {
                         <!-- Footer Copyright Text End -->
 
                         <!-- Footer Privacy Policy Start -->
-         
+
                         <!-- Footer Privacy Policy End -->
                     </div>
                     <!-- Footer Copyright Section End -->

@@ -88,4 +88,6 @@ return [
     'offers' => 'Offers',
     'offers_description' => 'With 18+ years of experience, Passion Clinics delivers luxury and innovation in aesthetic care. Explore our limited-time offers on advanced cosmetic and non-invasive treatments — combining top-tier technology with exceptional results across the Kingdom and the Middle East.',
     'discover_yourself_exclusive_offers' => ' Discover Yourself – Exclusive Offers',
+    'blog' => 'Blogs',
+    'professional-services' => 'Professional Services',
 ];

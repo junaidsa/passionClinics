@@ -33,7 +33,7 @@
                                     <td>{{ $u->email }}</td>
                                     <td>{{ $u->gender }}</td>
                                     <td>{{ $u->date_of_birth }}</td>
-                                    <td><img src="{{ url('file/customer/' . (@$u->image ?? 'noimage.jpeg')) }}"
+                                    <td><img src="{{ url('file/customer/' . (@$u->image ?? 'avatar.jpg')) }}"
                                             height="80" width="80" class="rounded-circle"></td>
                                     <td> <a href="{{ url('admin/customer/edit/' . $u->id) }}" class="edit-btn"><i
                                                 class="ti ti-pencil me-1"></i></a>

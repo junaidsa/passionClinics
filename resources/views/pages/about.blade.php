@@ -51,7 +51,7 @@
                                     <input type="file" name="about_attachment" class="form-control" />
                                 </div>
                                  <div class="col-md-4 col-sm-6 col-6 mt-4 mb-4">
-                                    <img src="{{ url('file/about/' . (@$ab->about_attachment ?? 'avatar.jpg')) }}" alt="Blog Image" width="70" height="70" class="rounded-circle">
+                                    <img src="{{ url('file/about/' . (@$ab->about_attachment ?? '')) }}" alt="Blog Image" width="70" height="70" class="rounded-circle">
                                 </div>
                               </div>
                               <div class="row">
@@ -60,7 +60,7 @@
                                     <input type="file" name="about_attachment2" class="form-control" />
                                 </div>
                                  <div class="col-md-4 col-sm-6 col-6 mt-4 mb-4">
-                                    <img src="{{ url('file/about/' . (@$ab->about_attachment2 ?? 'avatar.jpg')) }}" alt="Blog Image" width="70" height="70" class="rounded-circle">
+                                    <img src="{{ url('file/about/' . (@$ab->about_attachment2 ?? '')) }}" alt="Blog Image" width="70" height="70" class="rounded-circle">
                                 </div>
                               </div>
                               <div class="row">
@@ -69,7 +69,7 @@
                                     <input type="file" name="about_team" class="form-control" />
                                 </div>
                                  <div class="col-md-4 col-sm-6 col-6 mt-4 mb-4">
-                                    <img src="{{ url('file/about/'.(@$ab->about_team ?? 'avatar.jpg')) }}" alt="Blog Image" width="70" height="70" class="rounded-circle">
+                                    <img src="{{ url('file/about/'.(@$ab->about_team ?? '')) }}" alt="Blog Image" width="70" height="70" class="rounded-circle">
                                 </div>
                               </div>
                                      <div class="col-md-12 text-right float-right mt-2">

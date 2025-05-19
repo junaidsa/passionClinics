@@ -160,4 +160,7 @@ public function clinic(){
     $teams = User::with('service')->where('role','doctor')->get();
     return view('front-web.e_clinic',compact('teams'));
 }
+public function blog(){
+    return view('front-web.blogs');
+}
 }

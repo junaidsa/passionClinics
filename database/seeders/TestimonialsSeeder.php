@@ -15,7 +15,7 @@ class TestimonialsSeeder extends Seeder
                 'name' => 'Kristin Watson',
                 'designation' => 'Co. founder',
                 'message' => 'The expertise and care I received here were outstanding. I couldn\'t be happier with my results. Thanks to the team, I feel more confident than ever before. Highly recommend! From consultation to aftercare, everything was perfect. My transformation exceeded my expectations!',
-                'avatar' => 'path/to/kristin_watson_avatar.jpg',
+                'avatar' => 'path/to/kristin_watson_',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],

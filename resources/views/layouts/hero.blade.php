@@ -3,7 +3,7 @@
          $sectionHero = @$sett->hero_section ?? '';
          $isVideo = Str::endsWith($sectionHero, ['.mp4', '.webm', '.ogg']);
      @endphp
-    <div class="hero {{ $isVideo ? 'hero-bg-image hero-video bg-section dark-section' : '' }}"      @if(!$isVideo && $sectionHero)
+    <div class="hero {{ $isVideo ? 'hero-bg-image hero-video bg-section dark-section' : 'avatar.jpg' }}"      @if(!$isVideo && $sectionHero)
         style="background: url('{{ url('file/video/' . $sectionHero) }}') no-repeat center center; background-size: cover;"
      @endif>
         <!-- Video Start -->

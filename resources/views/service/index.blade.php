@@ -37,7 +37,7 @@
                                         {{ @$s->short_description_ar }}
                                        </div>
                                     </td>
-                                    <td><img src="{{ url('file/service/' . (@$s->main_image ?? 'noimage.jpeg')) }}" height="80" width="80" class="rounded-circle"></td>
+                                    <td><img src="{{ url('file/service/' . (@$s->main_image ?? 'avatar.jpg')) }}" height="80" width="80" class="rounded-circle"></td>
                                     <td>
                                         <a href="{{url('admin/service/faq/'.$s->id)}}" class="faq-btn ">Faq</a> |
                                         <a href="{{url('admin/service/featured/'.$s->id)}}" class="edit-btn ">Featured</a>

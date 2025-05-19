@@ -89,7 +89,7 @@
                                         <label class="form-label" for="offer">Offer</label>
                                         <select name="offer_type" id="offer_type" class="form-select">
                                             <option value="">Select Offer</option>
-                                            <option value="Lifetime">Life Time</option>
+                                            <option value="Life time">Life Time</option>
                                             <option value="Limited days">Limited days</option>
                                             <option value="Limited people">Limited people</option>
                                         </select>

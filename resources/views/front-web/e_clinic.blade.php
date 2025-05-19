@@ -43,7 +43,7 @@
                     @foreach ($teams as $te)
                     <div class="doctor-card wow fadeInUp" data-wow-delay="0.2s">
                         <div class="doctor-info">
-                            <img src="{{ url('file/dr/' . (@$te->image ?? 'noimage.jpeg')) }}" alt="{{$te->name}}" class="doctor-photo">
+                            <img src="{{ url('file/dr/' . (@$te->image ?? 'avatar.jpg')) }}" alt="{{$te->name}}" class="doctor-photo">
                             <div class="doctor-details">
                                 <h2>{{ App::isLocale('ar') ? $te->name_ar : $te->name }} &nbsp;&nbsp;<span class="badge">{{ App::isLocale('ar') ? $te->category_ar : $te->category }}</span></h2>
                                 <p>{{ App::isLocale('ar') ? $te->service->title_ar : $te->service->title }} </p>

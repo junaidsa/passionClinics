@@ -8,7 +8,7 @@
         $discountPercent = $s->discount ?? 0;
         $offerPrice = $originalPrice - ($originalPrice * ($discountPercent / 100));
         $hasDiscount = $discountPercent > 0 && $originalPrice > $offerPrice;
-        $image = $s->main_image ? url('file/service/' . $s->main_image) : url('file/service/avatar.jpg');
+        // $image = $s->main_image ? url('file/service/' . $s->main_image) : 'avatar.jpg';
         $title = App::isLocale('ar') ? $s->title_ar : $s->title_en;
    $currency = App::isLocale('ar') ? 'SAR' : 'SAR';
         $start = $s->start_date;
@@ -17,31 +17,31 @@
     <div class="col-12 col-md-6 col-lg-4 mb-4">
         <div class="card h-100 shadow-sm border-0 overflow-hidden position-relative">
             {{-- Discount badge --}}
-    @php
+@php
+    $start = $s->start_date ? \Carbon\Carbon::parse($s->start_date) : null;
+    $end = $s->end_date ? \Carbon\Carbon::parse($s->end_date) : null;
+@endphp
 
-    @$start = \Carbon\Carbon::parse($s->start_date);
-    @$end = \Carbon\Carbon::parse($s->end_date);
-
-    @endphp
-            @if ($start->format('F') === $end->format('F'))
-            <span class="fw-bold bg-light position-absolute top-0 z-1 shadow-sm fs-6 px-3 py-2 rounded-0 float-start">
-                {{ @$start->format('M j') }} to {{ $end->format('j') }}
-            </span>
-            @else
-            <span class="fw-bold bg-light position-absolute top-0 z-1 shadow-sm fs-6 px-3 py-2 rounded-0 float-start">
-                {{ @$start->format('M j') }} to {{ $end->format('M j') }}
-            </span>
-            @endif
-         
-            @if(!$s->offer_type == 'Limited days')
+@if ($start && $end)
+    @if ($start->format('F') === $end->format('F'))
+        <span class="fw-bold bg-light position-absolute top-0 z-1 shadow-sm fs-6 px-3 py-2 rounded-0 float-start">
+            {{ $start->format('M j') }} to {{ $end->format('j') }}
+        </span>
+    @else
+        <span class="fw-bold bg-light position-absolute top-0 z-1 shadow-sm fs-6 px-3 py-2 rounded-0 float-start">
+            {{ $start->format('M j') }} to {{ $end->format('M j') }}
+        </span>
+    @endif
+@endif
+            @if($s->offer_type != 'Limited days')
                 <span class="badge bg-light text-dark position-absolute top-0 end-0 z-1 shadow-sm fs-6 px-3 py-2 rounded-0 float-end">
-                    {{ $s->offer_type === 'Life Time' ? __('Lifetime Access') : __('Limited people') . ' ' . $s->persons_count }}
+                    {{ $s->offer_type}}
                 </span>
                 @endif
 
             {{-- Image --}}
             <a href="{{ route('front.service.single', $s->id) }}">
-                <img src="{{ $image }}" class="card-img-top p-2 mt-5 rounded-4" alt="Service Image" style="height: 220px; object-fit: cover;">
+                <img src="{{ url('file/dr/' . (@$s->main_image ?? 'avatar.jpg')) }}" class="card-img-top p-2 mt-5 rounded-4" alt="Service Image" style="height: 220px; object-fit: cover;">
             </a>
 
             {{-- Content --}}

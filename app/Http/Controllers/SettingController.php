@@ -129,6 +129,8 @@ class SettingController extends Controller
         }
 
         $setting->title = $request->title;
+        $setting->email = $request->email;
+        $setting->address = $request->address;
         $setting->title_ar = $request->title_ar;
         $setting->description_ar = $request->description_ar;
         $setting->phone_number = $request->phone_number;
@@ -138,6 +140,9 @@ class SettingController extends Controller
         $setting->slot_duration = $request->slot_duration;
         $setting->awards = $request->awards;
         $setting->year_experience = $request->year_experience;
+        $setting->fb_url = $request->fb_url;
+        $setting->x_url = $request->x_url;
+        $setting->ins_url = $request->ins_url;
         $setting->happy_clients = $request->happy_clients;
 
         $setting->save();

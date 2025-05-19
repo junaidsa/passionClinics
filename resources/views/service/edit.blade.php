@@ -80,7 +80,7 @@
                                         <label class="form-label" for="offer">Offer</label>
                                         <select name="offer_type" id="offer_type" class="form-select">
                                             <option value="">Select Offer</option>
-                                            <option value="Lifetime"
+                                            <option value="Life time"
                                                 {{ $service->offer_type == 'Life Time' ? 'selected' : '' }}>Life Time
                                             </option>
                                             <option value="Limited days"

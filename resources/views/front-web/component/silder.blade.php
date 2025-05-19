@@ -1,14 +1,14 @@
 @php
-$services = DB::table('services')->select('id', 'title_en')->get();
+$services = DB::table('services')->select('id', 'title_en','title_ar')->get();
 @endphp
 <div class="page-single-sidebar">
     <!-- Page Single Category List Start -->
     <div class="page-single-category-list wow fadeInUp">
-        <h3>Professional Services</h3>
+        <h3>@lang('app.professional-services')</h3>
         <ul>
             @foreach ($services as $s)
 
-            <li><a href="{{url('service/'.$s->id)}}">{{$s->title_en}}</a></li>
+            <li>   {{ App::isLocale('ar') ? @$s->title_ar : @$s->title_en }}</a></li>
             @endforeach
         </ul>
     </div>

@@ -20,6 +20,7 @@
                                <li class="nav-item"><a class="nav-link" href="{{ url('/teams') }}">@lang('app.our_team')</a></li>
                                <li class="nav-item"><a class="nav-link" href="{{ url('/offers') }}">@lang('app.offers')</a></li>
                                <li class="nav-item"><a class="nav-link" href="{{ url('/e-clinic') }}">@lang('app.e_clinic')</a></li>
+                               <li class="nav-item"><a class="nav-link" href="{{ url('/blogs') }}">@lang('app.blog')</a></li>
                                <li class="nav-item"><a class="nav-link" href="{{ url('/contact') }}">@lang('app.contact_us')</a></li>
                                <li class="nav-item highlighted-menu"><a class="nav-link" href="book-appointment.html">@lang('app.make_an_appointment')</a></li>
                            </ul>

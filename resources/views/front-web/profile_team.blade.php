@@ -37,7 +37,7 @@
                             <!-- Team Member Image Start -->
                             <div class="team-member-image">
                                 <figure class="image-anime reveal">
-                                    <img src="{{ url('file/dr/' . (@$profile->image ?? 'noimage.jpeg')) }}" alt="">
+                                    <img src="{{ url('file/dr/' . (@$profile->image ?? 'avatar.jpg')) }}" alt="">
                                 </figure>
                             </div>
                             <!-- Team Member Image End -->

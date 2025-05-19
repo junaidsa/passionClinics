@@ -194,7 +194,7 @@
                     <!-- Intro Video Box Start -->
                     <div class="intro-video-box">
                         <div class="intro-bg-video">
-                            <video autoplay="" muted="" loop="" id="introVideo"><source src="{{ url('file/video/' . (@$sett->video ?? 'avatar.jpg')) }}" type="video/mp4"></video>
+                            <video autoplay="" muted="" loop="" id="introVideo"><source src="{{ url('file/video/' . (@$sett->video ?? '')) }}" type="video/mp4"></video>
                             <!-- Selfhosted Video End -->
                         </div>
                         <!-- Video Play Button Start -->
@@ -477,12 +477,5 @@
             </div>
         </div>
     </div>
-
-    <!-- Our Blog Section Start -->
- <!-- Our Blog Section Start -->
- @include('front-web.component.blogs')
- <!-- Our Blog Section End -->
-    <!-- Our Blog Section End -->
-
 </main>
 @endsection

@@ -44,58 +44,5 @@
         </div>
         <!-- Page Services End -->
         <!-- Our Testimonials Section End -->
-
-
-       <!-- Why Choose Us Section Start -->
-    <div class="why-choose-us bg-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <!-- Why Choose Image Start -->
-                    <div class="why-choose-images">
-                        <div class="why-choose-image img-1">
-                            <figure class="image-anime reveal">
-                                <img src="{{ asset('public') }}/images/why-choose-image-1.jpg" alt="">
-                            </figure>
-                        </div>
-
-                        <div class="why-choose-image img-2">
-                            <figure class="image-anime reveal">
-                                <img src="{{ asset('public') }}/images/IMG_9575.jpg" alt="">
-                            </figure>
-                        </div>
-
-                        <!-- Years Experience Text Start -->
-                        <div class="years-experience-text">
-                            <p>18 @lang('app.years_of_experirnce')</p>
-                        </div>
-                        <!-- Years Experience Text End -->
-                    </div>
-                    <!-- Why Choose Image End -->
-                </div>
-
-                <div class="col-lg-6">
-                    <!-- Why Choose Content Start -->
-                    <div class="why-choose-content">
-                        <!-- Section Title Start -->
-                        <div class="section-title">
-                            <h3 class="wow fadeInUp">@lang('app.why_choose_us')</h3>
-                            <h2   data-cursor="-opaque">@lang('app.experience_the_art_of_beauty_with_expert_hands')</h2>
-                            <p class="wow fadeInUp" data-wow-delay="0.2s">@lang('app.experience_personalized_care')</p>
-                        </div>
-                        <!-- Section Title End -->
-
-                        <!-- Why Choose Contact Box Start -->
-                        <div class="why-choose-contact-box">
-                            <h3 class="wow fadeInUp" data-wow-delay="0.4s">@lang('app.delivering_exceptional_care')</h3>
-                        </div>
-                        <!-- Why Choose Contact Box End -->
-                    </div>
-                    <!-- Why Choose Content End -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Why Choose Us Section End -->
     </main>
 @endsection

@@ -89,7 +89,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-4">
-                                    <img  src="{{ url('file/testimonial/' . ($testimonial->avatar ?? 'noimage.jpeg')) }}" class="img-thumbnail rounded-circle" width="80" height="80">
+                                    <img  src="{{ url('file/testimonial/' . ($testimonial->avatar ?? 'avatar.jpg')) }}" class="img-thumbnail rounded-circle" width="80" height="80">
                             </div>
                             </div>
 

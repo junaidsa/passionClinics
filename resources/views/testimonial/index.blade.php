@@ -43,7 +43,7 @@
 </div>
 
                                     </td>
-                                    <td><img src="{{ url('file/testimonial/' . (@$t->avatar ?? 'noimage.jpeg')) }}"
+                                    <td><img src="{{ url('file/testimonial/' . (@$t->avatar ?? 'avatar.jpg')) }}"
                                             height="80" width="80" class="rounded-circle"></td>
                                     <td> <a href="{{ url('admin/testimonial/edit/' . $t->id) }}" class="edit-btn"><i
                                                 class="ti ti-pencil me-1"></i></a>
