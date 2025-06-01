@@ -132,7 +132,7 @@
                     <!-- What We Image Start -->
                     <div class="what-we-image-2">
                         <figure class="image-anime">
-                            <img src="{{ asset('public') }}/images/IMG_9568.jpg" alt="">
+                            <img src="{{ asset('public') }}/images/avatar.jpg" alt="">
                         </figure>
                     </div>
                     <!-- What We Image Start -->
@@ -169,7 +169,7 @@
                     <!-- What We Image Start -->
                     <div class="what-we-image-2">
                         <figure class="image-anime">
-                            <img src="{{ asset('public') }}/images/what-we-image-2.jpg" alt="">
+                            <img src="{{ asset('public') }}/images/avatar.jpg" alt="">
                         </figure>
 
                         <!-- Experirnce Box Start -->
@@ -253,13 +253,13 @@
                     <div class="why-choose-images">
                         <div class="why-choose-image img-1">
                             <figure class="image-anime reveal">
-                                <img src="{{ asset('public') }}/images/why-choose-image-1.jpg" alt="">
+                                <img src="{{ asset('public') }}/images/avatar.jpg" alt="">
                             </figure>
                         </div>
 
                         <div class="why-choose-image img-2">
                             <figure class="image-anime reveal">
-                                <img src="{{ asset('public') }}/images/IMG_9575.jpg" alt="">
+                                <img src="{{ asset('public') }}/images/avatar.jpg" alt="">
                             </figure>
                         </div>
 
@@ -393,35 +393,34 @@
                     <!-- Section Title End -->
                 </div>
             </div>
+           @php
+    $diff = DB::table('differences')->get();
+@endphp
 
-            <div class="row">
-                <div class="col-md-6">
-                    <!-- Transformation Image Start -->
-                    <div class="transformation-image wow fadeInUp" data-wow-delay="0.2s">
-                        <figure class="transform-img-1">
-                            <img src="{{ asset('public') }}/images/transformation-img-1.jpg" alt="">
-                        </figure>
-						<figure class="transform-img-2">
-                            <img src="{{ asset('public') }}/images/transformation-img-2.jpg" alt="">
-                        </figure>
-                    </div>
-                    <!-- Transformation Image End -->
-                </div>
+<div class="row">
+    <!-- First 2 Images -->
+    <div class="col-md-6">
+        <div class="transformation-image wow fadeInUp" data-wow-delay="0.2s">
+            @foreach ($diff->take(2) as $d)
+                <figure class="transform-img-1">
+                    <img src="{{ url('file/difference/' . ($d->difference ?? 'avatar.jpg')) }}" alt="">
+                </figure>
+            @endforeach
+        </div>
+    </div>
 
-                <div class="col-md-6">
-                    <!-- Transformation Image Start -->
-                    <div class="transformation-image wow fadeInUp" data-wow-delay="0.4s">
-                        <figure class="transform-img-1">
-                            <img src="{{ asset('public') }}/images/transformation-img-3.jpg" alt="">
-                        </figure>
-						<figure class="transform-img-2">
-                            <img src="{{ asset('public') }}/images/transformation-img-4.jpg" alt="">
-                        </figure>
-                    </div>
-                    <!-- Transformation Image End -->
-                </div>
-
-                <div class="col-lg-12">
+    <!-- Next 2 Images -->
+    <div class="col-md-6">
+        <div class="transformation-image wow fadeInUp" data-wow-delay="0.4s">
+            @foreach ($diff->slice(2, 2) as $d)
+                <figure class="transform-img-1">
+                    <img src="{{ url('file/difference/' . ($d->difference ?? 'avatar.jpg')) }}" alt="">
+                </figure>
+            @endforeach
+        </div>
+    </div>
+</div>
+     <div class="col-lg-12">
                     <!-- Facts Counter Box Start -->
                     <div class="facts-counter-box">
                         <!-- Facts Counter Item Start -->

@@ -32,6 +32,14 @@
                 <div data-i18n="Calendar">Calendar</div>
             </a>
         </li>
+                <li class="menu-item {{ Request::is('admin/appointments') ? 'active' : '' }}">
+            <a href="{{ url('admin/appointments') }}" class="menu-link">
+                <i class="menu-icon ti ti-send ti-xs"></i>
+                <div data-i18n="Appointments">Appointments</div>
+            </a>
+        </li>
+ @if (Auth::check() && Auth::user()->role === 'admin')
+
         <li class="menu-item {{ Request::is('admin/services') || Request::is('admin/services/edit/*') || Request::is('admin/service/create') ? 'open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons ti ti-layout-kanban"></i>
@@ -129,12 +137,6 @@
 
             </ul>
         </li>
-        <li class="menu-item {{ Request::is('admin/appointments') ? 'active' : '' }}">
-            <a href="{{ url('admin/appointments') }}" class="menu-link">
-                <i class="menu-icon ti ti-send ti-xs"></i>
-                <div data-i18n="Appointments">Appointments</div>
-            </a>
-        </li>
         <li
         class="menu-item  Request::is('admin/location/create') ? 'open' : '' }}">
         <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -204,5 +206,6 @@
                 </li>
             </ul>
         </li>
+             @endif
     </ul>
 </aside>

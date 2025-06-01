@@ -9,20 +9,28 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class AppointmentController extends Controller
 {
 
-    public function index()
-    {
-        $appointment = Appointment::with('customer', 'service', 'localtion', 'user')
-            ->orderBy('id', 'DESC') // or 'created_at' if you prefer
-            ->get();
-        $durationSetting = DB::table('settings')->where('id', 1)->value('slot_duration');
-        return view('appointments.index', compact('appointment', 'durationSetting'));
+public function index()
+{
+    $query = Appointment::with('customer', 'service', 'localtion', 'user')->orderBy('id', 'DESC');
+
+    if (Auth::check() && Auth::user()->role === 'doctor') {
+        $query->where('user_id', Auth::id()); // Only show appointments assigned to this doctor
     }
+
+    $appointments = $query->get();
+
+    $durationSetting = DB::table('settings')->where('id', 1)->value('slot_duration');
+
+    return view('appointments.index', compact('appointments', 'durationSetting'));
+}
+
     //
     public function getStaffByService($id)
     {
@@ -111,7 +119,7 @@ class AppointmentController extends Controller
                 'staff'               => 'required|exists:users,id', // Assuming you have a staff table
                 'appointment_date'    => 'required|date',
                 'slots'               => 'required|string',
-                'customer'            => 'required|exists:customers,id',
+                'customer'            => 'required|exists:users,id',
                 'appointment_status'  => 'required',
                 'note'    => 'nullable|string|max:1000',
             ];

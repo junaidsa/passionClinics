@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('service_id')->constrained();
             $table->foreignId('user_id')->constrained('users'); // assuming staff are users
-            $table->foreignId('customer_id')->constrained('customers'); // assuming customers are users
+            $table->foreignId('customer_id')->constrained('users'); // assuming customers are users
             $table->foreignId('location_id')->nullable()->constrained('locations'); // optional: may relate to locations table
             $table->enum('appointment_status', ['pending', 'confirmed', 'cancelled', 'completed','emergency'])->default('pending');
             $table->enum('payment_status', ['unpaid', 'paid', 'refunded'])->default('unpaid');

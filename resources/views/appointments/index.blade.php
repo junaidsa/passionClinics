@@ -5,7 +5,7 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between">
                 <h5>Appointment List</h5>
-                <div class="btn-container"><button class="dt-button add-new btn btn-primary" tabindex="0"
+                <div class="btn-container @if (!Auth::check() || Auth::user()->role !== 'admin') d-none @endif"><button class="dt-button add-new btn btn-primary" tabindex="0"
                         aria-controls="DataTables_Table_0" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasAddAppointment"><span><i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span
                                 class="d-none d-sm-inline-block">Add New Appointment</span></span></button></div>
@@ -26,7 +26,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($appointment as $app)
+                            @foreach ($appointments as $app)
                                 <tr>
                                     <td class="small text-black">
                                         {{ \Carbon\Carbon::parse($app->date)->format('d/m/Y') }} <br>
@@ -34,11 +34,11 @@
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <img src="{{ url('file/customer/' . (@$app->customer->image ?? '../aluniquefurniture_uploads/customers/avatar.jpg')) }}"
+                                            <img src="{{ url('file/dr/' . (@$app->customer->image ?? 'avatar.jpg')) }}"
                                                 height="40" width="40" class="rounded-circle me-2">
                                             <div class="d-flex flex-column">
                                                 <div class="d-flex align-items-center">
-                                                    <strong>{{ $app->customer->first_name }} {{ $app->customer->last_name }}</strong>
+                                                    <strong>{{ $app->customer->name }}</strong>
                                                     @if ($app->payment_status == 'paid' || $app->payment_status == 1)
                                                         <span class="alert alert-success rounded-pill ms-2">
                                                             <i class="ti ti-check me-1"></i>
@@ -56,19 +56,21 @@
 
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <img src="{{ url('file/dr/' . (@$app->user->image ?? '../aluniquefurniture_uploads/customers/avatar.jpg')) }}"
+                                            <img src="{{ url('file/dr/' . (@$app->user->image ?? 'avatar.jpg')) }}"
                                                 height="40" width="40" class="rounded-circle me-2">
                                             <div>
                                                 <strong>{{ $app->user->name }} </strong>
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="">{{ $app->service->title }}</td>
+                                    <td class="">{{ $app->service->title_en }}
+                                        {{ $app->service->title_ar }}
+                                    </td>
                                     <td class="text-center">{{ $durationSetting }}</td>
                                     <td>{{ \Carbon\Carbon::parse($app->created_at)->format('d/m/Y ') }} <br>
                                         {{ \Carbon\Carbon::parse($app->created_at)->format('h:i A') }}</td>
                                     <td>
-                                        <div class="dropdown">
+                                        <div class="dropdown @if (!Auth::check() || Auth::user()->role !== 'admin') d-none @endif">
                                             <button class="btn " type="button" data-bs-toggle="dropdown"
                                                 aria-expanded="false">
                                                 <i class="ti ti-dots-vertical"></i>
@@ -87,6 +89,7 @@
                                                 </li>
                                             </ul>
                                         </div>
+                                        <button class="btn btn-primary">Send Link </button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -105,7 +108,7 @@
                 @php
                     $location = DB::table('locations')->get();
                     $services = DB::table('services')->get();
-                    $customer = DB::table('customers')->get();
+                    $customer = DB::table('users')->where('role','customer')->get();
                 @endphp
                 <form class="add-new-user pt-0" id="appointmentsForm">
                     <div class="mb-3">
@@ -150,8 +153,8 @@
                         <select name="customer" id="customer" class="form-control">
                             <option value="">Select Customer</option>
                             @foreach ($customer as $cus)
-                                <option value="{{ $cus->id }}">{{ $cus->first_name }}
-                                    {{ $cus->last_name }}</option>
+                                <option value="{{ $cus->id }}">
+                                    {{ $cus->name }}</option>
                             @endforeach
                         </select>
                         <div class="invalid-feedback"></div>

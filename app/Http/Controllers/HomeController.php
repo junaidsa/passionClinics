@@ -305,8 +305,7 @@ class HomeController extends Controller
     }
     public function userDashboard()
     {
-        $teams = User::with('service')->where('role', 'doctor')->get();
-        return view('front-web.userdashboard', compact('teams'));
+        return view('front-web.userdashboard', compact());
     }
 
     public function blog()
@@ -327,6 +326,7 @@ class HomeController extends Controller
             if ($validator->passes()) {
                 $user = new User();
                 $user->name = $request->name;
+                $user->role = 'customer';
                 $user->email = $request->email;
                 $user->gender = $request->gender;
                 $user->password = Hash::make($request->password);
@@ -347,25 +347,38 @@ class HomeController extends Controller
             return response()->json(['error' =>  $e->getMessage(), 'line' => $e->getLine(), 'File' => $e->getFile()], 500);
         }
     }
-    public function authenticate(Request $request)
-    {
-        // dd('hello');
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
+public function authenticate(Request $request)
+{
+    $validator = Validator::make($request->all(), [
+        'email' => 'required|email',
+        'password' => 'required',
+    ]);
 
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 422);
-        }
+    if ($validator->fails()) {
+        return response()->json(['errors' => $validator->errors()], 422);
+    }
 
-        if (Auth::attempt($request->only('email', 'password'))) {
+    if (Auth::attempt($request->only('email', 'password'))) {
+        $user = Auth::user();
+
+        // Check if user is doctor or customer
+        if (in_array($user->role, ['doctor', 'customer'])) {
+        // Determine redirect URL based on role
+            $redirectUrl = $user->role === 'customer'
+                ? route('front.dashboard')
+                : route('dashboard');
+
             return response()->json([
                 'status' => true,
-                'redirect_url' => route('front.dashboard') // Or wherever you want to go
+                'redirect_url' => $redirectUrl
             ]);
         } else {
+            Auth::logout(); // Logout unauthorized role
             return response()->json(['message' => 'Invalid credentials'], 401);
         }
+    } else {
+        return response()->json(['message' => 'Invalid credentials'], 401);
     }
+}
+
 }

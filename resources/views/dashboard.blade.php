@@ -13,7 +13,13 @@
                     @php
                         use Illuminate\Support\Facades\DB;
                         use Carbon\Carbon;
-                        $totalAppointments = DB::table('appointments')->whereDate('date', Carbon::today())->count();
+                        use Illuminate\Support\Facades\Auth;
+$query = DB::table('appointments')->whereDate('date', Carbon::today());
+
+if (Auth::check() && Auth::user()->role === 'doctor') {
+    $query->where('user_id', Auth::id()); // doctor sees only their own
+}
+$totalAppointments = $query->count();
                         $totalstaff = DB::table('users')->where('role', 'doctor')->count();
                         $totalcustomer = DB::table('customers')->count();
                         $durationSetting = DB::table('settings')->where('id', 1)->value('slot_duration');
@@ -21,7 +27,7 @@
                     <div class="card-body">
                         <div class="d-flex align-items-start justify-content-between">
                             <div class="content-left">
-                                <span>Current Appointments</span>
+                                <span>Today Appointments</span>
                                 <div class="d-flex align-items-center my-1">
                                     <h4 class="mb-0 me-2 text-center">{{ $totalAppointments }}</h4>
                                 </div>
@@ -33,7 +39,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-xl-3">
+            <div class="col-sm-6 col-xl-3 @if (!Auth::check() || Auth::user()->role !== 'admin') d-none @endif">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex align-items-start justify-content-between">
@@ -50,7 +56,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6 col-xl-3">
+            <div class="col-sm-6 col-xl-3 @if (!Auth::check() || Auth::user()->role !== 'admin') d-none @endif">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex align-items-start justify-content-between">
