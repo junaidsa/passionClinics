@@ -322,6 +322,20 @@ class HomeController extends Controller
         return view('front-web.userdashboard', compact('appointments','user'));
     }
 
+    public function doctor()
+    {
+        $query = Appointment::with('service', 'localtion', 'user')->orderBy('id', 'DESC');
+
+        if (Auth::check() && Auth::user()->role === 'doctor') {
+            $query->where('user_id', Auth::id());
+        }
+
+        $user = User::all();
+
+        $appointments = $query->get();
+        return view('front-web.front-doctors', compact('appointments','user'));
+    }
+
     public function updateImage(Request $request)
 {
     $request->validate([
