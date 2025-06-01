@@ -332,7 +332,7 @@ class HomeController extends Controller
         $image = $request->file('profile_image');
         $fileName = time() . '_profile_image.' . $image->getClientOriginalExtension();
 
-        $destinationPath = base_path('../aluniquefurniture_uploads/users/');
+        $destinationPath = base_path('../aluniquefurniture_uploads/profile/');
         if (!file_exists($destinationPath)) {
             mkdir($destinationPath, 0755, true);
         }
@@ -424,4 +424,10 @@ class HomeController extends Controller
             return response()->json(['message' => 'Invalid credentials'], 401);
         }
     }
+    public function mynotification(){
+        return view('front-web.notification');
+        }
+    public function history(){
+        return view('front-web.history');
+        }
 }

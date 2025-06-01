@@ -19,7 +19,7 @@
                         </div>
                         <div class="col-md-8" style="height: 100vh;">
                             <div class="d-flex justify-content-center align-items-center h-100">
-                                {{-- <h1 class="text-center">Dashboard</h1> --}}
+                                <h1 class="text-center">No Notification Found</h1>
                             </div>
                         </div>
                     </div>

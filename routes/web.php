@@ -59,6 +59,8 @@ Route::middleware([
 Route::middleware('auth')->group(function () {
     Route::get('/user/dashboard', [Homecontroller::class, 'userDashboard'])->name('front.dashboard');
         Route::get('/user/myappointments', [AppointmentController::class, 'myappointments'])->name('front.myappointments');
+        Route::get('/user/mynotification', [HomeController::class, 'mynotification'])->name('front.mynotification');
+        Route::get('/user/history', [HomeController::class, 'history'])->name('front.history');
     Route::post('/user/profile', [Homecontroller::class, 'updateImage'])->name('profile.updateImage');
     Route::get('/admin/dashboard', [Homecontroller::class, 'dashboard'])->name('dashboard');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

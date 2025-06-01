@@ -3,7 +3,7 @@
     <div class="position-relative d-inline-block">
         <!-- Profile Image -->
         {{-- <img src="{{ url('file/users/' . ( Auth::user()->image ?? 'avatar.jpg')) }}" alt=""> --}}
-        <img src="{{ url('file/users/' . (Auth::user()->image ?? 'avatar.jpg')) }}" alt="Profile Image"
+        <img src="{{ url('file/dr/' . (Auth::user()->image ?? 'avatar.jpg')) }}" alt="Profile Image"
             class="rounded-circle img-fluid" style="width: 150px; height: 150px; object-fit: cover;">
 
         <!-- Pencil Icon on top-right of image -->
@@ -29,13 +29,13 @@
     <div class="card-body p-0">
         <ul class="list-group list-group-flush">
             <li class="list-group-item p-3">
-                <a href="" class="text-decoration-none text-dark">Dashboard</a>
+                <a href="{{url('user/dashboard')}}" class="text-decoration-none text-dark">Dashboard</a>
             </li>
             <li class="list-group-item p-3">
-                <a href="" class="text-decoration-none text-dark">Account Settings</a>
+                <a href="{{ url('/profile/update/' . Auth::id()) }}" class="text-decoration-none text-dark">Account Settings</a>
             </li>
             <li class="list-group-item p-3">
-                <a href="#" class="text-decoration-none text-dark">My Appointments</a>
+                <a href="{{url('user/myappointments')}}" class="text-decoration-none text-dark">My Appointments</a>
             </li>
             <li class="list-group-item p-3">
                 <a href="#" class="text-decoration-none text-dark">Doctor's</a>
@@ -44,7 +44,7 @@
                 <a href="#" class="text-decoration-none text-dark">Appointments History</a>
             </li>
             <li class="list-group-item p-3">
-                <a href="#" class="text-decoration-none text-dark">Notification</a>
+                <a href="{{url('user/mynotification')}}" class="text-decoration-none text-dark">Notification</a>
             </li>
             <li class="list-group-item p-3">
                 <a href="{{ route('logout') }}" class="text-decoration-none text-danger fw-bold"
