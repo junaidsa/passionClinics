@@ -83,7 +83,7 @@ $blogs = DB::table('blogs')->get();
                 <div class="post-item wow fadeInUp" data-wow-delay="0.2s">
                     <!-- Post Featured Image Start-->
                     <div class="post-featured-image">
-                        <a href="blog-single.html" data-cursor-text="View">
+                        <a href="#" data-cursor-text="View">
                             <figure class="image-anime">
                                 <img src="{{ url('file/blog/' . (@$b->image ?? 'avatar.jpg')) }}" alt="">
                             </figure>

@@ -12,8 +12,8 @@
 						<h1 class="text-anime-style-3" data-cursor="-opaque">{{$profile->name}}</h1>
 						<nav class="wow fadeInUp">
 							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="">home</a></li>
-								<li class="breadcrumb-item"><a href="team.html">team</a></li>
+								<li class="breadcrumb-item"><a href="#">home</a></li>
+								<li class="breadcrumb-item"><a href="#">team</a></li>
 								<li class="breadcrumb-item active" aria-current="page">Dr. neha verma</li>
 							</ol>
 						</nav>

@@ -76,7 +76,7 @@
 
                                             <!-- Action Button -->
                                             <div class="mt-4 text-end">
-                                                <a href="video-consultation.html?doctor=basem-elfeki"
+                                                <a href="#"
                                                     class="btn btn-primary rounded-pill px-4 py-2">
                                                     Connect Consultation
                                                 </a>

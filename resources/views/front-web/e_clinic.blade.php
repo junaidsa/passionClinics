@@ -59,7 +59,7 @@
                                             </div>
                                         </div>
                                         <div class="doctor-actions">
-                                            <a href="video-consultation.html?doctor=basem-elfeki" class="btn-outline">Video
+                                            <a href="#" class="btn-outline">Video
                                                 Consultation</a>
                                             <a href="{{ url('clinic/appointment/' . $te->id ) }}" class="btn-primary" >Book
                                                 Appointment</a>
