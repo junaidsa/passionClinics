@@ -18,22 +18,22 @@
     <title>Passion Clinics</title>
     <!-- Favicon Icon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('public') }}/images/fav.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&display=swap" rel="stylesheet">
 
-<h2   style="font-family: 'Noto Naskh Arabic', sans-serif;" data-cursor="-opaque">
-    {{ App::isLocale('ar') ? @$about->about_title_ar : @$about->about_title }}
-</h2>
+    <h2 style="font-family: 'Noto Naskh Arabic', sans-serif;" data-cursor="-opaque">
+        {{ App::isLocale('ar') ? @$about->about_title_ar : @$about->about_title }}
+    </h2>
 
 
 
     <!-- Bootstrap Css -->
 
     @if (app()->getLocale() == 'ar')
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css">
     @else
-    <link href="{{ asset('public') }}/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="{{ asset('public') }}/css/bootstrap.min.css" rel="stylesheet" media="screen">
     @endif
     <!-- SlickNav Css -->
     <link href="{{ asset('public') }}/css/slicknav.min.css" rel="stylesheet">
@@ -103,15 +103,16 @@
             right: auto !important;
             left: 0 !important;
         }
-        html[dir="rtl"] .footer-contact-item li {
-    flex-direction: row-reverse;
-    text-align: right;
-}
 
-html[dir="rtl"] .footer-contact-item li i {
-    margin-left: 0.5rem;
-    margin-right: 0;
-}
+        html[dir="rtl"] .footer-contact-item li {
+            flex-direction: row-reverse;
+            text-align: right;
+        }
+
+        html[dir="rtl"] .footer-contact-item li i {
+            margin-left: 0.5rem;
+            margin-right: 0;
+        }
     </style>
 </head>
 
@@ -140,7 +141,7 @@ html[dir="rtl"] .footer-contact-item li i {
                     <div class="footer-header">
                         <!-- Section Title Start -->
                         <div class="section-title footer-newsletter-title">
-                            <h2   data-cursor="-opaque">@lang('app.footer-dis')</h2>
+                            <h2 data-cursor="-opaque">@lang('app.footer-dis')</h2>
                         </div>
                         <!-- Section Title End -->
 
@@ -178,9 +179,9 @@ html[dir="rtl"] .footer-contact-item li i {
                         <!-- Footer Social Link Start -->
                         <div class="footer-social-links">
                             <ul>
-                                <li><a href="{{$sett->x_url}}"><i class="fa-brands fa-x-twitter"></i></a></li>
-                                <li><a href="{{$sett->fb_url}}"><i class="fa-brands fa-facebook-f"></i></a></li>
-                                <li><a href="{{$sett->ins_url}}"><i class="fa-brands fa-instagram"></i></a></li>
+                                <li><a href="{{ $sett->x_url }}"><i class="fa-brands fa-x-twitter"></i></a></li>
+                                <li><a href="{{ $sett->fb_url }}"><i class="fa-brands fa-facebook-f"></i></a></li>
+                                <li><a href="{{ $sett->ins_url }}"><i class="fa-brands fa-instagram"></i></a></li>
                             </ul>
                         </div>
                         <!-- Footer Social Link End -->
@@ -221,7 +222,8 @@ html[dir="rtl"] .footer-contact-item li i {
                         <div class="footer-links footer-contact-item">
                             <h3>@lang('app.Contact'):</h3>
                             <ul>
-                                <li><i class="fa-solid fa-phone"></i><a href="tel:123456789">{{@$sett->phone_number}}</a></li>
+                                <li><i class="fa-solid fa-phone"></i><a
+                                        href="tel:123456789">{{ @$sett->phone_number }}</a></li>
                             </ul>
                         </div>
                         <!-- Footer Contact Item End -->
@@ -231,7 +233,7 @@ html[dir="rtl"] .footer-contact-item li i {
                             <h3>@lang('app.e-mail'):</h3>
                             <ul>
                                 <li><i class="fa-solid fa-envelope"></i><a
-                                        href="mailto:{{@$sett->email}}">{{@$sett->email}}</a></li>
+                                        href="mailto:{{ @$sett->email }}">{{ @$sett->email }}</a></li>
                             </ul>
                         </div>
                         <!-- Footer Contact Item End -->
@@ -240,7 +242,7 @@ html[dir="rtl"] .footer-contact-item li i {
                         <div class="footer-links footer-contact-item">
                             <h3>@lang('app.address'):</h3>
                             <ul>
-                                <li><i class="fa-solid fa-location-dot"></i>{{@$sett->address}}</li>
+                                <li><i class="fa-solid fa-location-dot"></i>{{ @$sett->address }}</li>
                             </ul>
                         </div>
                         <!-- Footer Contact Item End -->
@@ -302,6 +304,18 @@ html[dir="rtl"] .footer-contact-item li i {
     @yield('javascript')
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Hide alert after 3 seconds
+        setTimeout(function() {
+            let alertBox = document.getElementById('success-alert');
+            if (alertBox) {
+                alertBox.style.transition = "opacity 0.5s ease-out";
+                alertBox.style.opacity = '0';
+                setTimeout(() => alertBox.remove(), 500); // Fully remove from DOM after fade out
+            }
+        }, 3000);
+
+
+
         // Set the language and direction on page load
         const savedLang = localStorage.getItem('lang') || 'en';
         document.documentElement.lang = savedLang;
@@ -325,8 +339,8 @@ html[dir="rtl"] .footer-contact-item li i {
         }
 
         // Language change handler
-        $(document).ready(function () {
-            $('.dropdown-item').on('click', function (e) {
+        $(document).ready(function() {
+            $('.dropdown-item').on('click', function(e) {
                 e.preventDefault();
 
                 const selectedLang = $(this).data('language');
@@ -341,11 +355,11 @@ html[dir="rtl"] .footer-contact-item li i {
                         language: selectedLang,
                         _token: csrfToken
                     },
-                    success: function () {
+                    success: function() {
                         // alert('Language changed successfully');
                         location.reload();
                     },
-                    error: function (xhr, status, error) {
+                    error: function(xhr, status, error) {
                         console.error("There was an error changing the language:", error);
                     }
                 });

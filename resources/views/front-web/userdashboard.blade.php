@@ -9,8 +9,7 @@
                         {{ session('success') }}
                     </div>
 
-                    <script>
-                        // Hide alert after 3 seconds
+                    {{-- <script>
                         setTimeout(function() {
                             let alertBox = document.getElementById('success-alert');
                             if (alertBox) {
@@ -19,7 +18,7 @@
                                 setTimeout(() => alertBox.remove(), 500); // Fully remove from DOM after fade out
                             }
                         }, 3000);
-                    </script>
+                    </script> --}}
                 @endif
             </div>
             {{-- <div class="page-header bg-section dark-section">
