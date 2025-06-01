@@ -188,4 +188,9 @@ $staff?->notify(new AppointmentCreated($appointment));
             return response()->json(['error' => 'Appointment not found.'], 404);
         }
     }
+
+public function myappointments(){
+            $appointments = Appointment::with('service', 'localtion', 'user')->where('customer_id', Auth::id())->orderBy('id', 'DESC')->get();
+    return view('front-web.myappointment',compact('appointments'));
+}
 }
