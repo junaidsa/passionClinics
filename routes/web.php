@@ -32,6 +32,7 @@ Route::middleware([
     SetLocale::class,
 ])->group(function () {
 
+    Route::get('/get-slots-by-available', [AppointmentController::class, 'availableSlots']);
     Route::post('/set-language', [LanguageController::class, 'setLanguage'])->name('language.set');
     Route::get('/', [Homecontroller::class, 'home'])->name('home');
     Route::get('/about', [Homecontroller::class, 'about'])->name('front.about');
@@ -121,7 +122,6 @@ Route::middleware('auth')->group(function () {
     Route::get('admin/setting', [SettingController::class, 'index'])->name('setting.index');
     Route::post('admin/setting/update/{id}', [SettingController::class, 'update'])->name('setting.update');
     Route::get('/get-staff-by-service/{id}', [AppointmentController::class, 'getStaffByService']);
-    Route::get('/get-slots-by-available', [AppointmentController::class, 'availableSlots']);
     Route::post('/admin/appointment/store', [AppointmentController::class, 'store'])->name('appointment.store');
     Route::get('/appointments/list', [AppointmentController::class, 'getappointments'])->name('appointment.get');
     Route::delete('/admin/appointments/delete/{id}', [AppointmentController::class, 'destroy'])->name('appointment.destroy');

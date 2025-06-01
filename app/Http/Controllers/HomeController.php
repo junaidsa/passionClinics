@@ -184,6 +184,12 @@ class HomeController extends Controller
 
     public function appointmentStore(Request $request)
     {
+            if (!Auth::check()) {
+        return response()->json([
+            'status' => 'error',
+            'message' => 'Login Your Account.',
+        ], 401);
+    }
         $validator = Validator::make($request->all(), [
             'appointment_date'   => 'required',
             'staff'   => 'required',
@@ -323,12 +329,15 @@ class HomeController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
+  'phone' => 'required|unique:users,phone',
+], [
+    'phone.unique' => 'Phone already exists',
                 'gender' => 'required',
-                'email' => 'required|email:unique:users,email',
                 'password' => 'required|min:5|same:confirm_password',
                 'confirm_password' => 'required',
-
-            ]);
+                'email' => 'required|email|unique:users,email',], [
+                'email.unique' => 'Email already exists',
+                ]);
             if ($validator->passes()) {
                 $user = new User();
                 $user->name = $request->name;

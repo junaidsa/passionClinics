@@ -52,6 +52,7 @@
                                     <div class="row">
                                         <input type="hidden" id="staff" name="staff" value="{{ @$user->id }}">
                                         <div class="form-group col-md-6 mb-4">
+                                              <label for="" class="form-label">Surgeon Name</label>
                                             <input type="text" name="name"
                                                 class="form-control rounded @error('name') is-invalid @enderror"
                                                 id="name" value="{{ @$user->name ?? '' }}" disabled>
@@ -63,6 +64,7 @@
 
 
                                         <div class="form-group col-md-6 mb-4">
+                                            <label for="" class="form-label">Location</label>
                                             <select name="location" id="location" class="form-control rounded form-select"
                                                 required="">
                                                 @foreach ($location as $loc)
@@ -73,6 +75,7 @@
                                         </div>
 
                                         <div class="form-group col-md-6 mb-4">
+                                             <label for="" class="form-label">Appointment Date</label>
                                             <input type="text" name="appointment_date"
                                                 class="form-control rounded flatpickr-input" id="appointment_date"
                                                 placeholder="Appointment Date">
@@ -80,6 +83,7 @@
                                         </div>
 
                                         <div class="form-group col-md-6 mb-4">
+                                        <label for="" class="form-label">Available Slot</label>
                                             <select class="form-control rounded" name="slots" id="slots"
                                                 required="">
                                             </select>
@@ -186,24 +190,27 @@
                 }
             },
             error: function(xhr) {
-                if (xhr.status === 422) {
-                    let errors = xhr.responseJSON.errors;
-                    let errorMessages = '';
-                    $.each(errors, function(key, value) {
-                        errorMessages += value[0] + '\n';
-                    });
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Validation Error',
-                        text: errorMessages,
-                    });
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Something went wrong!',
-                    });
-                }
+                 if (xhr.status === 401) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Not Logged In',
+                text: 'Login Your Account.',
+            });
+        } else if (xhr.status === 422) {
+            let errors = xhr.responseJSON.errors;
+            let errorMessages = Object.values(errors).map(err => `• ${err[0]}`).join('\n');
+            Swal.fire({
+                icon: 'error',
+                title: 'Validation Error',
+                html: `<pre style="text-align:left;">${errorMessages}</pre>`,
+            });
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+            });
+        }
             }
         });
     });

@@ -81,13 +81,11 @@
                                <li class="nav-item dropdown me-2 me-xl-0">
                                    <a class="nav-link dropdown-toggle hide-arrow" href="#" id="languageDropdown"
                                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                       {{-- <i id="selected-language-flag" class="fi {{ app()->getLocale() == 'ar' ? 'fi-sa' : 'fi-us' }} fis rounded-circle me-1 fs-2"></i> --}}
                                        <img src="{{ asset('public/files/2025-05-04_11-10-53-image.jpg') }}" width="50"
                                            height="50" class="rounded-circle">
-
                                    </a>
                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
-                                       <li class="p-1">
+                                      <li class="p-1">
                                            <a class="" href="{{ url('/profile/update/' . Auth::id()) }}">
                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                    fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -96,32 +94,6 @@
                                                        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
                                                </svg>
                                                <span class="align-middle ms-2">Profile</span>
-                                           </a>
-                                       </li>
-                                       <li>
-                                           <div class="dropdown-divider"></div>
-                                       </li>
-                                       <li class="p-1">
-                                           <a class="" href="{{ url('/user/dashboard/') }}">
-
-                                               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                   fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
-                                                   <path
-                                                       d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293zM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5z" />
-                                               </svg>
-                                               <span class="align-middle ms-2">Dashboard</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <div class="dropdown-divider"></div>
-                                        </li>
-                                       <li class="p-1">
-                                           <a class="" href="{{ url('/user/dashboard/') }}">
-
-                                           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hourglass-bottom" viewBox="0 0 16 16">
-  <path d="M2 1.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-1v1a4.5 4.5 0 0 1-2.557 4.06c-.29.139-.443.377-.443.59v.7c0 .213.154.451.443.59A4.5 4.5 0 0 1 12.5 13v1h1a.5.5 0 0 1 0 1h-11a.5.5 0 1 1 0-1h1v-1a4.5 4.5 0 0 1 2.557-4.06c.29-.139.443-.377.443-.59v-.7c0-.213-.154-.451-.443-.59A4.5 4.5 0 0 1 3.5 3V2h-1a.5.5 0 0 1-.5-.5m2.5.5v1a3.5 3.5 0 0 0 1.989 3.158c.533.256 1.011.791 1.011 1.491v.702s.18.149.5.149.5-.15.5-.15v-.7c0-.701.478-1.236 1.011-1.492A3.5 3.5 0 0 0 11.5 3V2z"/>
-</svg>
-                                               <span class="align-middle ms-2">History</span>
                                            </a>
                                        </li>
                                        <li>
@@ -189,9 +161,15 @@
                                                <p></p>
                                            </div>
                                            <div class="mb-3">
+                                               <label for="phone" class="form-label">Phone Number</label>
+                                               <input type="number" class="form-control" id="phone"
+                                                   name="phone" placeholder="Enter Phone">
+                                               <p></p>
+                                           </div>
+                                           <div class="mb-3">
                                                <label for="email_sign" class="form-label">Email</label>
                                                <input type="email" class="form-control" id="email_sign"
-                                                   name="email_sign" placeholder="Enter Email">
+                                                   name="email" placeholder="Enter Email">
                                                <p></p>
                                            </div>
                                            <div class="mb-3">
@@ -354,6 +332,11 @@
                                $("#name").removeClass('is-invalid').siblings('p').removeClass(
                                    'invalid-feedback').html('')
                            }
+                           if (errors.phone) {
+                            $("#phone").addClass('is-invalid').siblings('p').addClass('invalid-feedback').html(errors.phone)
+                           } else {
+                               $("#phone").removeClass('is-invalid').siblings('p').removeClass('invalid-feedback').html('')
+                           }
 
                            if (errors.gender) {
 
@@ -363,10 +346,10 @@
                                $("#gender").removeClass('is-invalid').siblings('p').removeClass(
                                    'invalid-feedback').html('')
                            }
-                           if (errors.email_sign) {
+                           if (errors.email) {
 
                                $("#email_sign").addClass('is-invalid').siblings('p').addClass(
-                                   'invalid-feedback').html(errors.email_sign)
+                                   'invalid-feedback').html(errors.email)
                            } else {
                                $("#email_sign").removeClass('is-invalid').siblings('p').removeClass(
                                    'invalid-feedback').html('')
