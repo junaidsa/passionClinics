@@ -30,29 +30,25 @@
             <div class="container">
              <div class="row">
                         <div class="col-lg-12">
-                            @foreach ($teams as $te)
+                            @foreach ($appointments as $app)
                                 <div class="doctor-card wow fadeInUp" data-wow-delay="0.2s">
                                     <div class="doctor-info">
-                                        <img src="{{ url('file/dr/' . (@$te->image ?? 'avatar.jpg')) }}"
-                                            alt="{{ $te->name }}" class="doctor-photo">
+                                        <img src="{{ url('file/dr/' . (@$app->image ?? 'avatar.jpg')) }}"
+                                            alt="{{ $app->name }}" class="doctor-photo">
                                         <div class="doctor-details">
-                                            <h2>{{ App::isLocale('ar') ? $te->name_ar : $te->name }} &nbsp;&nbsp;<span
-                                                    class="badge">{{ App::isLocale('ar') ? $te->category_ar : $te->category }}</span>
+                                            <h2>{{ App::isLocale('ar') ? $app->user->name_ar : $app->user->name }}
                                             </h2>
-                                            <p>{{ App::isLocale('ar') ? $te->service->title_ar : $te->service->title }} </p>
+                                            <p>{{ App::isLocale('ar') ? $app->service->title_ar : $app->service->title }} </p>
                                             {{-- <p>{{$te->about}}</p> --}}
-                                            <p>{{ App::isLocale('ar') ? $te->about_ar : $te->about }} </p>
+                                            <p>{{ App::isLocale('ar') ? $app->user->about_ar : $app->user->about }} </p>
                                             <div class="doctor-stats">
-                                                <div><strong>15 - 30 Min</strong><br>@lang('app.wait-time')</div>
-                                                <div><strong>{{ $te->experience }}</strong><br>@lang('app.experience')</div>
-                                                <div><strong>98% (559)</strong><br>@lang('app.satisfied-patients')</div>
+                                                <div><strong>60</strong><br>Meeting Time</div>
+                                                <div><strong>{{ $app->date }}</strong><br>Date</div>
+                                                <div><strong>{{ $app->slot }}</strong><br>Time Slot</div>
                                             </div>
                                         </div>
                                         <div class="doctor-actions">
-                                            <a href="video-consultation.html?doctor=basem-elfeki" class="btn-outline">Video
-                                                Consultation</a>
-                                            <a href="{{ url('clinic/appointment/' . $te->id ) }}" class="btn-primary" >Book
-                                                Appointment</a>
+                                            <a href="video-consultation.html?doctor=basem-elfeki" class="btn-outline">Connect Consultation</a>
                                         </div>
                                     </div>
                                 </div>

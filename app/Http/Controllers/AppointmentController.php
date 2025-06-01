@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use App\Notifications\AppointmentCreated;
 
 class AppointmentController extends Controller
 {
@@ -143,6 +144,13 @@ public function index()
                 'payment_status' => 'paid',
                 'note'               => $request->note,
             ]);
+            // Notify customer
+$customer = User::find($request->customer);
+$customer?->notify(new AppointmentCreated($appointment));
+
+// Notify staff
+$staff = User::find($request->staff);
+$staff?->notify(new AppointmentCreated($appointment));
             return response()->json([
                 'status' => true,
                 'message' => 'Appointment created successfully',

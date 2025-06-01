@@ -132,7 +132,7 @@
                     <!-- What We Image Start -->
                     <div class="what-we-image-2">
                         <figure class="image-anime">
-                            <img src="{{ asset('public') }}/images/avatar.jpg" alt="">
+                            <img src="{{ url('file/video/' . (@$sett->experience_1 ?? '')) }}" alt="">
                         </figure>
                     </div>
                     <!-- What We Image Start -->
@@ -169,7 +169,7 @@
                     <!-- What We Image Start -->
                     <div class="what-we-image-2">
                         <figure class="image-anime">
-                            <img src="{{ asset('public') }}/images/avatar.jpg" alt="">
+                            <img src="{{ url('file/video/' . (@$sett->experience_2 ?? '')) }}" alt="">
                         </figure>
 
                         <!-- Experirnce Box Start -->
@@ -253,13 +253,13 @@
                     <div class="why-choose-images">
                         <div class="why-choose-image img-1">
                             <figure class="image-anime reveal">
-                                <img src="{{ asset('public') }}/images/avatar.jpg" alt="">
+                                <img src="{{ url('file/video/' . (@$sett->choose_1 ?? '')) }}" alt="">
                             </figure>
                         </div>
 
                         <div class="why-choose-image img-2">
                             <figure class="image-anime reveal">
-                                <img src="{{ asset('public') }}/images/avatar.jpg" alt="">
+                                <img src="{{ url('file/video/' . (@$sett->choose_2 ?? '')) }}" alt="">
                             </figure>
                         </div>
 

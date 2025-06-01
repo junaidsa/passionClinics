@@ -44,40 +44,40 @@ class SettingController extends Controller
     }
 
     public function updateLocation(Request $request, $id)
-{
-    $validated = $request->validate([
-        'name' => 'required|string|max:255',
-        'phone' => 'required',
-        'address' => 'required',
-        'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-    ]);
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'phone' => 'required',
+            'address' => 'required',
+            'avatar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
 
-    $location = Location::findOrFail($id);
+        $location = Location::findOrFail($id);
 
-    if ($request->hasFile('avatar')) {
-        // Delete old image
-        $oldImagePath = base_path('../aluniquefurniture_uploads/locations/' . $location->image);
-        if (file_exists($oldImagePath)) {
-            unlink($oldImagePath);
+        if ($request->hasFile('avatar')) {
+            // Delete old image
+            $oldImagePath = base_path('../aluniquefurniture_uploads/locations/' . $location->image);
+            if (file_exists($oldImagePath)) {
+                unlink($oldImagePath);
+            }
+
+            // Store new image
+            $avatar = $request->file('avatar');
+            $avatarName = time() . '_locations.' . $avatar->getClientOriginalExtension();
+            $destinationPath = base_path('../aluniquefurniture_uploads/locations/');
+            $avatar->move($destinationPath, $avatarName);
+
+            $location->image = $avatarName;
         }
 
-        // Store new image
-        $avatar = $request->file('avatar');
-        $avatarName = time() . '_locations.' . $avatar->getClientOriginalExtension();
-        $destinationPath = base_path('../aluniquefurniture_uploads/locations/');
-        $avatar->move($destinationPath, $avatarName);
+        $location->name = $request->name;
+        $location->description = $request->description;
+        $location->address = $request->address;
+        $location->phone = $request->phone;
+        $location->save();
 
-        $location->image = $avatarName;
+        return redirect()->route('location.index')->with('success', 'Location updated successfully.');
     }
-
-    $location->name = $request->name;
-    $location->description = $request->description;
-    $location->address = $request->address;
-    $location->phone = $request->phone;
-    $location->save();
-
-    return redirect()->route('location.index')->with('success', 'Location updated successfully.');
-}
 
     public function update(Request $request, $id)
     {
@@ -98,6 +98,10 @@ class SettingController extends Controller
             'happy_clients' => 'required',
             'video' => 'nullable|mimes:mp4,avi,mov,wmv|max:5120',
             'video_hero' => 'nullable|file|mimes:jpg,jpeg,png,gif,mp4,avi,mov,wmv|max:100',
+            'choose_1' => 'nullable|file|mimes:jpg,jpeg,png,gif,mp4,avi,mov,wmv|max:100',
+            'choose_2' => 'nullable|file|mimes:jpg,jpeg,png,gif,mp4,avi,mov,wmv|max:100',
+            'experience_1' => 'nullable|file|mimes:jpg,jpeg,png,gif,mp4,avi,mov,wmv|max:100',
+            'experience_2' => 'nullable|file|mimes:jpg,jpeg,png,gif,mp4,avi,mov,wmv|max:100',
         ]);
 
         $setting = Setting::findOrFail($id);
@@ -127,6 +131,61 @@ class SettingController extends Controller
             $video_hero->move($destinationPath, $videoName_hero);
 
             $setting->hero_section = $videoName_hero;
+        }
+        if ($request->hasFile('choose_1')) {
+            $oldChoose1Path = base_path('../aluniquefurniture_uploads/video/' . $setting->choose_1);
+            if ($setting->choose_1 && file_exists($oldChoose1Path)) {
+                unlink($oldChoose1Path);
+            }
+
+            $choose1 = $request->file('choose_1');
+            $choose1Name = time() . '_choose1.' . $choose1->getClientOriginalExtension();
+            $destinationPath = base_path('../aluniquefurniture_uploads/video/');
+            $choose1->move($destinationPath, $choose1Name);
+
+            $setting->choose_1 = $choose1Name;
+        }
+
+        if ($request->hasFile('choose_2')) {
+            $oldChoose2Path = base_path('../aluniquefurniture_uploads/video/' . $setting->choose_2);
+            if ($setting->choose_2 && file_exists($oldChoose2Path)) {
+                unlink($oldChoose2Path);
+            }
+
+            $choose2 = $request->file('choose_2');
+            $choose2Name = time() . '_choose2.' . $choose2->getClientOriginalExtension();
+            $destinationPath = base_path('../aluniquefurniture_uploads/video/');
+            $choose2->move($destinationPath, $choose2Name);
+
+            $setting->choose_2 = $choose2Name;
+        }
+
+        if ($request->hasFile('experience_1')) {
+            $oldExperience1Path = base_path('../aluniquefurniture_uploads/video/' . $setting->experience_1);
+            if ($setting->experience_1 && file_exists($oldExperience1Path)) {
+                unlink($oldExperience1Path);
+            }
+
+            $experience1 = $request->file('experience_1');
+            $experience1Name = time() . '_experience1.' . $experience1->getClientOriginalExtension();
+            $destinationPath = base_path('../aluniquefurniture_uploads/video/');
+            $experience1->move($destinationPath, $experience1Name);
+
+            $setting->experience_1 = $experience1Name;
+        }
+
+        if ($request->hasFile('experience_2')) {
+            $oldExperience2Path = base_path('../aluniquefurniture_uploads/video/' . $setting->experience_2);
+            if ($setting->experience_2 && file_exists($oldExperience2Path)) {
+                unlink($oldExperience2Path);
+            }
+
+            $experience2 = $request->file('experience_2');
+            $experience2Name = time() . '_experience2.' . $experience2->getClientOriginalExtension();
+            $destinationPath = base_path('../aluniquefurniture_uploads/video/');
+            $experience2->move($destinationPath, $experience2Name);
+
+            $setting->experience_2 = $experience2Name;
         }
 
         $setting->title = $request->title;
@@ -163,7 +222,7 @@ class SettingController extends Controller
     public function editLocation($id)
     {
         $location = Location::findOrFail($id);
-        return view('location.edit',compact('location'));
+        return view('location.edit', compact('location'));
     }
     public function locationsDestroy($id)
     {
@@ -175,18 +234,19 @@ class SettingController extends Controller
             return response()->json(['error' => 'Location not found.'], 404);
         }
     }
-    public function permissions(){
-        $staff = User::where('role','doctor')->get();
-        return view('pages.permissions',compact('staff'));
+    public function permissions()
+    {
+        $staff = User::where('role', 'doctor')->get();
+        return view('pages.permissions', compact('staff'));
     }
     public function contactDestroy($id)
     {
         $location = Contact::find($id);
         if ($location) {
             $location->delete();
-                return redirect()->back()->with('success', 'Contact deleted successfully.');
+            return redirect()->back()->with('success', 'Contact deleted successfully.');
         } else {
-               return redirect()->back()->with('error', 'Contact not found.');
+            return redirect()->back()->with('error', 'Contact not found.');
         }
     }
 }

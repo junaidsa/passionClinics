@@ -206,7 +206,6 @@ class HomeController extends Controller
         $appointment->slot               = $request->slots;
         $appointment->date               = $request->appointment_date;
         $appointment->location_id               = $request->location;
-        $appointment->appointment_status     = 'pandding';
         $appointment->payment_status     = 'paid';
         $appointment->note               = $request->message;
         $appointment->save();
@@ -305,7 +304,14 @@ class HomeController extends Controller
     }
     public function userDashboard()
     {
-        return view('front-web.userdashboard', compact());
+            $query = Appointment::with('service', 'localtion', 'user')->orderBy('id', 'DESC');
+
+    if (Auth::check() && Auth::user()->role === 'doctor') {
+        $query->where('user_id', Auth::id());
+    }
+
+    $appointments = $query->get();
+        return view('front-web.userdashboard', compact('appointments'));
     }
 
     public function blog()

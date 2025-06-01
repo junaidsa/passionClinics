@@ -189,9 +189,9 @@
                                                <p></p>
                                            </div>
                                            <div class="mb-3">
-                                               <label for="email" class="form-label">Email</label>
-                                               <input type="email" class="form-control" id="email"
-                                                   name="email" placeholder="Enter Email">
+                                               <label for="email_sign" class="form-label">Email</label>
+                                               <input type="email" class="form-control" id="email_sign"
+                                                   name="email_sign" placeholder="Enter Email">
                                                <p></p>
                                            </div>
                                            <div class="mb-3">
@@ -363,12 +363,12 @@
                                $("#gender").removeClass('is-invalid').siblings('p').removeClass(
                                    'invalid-feedback').html('')
                            }
-                           if (errors.email) {
+                           if (errors.email_sign) {
 
-                               $("#email").addClass('is-invalid').siblings('p').addClass(
-                                   'invalid-feedback').html(errors.email)
+                               $("#email_sign").addClass('is-invalid').siblings('p').addClass(
+                                   'invalid-feedback').html(errors.email_sign)
                            } else {
-                               $("#email").removeClass('is-invalid').siblings('p').removeClass(
+                               $("#email_sign").removeClass('is-invalid').siblings('p').removeClass(
                                    'invalid-feedback').html('')
                            }
 

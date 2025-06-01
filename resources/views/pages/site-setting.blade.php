@@ -24,163 +24,270 @@
                                     <input type="text" value="{{ @$s->title }}" name="title" id="title"
                                         class="form-control" />
                                 </div>
-                            <div class="col-md-12">
-                                <!-- Title -->
-                                <div class="mb-4">
-                                    <label class="form-label" for="عنوان">عنوان</label>
-                                    <input type="text" value="{{ @$s->title_ar }}" name="title_ar" id="title_ar"
-                                        class="form-control" dir="rtl" />
-                                </div>
-
-                                <!-- Description -->
-                                <div class="mb-4">
-                                    <label class="form-label" for="description">Description <span
-                                            class="text-danger">*</span></label>
-                                    <textarea class="form-control" name="description" id="description">{{ @$s->description }}</textarea>
-                                </div>
-                                <!-- Description -->
-                                <div class="mb-4">
-                                    <label class="form-label" for="description_ar">وصف <span
-                                            class="text-danger">*</span></label>
-                                    <textarea class="form-control" name="description_ar" dir="rtl" id="description_ar">{{ @$s->description_ar }}</textarea>
-                                </div>
-
-                                <!-- Phone and YouTube URL -->
-                                <div class="row">
-                                    <div class="col-md-6 mb-4">
-                                        <label class="form-label" for="phone_number">Email</label>
-                                        <input type="text" value="{{ @$s->email }}" name="email"
-                                            id="email" class="form-control" />
-                                    </div>
-                                    <div class="col-md-6 mb-4">
-                                        <label class="form-label" for="youtube_url">Address</label>
-                                        <input type="text" value="{{ @$s->address }}" name="address"
-                                            id="address" class="form-control" />
-                                    </div>
-                                </div>
-                                <div class="row">
-                                     <div class="col-md-6 mb-4">
-                                        <label class="form-label" for="phone_number">Phone</label>
-                                        <input type="text" value="{{ @$s->phone_number }}" name="phone_number"
-                                            id="phone_number" class="form-control" />
-                                    </div>
-                                    <div class="col-md-6 mb-4">
-                                        <label class="form-label" for="youtube_url">YouTube URL</label>
-                                        <input type="text" value="{{ @$s->youtube_url }}" name="youtube_url"
-                                            id="youtube_url" class="form-control" />
-                                    </div>
-                                </div>
-
-                                <!-- Opening, Closing Time, Slot Duration -->
-                                <div class="row">
-                                    <div class="col-md-4 mb-4">
-                                        <label class="form-label" for="opening_time">Opening Time</label>
-                                        <input type="text" value="{{ @$s->opening_time }}" name="opening_time"
-                                            id="opening_time" class="form-control" />
-                                    </div>
-                                    <div class="col-md-4 mb-4">
-                                        <label class="form-label" for="closing_time">Closing Time</label>
-                                        <input type="text" value="{{ @$s->closing_time }}" name="closing_time"
-                                            id="closing_time" class="form-control" />
-                                    </div>
-                                    <div class="col-md-4 mb-4">
-                                        <label class="form-label" for="slot_duration">Slot Duration</label>
-                                        <input type="text" value="{{ @$s->slot_duration }}" name="slot_duration"
-                                            id="slot_duration" class="form-control" />
-                                    </div>
-                                </div>
-
-                                <!-- Awards, Experience, Clients -->
-                                <div class="row">
-                                    <div class="col-md-4 mb-4">
-                                        <label class="form-label" for="awards">Awards</label>
-                                        <input type="text" value="{{ @$s->awards }}" name="awards" id="awards"
-                                            class="form-control" />
-                                    </div>
-                                    <div class="col-md-4 mb-4">
-                                        <label class="form-label" for="year_experience">Years of Experience</label>
-                                        <input type="text" value="{{ @$s->year_experience }}" name="year_experience"
-                                            id="year_experience" class="form-control" />
-                                    </div>
-                                    <div class="col-md-4 mb-4">
-                                        <label class="form-label" for="happy_clients">Happy Clients</label>
-                                        <input type="text" value="{{ @$s->happy_clients }}" name="happy_clients"
-                                            id="happy_clients" class="form-control" />
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4 mb-4">
-                                        <label class="form-label" for="awards">Facebook Url</label>
-                                        <input type="text" value="{{ @$s->fb_url }}" name="fb_url" id="fb_url"
-                                            class="form-control" />
-                                    </div>
-                                    <div class="col-md-4 mb-4">
-                                        <label class="form-label" for="x_url">X Url</label>
-                                        <input type="text" value="{{ @$s->x_url }}" name="x_url"
-                                            id="x_url" class="form-control" />
-                                    </div>
-                                    <div class="col-md-4 mb-4">
-                                        <label class="form-label" for="ins_url">instgram Url</label>
-                                        <input type="text" value="{{ @$s->ins_url }}" name="ins_url"
-                                            id="ins_url" class="form-control" />
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <!-- Video Upload -->
-                                    <div class="col-md-8 mb-4">
-                                        <label class="form-label" for="video">Upload Video</label>
-                                        <input type="file" name="video" id="video" class="form-control" />
+                                <div class="col-md-12">
+                                    <!-- Title -->
+                                    <div class="mb-4">
+                                        <label class="form-label" for="عنوان">عنوان</label>
+                                        <input type="text" value="{{ @$s->title_ar }}" name="title_ar" id="title_ar"
+                                            class="form-control" dir="rtl" />
                                     </div>
 
-                                    <div class="col-md-4 ">
-                                        @if (!empty($s->video))
-                                            <video width="320" height="240" controls>
-                                                <source
-                                                    src="{{ url('file/video/' . (@$s->video ?? '')) }}"
-                                                    type="video/mp4">
-                                            </video>
-                                        @endif
-
+                                    <!-- Description -->
+                                    <div class="mb-4">
+                                        <label class="form-label" for="description">Description <span
+                                                class="text-danger">*</span></label>
+                                        <textarea class="form-control" name="description" id="description">{{ @$s->description }}</textarea>
                                     </div>
+                                    <!-- Description -->
+                                    <div class="mb-4">
+                                        <label class="form-label" for="description_ar">وصف <span
+                                                class="text-danger">*</span></label>
+                                        <textarea class="form-control" name="description_ar" dir="rtl" id="description_ar">{{ @$s->description_ar }}</textarea>
+                                    </div>
+
+                                    <!-- Phone and YouTube URL -->
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <label class="form-label" for="phone_number">Email</label>
+                                            <input type="text" value="{{ @$s->email }}" name="email"
+                                                id="email" class="form-control" />
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <label class="form-label" for="youtube_url">Address</label>
+                                            <input type="text" value="{{ @$s->address }}" name="address"
+                                                id="address" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-4">
+                                            <label class="form-label" for="phone_number">Phone</label>
+                                            <input type="text" value="{{ @$s->phone_number }}" name="phone_number"
+                                                id="phone_number" class="form-control" />
+                                        </div>
+                                        <div class="col-md-6 mb-4">
+                                            <label class="form-label" for="youtube_url">YouTube URL</label>
+                                            <input type="text" value="{{ @$s->youtube_url }}" name="youtube_url"
+                                                id="youtube_url" class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <!-- Opening, Closing Time, Slot Duration -->
+                                    <div class="row">
+                                        <div class="col-md-4 mb-4">
+                                            <label class="form-label" for="opening_time">Opening Time</label>
+                                            <input type="text" value="{{ @$s->opening_time }}" name="opening_time"
+                                                id="opening_time" class="form-control" />
+                                        </div>
+                                        <div class="col-md-4 mb-4">
+                                            <label class="form-label" for="closing_time">Closing Time</label>
+                                            <input type="text" value="{{ @$s->closing_time }}" name="closing_time"
+                                                id="closing_time" class="form-control" />
+                                        </div>
+                                        <div class="col-md-4 mb-4">
+                                            <label class="form-label" for="slot_duration">Slot Duration</label>
+                                            <input type="text" value="{{ @$s->slot_duration }}"
+                                                name="slot_duration" id="slot_duration" class="form-control" />
+                                        </div>
+                                    </div>
+
+                                    <!-- Awards, Experience, Clients -->
+                                    <div class="row">
+                                        <div class="col-md-4 mb-4">
+                                            <label class="form-label" for="awards">Awards</label>
+                                            <input type="text" value="{{ @$s->awards }}" name="awards"
+                                                id="awards" class="form-control" />
+                                        </div>
+                                        <div class="col-md-4 mb-4">
+                                            <label class="form-label" for="year_experience">Years of
+                                                Experience</label>
+                                            <input type="text" value="{{ @$s->year_experience }}"
+                                                name="year_experience" id="year_experience" class="form-control" />
+                                        </div>
+                                        <div class="col-md-4 mb-4">
+                                            <label class="form-label" for="happy_clients">Happy Clients</label>
+                                            <input type="text" value="{{ @$s->happy_clients }}"
+                                                name="happy_clients" id="happy_clients" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4 mb-4">
+                                            <label class="form-label" for="awards">Facebook Url</label>
+                                            <input type="text" value="{{ @$s->fb_url }}" name="fb_url"
+                                                id="fb_url" class="form-control" />
+                                        </div>
+                                        <div class="col-md-4 mb-4">
+                                            <label class="form-label" for="x_url">X Url</label>
+                                            <input type="text" value="{{ @$s->x_url }}" name="x_url"
+                                                id="x_url" class="form-control" />
+                                        </div>
+                                        <div class="col-md-4 mb-4">
+                                            <label class="form-label" for="ins_url">instgram Url</label>
+                                            <input type="text" value="{{ @$s->ins_url }}" name="ins_url"
+                                                id="ins_url" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <!-- Video Upload -->
+                                        <div class="col-md-8 mb-4">
+                                            <label class="form-label" for="video">Upload Video</label>
+                                            <input type="file" name="video" id="video"
+                                                class="form-control" />
+                                        </div>
+
+                                        <div class="col-md-4 ">
+                                            @if (!empty($s->video))
+                                                <video width="320" height="240" controls>
+                                                    <source src="{{ url('file/video/' . (@$s->video ?? '')) }}"
+                                                        type="video/mp4">
+                                                </video>
+                                            @endif
+
+                                        </div>
+                                    </div>
+                                    @php
+                                        $file = $s->hero_section ?? null;
+                                        $isVideo = $file && Str::endsWith($file, ['.mp4', '.webm', '.ogg']);
+                                        $isImage =
+                                            $file && Str::endsWith($file, ['.jpg', '.jpeg', '.png', '.gif', '.webp']);
+                                    @endphp
+                                    <div class="row">
+                                        <div class="col-md-8 mb-4">
+                                            <label class="form-label" for="video_hero">Hero Section (Image or Video)</label>
+                                            <input type="file" name="video_hero" id="video_hero" class="form-control" accept="image/*,video/mp4,video/webm,video/ogg"/>
+                                            @error('video_hero')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Display Uploaded File -->
+                                        <div class="col-md-4">
+                                            @if ($isVideo)
+                                                <label class="form-label d-block">Current Video:</label>
+                                                <video width="100%" height="auto" controls>
+                                                    <source src="{{ url('file/video/' . $file) }}" type="video/mp4">
+                                                    Your browser does not support the video tag.
+                                                </video>
+                                            @elseif ($isImage)
+                                                <label class="form-label d-block">Current Image:</label>
+                                                <img src="{{ url('file/video/' . $file) }}" class="img-fluid rounded"
+                                                    alt="Hero Image">
+                                            @else
+                                                <p class="text-muted">No image or video uploaded.</p>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8 mb-4">
+                                            <label class="form-label" for="choose_1">Choose 1 (Image or Video)</label>
+                                            <input type="file" name="choose_1" id="choose_1" class="form-control" accept="image/*,video/mp4,video/webm,video/ogg"/>
+                                            @error('choose_1')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Display Uploaded File -->
+                                        <div class="col-md-4">
+                                            @if ($isVideo)
+                                                <label class="form-label d-block">Current Video:</label>
+                                                <video width="100%" height="auto" controls>
+                                                    <source src="{{ url('file/video/' . $file) }}" type="video/mp4">
+                                                    Your browser does not support the video tag.
+                                                </video>
+                                            @elseif ($isImage)
+                                                <label class="form-label d-block">Current Image:</label>
+                                                <img src="{{ url('file/video/' . $file) }}" class="img-fluid rounded"
+                                                    alt="Hero Image">
+                                            @else
+                                                <p class="text-muted">No image or video uploaded.</p>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8 mb-4">
+                                            <label class="form-label" for="choose_2">Choose 2 (Image or Video)</label>
+                                            <input type="file" name="choose_2" id="choose_2" class="form-control" accept="image/*,video/mp4,video/webm,video/ogg"/>
+                                            @error('choose_2')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Display Uploaded File -->
+                                        <div class="col-md-4">
+                                            @if ($isVideo)
+                                                <label class="form-label d-block">Current Video:</label>
+                                                <video width="100%" height="auto" controls>
+                                                    <source src="{{ url('file/video/' . $file) }}" type="video/mp4">
+                                                    Your browser does not support the video tag.
+                                                </video>
+                                            @elseif ($isImage)
+                                                <label class="form-label d-block">Current Image:</label>
+                                                <img src="{{ url('file/video/' . $file) }}" class="img-fluid rounded"
+                                                    alt="Hero Image">
+                                            @else
+                                                <p class="text-muted">No image or video uploaded.</p>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8 mb-4">
+                                            <label class="form-label" for="experience_1">Experience 1 (Image or Video)</label>
+                                            <input type="file" name="experience_1" id="experience_1" class="form-control" accept="image/*,video/mp4,video/webm,video/ogg"/>
+                                            @error('experience_1')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Display Uploaded File -->
+                                        <div class="col-md-4">
+                                            @if ($isVideo)
+                                                <label class="form-label d-block">Current Video:</label>
+                                                <video width="100%" height="auto" controls>
+                                                    <source src="{{ url('file/video/' . $file) }}" type="video/mp4">
+                                                    Your browser does not support the video tag.
+                                                </video>
+                                            @elseif ($isImage)
+                                                <label class="form-label d-block">Current Image:</label>
+                                                <img src="{{ url('file/video/' . $file) }}" class="img-fluid rounded"
+                                                    alt="Hero Image">
+                                            @else
+                                                <p class="text-muted">No image or video uploaded.</p>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8 mb-4">
+                                            <label class="form-label" for="experience_2">Experience 2 (Image or Video)</label>
+                                            <input type="file" name="experience_2" id="experience_2" class="form-control" accept="image/*,video/mp4,video/webm,video/ogg"/>
+                                            @error('experience_2')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Display Uploaded File -->
+                                        <div class="col-md-4">
+                                            @if ($isVideo)
+                                                <label class="form-label d-block">Current Video:</label>
+                                                <video width="100%" height="auto" controls>
+                                                    <source src="{{ url('file/video/' . $file) }}" type="video/mp4">
+                                                    Your browser does not support the video tag.
+                                                </video>
+                                            @elseif ($isImage)
+                                                <label class="form-label d-block">Current Image:</label>
+                                                <img src="{{ url('file/video/' . $file) }}" class="img-fluid rounded"
+                                                    alt="Hero Image">
+                                            @else
+                                                <p class="text-muted">No image or video uploaded.</p>
+                                            @endif
+                                        </div>
+                                    </div>
+
+                                    <!-- Submit -->
+                                    <div class="text-right mt-2">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+
                                 </div>
-                                @php
-    $file = $s->hero_section ?? null;
-    $isVideo = $file && Str::endsWith($file, ['.mp4', '.webm', '.ogg']);
-    $isImage = $file && Str::endsWith($file, ['.jpg', '.jpeg', '.png', '.gif', '.webp']);
-@endphp
-<div class="row">
-    <div class="col-md-8 mb-4">
-        <label class="form-label" for="video_hero">Hero Section (Image or Video)</label>
-        <input type="file" name="video_hero" id="video_hero" class="form-control" accept="image/*,video/mp4,video/webm,video/ogg" />
-        @error('video_hero')
-            <div class="text-danger">{{ $message }}</div>
-        @enderror
-    </div>
-
-    <!-- Display Uploaded File -->
-    <div class="col-md-4">
-        @if ($isVideo)
-            <label class="form-label d-block">Current Video:</label>
-            <video width="100%" height="auto" controls>
-                <source src="{{ url('file/video/' . $file) }}" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-        @elseif ($isImage)
-            <label class="form-label d-block">Current Image:</label>
-            <img src="{{ url('file/video/' . $file) }}" class="img-fluid rounded" alt="Hero Image">
-        @else
-            <p class="text-muted">No image or video uploaded.</p>
-        @endif
-    </div>
-</div>
-
-                                <!-- Submit -->
-                                <div class="text-right mt-2">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </div>
-
                             </div>
-                        </div>
                     </form>
 
                 </div>
