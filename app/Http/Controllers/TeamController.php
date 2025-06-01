@@ -31,6 +31,7 @@ class TeamController extends Controller
             'category' => 'required',
             'category_ar' => 'required',
             'service_id' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:100',
         ]);
         if (User::where('email', $request->email)->exists()) {
             return redirect()->back()->withErrors(['email' => 'The email has already been taken.'])->withInput();

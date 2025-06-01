@@ -22,7 +22,7 @@ class SettingController extends Controller
             'name' => 'required|string|max:255',
             'phone' => 'required',
             'address' => 'required',
-            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
+            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:100'
         ]);
 
         if ($validated) {
@@ -97,7 +97,7 @@ class SettingController extends Controller
             'year_experience' => 'required',
             'happy_clients' => 'required',
             'video' => 'nullable|mimes:mp4,avi,mov,wmv|max:5120',
-            'video_hero' => 'nullable|file|mimes:jpg,jpeg,png,gif,mp4,avi,mov,wmv|max:51200',
+            'video_hero' => 'nullable|file|mimes:jpg,jpeg,png,gif,mp4,avi,mov,wmv|max:100',
         ]);
 
         $setting = Setting::findOrFail($id);

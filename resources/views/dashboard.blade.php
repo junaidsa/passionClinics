@@ -1,6 +1,12 @@
 @extends('layouts.app')
 @section('main')
     <div class="container-xxl flex-grow-1 container-p-y">
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
         <div class="row g-4 mb-4">
             <div class="col-sm-6 col-xl-3">
                 <div class="card">

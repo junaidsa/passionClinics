@@ -77,7 +77,7 @@
                                 <div class="col-md-12">
                                     <div class="mb-3">
                                         <label for="avatar" class="form-label">Image</label>
-                                        <input type="file" class="form-control @error('avatar') is-invalid @enderror"
+                                        <input type="file" class="form-control valid-image @error('avatar') is-invalid @enderror"
                                             id="avatar" name="avatar" />
                                         @error('avatar')
                                             <div class="invalid-feedback">{{ $message }}</div>

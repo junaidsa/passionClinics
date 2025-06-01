@@ -150,7 +150,7 @@
                                     <div class="col-md-12">
                                         <label class="form-label" for="landmark">Main Image</label>
                                         <input type="file" id="main_image" name="main_image"
-                                            class="form-control @error('main_image') is-invalid @enderror" />
+                                            class="form-control valid-image @error('main_image') is-invalid @enderror" />
                                         @error('main_image')
                                             <div class=" invalid-feedback">{{ $message }}</div>
                                         @enderror

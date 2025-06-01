@@ -156,7 +156,7 @@
         </ul>
     </li>
         <li
-            class="menu-item {{ Request::is('admin/contact/list') || Request::is('admin/contacts') || Request::is('admin/facility/create') || Request::is('admin/about') ? 'open' : '' }}">
+            class="menu-item {{ Request::is('admin/contact/list') || Request::is('admin/contacts') || Request::is('admin/facility/create') || Request::is('admin/difference/create') || Request::is('admin/about') ? 'open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons ti ti-file"></i>
                 <div data-i18n="pages">Pages</div>
@@ -175,6 +175,11 @@
                 <li class="menu-item {{ Request::is('admin/facility/create') ? 'active' : '' }}">
                     <a href="{{ url('admin/facility/create') }}" class="menu-link">
                         <div data-i18n="Facilits">Facilits</div>
+                    </a>
+                </li>
+                <li class="menu-item {{ Request::is('admin/difference/create') ? 'active' : '' }}">
+                    <a href="{{ url('admin/difference/create') }}" class="menu-link">
+                        <div data-i18n="Difference">Difference</div>
                     </a>
                 </li>
 
