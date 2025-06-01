@@ -5,9 +5,21 @@
             <!-- Page Header Start -->
             <div class="container">
                 @if (session('success'))
-                    <div class="alert alert-success ">
+                    <div class="alert alert-success" id="success-alert">
                         {{ session('success') }}
                     </div>
+
+                    <script>
+                        // Hide alert after 3 seconds
+                        setTimeout(function() {
+                            let alertBox = document.getElementById('success-alert');
+                            if (alertBox) {
+                                alertBox.style.transition = "opacity 0.5s ease-out";
+                                alertBox.style.opacity = '0';
+                                setTimeout(() => alertBox.remove(), 500); // Fully remove from DOM after fade out
+                            }
+                        }, 3000);
+                    </script>
                 @endif
             </div>
             {{-- <div class="page-header bg-section dark-section">
@@ -30,7 +42,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-4">
-                             @include('layouts.front-sidebar')
+                            @include('layouts.front-sidebar')
                         </div>
                         <div class="col-md-8">
                             @foreach ($appointments as $app)

@@ -58,6 +58,7 @@ Route::middleware([
 
 Route::middleware('auth')->group(function () {
     Route::get('/user/dashboard', [Homecontroller::class, 'userDashboard'])->name('front.dashboard');
+    Route::post('/user/profile', [Homecontroller::class, 'updateImage'])->name('profile.updateImage');
     Route::get('/admin/dashboard', [Homecontroller::class, 'dashboard'])->name('dashboard');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -140,6 +141,7 @@ Route::prefix('/file')->group(function () {
     Route::get('/features/{filename}', fn($filename) => serveFile('features', $filename));
     Route::get('/about/{filename}', fn($filename) => serveFile('pages', $filename));
     Route::get('/dr/{filename}', fn($filename) => serveFile('profile', $filename));
+    Route::get('/users/{filename}', fn($filename) => serveFile('users', $filename));
     Route::get('/customer/{filename}', fn($filename) => serveFile('customers', $filename));
     Route::get('/location/{filename}', fn($filename) => serveFile('locations', $filename));
 });

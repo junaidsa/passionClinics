@@ -2,7 +2,8 @@
     <!-- Profile image container (relative) -->
     <div class="position-relative d-inline-block">
         <!-- Profile Image -->
-        <img src="{{ asset('public/files/2025-05-04_11-10-53-image.jpg') }}" alt="Profile Image"
+        {{-- <img src="{{ url('file/users/' . ( Auth::user()->image ?? 'avatar.jpg')) }}" alt=""> --}}
+        <img src="{{ url('file/users/' . (Auth::user()->image ?? 'avatar.jpg')) }}" alt="Profile Image"
             class="rounded-circle img-fluid" style="width: 150px; height: 150px; object-fit: cover;">
 
         <!-- Pencil Icon on top-right of image -->
@@ -18,12 +19,8 @@
     </div>
 
     <!-- Name and Designation -->
-    <h5 class="mt-3 mb-0">{{ Auth::user()->name ?? 'User Name' }}</h5>
+    <h5 class="mt-1 mb-0">{{ Auth::user()->name ?? 'User Name' }}</h5>
     <p class="text-muted fs-6">{{ Auth::user()->email ?? 'Designation' }}</p>
-    <div class="d-flex justify-content-center mb-2">
-        <button data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" class="btn btn-primary">Change
-            Profile Picture</button>
-    </div>
 </div>
 
 
@@ -59,5 +56,33 @@
                 </form>
             </li>
         </ul>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form action="{{ route('profile.updateImage') }}" method="POST" enctype="multipart/form-data"
+            class="modal-content">
+            @csrf
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Update Profile Image</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="profile_image" class="form-label">Choose Image</label>
+                    <input type="file" name="profile_image" id="profile_image" class="form-control" accept="image/*"
+                        required>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="col-md-3">
+                    <div class="contact-form-btn">
+                        <button type="submit" class="btn-default rounded">Upload</button>
+                    </div>
+                </div>
+                {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button> --}}
+            </div>
+        </form>
     </div>
 </div>

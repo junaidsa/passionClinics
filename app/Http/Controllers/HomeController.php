@@ -184,12 +184,12 @@ class HomeController extends Controller
 
     public function appointmentStore(Request $request)
     {
-            if (!Auth::check()) {
-        return response()->json([
-            'status' => 'error',
-            'message' => 'Login Your Account.',
-        ], 401);
-    }
+        if (!Auth::check()) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Login Your Account.',
+            ], 401);
+        }
         $validator = Validator::make($request->all(), [
             'appointment_date'   => 'required',
             'staff'   => 'required',
@@ -310,15 +310,43 @@ class HomeController extends Controller
     }
     public function userDashboard()
     {
-            $query = Appointment::with('service', 'localtion', 'user')->orderBy('id', 'DESC');
+        $query = Appointment::with('service', 'localtion', 'user')->orderBy('id', 'DESC');
 
-    if (Auth::check() && Auth::user()->role === 'doctor') {
-        $query->where('user_id', Auth::id());
+        if (Auth::check() && Auth::user()->role === 'doctor') {
+            $query->where('user_id', Auth::id());
+        }
+
+        $user = User::all();
+
+        $appointments = $query->get();
+        return view('front-web.userdashboard', compact('appointments','user'));
     }
 
-    $appointments = $query->get();
-        return view('front-web.userdashboard', compact('appointments'));
+    public function updateImage(Request $request)
+{
+    $request->validate([
+        'profile_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    ]);
+
+    if ($request->hasFile('profile_image')) {
+        $image = $request->file('profile_image');
+        $fileName = time() . '_profile_image.' . $image->getClientOriginalExtension();
+
+        $destinationPath = base_path('../aluniquefurniture_uploads/users/');
+        if (!file_exists($destinationPath)) {
+            mkdir($destinationPath, 0755, true);
+        }
+
+        $image->move($destinationPath, $fileName);
+        DB::table('users')->where('id', Auth::id())->update([
+            'image' => $fileName,
+        ]);
     }
+
+    return redirect()->back()->with('success', 'Profile image updated successfully.');
+}
+
+
 
     public function blog()
     {
@@ -329,15 +357,16 @@ class HomeController extends Controller
         try {
             $validator = Validator::make($request->all(), [
                 'name' => 'required',
-  'phone' => 'required|unique:users,phone',
-], [
-    'phone.unique' => 'Phone already exists',
+                'phone' => 'required|unique:users,phone',
+            ], [
+                'phone.unique' => 'Phone already exists',
                 'gender' => 'required',
                 'password' => 'required|min:5|same:confirm_password',
                 'confirm_password' => 'required',
-                'email' => 'required|email|unique:users,email',], [
+                'email' => 'required|email|unique:users,email',
+            ], [
                 'email.unique' => 'Email already exists',
-                ]);
+            ]);
             if ($validator->passes()) {
                 $user = new User();
                 $user->name = $request->name;
@@ -362,38 +391,37 @@ class HomeController extends Controller
             return response()->json(['error' =>  $e->getMessage(), 'line' => $e->getLine(), 'File' => $e->getFile()], 500);
         }
     }
-public function authenticate(Request $request)
-{
-    $validator = Validator::make($request->all(), [
-        'email' => 'required|email',
-        'password' => 'required',
-    ]);
+    public function authenticate(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
 
-    if ($validator->fails()) {
-        return response()->json(['errors' => $validator->errors()], 422);
-    }
+        if ($validator->fails()) {
+            return response()->json(['errors' => $validator->errors()], 422);
+        }
 
-    if (Auth::attempt($request->only('email', 'password'))) {
-        $user = Auth::user();
+        if (Auth::attempt($request->only('email', 'password'))) {
+            $user = Auth::user();
 
-        // Check if user is doctor or customer
-        if (in_array($user->role, ['doctor', 'customer'])) {
-        // Determine redirect URL based on role
-            $redirectUrl = $user->role === 'customer'
-                ? route('front.dashboard')
-                : route('dashboard');
+            // Check if user is doctor or customer
+            if (in_array($user->role, ['doctor', 'customer'])) {
+                // Determine redirect URL based on role
+                $redirectUrl = $user->role === 'customer'
+                    ? route('front.dashboard')
+                    : route('dashboard');
 
-            return response()->json([
-                'status' => true,
-                'redirect_url' => $redirectUrl
-            ]);
+                return response()->json([
+                    'status' => true,
+                    'redirect_url' => $redirectUrl
+                ]);
+            } else {
+                Auth::logout(); // Logout unauthorized role
+                return response()->json(['message' => 'Invalid credentials'], 401);
+            }
         } else {
-            Auth::logout(); // Logout unauthorized role
             return response()->json(['message' => 'Invalid credentials'], 401);
         }
-    } else {
-        return response()->json(['message' => 'Invalid credentials'], 401);
     }
-}
-
 }
