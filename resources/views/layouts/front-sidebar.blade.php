@@ -8,9 +8,9 @@
 
         <!-- Pencil Icon on top-right of image -->
         <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"
-            class="position-absolute d-flex justify-content-center align-items-center bg-white rounded-circle shadow"
+            class="position-absolute d-flex justify-content-center align-items-center bg-primary rounded-circle shadow"
             style="top: 7rem; right: 7rem; width: 30px; height: 30px;">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-pencil"
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-pencil"
                 viewBox="0 0 16 16">
                 <path
                     d="M12.146.854a.5.5 0 0 1 .708 0l2.292 2.292a.5.5 0 0 1 0 .708l-9.439 9.44a.5.5 0 0 1-.168.11l-4 1a.5.5 0 0 1-.606-.606l1-4a.5.5 0 0 1 .11-.168l9.44-9.44zM11.207 2 13 3.793 14.293 2.5 12.5.707 11.207 2zM10.5 2.707 2 11.207V13h1.793l8.5-8.5-1.793-1.793z" />
