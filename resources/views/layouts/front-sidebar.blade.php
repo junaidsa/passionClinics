@@ -38,7 +38,7 @@
                 <a href="{{url('user/myappointments')}}" class="text-decoration-none text-dark">My Appointments</a>
             </li>
             <li class="list-group-item p-3">
-                <a href="#" class="text-decoration-none text-dark">Doctor's</a>
+                <a href="{{url('doctors')}}" class="text-decoration-none text-dark">Doctor's</a>
             </li>
             <li class="list-group-item p-3">
                 <a href="#" class="text-decoration-none text-dark">Appointments History</a>
