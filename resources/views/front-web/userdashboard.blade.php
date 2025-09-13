@@ -26,7 +26,7 @@
             <div class="e-clinic bg-section">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-4 mb-5">
                             @include('layouts.front-sidebar')
                         </div>
                         <div class="col-md-8" style="height: 100vh;">

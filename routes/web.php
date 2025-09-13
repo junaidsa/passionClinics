@@ -67,7 +67,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('admin/about', [HomeController::class, 'aboutEdit'])->name('about.edit');
+    Route::get('/about', [HomeController::class, 'aboutEdit'])->name('about.edit');
     Route::post('about/update', [HomeController::class, 'aboutupdate'])->name('about.update');
     Route::get('admin/calendar', [HomeController::class, 'calendar'])->name('calendar.show');
     Route::get('admin/teams/create', [TeamController::class, 'create'])->name('testimonial.create');

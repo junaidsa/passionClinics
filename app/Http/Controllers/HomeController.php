@@ -188,8 +188,10 @@ class HomeController extends Controller
             return response()->json([
                 'status' => 'error',
                 'message' => 'Login Your Account.',
+                'redirect_url' => route('login.ajax')
             ], 401);
         }
+
         $validator = Validator::make($request->all(), [
             'appointment_date'   => 'required',
             'staff'   => 'required',
@@ -423,7 +425,7 @@ class HomeController extends Controller
             if (in_array($user->role, ['doctor', 'customer'])) {
                 // Determine redirect URL based on role
                 $redirectUrl = $user->role === 'customer'
-                    ? route('front.dashboard')
+                    ? route('front.clinic')
                     : route('dashboard');
 
                 return response()->json([

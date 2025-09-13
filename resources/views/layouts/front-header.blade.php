@@ -382,7 +382,7 @@
                                'invalid-feedback').html('');
                            $("#confirm_password").removeClass('is-invalid').siblings('p').removeClass(
                                'invalid-feedback').html('');
-                           window.location.href = "{{ url('/user/dashboard') }}";
+                           window.location.href = "{{ url('/e-clinic') }}";
                        }
                    },
                    error: function(error) {
@@ -390,7 +390,6 @@
                        // Handle AJAX errors here
                    }
                });
-
            });
 
            //    $(document).ready(function() {
