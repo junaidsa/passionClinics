@@ -5,10 +5,11 @@
         <div class="card">
             <div class="card-header d-flex justify-content-between">
                 <h5>Appointment List</h5>
-                <div class="btn-container @if (!Auth::check() || Auth::user()->role !== 'admin') d-none @endif"><button class="dt-button add-new btn btn-primary" tabindex="0"
-                        aria-controls="DataTables_Table_0" type="button" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvasAddAppointment"><span><i class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span
-                                class="d-none d-sm-inline-block">Add New Appointment</span></span></button></div>
+                <div class="btn-container @if (!Auth::check() || Auth::user()->role !== 'admin') d-none @endif"><button
+                        class="dt-button add-new btn btn-primary" tabindex="0" aria-controls="DataTables_Table_0"
+                        type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasAddAppointment"><span><i
+                                class="ti ti-plus me-0 me-sm-1 ti-xs"></i><span class="d-none d-sm-inline-block">Add New
+                                Appointment</span></span></button></div>
             </div>
 
             <div class="card-body">
@@ -89,7 +90,15 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                        <button class="btn btn-primary">Send Link </button>
+                                        <button class="btn btn-primary send-link-btn" data-id="{{ $app->id }}">Send
+                                            Link </button> <br>
+                                        {{-- <a href="" target="_blank" class="d-none btn btn-sm btn-primary mt-2">Join Meeting</a> --}}
+                                        <!-- Hidden Join Meeting Button -->
+                                        <button id="join-meeting-btn-{{ $app->id }}"
+                                            class="btn btn-primary mt-2 d-none join-meeting-btn" data-link=""
+                                            data-bs-toggle="modal" data-bs-target="#meetingModal">
+                                            Join Meeting
+                                        </button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -98,6 +107,20 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="meetingModal" tabindex="-1" aria-labelledby="meetingModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="meetingModalLabel">Meeting</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body p-0">
+                        <iframe id="meeting-iframe" width="100%" height="600" frameborder="0"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasAddAppointment"
             aria-labelledby="offcanvasAddUserLabel">
             <div class="offcanvas-header">
@@ -108,7 +131,7 @@
                 @php
                     $location = DB::table('locations')->get();
                     $services = DB::table('services')->get();
-                    $customer = DB::table('users')->where('role','customer')->get();
+                    $customer = DB::table('users')->where('role', 'customer')->get();
                 @endphp
                 <form class="add-new-user pt-0" id="appointmentsForm">
                     <div class="mb-3">
@@ -212,6 +235,27 @@
             }
         });
 
+
+        $('.send-link-btn').on('click', function() {
+            let id = $(this).data('id');
+            $.ajax({
+                url: "{{ url('appointments/send-link') }}/" + id,
+                method: 'GET',
+                success: function(res) {
+                    alert(res.message); // or use Toast
+                    // Set link & show only the correct button
+                    let joinBtn = $('#join-meeting-btn-' + id);
+                    joinBtn.data('link', res.link).removeClass('d-none');
+                },
+                error: function() {
+                    alert('Failed to send link');
+                }
+            });
+        });
+        $('.join-meeting-btn').on('click', function() {
+            let link = $(this).data('link');
+            $('#meeting-iframe').attr('src', link);
+        });
         $("#appointmentsForm").submit(function(e) {
             e.preventDefault();
 
@@ -347,7 +391,6 @@
                         date: date
                     },
                     success: function(data) {
-                        // console.log(data);
                         $('#slots').empty().append('<option value="">Select Slot</option>');
                         $.each(data, function(index, slot) {
                             $('#slots').append('<option value="' + slot + '">' + slot +
@@ -381,12 +424,11 @@
                 }
             }).then(function(result) {
                 if (result.value) {
-                    // Make DELETE request via AJAX
                     $.ajax({
                         url: "{{ url('/admin/appointments/delete/') }}/" + id,
                         type: 'DELETE',
                         data: {
-                            "_token": "{{ csrf_token() }}", // Ensure you pass the CSRF token
+                            "_token": "{{ csrf_token() }}",
                         },
                         success: function(response) {
                             Swal.fire({

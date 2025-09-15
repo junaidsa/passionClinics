@@ -8,7 +8,7 @@ $services = DB::table('services')->select('id', 'title_en','title_ar')->get();
         <ul>
             @foreach ($services as $s)
 
-            <li>   {{ App::isLocale('ar') ? @$s->title_ar : @$s->title_en }}</a></li>
+            <li>{{ App::isLocale('ar') ? @$s->title_ar : @$s->title_en }}</a></li>
             @endforeach
         </ul>
     </div>

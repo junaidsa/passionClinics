@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use App\Notifications\AppointmentCreated;
+use Illuminate\Support\Str;
 
 class AppointmentController extends Controller
 {
@@ -31,6 +32,28 @@ public function index()
 
     return view('appointments.index', compact('appointments', 'durationSetting'));
 }
+
+public function sendMeetingLink($id)
+{
+    $appointment = Appointment::findOrFail($id);
+
+    if (!$appointment->meeting_link) {
+        $appointment->meeting_link = 'https://meet.jit.si/' . Str::slug($appointment->customer->name . '-' . now()->timestamp, '-');
+        $appointment->save();
+    }
+
+    // You can also create a notification record here
+    DB::table('notifications')->insert([
+        'user_id' => $appointment->customer_id,
+        'title' => 'Your Online Appointment is Ready',
+        'message' => 'Click to join: ' . $appointment->meeting_link,
+        'link' => $appointment->meeting_link,
+        'created_at' => now(),
+    ]);
+
+    return response()->json(['message' => 'Meeting link generated and saved!', 'link' => $appointment->meeting_link]);
+}
+
 
     //
     public function getStaffByService($id)

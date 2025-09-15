@@ -81,7 +81,7 @@
                                <li class="nav-item dropdown me-2 me-xl-0">
                                    <a class="nav-link dropdown-toggle hide-arrow" href="#" id="languageDropdown"
                                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                       <img src="{{ asset('public/files/2025-05-04_11-10-53-image.jpg') }}" width="50"
+                                       <img src="{{ url('file/dr/' . (Auth::user()->image ?? 'avatar.jpg')) }}" width="50"
                                            height="50" class="rounded-circle">
                                    </a>
                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
