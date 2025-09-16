@@ -13,6 +13,8 @@
             <div class="card mb-4">
                 <h5 class="card-header">Setting</h5>
                 <div class="card-body">
+                    <hr>
+                    <h5 class="mb-4 mt-4 fw-bold">English</h5>
                     <form id="jquery-val-form" action="{{ url('admin/setting/update/' . $s->id) }}" method="POST"
                         enctype="multipart/form-data">
                         @csrf
@@ -25,24 +27,12 @@
                                         class="form-control" />
                                 </div>
                                 <div class="col-md-12">
-                                    <!-- Title -->
-                                    <div class="mb-4">
-                                        <label class="form-label" for="عنوان">عنوان</label>
-                                        <input type="text" value="{{ @$s->title_ar }}" name="title_ar" id="title_ar"
-                                            class="form-control" dir="rtl" />
-                                    </div>
 
                                     <!-- Description -->
                                     <div class="mb-4">
                                         <label class="form-label" for="description">Description <span
                                                 class="text-danger">*</span></label>
                                         <textarea class="form-control" name="description" id="description">{{ @$s->description }}</textarea>
-                                    </div>
-                                    <!-- Description -->
-                                    <div class="mb-4">
-                                        <label class="form-label" for="description_ar">وصف <span
-                                                class="text-danger">*</span></label>
-                                        <textarea class="form-control" name="description_ar" dir="rtl" id="description_ar">{{ @$s->description_ar }}</textarea>
                                     </div>
 
                                     <!-- Phone and YouTube URL -->
@@ -152,8 +142,11 @@
                                     @endphp
                                     <div class="row">
                                         <div class="col-md-8 mb-4">
-                                            <label class="form-label" for="video_hero">Hero Section (Image or Video)</label>
-                                            <input type="file" name="video_hero" id="video_hero" class="form-control" accept="image/*,video/mp4,video/webm,video/ogg"/>
+                                            <label class="form-label" for="video_hero">Hero Section (Image or
+                                                Video)</label>
+                                            <input type="file" name="video_hero" id="video_hero"
+                                                class="form-control"
+                                                accept="image/*,video/mp4,video/webm,video/ogg" />
                                             @error('video_hero')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -179,7 +172,9 @@
                                     <div class="row">
                                         <div class="col-md-8 mb-4">
                                             <label class="form-label" for="choose_1">Choose 1 (Image or Video)</label>
-                                            <input type="file" name="choose_1" id="choose_1" class="form-control" accept="image/*,video/mp4,video/webm,video/ogg"/>
+                                            <input type="file" name="choose_1" id="choose_1"
+                                                class="form-control"
+                                                accept="image/*,video/mp4,video/webm,video/ogg" />
                                             @error('choose_1')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -205,7 +200,9 @@
                                     <div class="row">
                                         <div class="col-md-8 mb-4">
                                             <label class="form-label" for="choose_2">Choose 2 (Image or Video)</label>
-                                            <input type="file" name="choose_2" id="choose_2" class="form-control" accept="image/*,video/mp4,video/webm,video/ogg"/>
+                                            <input type="file" name="choose_2" id="choose_2"
+                                                class="form-control"
+                                                accept="image/*,video/mp4,video/webm,video/ogg" />
                                             @error('choose_2')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -230,8 +227,11 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-8 mb-4">
-                                            <label class="form-label" for="experience_1">Experience 1 (Image or Video)</label>
-                                            <input type="file" name="experience_1" id="experience_1" class="form-control" accept="image/*,video/mp4,video/webm,video/ogg"/>
+                                            <label class="form-label" for="experience_1">Experience 1 (Image or
+                                                Video)</label>
+                                            <input type="file" name="experience_1" id="experience_1"
+                                                class="form-control"
+                                                accept="image/*,video/mp4,video/webm,video/ogg" />
                                             @error('experience_1')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -256,8 +256,11 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-8 mb-4">
-                                            <label class="form-label" for="experience_2">Experience 2 (Image or Video)</label>
-                                            <input type="file" name="experience_2" id="experience_2" class="form-control" accept="image/*,video/mp4,video/webm,video/ogg"/>
+                                            <label class="form-label" for="experience_2">Experience 2 (Image or
+                                                Video)</label>
+                                            <input type="file" name="experience_2" id="experience_2"
+                                                class="form-control"
+                                                accept="image/*,video/mp4,video/webm,video/ogg" />
                                             @error('experience_2')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -279,6 +282,20 @@
                                                 <p class="text-muted">No image or video uploaded.</p>
                                             @endif
                                         </div>
+                                    </div>
+                                <hr class="mt-5">
+                                <h5 class="mb-4 mt-4 fw-bold d-flex justify-content-end">عربي</h5>
+                                <!-- Title -->
+                                    <div class="col-md-12 mb-4">
+                                        <label class="form-label float-end" for="عنوان">عنوان</label>
+                                        <input type="text" value="{{ @$s->title_ar }}" name="title_ar" id="title_ar"
+                                            class="form-control" dir="rtl" />
+                                    </div>
+                                    <!-- Description -->
+                                    <div class="col-md-12 mb-4">
+                                        <label class="form-label float-end" for="description_ar"><span
+                                                class="text-danger">*</span>وصف</label>
+                                        <textarea class="form-control" name="description_ar" dir="rtl" id="description_ar">{{ @$s->description_ar }}</textarea>
                                     </div>
 
                                     <!-- Submit -->

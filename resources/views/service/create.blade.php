@@ -16,7 +16,7 @@
                     <button class="nav-link active border-0 p-3" id="details-tab" data-bs-toggle="tab"
                         data-bs-target="#details" type="button" role="tab" aria-controls="details"
                         aria-selected="true">
-                        Blog Details
+                        Create Service
                     </button>
                 </li>
                 <li class="nav-item col-md-6" role="presentation">
@@ -63,7 +63,7 @@
                                     <!-- Short Description (English) -->
                                     <div class="col-12">
                                         <label class="form-label" for="short_description_en">Short Description </label>
-                                        <textarea name="short_description_en" class="form-control @error('short_description_en') is-invalid @enderror"
+                                        <textarea name="short_description_en" class="form-control textarea @error('short_description_en') is-invalid @enderror"
                                             id="short_description_en" rows="2" placeholder="Short Description in English" dir="ltr">{{ old('short_description_en') }}</textarea>
                                         @error('short_description_en')
                                             <div class="invalid-feedback">{{ $message }}</div>
@@ -76,7 +76,7 @@
                                     <!-- English Description -->
                                     <div class="col-12">
                                         <label class="form-label" for="description_en">Description</label>
-                                        <textarea class="form-control  @error('description_en') is-invalid @enderror" id="description_en" name="description_en"
+                                        <textarea class="form-control textarea @error('description_en') is-invalid @enderror" id="description_en" name="description_en"
                                             rows="5" placeholder="Description in English" dir="ltr">{{ old('description_en') }}</textarea>
                                         @error('description_en')
                                             <div class="invalid-feedback">{{ $message }}</div>
@@ -185,7 +185,7 @@
                                     <div class="col-12">
                                         <label class="form-label float-end" for="short_description_ar">الوصف المختصر
                                         </label>
-                                        <textarea name="short_description_ar" class="form-control @error('short_description_ar') is-invalid @enderror"
+                                        <textarea name="short_description_ar" class="form-control textarea @error('short_description_ar') is-invalid @enderror"
                                             id="short_description_ar" rows="2" placeholder="اكتب الوصف المختصر بالعربية" dir="rtl">{{ old('short_description_ar') }}</textarea>
                                         @error('short_description_ar')
                                             <div class="invalid-feedback">{{ $message }}</div>
@@ -223,7 +223,7 @@
                         </div>
                         <div class="col-12 mb-3">
                             <label class="form-label">Description</label>
-                            <textarea class="form-control" rows="3" placeholder="Enter description"></textarea>
+                            <textarea class="form-control textarea" rows="3" placeholder="Enter description"></textarea>
                         </div>
                         <div class="action-btns">
                             <button class="btn btn-label-primary me-3">
@@ -241,8 +241,31 @@
 </div>
 <!-- / Content -->
 @endsection
+@section('link-js')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.27.3/trumbowyg.min.js"
+    integrity="sha512-YJgZG+6o3xSc0k5wv774GS+W1gx0vuSI/kr0E0UylL/Qg/noNspPtYwHPN9q6n59CTR/uhgXfjDXLTRI+uIryg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+@endsection
 @section('javascript')
 <script>
+    // Rich Editor
+    $(document).ready(function() {
+        $('.textarea').trumbowyg({
+            btns: [
+                ['viewHTML'],
+                ['formatting'],
+                ['strong', 'em', 'del'],
+                ['superscript', 'subscript'],
+                ['link'],
+                ['insertImage'],
+                ['unorderedList', 'orderedList'],
+                ['removeformat'],
+                ['fullscreen']
+            ],
+            autogrow: true
+        });
+    });
+    // End Editor
     document.getElementById('offer_type').addEventListener('change', function() {
         const selectedValue = this.value;
         const daysWrapper = document.getElementById('days_input_wrapper');
