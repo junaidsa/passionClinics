@@ -6,7 +6,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 @endsection
 <div class="container-xxl flex-grow-1 container-p-y">
-    <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Teams /</span> Create</h4>
+    {{-- <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Teams /</span> Create</h4> --}}
     <div class="row">
         <div class="col-md-12">
             <ul class="nav nav-tabs custom-tabs justify-content-center mb-3 border-0" id="blogTabs" role="tablist">
@@ -129,19 +129,20 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="mb-3 form-password-toggle">
-                                        <label class="form-label" for="basic-default-password">About <span
+                                        <label class="form-label" for="about">About <span
                                                 class="text-danger">*</span></label>
                                         <div class="input-group input-group-merge">
-                                            <textarea class="form-control" name="about" id="about"></textarea>
+                                            <textarea class="form-control textarea" name="about" id="about"></textarea>
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="col-md-12">
                                     <div class="mb-3 form-password-toggle">
                                         <label class="form-label" for="basic-default-password">Personals Info <span
                                                 class="text-danger">*</span></label>
                                         <div class="input-group input-group-merge">
-                                            <textarea class="form-control" id="personals_info"></textarea>
+                                            <textarea class="form-control textarea" id="personals_info"></textarea>
 
                                         </div>
                                     </div>
@@ -207,7 +208,7 @@
                                         <label class="form-label float-end" for="basic-default-password"><span
                                                 class="text-danger">*</span> عن</label>
                                         <div class="input-group input-group-merge">
-                                            <textarea class="form-control" name="about_ar" id="about_ar" dir="rtl"></textarea>
+                                            <textarea class="form-control textarea" name="about_ar" id="about_ar" dir="rtl"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -216,7 +217,7 @@
                                         <label class="form-label float-end" for="basic-default-password"><span
                                                 class="text-danger">*</span> معلومات شخصية</label>
                                         <div class="input-group input-group-merge">
-                                            <textarea class="form-control" name="personals_info_ar" id="personals_info_ar" dir="rtl"></textarea>
+                                            <textarea class="form-control textarea" name="personals_info_ar" id="personals_info_ar" dir="rtl"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -250,7 +251,7 @@
                         </div>
                         <div class="col-12 mb-3">
                             <label class="form-label">Description</label>
-                            <textarea class="form-control" rows="3" placeholder="Enter description"></textarea>
+                            <textarea class="form-control textarea" rows="3" placeholder="Enter description"></textarea>
                         </div>
                         <div class="action-btns">
                             <button class="btn btn-label-primary me-3">
@@ -273,6 +274,22 @@
 @endsection
 @section('javascript')
 <script>
-    $('.textarea').trumbowyg();
+    // $('.textarea').trumbowyg();
+    $(document).ready(function() {
+        $('.textarea').trumbowyg({
+            btns: [
+                ['viewHTML'],
+                ['formatting'],
+                ['strong', 'em', 'del'],
+                ['superscript', 'subscript'],
+                ['link'],
+                ['insertImage'],
+                ['unorderedList', 'orderedList'],
+                ['removeformat'],
+                ['fullscreen']
+            ],
+            autogrow: true
+        });
+    });
 </script>
 @endsection

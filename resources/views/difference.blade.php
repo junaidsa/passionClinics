@@ -9,6 +9,8 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <h5 class="mb-4 mt-4">Create Difference</h5>
+                                <hr>
+                                <h5 class="mb-4 mt-4 fw-bold">English</h5>
                                 <div class="row g-3">
                                     <form id="amenityForm" enctype="multipart/form-data">
                                         @csrf
@@ -16,14 +18,17 @@
                                             <label class="form-label" for="name">Title</label>
                                             <input type="text" name="title" id="title" class="form-control" />
                                         </div>
-                                        <div class="col-md-12 mb-2">
-                                            <label class="form-label float-end" for="name_ar">اسم (Arabic)</label>
-                                            <input type="text" name="name_ar" id="name_ar" dir="rtl"
-                                                class="form-control" placeholder="اسم" />
-                                        </div>
+
                                         <div class="col-md-12 col-sm-6 col-6 mb-2">
                                             <label class="form-label">Image/Avatar</label>
                                             <input type="file" name="avatar" class="form-control" />
+                                        </div>
+                                        <hr class="mt-5">
+                                        <h5 class="mb-4 mt-4 fw-bold d-flex justify-content-end">عربي</h5>
+                                        <div class="col-md-12 mb-2">
+                                            <label class="form-label float-end" for="name_ar">اسم</label>
+                                            <input type="text" name="name_ar" id="name_ar" dir="rtl"
+                                                class="form-control" placeholder="اسم" />
                                         </div>
                                         <div class="action-btns mt-3">
                                             <button class="btn btn-primary" type="submit">Create Difference</button>
