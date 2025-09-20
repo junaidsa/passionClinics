@@ -9,11 +9,11 @@
                         <div class="col-lg-12">
                             <!-- Page Header Box Start -->
                             <div class="page-header-box">
-                                <h1 data-cursor="-opaque">@lang('app.e_clinic')</h1>
+                                <h1 data-cursor="-opaque">{{ __('lang.E_CLINIC') }}</h1>
                                 <nav class="wow fadeInUp">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="{{ url('/') }}">@lang('app.home')</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">@lang('app.e_clinic')</li>
+                                        <li class="breadcrumb-item"><a href="{{ url('/') }}">{{ __('lang.HOME') }}</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">{{ __('lang.E_CLINIC') }}</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -31,8 +31,8 @@
                     <center>
                         <br><br><br>
                         <div class="section-title">
-                            <h3 class="wow fadeInUp">@lang('app.e_clinic')</h3>
-                            <h2 data-cursor="-opaque">@lang('app.meet-our-expert-doctors')</h2>
+                            <h3 class="wow fadeInUp">{{ __('lang.E_CLINIC') }}</h3>
+                            <h2 data-cursor="-opaque">{{ __('lang.MEET_OUR_EXPERT_DOCTORS') }}</h2>
                         </div>
                     </center>
 
@@ -53,9 +53,9 @@
                                             {{-- <p>{{$te->about}}</p> --}}
                                             <p>{{ App::isLocale('ar') ? $te->about_ar : $te->about }} </p>
                                             <div class="doctor-stats">
-                                                <div><strong>15 - 30 Min</strong><br>@lang('app.wait-time')</div>
-                                                <div><strong>{{ $te->experience }}</strong><br>@lang('app.experience')</div>
-                                                <div><strong>98% (559)</strong><br>@lang('app.satisfied-patients')</div>
+                                                <div><strong>15 - 30 Min</strong><br>{{ __('lang.WAIT_TIME') }}</div>
+                                                <div><strong>{{ $te->experience }}</strong><br>{{ __('lang.EXPERIENCE') }}</div>
+                                                <div><strong>98% (559)</strong><br>{{ __('lang.SATISFIED_PATIENTS') }}</div>
                                             </div>
                                         </div>
                                         <div class="doctor-actions">

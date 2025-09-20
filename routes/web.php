@@ -35,7 +35,7 @@ Route::middleware([
     Route::get('/get-slots-by-available', [AppointmentController::class, 'availableSlots']);
     Route::post('/set-language', [LanguageController::class, 'setLanguage'])->name('language.set');
     Route::get('/', [Homecontroller::class, 'home'])->name('home');
-    Route::get('/about', [Homecontroller::class, 'about'])->name('front.about');
+    Route::get('/about-us', [Homecontroller::class, 'about'])->name('front.about');
     Route::get('/contact', [Homecontroller::class, 'contact_us'])->name('front.contact');
     Route::post('/contact_form/insert', [HomeController::class, 'insertContact'])->name('contact.insert');
     Route::get('/service/{id}', [Homecontroller::class, 'service'])->name('front.service.single');

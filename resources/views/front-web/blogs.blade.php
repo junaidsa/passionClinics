@@ -69,8 +69,8 @@ $blogs = DB::table('blogs')->get();
             <div class="col-lg-12">
                 <!-- Section Title Start -->
                 <div class="section-title section-title-center">
-                    <h3 class="wow fadeInUp">@lang('app.latest-blog')</h3>
-                    <h2   data-cursor="-opaque">@lang('app.blog-dis')</h2>
+                    <h3 class="wow fadeInUp">{{ __('lang.LATEST_BLOG') }}</h3>
+                    <h2   data-cursor="-opaque">{{ __('lang.BLOG_DIS') }}</h2>
                 </div>
                 <!-- Section Title End -->
             </div>

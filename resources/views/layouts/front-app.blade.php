@@ -141,7 +141,7 @@
                     <div class="footer-header">
                         <!-- Section Title Start -->
                         <div class="section-title footer-newsletter-title">
-                            <h2 data-cursor="-opaque">@lang('app.footer-dis')</h2>
+                            <h2 data-cursor="-opaque">{{ __('lang.FOOTER_DIS') }}</h2>
                         </div>
                         <!-- Section Title End -->
 
@@ -172,7 +172,7 @@
 
                         <!-- About Footer Content Start -->
                         <div class="about-footer-content">
-                            <p>@lang('app.footer-dis')</p>
+                            <p>{{ __('lang.FOOTER_DIS') }}</p>
                         </div>
                         <!-- About Footer Content End -->
 
@@ -195,22 +195,22 @@
                         <div class="footer-links quick-links">
                             <h3>quick link</h3>
                             <ul>
-                                <li><a href="{{ url('/') }}">@lang('app.home')</a></li>
-                                <li><a href="{{ url('/about') }}">@lang('app.about_us')</a></li>
-                                <li><a href="{{ url('/services') }}">@lang('app.services')</a></li>
-                                <li><a href="{{ url('/e-clinic') }}">@lang('app.e_clinic')</a></li>
-                                <li><a href="{{ url('/teams') }}">@lang('app.our_team')</a></li>
-                                <li><a href="{{ url('/contact') }}">@lang('app.contact_us')</a></li>
+                                <li><a href="{{ url('/') }}">{{ __('lang.HOME') }}</a></li>
+                                <li><a href="{{ url('/about') }}">{{ __('lang.ABOUT_US') }}</a></li>
+                                <li><a href="{{ url('/services') }}">{{ __('lang.SERVICES') }}</a></li>
+                                <li><a href="{{ url('/e-clinic') }}">{{ __('lang.E_CLINIC') }}</a></li>
+                                <li><a href="{{ url('/teams') }}">{{ __('lang.OUR_TEAM') }}</a></li>
+                                <li><a href="{{ url('/contact') }}">{{ __('lang.CONTACT_US') }}</a></li>
                             </ul>
                         </div>
                         <!-- Footer Links End -->
 
                         <!-- Footer Links Start -->
                         <div class="footer-links">
-                            <h3>@lang('app.working-hours'):</h3>
+                            <h3>{{ __('lang.WORKING_HOURS') }}:</h3>
                             <ul>
                                 <li>SAT - THU 09:00 AM - 07:00 PM</li>
-                                <li>@lang('app.fri-closed')</li>
+                                <li>{{ __('lang.FRI_CLOSED') }}</li>
                             </ul>
                         </div>
                         <!-- Footer Links End -->
@@ -220,7 +220,7 @@
                     <div class="footer-contact-box">
                         <!-- Footer Contact Item Start -->
                         <div class="footer-links footer-contact-item">
-                            <h3>@lang('app.Contact'):</h3>
+                            <h3>{{ __('lang.CONTACT') }}:</h3>
                             <ul>
                                 <li><i class="fa-solid fa-phone"></i><a
                                         href="tel:123456789">{{ @$sett->phone_number }}</a></li>
@@ -230,7 +230,7 @@
 
                         <!-- Footer Contact Item Start -->
                         <div class="footer-links footer-contact-item">
-                            <h3>@lang('app.e-mail'):</h3>
+                            <h3>{{ __('lang.E_MAIL') }}:</h3>
                             <ul>
                                 <li><i class="fa-solid fa-envelope"></i><a
                                         href="mailto:{{ @$sett->email }}">{{ @$sett->email }}</a></li>
@@ -240,7 +240,7 @@
 
                         <!-- Footer Contact Item Start -->
                         <div class="footer-links footer-contact-item">
-                            <h3>@lang('app.address'):</h3>
+                            <h3>{{ __('lang.ADDRESS') }}:</h3>
                             <ul>
                                 <li><i class="fa-solid fa-location-dot"></i>{{ @$sett->address }}</li>
                             </ul>

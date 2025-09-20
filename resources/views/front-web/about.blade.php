@@ -8,11 +8,11 @@
             <div class="col-lg-12">
                 <!-- Page Header Box Start -->
                 <div class="page-header-box">
-                    <h1   data-cursor="-opaque">@lang('app.about_us')</h1>
+                    <h1   data-cursor="-opaque">{{ __('lang.ABOUT_US') }}</h1>
                     <nav class="wow fadeInUp">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{url('/')}}">@lang('app.home')</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">@lang('app.about_us')</li>
+                            <li class="breadcrumb-item"><a href="{{url('/')}}">{{ __('lang.HOME') }}</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ __('lang.ABOUT_US') }} </li>
                         </ol>
                     </nav>
                 </div>
@@ -40,9 +40,9 @@
                 <div class="our-approach-content">
                     <!-- Section Title Start -->
                     <div class="section-title">
-                        <h3 class="wow fadeInUp">@lang('app.our-approach')</h3>
-                        <h2   data-cursor="-opaque">@lang('app.our-details')</h2>
-                        <p class="wow fadeInUp" data-wow-delay="0.2s">@lang('app.our-details-2')</p>
+                        <h3 class="wow fadeInUp">{{ __('lang.OUR_APPROACH') }}</h3>
+                        <h2   data-cursor="-opaque">{{ __('lang.OUR_DETAILS') }}</h2>
+                        <p class="wow fadeInUp" data-wow-delay="0.2s">{{ __('lang.OUR_DETAILS_2') }}</p>
                     </div>
                     <!-- Section Title End -->
 
@@ -54,8 +54,8 @@
                                 <img src="{{ asset('public') }}/images/icon-mission.svg" alt="">
                             </div>
                             <div class="mission-vison-content">
-                                <h3>@lang('app.our-mission')</h3>
-                                <p>@lang('app.our-comprehensive')</p>
+                                <h3>{{ __('lang.OUR_MISSION') }}</h3>
+                                <p>{{ __('lang.OUR_COMPREHENSIVE') }}</p>
                             </div>
                         </div>
                         <!-- Mission Vision Item End -->
@@ -66,8 +66,8 @@
                                 <img src="{{ asset('public') }}/images/icon-vision.svg" alt="">
                             </div>
                             <div class="mission-vison-content">
-                                <h3>@lang('app.our-vision')</h3>
-                                <p>@lang('app.our-comprehensive')</p>
+                                <h3>{{ __('lang.OUR_VISION') }}</h3>
+                                <p>{{ __('lang.OUR_COMPREHENSIVE') }}</p>
                             </div>
                         </div>
                         <!-- Mission Vision Item End -->
@@ -119,15 +119,15 @@
                     <div class="how-work-content">
                         <!-- Section Title Start -->
                         <div class="section-title">
-                            <h3 class="wow fadeInUp">@lang('app.how_it_work')</h3>
-                            <h2   data-cursor="-opaque">@lang('app.simple_steps_to')</h2>
-                            <p class="wow fadeInUp" data-wow-delay="0.2s">@lang('app.discover_a_seamless')</p>
+                            <h3 class="wow fadeInUp">{{ __('lang.HOW_IT_WORK') }}</h3>
+                            <h2   data-cursor="-opaque">{{ __('lang.SIMPLE_STEPS_TO') }}</h2>
+                            <p class="wow fadeInUp" data-wow-delay="0.2s">{{ __('lang.DISCOVER_A_SEAMLESS') }}</p>
                         </div>
                         <!-- Section Title End -->
 
                         <!-- How Work Button Start -->
                         <div class="how-work-btn wow fadeInUp" data-wow-delay="0.4s">
-                            <a href="{{url('/contact')}}" class="btn-default">@lang('app.contact_us')</a>
+                            <a href="{{url('/contact')}}" class="btn-default">{{ __('lang.CONTACT_US') }}</a>
                         </div>
                         <!-- How Work Button End -->
                     </div>
@@ -143,8 +143,8 @@
                                 <img src="{{ asset('public') }}/images/icon-how-work-step-1.svg" alt="">
                             </div>
                             <div class="how-work-step-content">
-                                <h3>@lang('app.01_comprehensive')</h3>
-                                <p>@lang('app.01_comprehensive_goals')</p>
+                                <h3>{{ __('lang.01_COMPREHENSIVE') }}</h3>
+                                <p>{{ __('lang.01_COMPREHENSIVE_GOALS') }}</p>
                             </div>
                         </div>
                         <!-- How Work Step Item End -->
@@ -155,8 +155,8 @@
                                 <img src="{{ asset('public') }}/images/icon-how-work-step-2.svg" alt="">
                             </div>
                             <div class="how-work-step-content">
-                                <h3>@lang('app.02_personalized')</h3>
-                                <p>@lang('app.01_comprehensive_goals')</p>
+                                <h3>{{ __('lang.02_PERSONALIZED') }}</h3>
+                                <p>{{ __('lang.01_COMPREHENSIVE_GOALS') }}</p>
                             </div>
                         </div>
                         <!-- How Work Step Item End -->
@@ -167,8 +167,8 @@
                                 <img src="{{ asset('public') }}/images/icon-how-work-step-3.svg" alt="">
                             </div>
                             <div class="how-work-step-content">
-                                <h3>@lang('app.03_expert')</h3>
-                                <p>@lang('app.01_comprehensive_goals')</p>
+                                <h3>{{ __('lang.03_EXPERT') }}</h3>
+                                <p>{{ __('lang.01_COMPREHENSIVE_GOALS') }}</p>
                             </div>
                         </div>
                         <!-- How Work Step Item End -->
@@ -179,8 +179,8 @@
                                 <img src="{{ asset('public') }}/images/icon-how-work-step-4.svg" alt="">
                             </div>
                             <div class="how-work-step-content">
-                                <h3>@lang('app.04_ongoing')</h3>
-                                <p>@lang('app.01_comprehensive_goals')</p>
+                                <h3>{{ __('lang.04_ONGOING') }}</h3>
+                                <p>{{ __('lang.01_COMPREHENSIVE_GOALS') }}</p>
                             </div>
                         </div>
                         <!-- How Work Step Item End -->

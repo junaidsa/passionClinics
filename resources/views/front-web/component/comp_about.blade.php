@@ -37,7 +37,7 @@
         <div class="about-us-content">
             <!-- Section Title Start -->
             <div class="section-title">
-                <h3 class="wow fadeInUp">@lang('app.about_us')</h3>
+                <h3 class="wow fadeInUp">{{ __('lang.ABOUT_US') }}</h3>
           <h2>
           {{ App::isLocale('ar') ? @$about->about_title_ar : @$about->about_title }}
 </h2>
@@ -53,9 +53,9 @@
                 <!-- About Experience List Start -->
                 <div class="about-experience-list wow fadeInUp" data-wow-delay="0.4s">
                     <ul>
-                        <li>@lang('app.your_beauty_our_expertise')</li>
-                        <li>@lang('app.where_science_meets_beauty')</li>
-                        <li>@lang('app.cutting_edge_techniques')</li>
+                        <li>{{ __('lang.YOUR_BEAUTY_OUR_EXPERTISE') }}</li>
+                        <li>{{ __('lang.WHERE_SCIENCE_MEETS_BEAUTY') }}</li>
+                        <li>{{ __('lang.CUTTING_EDGE_TECHNIQUES') }}</li>
                     </ul>
                 </div>
                 <!-- About Experience List End -->
@@ -78,7 +78,7 @@
                         <i class="fa-solid fa-phone"></i>
                     </div>
                     <div class="about-contact-box-content">
-                        <p>@lang('app.need_help')</p>
+                        <p>{{ __('lang.NEED_HELP') }}</p>
                         <h3><a href="tel:{{$sett->phone_number}}">{{$sett->phone_number}}</a></h3>
                     </div>
                 </div>
@@ -86,7 +86,7 @@
 
                 <!-- About Contact Button Start -->
                 <div class="about-us-btn">
-                    <a href="{{url('/about')}}" class="btn-default">@lang('app.about_us')</a>
+                    <a href="{{url('/about')}}" class="btn-default">{{ __('lang.ABOUT_US') }}</a>
                 </div>
                 <!-- About Contact Button End -->
             </div>

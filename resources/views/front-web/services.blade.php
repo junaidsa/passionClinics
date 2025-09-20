@@ -9,11 +9,11 @@
                     <div class="col-lg-12">
                         <!-- Page Header Box Start -->
                         <div class="page-header-box">
-                            <h1  >@lang('app.our_services')</h1>
+                            <h1>{{ __('lang.OUR_SERVICES') }}</h1>
                             <nav class="wow fadeInUp">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="{{url('/')}}">@lang('app.home')</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">@lang('app.services')</li>
+                                    <li class="breadcrumb-item"><a href="{{url('/')}}">{{ __('lang.HOME') }}</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">{{ __('lang.SERVICES') }}</li>
                                 </ol>
                             </nav>
                         </div>
@@ -30,10 +30,10 @@
                     <div class="col-lg-12">
                         <!-- Section Title Start -->
                         <div class="section-title section-title-center">
-                            <h3 class="wow fadeInUp">@lang('app.services')</h3>
-                            <p class="wow fadeInUp" data-wow-delay="0.2s">@lang('app.feel_beautiful_be_beautiful')</p>
-                            <h2  >@lang('app.again_discover_yourself')</h2>
-                            <p class="wow fadeInUp" data-wow-delay="0.2s">@lang('app.services_description')</p>
+                            <h3 class="wow fadeInUp">{{ __('lang.SERVICES') }}</h3>
+                            <p class="wow fadeInUp" data-wow-delay="0.2s">{{ __('lang.FEEL_BEAUTIFUL_BE_BEAUTIFUL') }}</p>
+                            <h2  >{{ __('lang.AGAIN_DISCOVER_YOURSELF') }}</h2>
+                            <p class="wow fadeInUp" data-wow-delay="0.2s">{{ __('lang.SERVICES_DESCRIPTION') }}</p>
                         </div>
                         <!-- Section Title End -->
                     </div>

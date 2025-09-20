@@ -25,52 +25,39 @@
                    <div class="collapse navbar-collapse main-menu">
                        <div class="nav-menu-wrapper">
                            <ul class="navbar-nav mr-auto" id="menu">
-                               <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">@lang('app.home')</a>
-                               </li>
-                               <li class="nav-item"><a class="nav-link" href="{{ url('/about') }}">@lang('app.about_us')</a>
-                               <li class="nav-item"><a class="nav-link"
-                                       href="{{ url('/services') }}">@lang('app.services')</a></li>
-                               <li class="nav-item"><a class="nav-link" href="{{ url('/teams') }}">@lang('app.our_team')</a>
-                               </li>
-                               <li class="nav-item"><a class="nav-link"
-                                       href="{{ url('/offers') }}">@lang('app.offers')</a></li>
-                               <li class="nav-item"><a class="nav-link"
-                                       href="{{ url('/e-clinic') }}">@lang('app.e_clinic')</a></li>
-                               <li class="nav-item"><a class="nav-link" href="{{ url('/blogs') }}">@lang('app.blog')</a>
-                               </li>
-                               <li class="nav-item"><a class="nav-link"
-                                       href="{{ url('/contact') }}">@lang('app.contact_us')</a></li>
-                               <li class="nav-item highlighted-menu"><a class="nav-link"
-                                       href="book-appointment.html">@lang('app.make_an_appointment')</a></li>
+                               <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">{{ __('lang.HOME') }}</a></li>
+                               <li class="nav-item"><a class="nav-link" href="{{ url('/about-us') }}">{{ __('lang.ABOUT_US') }}</a></li>
+                               <li class="nav-item"><a class="nav-link" href="{{ url('/services') }}">{{ __('lang.SERVICES') }}</a></li>
+                               <li class="nav-item"><a class="nav-link" href="{{ url('/teams') }}">{{ __('lang.OUR_TEAM') }}</a></li>
+                               <li class="nav-item"><a class="nav-link" href="{{ url('/offers') }}">{{ __('lang.OFFERS') }}</a></li>
+                               <li class="nav-item"><a class="nav-link" href="{{ url('/e-clinic') }}">{{ __('lang.E_CLINIC') }}</a></li>
+                               <li class="nav-item"><a class="nav-link" href="{{ url('/blogs') }}">{{ __('lang.BLOG') }}</a></li>
+                               <li class="nav-item"><a class="nav-link" href="{{ url('/contact') }}">{{ __('lang.CONTACT_US') }}</a></li>
+                               <li class="nav-item highlighted-menu"><a class="nav-link" href="book-appointment.html">{{ __('lang.MAKE_AN_APPOINTMENT') }}</a></li>
                            </ul>
                        </div>
 
                        <!-- Header Contact Btn Start -->
                        <div class="header-contact-btn">
-                           <a href="tel:{{ $sett->phone_number }}" class="header-contact-now"> <i
-                                   class="fa-solid fa-phone me-2"></i>{{ $sett->phone_number }}</a>
+                           <a href="tel:{{ $sett->phone_number }}" class="header-contact-now"> <i class="fa-solid fa-phone me-2"></i>{{ $sett->phone_number }}</a>
 
 
                            <!-- Trigger Button -->
                            <li class="nav-item dropdown me-2 me-xl-0">
-                               <a class="nav-link dropdown-toggle hide-arrow" href="#" id="languageDropdown"
-                                   role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                   <i id="selected-language-flag"
-                                       class="fi fi-us fis rounded-circle me-1 fs-2 {{ app()->getLocale() == 'ar' ? 'fi-sa' : 'fi-us' }}"></i>
+                               <a class="nav-link dropdown-toggle hide-arrow" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                   <i id="selected-language-flag" class="fi fi-us fis rounded-circle me-1 fs-2 {{ app()->getLocale() == 'ar' ? 'fi-sa' : 'fi-us' }}"></i>
                                    <span id="selected-language-text"></span>
                                </a>
                                <ul class="dropdown-menu dropdown-menu-end {{ app()->getLocale() == 'ar' ? 'lang-ar' : 'lang-en' }}"
                                    aria-labelledby="languageDropdown">
                                    <li>
-                                       <a class="dropdown-item" href="#" data-language="en" data-flag="fi-us"
-                                           data-text="English">
+                                       <a class="dropdown-item" href="#" data-language="en" data-flag="fi-us" data-text="English">
                                            <i class="fi fi-us fis rounded-circle me-1 fs-2"></i>
                                            <span class="align-middle">English</span>
                                        </a>
                                    </li>
                                    <li>
-                                       <a class="dropdown-item" href="#" data-language="ar" data-flag="fi-sa"
-                                           data-text="Arabic">
+                                       <a class="dropdown-item" href="#" data-language="ar" data-flag="fi-sa" data-text="Arabic">
                                            <i class="fi fi-sa fis rounded-circle me-1 fs-2"></i>
                                            <span class="align-middle">Arabic</span>
                                        </a>
@@ -78,11 +65,10 @@
                                </ul>
                            </li>
                            @auth
-                               <li class="nav-item dropdown me-2 me-xl-0">
+                               {{-- <li class="nav-item dropdown me-2 me-xl-0">
                                    <a class="nav-link dropdown-toggle hide-arrow" href="#" id="languageDropdown"
                                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                       <img src="{{ url('file/dr/' . (Auth::user()->image ?? 'avatar.jpg')) }}" width="50"
-                                           height="50" class="rounded-circle">
+                                       <img src="{{ url('file/dr/' . (Auth::user()->image ?? 'avatar.jpg')) }}" width="50" height="50" class="rounded-circle">
                                    </a>
                                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
                                       <li class="p-1">
@@ -90,8 +76,7 @@
                                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                    fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-                                                   <path fill-rule="evenodd"
-                                                       d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                                                   <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
                                                </svg>
                                                <span class="align-middle ms-2">Profile</span>
                                            </a>
@@ -102,12 +87,9 @@
                                        <li class="p-1">
                                            <a class="" href="javascript:void(0);"
                                                onclick="document.getElementById('logoutForm').submit();">
-                                               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-                                                   fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
-                                                   <path fill-rule="evenodd"
-                                                       d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z" />
-                                                   <path fill-rule="evenodd"
-                                                       d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
+                                               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+                                                   <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z" />
+                                                   <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
                                                </svg>
                                                <span class="align-middle ms-2">Log Out</span>
                                            </a>
@@ -116,10 +98,9 @@
                                            </form>
                                        </li>
                                    </ul>
-                               </li>
+                               </li> --}}
                            @else
-                               <a href="#" class="btn-default" data-bs-toggle="modal"
-                                   data-bs-target="#loginModal">@lang('app.sign-in')</a>
+                               {{-- <a href="#" class="btn-default" data-bs-toggle="modal" data-bs-target="#loginModal">{{ __('lang.SIGN_IN') }}</a> --}}
                            @endauth
 
 
@@ -132,8 +113,7 @@
                                <div class="modal-content contact-info-item w-100">
                                    <div class="modal-header">
                                        <h5 class="modal-title" id="signupModalLabel">Sign Up Your Account</h5>
-                                       <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                           aria-label="Close"></button>
+                                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                    </div>
                                    <div class="modal-body w-100">
                                        <!-- Sign Up Form -->
@@ -142,8 +122,7 @@
                                            @csrf
                                            <div class="mb-3">
                                                <label for="name" class="form-label">Name</label>
-                                               <input type="text" class="form-control" id="name"
-                                                   name="name" placeholder="Enter Name">
+                                               <input type="text" class="form-control" id="name" name="name" placeholder="Enter Name">
                                                <p></p>
                                            </div>
                                            {{-- <div class="mb-3">
@@ -188,8 +167,7 @@
                                                Up</button>
                                        </form>
                                        <div class="text-center mt-3">
-                                           <a href="#" id="openLogin" class="text-primary"><span
-                                                   class="text-black">Already have an account ?</span> Login</a>
+                                           <a href="#" id="openLogin" class="text-primary"><span class="text-black">Already have an account ?</span> Login</a>
                                        </div>
                                    </div>
                                </div>

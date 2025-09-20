@@ -17,8 +17,8 @@ $testimonials = DB::table('testimonials')->get();
             <div class="our-testimonial-content">
                 <!-- Section Title Start -->
                 <div class="section-title">
-                    <h3 class="wow fadeInUp">@lang('app.testimonials')</h3>
-                    <h2   data-cursor="-opaque">@lang('app.life-changing')</h2>
+                    <h3 class="wow fadeInUp">{{ __('lang.TESTIMONIALS') }}</h3>
+                    <h2   data-cursor="-opaque">{{ __('lang.LIFE_CHANGING') }}</h2>
                     <p class="wow fadeInUp" data-wow-delay="0.2s">{{ App::isLocale('ar') ? @$testimonial->message_ar : @$testimonial->message}}</p>
                 </div>
                 <!-- Section Title End -->

@@ -8,11 +8,11 @@
                         <div class="col-lg-12">
                             <!-- Page Header Box Start -->
                             <div class="page-header-box">
-                                <h1 data-cursor="-opaque">@lang('app.contact_us')</h1>
+                                <h1 data-cursor="-opaque">{{ __('lang.CONTACT_US') }}</h1>
                                 <nav class="wow fadeInUp">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><a href="{{url('/')}}">@lang('app.home')</a></li>
-                                        <li class="breadcrumb-item active" aria-current="page">@lang('app.contact_us')</li>
+                                        <li class="breadcrumb-item"><a href="{{url('/')}}">{{ __('lang.HOME') }}</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">{{ __('lang.CONTACT_US') }}</li>
                                     </ol>
                                 </nav>
                             </div>
@@ -32,9 +32,8 @@
                             <div class="contact-us-content">
                                 <!-- Section Title Start -->
                                 <div class="section-title">
-                                    <h2 class=" " data-cursor="-opaque"> @lang('app.reach-out')
-                                    </h2>
-                                    <p class="wow fadeInUp" data-wow-delay="0.2s">@lang('app.reach-out-care')</p>
+                                    <h2 class=" " data-cursor="-opaque">{{ __('lang.REACH_OUT') }}</h2>
+                                    <p class="wow fadeInUp" data-wow-delay="0.2s">{{ __('lang.REACH_OUT_CARE') }}</p>
                                 </div>
                                 <!-- Section Title End -->
                             </div>
@@ -62,7 +61,7 @@
                                         <img src="{{ asset('public') }}/images/icon-phone.svg" alt="">
                                     </div>
                                     <div class="contact-info-content">
-                                        <h3>@lang('app.contact_us')</h3>
+                                        <h3>{{ __('lang.CONTACT_US') }}</h3>
                                         <p><a href="tel:+22123456789">{{@$sett->phone_number}}</a></p>
                                     </div>
                                 </div>
@@ -97,7 +96,7 @@
                             <div class="contact-form">
                                 <!-- Section Title Start -->
                                 <div class="section-title">
-                                    <h2 class=" " data-cursor="-opaque">@lang('app.questions')</h2>
+                                    <h2 class=" " data-cursor="-opaque">{{ __('lang.QUESTIONS') }}</h2>
                                 </div>
                                 <!-- Section Title End -->
 
@@ -115,7 +114,7 @@
                                         <div class="form-group col-md-6 mb-4">
                                             <input type="text" name="fname"
                                                 class="form-control @error('fname') is-invalid @enderror" id="fname"
-                                                placeholder="@lang('app.f_name')" required="">
+                                                placeholder="{{ __('lang.F_NAME') }}" required="">
                                             @error('fname')
                                                 <div class=" invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -124,7 +123,7 @@
                                         <div class="form-group col-md-6 mb-4">
                                             <input type="text" name="lname"
                                                 class="form-control @error('lname') is-invalid @enderror" id="lname"
-                                                placeholder="@lang('app.l_name')" required="">
+                                                placeholder="{{ __('lang.L_NAME') }}" required="">
                                             @error('lname')
                                                 <div class=" invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -133,7 +132,7 @@
                                         <div class="form-group col-md-6 mb-4">
                                             <input type="text" name="phone"
                                                 class="form-control @error('phone') is-invalid @enderror" id="phone"
-                                                placeholder="@lang('app.phone_no')" required="">
+                                                placeholder="{{ __('lang.PHONE_NO') }}" required="">
                                             @error('phone')
                                                 <div class=" invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -141,7 +140,7 @@
 
                                         <div class="form-group col-md-6 mb-4">
                                             <input type="email" name="email"
-                                                class="form-control @error('email') is-invalid @enderror" id="email" placeholder="@lang('app.email')"
+                                                class="form-control @error('email') is-invalid @enderror" id="email" placeholder="{{ __('lang.E_MAIL') }}"
                                               required="">
                                             @error('email')
                                                 <div class=" invalid-feedback">{{ $message }}</div>
@@ -150,7 +149,7 @@
 
                                         <div class="form-group col-md-12 mb-5">
                                             <textarea name="message" class="form-control @error('message') is-invalid @enderror" id="message" rows="4"
-                                                placeholder="@lang('app.message')"></textarea>
+                                                placeholder="{{ __('lang.MESSAGE') }}"></textarea>
                                             @error('message')
                                                 <div class=" invalid-feedback">{{ $message }}</div>
                                             @enderror

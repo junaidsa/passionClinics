@@ -25,7 +25,7 @@
                     <div class="hero-content">
                         <!-- Section Title Start -->
                         <div class="section-title">
-                            <h3 class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">@lang('app.welcome_to_passion_clinic')</h3>
+                            <h3 class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">{{ __('lang.WELCOME_TO_PASSION_CLINIC') }}</h3>
                             <h1  data-cursor="-opaque" style="perspective: 400px;">{{ App::isLocale('ar') ? $sett->title_ar : $sett->title }}</h1>
                             <p class="wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">{{ App::isLocale('ar') ? $sett->description_ar : $sett->description }}</p>
                         </div>
@@ -35,7 +35,7 @@
                         <div class="hero-body wow fadeInUp" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
                             <!-- Hero Button Start -->
                             <div class="hero-btn">
-                                <a href="#" class="btn-default btn-highlighted">@lang('app.book_an_appointment')</a>
+                                <a href="#" class="btn-default btn-highlighted">{{ __('lang.BOOK_AN_APPOINTMENT') }}</a>
                             </div>
                             <!-- Hero Button End -->
 
