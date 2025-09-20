@@ -407,7 +407,7 @@
                         <div class="transformation-image wow fadeInUp" data-wow-delay="0.2s">
                             @foreach ($diff->take(2) as $d)
                                 <figure class="transform-img-1">
-                                    <img src="{{ url('file/difference/' . ($d->difference ?? 'avatar.jpg')) }}"
+                                    <img src="{{ url('file/difference/' . ($d->avatar ?? 'avatar.jpg')) }}"
                                         alt="">
                                 </figure>
                             @endforeach
@@ -419,7 +419,7 @@
                         <div class="transformation-image wow fadeInUp" data-wow-delay="0.4s">
                             @foreach ($diff->slice(2, 2) as $d)
                                 <figure class="transform-img-1">
-                                    <img src="{{ url('file/difference/' . ($d->difference ?? 'avatar.jpg')) }}"
+                                    <img src="{{ url('file/difference/' . ($d->avatar ?? 'avatar.jpg')) }}"
                                         alt="">
                                 </figure>
                             @endforeach
