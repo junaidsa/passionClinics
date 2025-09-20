@@ -4,7 +4,8 @@
     data-assets-path="{{ asset('public') }}/assets/" data-template="vertical-menu-template">
 
 <head>
-    <meta name="viewport"  content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
     <meta charset="utf-8" />
 
     <meta name="csrf-token" content="{{ csrf_token() }}" />
@@ -76,13 +77,13 @@
     <div class="layout-wrapper layout-content-navbar {{ Auth::check() ? '' : 'layout-without-menu' }}">
         <div class="layout-container">
             @auth
-            <!-- Menu -->
+                <!-- Menu -->
                 @include('layouts.sidebar')
-                @endauth
-                <div class="layout-page">
-            <!-- / Menu -->
+            @endauth
+            <div class="layout-page">
+                <!-- / Menu -->
 
-            <!-- Layout container -->
+                <!-- Layout container -->
                 <!-- Navbar -->
                 @include('layouts.header')
                 <!-- / Navbar -->
@@ -103,7 +104,7 @@
                                     <script>
                                         document.write(new Date().getFullYear());
                                     </script>
-                                     made with by <b>Passion Clinics</b>
+                                    made with by <b>Passion Clinics</b>
                                 </div>
                             </div>
                         </div>
@@ -148,22 +149,24 @@
     @yield('link-js')
 
     <!-- Vendors JS -->
-        <!-- Vendors JS -->
+    <!-- Vendors JS -->
 
-        <script src="{{ asset('public') }}/assets/vendor/libs/fullcalendar/fullcalendar.js"></script>
+    <script src="{{ asset('public') }}/assets/vendor/libs/fullcalendar/fullcalendar.js"></script>
     <script src="{{ asset('public') }}/assets/vendor/libs/select2/select2.js"></script>
     <script src="{{ asset('public') }}/assets/vendor/libs/flatpickr/flatpickr.js"></script>
     <script src="{{ asset('public') }}/assets/js/main.js"></script>
     <script src="{{ asset('public') }}/assets/js/dashboards-crm.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
     <script src="{{ asset('public') }}/assets/vendor/libs/bootstrap-maxlength/bootstrap-maxlength.js"></script>
-        <!-- Page JS -->
-        <script src="{{ asset('public') }}/assets/js/app-calendar-events.js"></script>
-        <script src="{{ asset('public') }}/assets/js/app-calendar.js"></script>
+    <!-- Page JS -->
+    <script src="{{ asset('public') }}/assets/js/app-calendar-events.js"></script>
+    <script src="{{ asset('public') }}/assets/js/app-calendar.js"></script>
+    <script src="{{ asset('public') }}/assets/vendor/libs/tagify/tagify.js"></script>
+    <script src="{{ asset('public') }}/assets/js/forms-tagify.js"></script>
     @yield('javascript')
     @if (Session::get('success'))
         <script>
-                    $('.textarea').trumbowyg();
+            $('.textarea').trumbowyg();
             $(document).ready(function() {
                 Swal.fire({
                     title: 'Success',

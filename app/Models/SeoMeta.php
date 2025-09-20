@@ -14,8 +14,11 @@ class SeoMeta extends Model
         'lang',
         'slug',
         'meta_title',
+        'meta_title_en',
         'keywords',
+        'keywords_en',
         'robots',
         'description',
+        'description_en',
     ];
 }

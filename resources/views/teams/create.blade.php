@@ -6,7 +6,14 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 @endsection
 <div class="container-xxl flex-grow-1 container-p-y">
-    {{-- <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Teams /</span> Create</h4> --}}
+    <div class="d-flex align-items-center justify-content-between">
+        <h4 class="fw-bold py-3 mb-4">
+            <span class="text-muted fw-light">Teams /</span> Create
+        </h4>
+        <button type="button" id="saveBtn" class="btn btn-primary mb-3">
+            <i class="fas fa-save me-2"></i> Save
+        </button>
+    </div>
     <div class="row">
         <div class="col-md-12">
             <ul class="nav nav-tabs custom-tabs justify-content-center mb-3 border-0" id="blogTabs" role="tablist">
@@ -29,8 +36,7 @@
                 <div class="tab-pane fade show active" id="details" role="tabpanel" aria-labelledby="details-tab">
 
                     <div class="row">
-                        <form action="{{ url('/admin/teams/store') }}" method="POST" id="adminForum"
-                            enctype="multipart/form-data">
+                        <form action="" method="POST" id="adminForum" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <h5 class="mb-4 mt-4">Create Team</h5>
@@ -123,7 +129,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-12 col-sm-6 col-6 mb-2">
+                                <div class="col-md-12 mb-2">
                                     <label class="form-label">Image/Avatar</label>
                                     <input type="file" name="image" class="form-control" />
                                 </div>
@@ -136,7 +142,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="col-md-12">
                                     <div class="mb-3 form-password-toggle">
                                         <label class="form-label" for="basic-default-password">Personals Info <span
@@ -174,10 +179,8 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 <hr class="mt-4">
                                 <h5 class="mb-4 fw-bold d-flex justify-content-end">عربي</h5>
-
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="name" class="form-label float-end"><span
@@ -221,11 +224,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-4 mt-3"><button
-                                            class="btn btn-primary d-grid w-50">Submit</button>
-                                    </div>
-                                </div>
                             </div>
                         </form>
                     </div>
@@ -233,31 +231,44 @@
 
                 <div class="tab-pane fade" id="seo" role="tabpanel" aria-labelledby="seo-tab">
                     <div class="row">
+                        <h5 class="mb-4 mt-4 fw-bold">English</h5>
+                        <hr>
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Meta Title</label>
-                            <input type="text" class="form-control" placeholder="Enter meta title">
+                            <input type="text" class="form-control" id="meta_title_en" name="meta_title_en"
+                                placeholder="Enter meta title">
                         </div>
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Keywords</label>
-                            <input type="text" class="form-control" placeholder="Enter keywords">
+                            <input type="text" class="form-control" placeholder="Enter keywords" id="keywords_en" name="keywords_en"
+                                name="keyword">
                         </div>
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Robots</label>
-                            <input type="text" class="form-control" placeholder="Enter robots rule">
+                            <input type="text" class="form-control" id="robots" name="robots" placeholder="Enter robots rule">
                         </div>
                         <div class="col-md-6 mb-3">
                             <label class="form-label">Type</label>
-                            <input type="text" class="form-control" placeholder="Enter type">
+                            <input type="text" class="form-control" id="type" name="type" placeholder="Enter type">
                         </div>
                         <div class="col-12 mb-3">
                             <label class="form-label">Description</label>
-                            <textarea class="form-control textarea" rows="3" placeholder="Enter description"></textarea>
+                            <textarea class="form-control" id="description_en" name="description_en" rows="3" placeholder="Enter description"></textarea>
                         </div>
-                        <div class="action-btns">
-                            <button class="btn btn-label-primary me-3">
-                                <span class="align-middle"> Back</span>
-                            </button>
-                            <button class="btn btn-primary">Create Tags</button>
+                        <hr class="mt-5">
+                        <h5 class="mb-4 mt-4 fw-bold  d-flex justify-content-end">عربي</h5>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label float-end">الكلمات الرئيسية</label>
+                            <input type="text" class="form-control" id="keywords_ar"
+                                name="keywords_ar">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label float-end">عنوان ميتا</label>
+                            <input type="text" class="form-control" id="meta_title_ar" name="meta_title_ar">
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label class="form-label float-end">وصف</label>
+                            <textarea class="form-control" rows="3" id="description_ar" name="description_ar" placeholder=""></textarea>
                         </div>
                     </div>
                 </div>
@@ -274,6 +285,11 @@
 @endsection
 @section('javascript')
 <script>
+    var input = document.querySelector('#keywords_en'); // match new id
+    var tagify = new Tagify(input);
+    var input = document.querySelector('#keywords_ar'); // match new id
+    var tagify = new Tagify(input);
+
     // $('.textarea').trumbowyg();
     $(document).ready(function() {
         $('.textarea').trumbowyg({
@@ -290,6 +306,66 @@
             ],
             autogrow: true
         });
+
+        // Form Insert
+        $("#saveBtn").on("click", function(e) {
+            e.preventDefault();
+            let formData = new FormData($("#adminForum")[0]);
+            $.ajax({
+                url: "{{ route('teams.store') }}",
+                type: "POST",
+                data: formData,
+                contentType: false,
+                processData: false,
+                headers: {
+                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr('content')
+                },
+                beforeSend: function() {
+                    $("#saveBtn").prop("disabled", true).html(
+                        '<i class="fas fa-spinner fa-spin me-2"></i> Saving...'
+                    );
+                },
+                success: function(response) {
+                    console.log(response);
+                    $("#saveBtn").prop("disabled", false).html(
+                        '<i class="fas fa-save me-2"></i> Save'
+                    );
+                    Swal.fire({
+                        icon: "success",
+                        title: "Saved",
+                        text: "Account created successfully!"
+                    });
+                    $("#adminForum")[0].reset();
+                },
+                error: function(xhr) {
+                    $("#saveBtn").prop("disabled", false).html(
+                        '<i class="fas fa-save me-2"></i> Save'
+                    );
+
+                    if (xhr.status === 422) {
+                        let errors = xhr.responseJSON.errors;
+                        $(".invalid-feedback").remove();
+                        $(".is-invalid").removeClass("is-invalid");
+
+                        $.each(errors, function(key, value) {
+                            let input = $(`[name="${key}"]`);
+                            input.addClass("is-invalid");
+                            input.after(
+                                `<div class="invalid-feedback">${value[0]}</div>`
+                            );
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Server Error",
+                            text: "Something went wrong!"
+                        });
+                    }
+                }
+            });
+        });
+
+
     });
 </script>
 @endsection
